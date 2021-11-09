@@ -1,0 +1,94 @@
+<docs>
+---
+order: 0
+title:
+  en-US: Fixed Header
+  zh-CN: 固定表头
+---
+
+## zh-CN
+
+方便一页内展示大量数据。只需要设置 `height` 属性即可。
+
+## en-US
+
+Display large amounts of data in scrollable view. Just set the `height` property.
+
+</docs>
+
+<template>
+  <s-table :columns="columns" :data-source="dataSource" :height="400">
+    <template #cell="{ column }">
+      <template v-if="column.key === 'operation'">
+        <a>Action</a>
+      </template>
+    </template>
+  </s-table>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+const columns = [
+  {
+    title: 'Full Name',
+    dataIndex: 'name',
+    fixed: 'left',
+    width: 150,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    fixed: 'left',
+    width: 100,
+  },
+  {
+    title: 'Column 1',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 2',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 3',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 4',
+    dataIndex: 'address',
+  },
+  { title: 'Column 5', dataIndex: 'address' },
+  {
+    title: 'Action',
+    key: 'operation',
+    fixed: 'right',
+    width: 100,
+  },
+];
+
+interface DataItem {
+  rowKey: number;
+  name: string;
+  age: number;
+  address: string;
+}
+
+export default defineComponent({
+  setup() {
+    const data: DataItem[] = [];
+    for (let i = 0; i < 1000; i++) {
+      data.push({
+        rowKey: i,
+        name: `Edrward ${i}`,
+        age: i + 1,
+        address: `London Park no. ${i}`,
+      });
+    }
+    return {
+      dataSource: ref(data),
+      columns: ref(columns),
+    };
+  },
+});
+</script>

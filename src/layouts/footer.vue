@@ -1,0 +1,15 @@
+<template>
+  <a-layout-footer style="text-align: center">
+    @surely-vue/table ©2021 Created by Ant Design Vue
+  </a-layout-footer>
+</template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: '',
+  setup() {
+    return {};
+  },
+});
+</script>
+<style lang="less" scoped></style>

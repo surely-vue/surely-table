@@ -1,0 +1,140 @@
+{
+  "name": "@surely-vue/table",
+  "version": "2.0.0",
+  "scripts": {
+    "predev": "node node_modules/esbuild/install.js",
+    "dev": "yarn predev && vite",
+    "site": "yarn predev && vite build",
+    "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
+    "tsc": "tsc --noEmit"
+  },
+  "title": "@surely-vue/table",
+  "description": "An enterprise-class table based Vue",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surely-vue/table.git"
+  },
+  "bugs": {
+    "url": "https://github.com/surely-vue/table/issues"
+  },
+  "license": "Commercial",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "src/style"
+  ],
+  "sideEffects": [
+    "dist/*",
+    "*.less"
+  ],
+  "peerDependencies": {
+    "ant-design-vue": "^3.0.0-0",
+    "vue": "3.2.20"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1",
+    "ant-design-vue": "^3.0.0-0",
+    "dayjs": "^1.10.7",
+    "lodash-es": "^4.17.21",
+    "resize-observer-polyfill": "^1.5.1",
+    "vue": "3.2.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-typescript": "^7.12.1",
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/compression": "^1.7.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/jest": "^26.0.15",
+    "@types/koa": "^2.11.6",
+    "@types/lodash-es": "^4.17.4",
+    "@types/lru-cache": "^5.1.0",
+    "@types/markdown-it": "^10.0.2",
+    "@types/node": "^13.13.4",
+    "@types/postcss-load-config": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "@vitejs/plugin-vue": "^1.0.5",
+    "@vitejs/plugin-vue-jsx": "^1.1.5",
+    "@vue/compiler-sfc": "3.2.20",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "ali-oss": "^6.13.2",
+    "autoprefixer": "^10.2.5",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
+    "cssnano": "^5.0.1",
+    "debug": "^4.3.1",
+    "diacritics": "^1.3.0",
+    "docsearch.js": "^2.6.3",
+    "enquire-js": "^0.2.1",
+    "esbuild": "~0.12.29",
+    "escape-html": "^1.0.3",
+    "eslint": "^7.17.0",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-markdown": "^2.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.4.1",
+    "fetch-jsonp": "^1.1.3",
+    "fs-extra": "^9.1.0",
+    "globby": "^11.0.1",
+    "gray-matter": "^4.0.2",
+    "gulp": "^4.0.2",
+    "gulp-cssmin": "^0.2.0",
+    "husky": "^4.3.8",
+    "less": "^4.1.0",
+    "less-plugin-npm-import": "^2.1.0",
+    "lint-staged": "^10.5.3",
+    "lru-cache": "^6.0.0",
+    "markdown-it": "^10.0.0",
+    "markdown-it-anchor": "^5.2.7",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-table-of-contents": "^0.4.4",
+    "marked": "^1.2.7",
+    "nprogress": "^0.2.0",
+    "postcss": "^8.2.10",
+    "prettier": "^2.2.1",
+    "prismjs": "^1.23.0",
+    "querystring": "^0.2.0",
+    "rollup": "^2.45.2",
+    "rollup-plugin-cleandir": "^1.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "rucksack-css": "^1.0.2",
+    "slash": "^3.0.0",
+    "through2": "^4.0.2",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.2.0",
+    "typescript": "~4.3.5",
+    "umi-request": "^1.3.5",
+    "vite": "^2.0.0",
+    "vue-i18n": "^9.2.0-0",
+    "vue-request": "^1.0.0-beta.7",
+    "vue-router": "^4.0.2",
+    "vuex": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue,jsx,tsx}": [
+      "eslint -c ./.eslintrc.js --fix",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
