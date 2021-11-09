@@ -8,7 +8,7 @@ title:
 
 ## zh-CN
 
-最简单的用法。你只需要配置 `columns` `dataSource` 即可展示表格。组件默认开启了分页， 
+最简单的用法。你只需要配置 `columns` `dataSource` 即可展示表格。组件默认开启了分页
 
 ## en-US
 

@@ -25,12 +25,20 @@
           <a-sub-menu key="/doc/guide">
             <template #title>{{ isZhCN ? '必读' : 'Guide' }}</template>
             <a-menu-item key="/doc/guide#introduction">
-              {{ isZhCN ? '介绍' : 'Introduction' }}
+              <router-link :to="`/doc/guide#${isZhCN ? '简介' : 'introduction'}`">
+                {{ isZhCN ? '简介' : 'Introduction' }}
+              </router-link>
             </a-menu-item>
-            <a-menu-item key="/doc/guide#quick">
-              {{ isZhCN ? '快速开始' : 'Getting Started' }}
+            <a-menu-item key="/doc/guide#start">
+              <router-link :to="`/doc/guide#${isZhCN ? '快速开始' : 'Start'}`">
+                {{ isZhCN ? '快速开始' : 'Getting Started' }}
+              </router-link>
             </a-menu-item>
-            <a-menu-item key="/doc/quide#faq">{{ isZhCN ? '常见问题' : 'FAQ' }}</a-menu-item>
+            <a-menu-item key="/doc/quide#faq">
+              <router-link :to="`/doc/guide#${isZhCN ? '常见问题' : 'FAQ'}`">
+                {{ isZhCN ? '常见问题' : 'FAQ' }}
+              </router-link>
+            </a-menu-item>
           </a-sub-menu>
           <template v-for="demo in demos" :key="'/doc/' + demo.type">
             <a-sub-menu

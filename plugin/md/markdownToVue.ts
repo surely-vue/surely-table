@@ -2,14 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import LRUCache from 'lru-cache';
-import {
-  createMarkdownRenderer,
-  MarkdownOptions,
-  MarkdownParsedData,
-  MarkdownRenderer,
-} from './markdown/markdown';
+import type { MarkdownOptions, MarkdownParsedData, MarkdownRenderer } from './markdown/markdown';
+import { createMarkdownRenderer } from './markdown/markdown';
 import { deeplyParseHeader } from './utils/parseHeader';
-import { PageData, HeadConfig } from './shared';
+import type { PageData, HeadConfig } from './shared';
 import slash from 'slash';
 import escapeHtml from 'escape-html';
 import fetchCode from './utils/fetchCode';

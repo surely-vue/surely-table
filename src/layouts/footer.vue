@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer style="text-align: center">
-    @surely-vue/table ©2021 Created by Ant Design Vue
+    @surely-vue/table ©2021 Created by Ant Design Vue Team
   </a-layout-footer>
 </template>
 <script lang="ts">

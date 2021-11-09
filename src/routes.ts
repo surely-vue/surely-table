@@ -28,7 +28,7 @@ const routes = [
         path: 'doc/dragable',
         component: () => import('./demo/dragable/index.vue'),
       },
-      { path: 'test', component: () => import('./views/test.vue') },
+      { path: '/test', component: () => import('./views/test.vue') },
     ],
   },
   { path: '/:lang(.*)', redirect: '/home' },

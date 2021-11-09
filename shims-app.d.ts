@@ -5,6 +5,10 @@ declare module '*.vue' {
   export default component;
 }
 
+declare module '*.md' {
+  export default any;
+}
+
 declare module '*.json' {
   const obj: Record<string | number, any>;
   export default obj;
