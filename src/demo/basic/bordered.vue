@@ -21,7 +21,13 @@ please use slot for title and footer.
 </docs>
 
 <template>
-  <s-table :columns="columns" :data-source="dataSource" bordered>
+  <s-table
+    :columns="columns"
+    :data-source="dataSource"
+    bordered
+    :scroll="{ y: 400 }"
+    :pagination="false"
+  >
     <template #title>
       <span style="color: red">Header</span>
     </template>
@@ -51,7 +57,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
+  key: string;
   name: string;
   money: string;
   address: string;
@@ -61,19 +67,19 @@ export default defineComponent({
   setup() {
     const data: DataItem[] = [
       {
-        rowKey: '1',
+        key: '1',
         name: 'John Brown',
         money: '￥300,000.00',
         address: 'New York No. 1 Lake Park',
       },
       {
-        rowKey: '2',
+        key: '2',
         name: 'Jim Green',
         money: '￥1,256,000.00',
         address: 'London No. 1 Lake Park',
       },
       {
-        rowKey: '3',
+        key: '3',
         name: 'Joe Black',
         money: '￥120,000.00',
         address: 'Sidney No. 1 Lake Park',

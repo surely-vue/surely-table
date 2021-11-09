@@ -73,10 +73,17 @@
             <a-menu-item key="8-3">嵌套子表格</a-menu-item>
           </a-sub-menu>
           <a-sub-menu>
-            <template #title>自定义</template>
+            <template #title>各种合并</template>
             <a-menu-item key="9-1">合并行</a-menu-item>
-            <a-menu-item key="9-2">可编辑</a-menu-item>
-            <a-menu-item key="9-3">自定义单元格</a-menu-item>
+            <a-menu-item key="9-2">合并列</a-menu-item>
+            <a-menu-item key="9-3">表头合并</a-menu-item>
+            <a-menu-item key="9-3">表头分组</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu>
+            <template #title>编辑</template>
+            <a-menu-item key="9-2">编辑行</a-menu-item>
+            <a-menu-item key="9-2">编辑单元格</a-menu-item>
+            <a-menu-item key="9-3">弹窗编辑</a-menu-item>
           </a-sub-menu>
           <a-sub-menu>
             <template #title>性能优化</template>
@@ -85,9 +92,25 @@
             <a-menu-item key="10-3">共享弹窗</a-menu-item>
           </a-sub-menu>
           <a-sub-menu>
+            <template #title>导入导出</template>
+            <a-menu-item key="11-1">导出 csv</a-menu-item>
+            <a-menu-item key="11-1">导出 excel</a-menu-item>
+            <a-menu-item key="11-2">导入数据</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu>
             <template #title>集成图表</template>
-            <a-menu-item key="11-1">导出表格</a-menu-item>
             <a-menu-item key="11-2">生成图表</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu>
+            <template #title>更多工具栏</template>
+            <a-menu-item key="11-2">全屏</a-menu-item>
+            <a-menu-item key="11-2">刷新</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu>
+            <template #title>集成表单</template>
+            <a-menu-item key="11-2">查询</a-menu-item>
+            <a-menu-item key="11-2">展开更多</a-menu-item>
+            <a-menu-item key="11-2">作为表单项</a-menu-item>
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>

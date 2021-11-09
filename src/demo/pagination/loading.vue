@@ -26,8 +26,9 @@ This example shows how to fetch and present data from a remote server。
     :loading="loading"
     :columns="columns"
     :data-source="dataSource"
+    :row-key="record => record.login.uuid"
   >
-    <template #cell="{ column, text }">
+    <template #bodyCell="{ column, text }">
       <template v-if="column.dataIndex === 'name'">
         {{ `${text.first} ${text.last}` }}
       </template>
@@ -37,7 +38,7 @@ This example shows how to fetch and present data from a remote server。
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from 'vue';
-import type { TablePaginationConfig } from '@surely-vue/table';
+import type { STablePaginationConfig } from '@surely-vue/table';
 const columns = [
   {
     title: 'Name',
@@ -54,7 +55,6 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
   name: string;
   first: string;
   last: string;
@@ -62,7 +62,7 @@ interface DataItem {
   gender: string;
 }
 
-const getRandomuserParams = (params: TablePaginationConfig) => ({
+const getRandomuserParams = (params: STablePaginationConfig) => ({
   results: params.pageSize,
   page: params.current,
   ...params,
@@ -71,13 +71,13 @@ const getRandomuserParams = (params: TablePaginationConfig) => ({
 export default defineComponent({
   setup() {
     const dataSource = ref<DataItem[]>([]);
-    const pagination = ref<TablePaginationConfig>({
+    const pagination = ref<STablePaginationConfig>({
       current: 1,
       pageSize: 10,
     });
     const loading = ref(true);
 
-    const fetch = (params: TablePaginationConfig = {}) => {
+    const fetch = (params: STablePaginationConfig = {}) => {
       loading.value = true;
 
       let u = new URLSearchParams(getRandomuserParams(params) as any).toString();

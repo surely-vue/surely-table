@@ -412,10 +412,6 @@ export default defineComponent({
   border: 1px solid #d9d9d9;
   border-radius: 4px;
 }
-.surely-table-cell-inner {
-  // padding: 0 16px;
-  // line-height: 55px;
-}
 .custom-row-class .surely-table-cell {
   background-color: #fef3ee !important;
 }

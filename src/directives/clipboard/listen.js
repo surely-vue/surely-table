@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import is from './is';
 import delegate from './delegate';
 

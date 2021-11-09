@@ -17,8 +17,8 @@ Display large amounts of data in scrollable view. Just set the `height` property
 </docs>
 
 <template>
-  <s-table :columns="columns" :data-source="dataSource" :height="400">
-    <template #cell="{ column }">
+  <s-table :columns="columns" :data-source="dataSource" :scroll="{ y: 400 }" :pagination="false">
+    <template #bodyCell="{ column }">
       <template v-if="column.key === 'operation'">
         <a>Action</a>
       </template>
@@ -68,7 +68,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: number;
+  key: number;
   name: string;
   age: number;
   address: string;
@@ -79,7 +79,7 @@ export default defineComponent({
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({
-        rowKey: i,
+        key: i,
         name: `Edrward ${i}`,
         age: i + 1,
         address: `London Park no. ${i}`,

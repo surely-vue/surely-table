@@ -25,7 +25,7 @@ If these configurations still can’t satisfy you, please continue reading the d
 
 <template>
   <s-table :columns="columns" :data-source="dataSource" :pagination="pagination" :height="400">
-    <template #cell="{ column, text, record }">
+    <template #bodyCell="{ column, text, record }">
       <template v-if="column.key === 'action'">
         <a-space size="middle">
           <a>Invite {{ record.name }}</a>
@@ -51,7 +51,7 @@ If these configurations still can’t satisfy you, please continue reading the d
 </template>
 
 <script lang="ts">
-import type { TablePaginationConfig } from '@surely-vue/table';
+import type { STablePaginationConfig } from '@surely-vue/table';
 import { defineComponent, ref } from 'vue';
 
 const columns = [
@@ -82,7 +82,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
+  key: string;
   name: string;
   age: number;
   address: string;
@@ -93,21 +93,21 @@ export default defineComponent({
   setup() {
     const data: DataItem[] = [
       {
-        rowKey: '1',
+        key: '1',
         name: 'John Brown',
         age: 32,
         address: 'New York No. 1 Lake Park',
         tags: ['nice', 'developer'],
       },
       {
-        rowKey: '2',
+        key: '2',
         name: 'Jim Green',
         age: 42,
         address: 'London No. 1 Lake Park',
         tags: ['loser'],
       },
       {
-        rowKey: '3',
+        key: '3',
         name: 'Joe Black',
         age: 32,
         address: 'Sidney No. 1 Lake Park',
@@ -117,14 +117,14 @@ export default defineComponent({
     for (let i = 0; i < 1000; i++) {
       const num = data.length + 1;
       data.push({
-        rowKey: String(num),
+        key: String(num),
         name: `John Brown ${num}`,
         age: i + 1,
         address: `London Park no. ${num}`,
         tags: ['cool', 'teacher', 'loser'],
       });
     }
-    const pagination = ref<TablePaginationConfig>({
+    const pagination = ref<STablePaginationConfig>({
       showQuickJumper: true,
       showSizeChanger: true,
       showTotal: total => `Total ${total} items`,

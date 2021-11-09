@@ -40,7 +40,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
+  key: string;
   name: string;
   money: string;
   address: string;
@@ -50,37 +50,37 @@ export default defineComponent({
   setup() {
     const data: DataItem[] = [
       {
-        rowKey: '1',
+        key: '1',
         name: 'John Brown',
         money: '￥300,000.00',
         address: 'New York No. 1 Lake Park',
       },
       {
-        rowKey: '2',
+        key: '2',
         name: 'Jim Green',
         money: '￥1,256,000.00',
         address: 'London No. 1 Lake Park',
       },
       {
-        rowKey: '3',
+        key: '3',
         name: 'Joe Black',
         money: '￥120,000.00',
         address: 'Sidney No. 1 Lake Park',
       },
       {
-        rowKey: '4',
+        key: '4',
         name: 'Tom',
         money: '￥186,000.00',
         address: 'Sidney No. 2 Lake Park',
       },
       {
-        rowKey: '5',
+        key: '5',
         name: 'Tony',
         money: '￥110,000.00',
         address: 'Sidney No. 2 Lake Park',
       },
       {
-        rowKey: '6',
+        key: '6',
         name: 'YaYa',
         money: '￥200,000.00',
         address: 'Sidney No. 4 Lake Park',

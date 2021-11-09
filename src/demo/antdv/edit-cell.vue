@@ -119,6 +119,7 @@ export default defineComponent({
         address: `London, Park Lane no. ${count.value}`,
       };
       dataSource.value.push(newData);
+      dataSource.value = [].concat(dataSource.value);
     };
 
     return {

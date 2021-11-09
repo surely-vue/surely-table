@@ -18,9 +18,9 @@
     <br />
     <s-table
       ref="tableRef"
-      v-model:columns="columns"
       v-model:pagination="pagination"
       v-model:selectedRowKeys="selectedRowKeys"
+      :columns="columns"
       :bordered="bordered"
       :size="size"
       :height="400"
@@ -89,12 +89,12 @@
 import { defineComponent, reactive, ref, watch, nextTick } from 'vue';
 
 import { Input } from 'ant-design-vue';
+import type { RowHeight, STableColumnsType } from '@surely-vue/table';
 import STable from '@surely-vue/table';
 import 'ant-design-vue/es/input/style/index';
-import type { RowHeight } from '../../src/components/interface';
 import SearchOutlined from '@ant-design/icons-vue/SearchOutlined';
 
-const columns = [
+const columns: STableColumnsType = [
   {
     title: 'Full Name',
     width: 200,
@@ -252,7 +252,7 @@ export default defineComponent({
     watch(rowSelection, () => {
       console.log(rowSelection);
     });
-    const rowHeight = ref<RowHeight>((data, baseHeight) =>
+    const rowHeight = ref<RowHeight>((_data, _isExpandRow, baseHeight) =>
       autoRowHeight.value ? undefined : baseHeight,
     );
     const pagination = ref({
@@ -300,7 +300,7 @@ export default defineComponent({
       tableRef,
       dataSource: ref(data),
       columns: ref(columns),
-      size: ref('default'),
+      size: ref(),
       rowHeight,
       autoRowHeight,
       changeAutoHeight,

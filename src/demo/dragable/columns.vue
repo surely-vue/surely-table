@@ -23,7 +23,13 @@ When some columns are not set to width, the column will be automatically stretch
 </docs>
 
 <template>
-  <s-table v-model:columns="columns" :data-source="dataSource" :scroll-x="2000" :height="500">
+  <s-table
+    :columns="columns"
+    :data-source="dataSource"
+    :pagination="false"
+    :scroll-x="2000"
+    :height="500"
+  >
     <template #bodyCell="{ column }">
       <template v-if="column.key === 'operation'">
         <a>Action</a>
@@ -36,7 +42,7 @@ When some columns are not set to width, the column will be automatically stretch
 import { defineComponent, ref } from 'vue';
 
 interface DataItem {
-  rowKey: number;
+  key: number;
   name: string;
   age: number;
   address: string;
@@ -94,7 +100,7 @@ export default defineComponent({
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({
-        rowKey: i,
+        key: i,
         name: `Edrward ${i}`,
         age: i + 1,
         address: `London Park no. ${i}`,

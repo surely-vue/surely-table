@@ -21,7 +21,8 @@ Group table head with `columns[n].children`.
     :columns="columns"
     :data-source="dataSource"
     bordered
-    scroll-x="calc(700px + 50%)"
+    :scroll="{ y: 400, x: 'calc(700px + 50%)' }"
+    :pagination="false"
   ></s-table>
 </template>
 
@@ -92,7 +93,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: number;
+  key: number;
   name: string;
   age: number;
   street: string;
@@ -108,7 +109,7 @@ export default defineComponent({
     const data: DataItem[] = [];
     for (let i = 0; i < 100; i++) {
       data.push({
-        rowKey: i,
+        key: i,
         name: 'John Brown',
         age: i + 1,
         street: 'Lake Park',

@@ -28,7 +28,7 @@ But you can completely turn off the pagination function that comes with Table, b
     :pagination="false"
     :height="400"
   >
-    <template #cell="{ column, text, record }">
+    <template #bodyCell="{ column, text, record }">
       <template v-if="column.key === 'action'">
         <a-space size="middle">
           <a>Invite {{ record.name }}</a>
@@ -100,7 +100,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
+  key: string;
   name: string;
   age: number;
   address: string;
@@ -112,7 +112,7 @@ export default defineComponent({
     const originData: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       originData.push({
-        rowKey: String(i),
+        key: String(i),
         name: `John Brown ${i}`,
         age: i + 1,
         address: `London Park no. ${i}`,

@@ -16,8 +16,6 @@ Table with editable rows.
 </docs>
 
 <template>
-  <a-button @click="updateData">刷新data</a-button>
-
   <s-table
     :columns="columns"
     :data-source="dataSource"
@@ -82,16 +80,9 @@ const columns = [
   {
     title: 'operation',
     dataIndex: 'operation',
+    width: 300,
   },
 ];
-for (let i = 0; i < 100; i++) {
-  columns.push({
-    title: 'address',
-    dataIndex: 'address',
-    width: 100,
-    // width: '40%',
-  });
-}
 interface DataItem {
   key: string;
   name: string;
@@ -99,7 +90,7 @@ interface DataItem {
   address: string;
 }
 const data: DataItem[] = [];
-for (let i = 0; i < 100000; i++) {
+for (let i = 0; i < 1000; i++) {
   data.push({
     key: i.toString(),
     name: `Edrward ${i}`,
@@ -109,7 +100,7 @@ for (let i = 0; i < 100000; i++) {
 }
 export default defineComponent({
   setup() {
-    const dataSource = ref([]);
+    const dataSource = ref(data);
     const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
 
     const edit = (key: string) => {
@@ -125,14 +116,10 @@ export default defineComponent({
     return {
       dataSource,
       columns,
-      editingKey: '',
       editableData,
       edit,
       save,
       cancel,
-      updateData: () => {
-        dataSource.value = data;
-      },
     };
   },
 });

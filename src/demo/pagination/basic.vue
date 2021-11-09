@@ -33,7 +33,7 @@ If necessary, you can also configure the top and bottom to display paging simult
     style="margin-bottom: 10px"
   ></a-radio-group>
   <s-table :columns="columns" :data-source="dataSource" :pagination="{ position: [top, bottom] }">
-    <template #cell="{ column, text, record }">
+    <template #bodyCell="{ column, text, record }">
       <template v-if="column.key === 'action'">
         <a-space size="middle">
           <a>Invite {{ record.name }}</a>
@@ -105,7 +105,7 @@ const columns = [
 ];
 
 interface DataItem {
-  rowKey: string;
+  key: string;
   name: string;
   age: number;
   address: string;
@@ -116,21 +116,21 @@ export default defineComponent({
   setup() {
     const data: DataItem[] = [
       {
-        rowKey: '1',
+        key: '1',
         name: 'John Brown',
         age: 32,
         address: 'New York No. 1 Lake Park',
         tags: ['nice', 'developer'],
       },
       {
-        rowKey: '2',
+        key: '2',
         name: 'Jim Green',
         age: 42,
         address: 'London No. 1 Lake Park',
         tags: ['loser'],
       },
       {
-        rowKey: '3',
+        key: '3',
         name: 'Joe Black',
         age: 32,
         address: 'Sidney No. 1 Lake Park',
