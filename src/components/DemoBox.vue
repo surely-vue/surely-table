@@ -1,5 +1,5 @@
 <template>
-  <section class="code-box">
+  <section :id="id" class="code-box">
     <section class="code-box-demo">
       <slot />
     </section>
@@ -32,7 +32,7 @@
           />
         </a-tooltip>
         <a-tooltip v-else :title="t('app.demo.copy')">
-          <SnippetsOutlined class="code-box-code-copy code-box-code-action" @click="warning" />
+          <SnippetsOutlined class="code-box-code-copy code-box-code-action" />
         </a-tooltip>
         <a-tooltip>
           <span class="code-expand-icon code-box-code-action">
@@ -75,7 +75,7 @@ import type { GlobalConfig } from '../App.vue';
 import { GLOBAL_CONFIG } from '../SymbolKey';
 import { computed, defineComponent, inject, ref } from 'vue';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
-import { Modal, Tooltip } from 'ant-design-vue';
+import { Tooltip } from 'ant-design-vue';
 import { useI18n } from 'vue-i18n';
 export default defineComponent({
   name: 'DemoBox',
@@ -100,13 +100,12 @@ export default defineComponent({
         props.jsfiddle.title &&
         props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
     );
-    const warning = () => {
-      Modal.warning({
-        content: globalConfig.isZhCN
-          ? '我们检测到你可能使用了 AdBlock 或 Adblock Plus，它会影响到复制、展开代码等功能。 你可以将 Ant Design Vue 加入白名单，以便我们更好地提供服务。'
-          : 'We have detected that you may have used AdBlock or Adblock Plus, which will affect functions such as copying and expanding code. You can add Ant Design Vue to the whitelist so that we can provide better services.',
-      });
-    };
+
+    const id = computed(() => {
+      const path =
+        (props.jsfiddle && props.jsfiddle.relativePath && props.jsfiddle?.relativePath) || '';
+      return path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+    });
 
     const onCopyTooltipVisibleChange = (visible: boolean) => {
       if (visible) {
@@ -127,7 +126,6 @@ export default defineComponent({
     );
     const handleCodeExpand = () => {
       if (globalConfig.blocked.value) {
-        warning();
         return;
       }
       codeExpand.value = !codeExpand.value;
@@ -137,7 +135,6 @@ export default defineComponent({
     };
     const handleChangeType = () => {
       if (globalConfig.blocked.value) {
-        warning();
         return;
       }
       type.value = type.value === 'TS' ? 'JS' : 'TS';
@@ -152,10 +149,10 @@ export default defineComponent({
     const theme = computed(() => inject('themeMode', { theme: ref('default') }).theme.value);
     return {
       t,
+      id,
       docHtml,
       theme,
       type,
-      warning,
       blocked: globalConfig.blocked,
       isZhCN: globalConfig.isZhCN,
       title,

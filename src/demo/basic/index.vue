@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Basic id="basic" />
-    <Fixed id="fixed" />
-    <FixedHeader id="fixed-header" />
-    <FixedHeaderColumns id="fixed-header-columns" />
-    <Sticky id="sticky" />
-    <GroupingColumns id="grouping-columns" />
-    <Bordered id="bordered" />
-    <Stripe id="stripe" />
-    <Summary id="summary" />
+    <Basic />
+    <Fixed />
+    <FixedHeader />
+    <FixedHeaderColumns />
+    <Sticky />
+    <GroupingColumns />
+    <Bordered />
+    <Stripe />
+    <Summary />
   </div>
 </template>
 <script lang="ts">
@@ -23,6 +23,56 @@ import Bordered from './bordered.vue';
 import Stripe from './stripe.vue';
 import Summary from './summary.vue';
 export default defineComponent({
+  title: '基本用法',
+  enTitle: 'Basic',
+  type: 'basic',
+  children: [
+    {
+      id: 'basic',
+      title: '简单表格',
+      enTitle: 'Basic Table',
+    },
+    {
+      id: 'fixed',
+      title: '固定列',
+      enTitle: 'Fixed Colunms',
+    },
+    {
+      id: 'fixed-header',
+      title: '固定表头',
+      enTitle: 'Fixed Header',
+    },
+    {
+      id: 'fixed-header-columns',
+      title: '固定头和列',
+      enTitle: 'Fixed Columns and Header',
+    },
+    {
+      id: 'sticky',
+      title: '表头吸顶',
+      enTitle: 'Fixed header and scroll bar with the page',
+    },
+    {
+      id: 'grouping-columns',
+      title: '表头分组',
+      enTitle: 'Grouping table head',
+    },
+    {
+      id: 'bordered',
+      title: '边框、title、footer',
+      enTitle: 'border, title and footer',
+    },
+    {
+      id: 'stripe',
+      title: '斑马纹',
+      enTitle: 'Stripe',
+    },
+    {
+      id: 'summary',
+      title: '总结栏',
+      enTitle: 'Summary',
+    },
+  ],
   components: {
     Sticky,
     Basic,

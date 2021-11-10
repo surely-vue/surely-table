@@ -28,32 +28,38 @@ You can get the sum automatically calculated inside the component through the sl
 </docs>
 
 <template>
-  <s-table :columns="columns" :data-source="dataSource" bordered>
+  <s-table :columns="columns" :data-source="data" :pagination="false" bordered>
     <template #summary>
       <s-table-summary-row>
         <s-table-summary-cell :index="0">Total</s-table-summary-cell>
         <s-table-summary-cell :index="1">
           <template #default="{ total }">
-            <span style="color: red">{{ total }}</span>
+            <a-typography-text type="danger">{{ total }}</a-typography-text>
           </template>
         </s-table-summary-cell>
         <s-table-summary-cell :index="2">
-          <template #default="{ total }">{{ total }}</template>
+          <a-typography-text>{{ totals.totalRepayment }}</a-typography-text>
         </s-table-summary-cell>
       </s-table-summary-row>
       <s-table-summary-row>
         <s-table-summary-cell :index="0">Balance</s-table-summary-cell>
         <s-table-summary-cell :index="1" :col-span="2">
-          <template #default="{ total }">
-            <span style="color: red">
-              {{ `${total} - ${repaymentTotal} = ${total - repaymentTotal}` }}
-            </span>
-          </template>
+          <a-typography-text type="danger">
+            {{ totals.totalBorrow - totals.totalRepayment }}
+          </a-typography-text>
         </s-table-summary-cell>
       </s-table-summary-row>
     </template>
   </s-table>
-  <s-table :columns="fixedColumns" :data-source="fixedData" :scroll-x="2000" :height="400">
+  <br />
+  <s-table
+    :columns="fixedColumns"
+    :data-source="fixedData"
+    :pagination="false"
+    :scroll="{ x: 2000, y: 500 }"
+    bordered
+    summary-fixed
+  >
     <template #summary>
       <s-table-summary-row>
         <s-table-summary-cell :index="0">Summary</s-table-summary-cell>
@@ -66,53 +72,24 @@ You can get the sum automatically calculated inside the component through the sl
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Borrow',
-    dataIndex: 'borrow',
-  },
-  {
-    title: 'Repayment',
-    dataIndex: 'repayment',
-  },
-];
-
-interface DataItem {
-  key: string;
-  name: string;
-  borrow: number;
-  repayment: number;
-}
-
-const fixedColumns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    fixed: true,
-    width: 100,
-  },
-  {
-    title: 'Description',
-    dataIndex: 'description',
-  },
-];
-
-const fixedData: any[] = [];
-for (let i = 0; i < 20; i += 1) {
-  fixedData.push({
-    key: i,
-    name: ['Light', 'Bamboo', 'Little'][i % 3],
-    description: 'Everything that has a beginning, has an end.',
-  });
-}
-
 export default defineComponent({
   setup() {
-    const data: DataItem[] = [
+    const columns = ref([
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Borrow',
+        dataIndex: 'borrow',
+      },
+      {
+        title: 'Repayment',
+        dataIndex: 'repayment',
+      },
+    ]);
+
+    const data = ref([
       {
         key: '1',
         name: 'John Brown',
@@ -137,19 +114,59 @@ export default defineComponent({
         borrow: 75,
         repayment: 45,
       },
-    ];
+    ]);
 
-    const repaymentTotal = computed(() => {
-      return data.reduce((pre, { repayment }) => pre + repayment, 0);
+    const fixedColumns = ref([
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        fixed: true,
+        width: 500,
+      },
+      {
+        title: 'Description',
+        dataIndex: 'description',
+        width: 1000,
+      },
+    ]);
+
+    const fixedData = ref<{ key: number; name: string; description: string }[]>([]);
+    for (let i = 0; i < 20; i += 1) {
+      fixedData.value.push({
+        key: i,
+        name: ['Light', 'Bamboo', 'Little'][i % 3],
+        description: 'Everything that has a beginning, has an end.',
+      });
+    }
+
+    const totals = computed(() => {
+      let totalBorrow = 0;
+      let totalRepayment = 0;
+
+      data.value.forEach(({ borrow, repayment }) => {
+        totalBorrow += borrow;
+        totalRepayment += repayment;
+      });
+      return { totalBorrow, totalRepayment };
     });
-
     return {
-      dataSource: data,
-      columns: ref(columns),
+      data,
+      columns,
+      totals,
       fixedColumns,
       fixedData,
-      repaymentTotal,
     };
   },
 });
 </script>
+
+<style>
+#components-table-demo-summary tfoot th,
+#components-table-demo-summary tfoot td {
+  background: #fafafa;
+}
+[data-theme='dark'] #components-table-demo-summary tfoot th,
+[data-theme='dark'] #components-table-demo-summary tfoot td {
+  background: #1d1d1d;
+}
+</style>

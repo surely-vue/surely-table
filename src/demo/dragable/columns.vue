@@ -11,14 +11,10 @@ title:
 设置 `resizable = true`, 可以将列变成可拖拽改变宽度的列，通过设置 minWidth、maxWidth 控制列宽的最小宽度和最大宽度，当然这都是可选的配置。
 当有些列没有设置 width 时，该列将会是自动伸缩，其它可拖拽的列大小改变时，会重新计算自动伸缩列的宽度。
 
-> 注意: `columns` 必须是一个响应式数组，并且通过 v-model 进行双向绑定
-
 ## en-US
 
 Set `resizable = true`, you can turn the column into a column that can be dragged to change the width. By setting minWidth and maxWidth, you can control the minimum and maximum width of the column width. Of course, this is an optional configuration.
 When some columns are not set to width, the column will be automatically stretched. When the size of other draggable columns is changed, the width of the automatically stretched column will be recalculated.
-
-> Note: `columns` must be a reactive array, and two-way binding through v-model
 
 </docs>
 
@@ -27,8 +23,7 @@ When some columns are not set to width, the column will be automatically stretch
     :columns="columns"
     :data-source="dataSource"
     :pagination="false"
-    :scroll-x="2000"
-    :height="500"
+    :scroll="{ y: 500, x: 2000 }"
   >
     <template #bodyCell="{ column }">
       <template v-if="column.key === 'operation'">

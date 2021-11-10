@@ -1,71 +1,141 @@
 <template>
-  <s-table
-    :columns="columns"
-    :scroll="{ x: 2000, y: 400 }"
+  <s-table :columns="columns" :data-source="data" :pagination="false" bordered>
+    <template #summary>
+      <s-table-summary-row>
+        <s-table-summary-cell :index="0">Total</s-table-summary-cell>
+        <s-table-summary-cell :index="1">
+          <a-typography-text type="danger">{{ totals.totalBorrow }}</a-typography-text>
+        </s-table-summary-cell>
+        <s-table-summary-cell :index="2">
+          <a-typography-text>{{ totals.totalRepayment }}</a-typography-text>
+        </s-table-summary-cell>
+      </s-table-summary-row>
+      <s-table-summary-row>
+        <s-table-summary-cell :index="0">Balance</s-table-summary-cell>
+        <s-table-summary-cell :index="1" :col-span="2">
+          <a-typography-text type="danger">
+            {{ totals.totalBorrow - totals.totalRepayment }}
+          </a-typography-text>
+        </s-table-summary-cell>
+      </s-table-summary-row>
+    </template>
+  </s-table>
+  <br />
+  <!-- <s-table
+    :columns="fixedColumns"
+    :data-source="fixedData"
     :pagination="false"
-    :data-source="dataSource"
-  ></s-table>
+    :scroll="{ x: 2000, y: 500 }"
+    bordered
+    summary-fixed
+  >
+    <template #summary>
+      <s-table-summary-row>
+        <s-table-summary-cell :index="0">Summary</s-table-summary-cell>
+        <s-table-summary-cell :index="1">This is a summary content</s-table-summary-cell>
+      </s-table-summary-row>
+    </template>
+  </s-table> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    width: 100,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    width: 100,
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-    width: 100,
-  },
-  { title: 'Column 5', dataIndex: 'address', width: 100 },
-];
-
-interface DataItem {
-  key: number;
-  name: string;
-  age: number;
-  address: string;
-}
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const data: DataItem[] = [];
-    for (let i = 0; i < 1000; i++) {
-      data.push({
+    const columns = ref([
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Borrow',
+        dataIndex: 'borrow',
+      },
+      {
+        title: 'Repayment',
+        dataIndex: 'repayment',
+      },
+    ]);
+
+    const data = ref([
+      {
+        key: '1',
+        name: 'John Brown',
+        borrow: 10,
+        repayment: 33,
+      },
+      {
+        key: '2',
+        name: 'Jim Green',
+        borrow: 100,
+        repayment: 0,
+      },
+      {
+        key: '3',
+        name: 'Joe Black',
+        borrow: 10,
+        repayment: 10,
+      },
+      {
+        key: '4',
+        name: 'Jim Red',
+        borrow: 75,
+        repayment: 45,
+      },
+    ]);
+
+    const fixedColumns = ref([
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        fixed: true,
+        width: 500,
+      },
+      {
+        title: 'Description',
+        dataIndex: 'description',
+        width: 1000,
+      },
+    ]);
+
+    const fixedData = ref<{ key: number; name: string; description: string }[]>([]);
+    for (let i = 0; i < 20; i += 1) {
+      fixedData.value.push({
         key: i,
-        name: `Edrward ${i}`,
-        age: i + 1,
-        address: `London Park no. ${i}`,
+        name: ['Light', 'Bamboo', 'Little'][i % 3],
+        description: 'Everything that has a beginning, has an end.',
       });
     }
+
+    const totals = computed(() => {
+      let totalBorrow = 0;
+      let totalRepayment = 0;
+
+      data.value.forEach(({ borrow, repayment }) => {
+        totalBorrow += borrow;
+        totalRepayment += repayment;
+      });
+      return { totalBorrow, totalRepayment };
+    });
     return {
-      dataSource: ref(data),
-      columns: ref(columns),
+      data,
+      columns,
+      totals,
+      fixedColumns,
+      fixedData,
     };
   },
 });
 </script>
+
+<style>
+#components-table-demo-summary tfoot th,
+#components-table-demo-summary tfoot td {
+  background: #fafafa;
+}
+[data-theme='dark'] #components-table-demo-summary tfoot th,
+[data-theme='dark'] #components-table-demo-summary tfoot td {
+  background: #1d1d1d;
+}
+</style>
