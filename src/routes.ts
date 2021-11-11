@@ -1,4 +1,5 @@
 import Layout from './layouts/index.vue';
+import demo from './demo/index.vue';
 const routes = [
   {
     path: '/',
@@ -17,16 +18,9 @@ const routes = [
         component: () => import('./demo/antdv/index.vue'),
       },
       {
-        path: 'doc/basic',
-        component: () => import('./demo/basic/index.vue'),
-      },
-      {
-        path: 'doc/pagination',
-        component: () => import('./demo/pagination/index.vue'),
-      },
-      {
-        path: 'doc/dragable',
-        component: () => import('./demo/dragable/index.vue'),
+        path: 'doc/:type',
+        props: true,
+        component: demo,
       },
       { path: '/test', component: () => import('./views/test.vue') },
     ],

@@ -2,8 +2,8 @@
 ---
 order: 4
 title:
-  en-US: ColSpan and rowSpan
-  zh-CN: 表格行/列合并
+  en-US: Header colspan
+  zh-CN: 表头合并
 ---
 
 ## zh-CN

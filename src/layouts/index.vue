@@ -59,7 +59,7 @@
               </template>
             </a-sub-menu>
           </template>
-          <a-sub-menu>
+          <!-- <a-sub-menu>
             <template #title>过滤和排序</template>
             <a-menu-item key="5-1">简单的筛选</a-menu-item>
             <a-menu-item key="5-2">自定义筛选</a-menu-item>
@@ -119,12 +119,18 @@
             <a-menu-item key="11-2">查询</a-menu-item>
             <a-menu-item key="11-2">展开更多</a-menu-item>
             <a-menu-item key="11-2">作为表单项</a-menu-item>
-          </a-sub-menu>
+          </a-sub-menu> -->
         </a-menu>
       </a-layout-sider>
       <a-layout :style="showLeftNav ? 'padding: 0 24px 24px 284px' : 'padding: 0 24px'">
         <a-layout-content
-          :style="{ padding: '24px', margin: 0, minHeight: '280px', background: '#fff' }"
+          :style="{
+            padding: '30px',
+            margin: '40px auto',
+            minHeight: '280px',
+            maxWidth: '1200px',
+            background: '#fff',
+          }"
         >
           <div v-if="!showLeftNav" style="padding: 20px; font-size: 30px">即将上线，敬请期待</div>
           <router-view />
