@@ -24,17 +24,17 @@
         >
           <a-sub-menu key="/doc/guide">
             <template #title>{{ isZhCN ? '必读' : 'Guide' }}</template>
-            <a-menu-item key="/doc/guide#introduction">
+            <a-menu-item :key="`/doc/guide#${isZhCN ? '简介' : 'introduction'}`">
               <router-link :to="`/doc/guide#${isZhCN ? '简介' : 'introduction'}`">
                 {{ isZhCN ? '简介' : 'Introduction' }}
               </router-link>
             </a-menu-item>
-            <a-menu-item key="/doc/guide#start">
+            <a-menu-item :key="`/doc/guide#${isZhCN ? '快速开始' : 'Start'}`">
               <router-link :to="`/doc/guide#${isZhCN ? '快速开始' : 'Start'}`">
                 {{ isZhCN ? '快速开始' : 'Getting Started' }}
               </router-link>
             </a-menu-item>
-            <a-menu-item key="/doc/quide#faq">
+            <a-menu-item :key="`/doc/guide#${isZhCN ? '常见问题' : 'FAQ'}`">
               <router-link :to="`/doc/guide#${isZhCN ? '常见问题' : 'FAQ'}`">
                 {{ isZhCN ? '常见问题' : 'FAQ' }}
               </router-link>
@@ -162,7 +162,7 @@ export default defineComponent({
       isZhCN: globalConfig.isZhCN,
       selectedKey: toRef(route, 'fullPath'),
       collapsed: ref<boolean>(false),
-      openKeys: ref<string[]>([...new Set(['/doc/guide', '/doc/basic', route.path])]),
+      openKeys: ref<string[]>([...new Set(['/doc/guide', route.path])]),
       showLeftNav: computed(() => route.path.indexOf('home') === -1),
     };
   },

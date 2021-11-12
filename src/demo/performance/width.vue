@@ -2,24 +2,19 @@
 ---
 order: 0
 title:
-  zh-CN: 指定行高
-  en-US: Set rowHeight
+  zh-CN: 指定宽度
+  en-US: Set width
 ---
 
 ## zh-CN
 
-指定行高可以拥有更好的性能
-
-> 通过 css 指定行高，达不到提升性能的目的
-> 固定行高不会对展开行、子表格生效，他们会自动调整高度
-
+对列指定数字类型的宽度，可以提升性能
+如果是百分比或者其它字符串类型的宽度，性能会有一定的损耗
 
 ## en-US
 
-Specifying the row height can have better performance
+Specify the width of the number type for the column to improve performance
 
-> Specifying the row height through css does not achieve the purpose of improving performance
-> row height will not take effect on expanded rows and sub-tables, they will automatically adjust the height
 
 </docs>
 
@@ -29,7 +24,6 @@ Specifying the row height can have better performance
     :scroll="{ y: 400 }"
     :pagination="false"
     :data-source="dataSource"
-    :row-height="50"
   ></s-table>
 </template>
 
@@ -40,28 +34,34 @@ const columns = [
   {
     title: 'Full Name',
     dataIndex: 'name',
+    width: 100,
   },
   {
     title: 'Age',
     dataIndex: 'age',
+    width: 100,
   },
   {
     title: 'Column 1',
     dataIndex: 'address',
+    width: 100,
   },
   {
     title: 'Column 2',
     dataIndex: 'address',
+    width: 100,
   },
   {
     title: 'Column 3',
     dataIndex: 'address',
+    width: 100,
   },
   {
     title: 'Column 4',
     dataIndex: 'address',
+    width: 100,
   },
-  { title: 'Column 5', dataIndex: 'address' },
+  { title: 'Column 5', dataIndex: 'address', width: 100 },
 ];
 
 interface DataItem {

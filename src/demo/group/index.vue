@@ -31,19 +31,16 @@ export default defineComponent({
       id: 'colspan',
       title: '合并列',
       enTitle: 'Colspan',
-      disabled: true,
     },
     {
       id: 'rowspan',
       title: '合并行',
       enTitle: 'Rowspan',
-      disabled: true,
     },
     {
       id: 'header',
       title: '表头合并',
       enTitle: 'Header span',
-      disabled: true,
     },
     {
       id: 'colspan-rowspan',

@@ -2,13 +2,14 @@
 ---
 order: 6
 title:
-  en-US: Editable Performance
-  zh-CN: 高性能编辑
+  en-US: v-model edit
+  zh-CN: v-model 编辑
 ---
 
 ## zh-CN
 
-性能更高的编辑模式
+为了高性能，我们在组件内部对数据进行了处理，所以不可以直接使用插槽提供的数据源，如：`v-model:value="record"`，但是为了方便双向绑定数据。我们提供了数据索引 `recordIndexs`，
+因为要支持树形数据，recordIndexs 是一个数组，你可以直接通过 `v-model:value="dataSource[recordIndexs[0]]"`, 绑定原始数据源
 
 ## en-US
 
@@ -17,13 +18,21 @@ Higher-performance editing mode
 </docs>
 
 <template>
-  <a-button class="editable-add-btn" style="margin-bottom: 8px" @click="handleAdd">Add</a-button>
-  <s-table bordered :data-source="dataSource" :columns="columns">
-    <template #bodyCell="{ column, text, record }">
+  <s-table
+    bordered
+    :data-source="dataSource"
+    :columns="columns"
+    :pagination="false"
+    :scroll="{ y: 500 }"
+  >
+    <template #bodyCell="{ column, text, record, recordIndexs }">
       <template v-if="column.dataIndex === 'name'">
         <div class="editable-cell">
           <div v-if="editableData[record.key]" class="editable-cell-input-wrapper">
-            <a-input v-model:value="editableData[record.key].name" @pressEnter="save(record.key)" />
+            <a-input
+              v-model:value="dataSource[recordIndexs[0]].name"
+              @pressEnter="save(record.key)"
+            />
             <check-outlined class="editable-cell-icon-check" @click="save(record.key)" />
           </div>
           <div v-else class="editable-cell-text-wrapper">
@@ -32,23 +41,13 @@ Higher-performance editing mode
           </div>
         </div>
       </template>
-      <template v-else-if="column.dataIndex === 'operation'">
-        <a-popconfirm
-          v-if="dataSource.length"
-          title="Sure to delete?"
-          @confirm="onDelete(record.key)"
-        >
-          <a>Delete</a>
-        </a-popconfirm>
-      </template>
     </template>
   </s-table>
 </template>
 <script lang="ts">
-import type { Ref, UnwrapRef } from 'vue';
-import { computed, defineComponent, reactive, ref } from 'vue';
+import type { UnwrapRef } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
-import { cloneDeep } from 'lodash-es';
 
 interface DataItem {
   key: string;
@@ -78,57 +77,31 @@ export default defineComponent({
         title: 'address',
         dataIndex: 'address',
       },
-      {
-        title: 'operation',
-        dataIndex: 'operation',
-      },
     ];
-    const dataSource: Ref<DataItem[]> = ref([
-      {
-        key: '0',
-        name: 'Edward King 0',
-        age: 32,
-        address: 'London, Park Lane no. 0',
-      },
-      {
-        key: '1',
-        name: 'Edward King 1',
-        age: 32,
-        address: 'London, Park Lane no. 1',
-      },
-    ]);
-    const count = computed(() => dataSource.value.length + 1);
-    const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
+
+    const data: DataItem[] = [];
+    for (let i = 0; i < 100000; i++) {
+      data.push({
+        key: String(i),
+        name: `Edrward ${i}`,
+        age: i + 1,
+        address: `London Park no. ${i}`,
+      });
+    }
+    const dataSource = ref(data);
+    const editableData: UnwrapRef<Record<string, boolean>> = reactive({});
 
     const edit = (key: string) => {
-      editableData[key] = cloneDeep(dataSource.value.filter(item => key === item.key)[0]);
+      editableData[key] = true;
     };
     const save = (key: string) => {
-      Object.assign(dataSource.value.filter(item => key === item.key)[0], editableData[key]);
       delete editableData[key];
-    };
-
-    const onDelete = (key: string) => {
-      dataSource.value = dataSource.value.filter(item => item.key !== key);
-    };
-    const handleAdd = () => {
-      const newData = {
-        key: `${count.value}`,
-        name: `Edward King ${count.value}`,
-        age: 32,
-        address: `London, Park Lane no. ${count.value}`,
-      };
-      dataSource.value.push(newData);
-      dataSource.value = [].concat(dataSource.value);
     };
 
     return {
       columns,
-      onDelete,
-      handleAdd,
       dataSource,
       editableData,
-      count,
       edit,
       save,
     };
@@ -157,7 +130,7 @@ export default defineComponent({
 
   .editable-cell-icon {
     margin-top: 4px;
-    display: none;
+    display: inline-block;
   }
 
   .editable-cell-icon-check {

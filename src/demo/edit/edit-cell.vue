@@ -106,6 +106,7 @@ export default defineComponent({
     const save = (key: string) => {
       Object.assign(dataSource.value.filter(item => key === item.key)[0], editableData[key]);
       delete editableData[key];
+      dataSource.value = [].concat(dataSource.value);
     };
 
     const onDelete = (key: string) => {
@@ -157,7 +158,8 @@ export default defineComponent({
 
   .editable-cell-icon {
     margin-top: 4px;
-    display: none;
+    display: inline-block;
+    // display: none;
   }
 
   .editable-cell-icon-check {

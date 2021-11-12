@@ -10,6 +10,8 @@ title:
 
 `columns[n]` 可以内嵌 `children`，以渲染分组表头。
 
+> 注意：表头分组和合并表头并不一样
+
 ## en-US
 
 Group table head with `columns[n].children`.
@@ -112,6 +114,7 @@ const columns = [
         title: 'Company Name',
         dataIndex: 'companyName',
         key: 'companyName',
+        width: 200,
       },
     ],
   },
@@ -125,7 +128,7 @@ const columns = [
 ];
 const data = [...Array(10000)].map((_, i) => ({
   key: i,
-  name: 'John BrownJohn BrownJohn BrownJohn BrownJohn Brown',
+  name: `John ${i + 1}`,
   age: i + 1,
   street: 'Lake Park',
   building: 'C',

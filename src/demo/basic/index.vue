@@ -59,7 +59,7 @@ export default defineComponent({
     },
     {
       id: 'bordered',
-      title: '边框、title、footer',
+      title: '边框、页头、页脚',
       enTitle: 'border, title and footer',
     },
     {

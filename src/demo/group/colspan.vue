@@ -2,19 +2,17 @@
 ---
 order: 4
 title:
-  en-US: ColSpan and rowSpan
-  zh-CN: 表格行/列合并
+  en-US: ColSpan
+  zh-CN: 列合并
 ---
 
 ## zh-CN
 
-表头只支持列合并，使用 column 里的 colSpan 进行设置。
-表格支持行/列合并，使用 render 里的单元格属性 colSpan 或者 rowSpan 设值为 0 时，设置的表格不会渲染。
+使用 customRender 里的单元格属性 colSpan，设值为 0 时，设置的单元格不会渲染。
 
 ## en-US
 
-Table column title supports `colSpan` that set in `column`.
-Table cell supports `colSpan` and `rowSpan` that set in render return object. When each of them is set to `0`, the cell will not be rendered.
+`colSpan` that set in `customRender` return object. When each of them is set to `0`, the cell will not be rendered.
 
 </docs>
 
@@ -30,17 +28,6 @@ Table cell supports `colSpan` and `rowSpan` that set in render return object. Wh
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-// In the fifth row, other columns are merged into first column
-// by setting it's colSpan to be 0
-const renderContent = ({ index }: any) => {
-  const obj = {
-    props: {} as any,
-  };
-  if (index === 4) {
-    obj.props.colSpan = 0;
-  }
-  return obj;
-};
 
 const data = [
   {
@@ -92,8 +79,15 @@ export default defineComponent({
         title: 'Name',
         dataIndex: 'name',
         customRender: ({ index }) => {
-          if (index < 4) {
+          if (index < 3) {
             return;
+          }
+          if (index === 3) {
+            return {
+              props: {
+                colSpan: 3,
+              },
+            };
           }
           return {
             props: {
@@ -105,39 +99,20 @@ export default defineComponent({
       {
         title: 'Age',
         dataIndex: 'age',
-        customRender: renderContent,
       },
       {
         title: 'Home phone',
         colSpan: 2,
         dataIndex: 'tel',
-        customRender: ({ index }) => {
-          const obj = {
-            props: {} as any,
-          };
-          if (index === 2) {
-            obj.props.rowSpan = 2;
-          }
-          // These two are merged into above cell
-          if (index === 3) {
-            obj.props.rowSpan = 0;
-          }
-          if (index === 4) {
-            obj.props.colSpan = 0;
-          }
-          return obj;
-        },
       },
       {
         title: 'Phone',
         colSpan: 0,
         dataIndex: 'phone',
-        customRender: renderContent,
       },
       {
         title: 'Address',
         dataIndex: 'address',
-        customRender: renderContent,
       },
     ]);
     return {

@@ -109,9 +109,11 @@ export default defineComponent({
     const save = (key: string) => {
       Object.assign(dataSource.value.filter(item => key === item.key)[0], editableData[key]);
       delete editableData[key];
+      dataSource.value = [].concat(dataSource.value);
     };
     const cancel = (key: string) => {
       delete editableData[key];
+      dataSource.value = [].concat(dataSource.value);
     };
     return {
       dataSource,

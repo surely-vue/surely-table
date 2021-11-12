@@ -14,10 +14,10 @@ const allDemo = [
   dragable,
   edit,
   filter,
-  group,
-  performance,
   selection,
   tree,
+  group,
+  performance,
 ].map(demo => {
   const { title, enTitle, type, children = [], ...component } = demo;
   return {
