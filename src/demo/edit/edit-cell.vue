@@ -15,10 +15,9 @@ title:
 Table with editable cells.
 
 </docs>
-
 <template>
   <a-button class="editable-add-btn" style="margin-bottom: 8px" @click="handleAdd">Add</a-button>
-  <s-table bordered :data-source="dataSource" :columns="columns">
+  <s-table bordered :data-source="dataSource" :columns="columns" :row-height="64">
     <template #bodyCell="{ column, text, record }">
       <template v-if="column.dataIndex === 'name'">
         <div class="editable-cell">
@@ -46,7 +45,7 @@ Table with editable cells.
 </template>
 <script lang="ts">
 import type { Ref, UnwrapRef } from 'vue';
-import { computed, defineComponent, reactive, ref } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { cloneDeep } from 'lodash-es';
 
@@ -96,8 +95,14 @@ export default defineComponent({
         age: 32,
         address: 'London, Park Lane no. 1',
       },
+      {
+        key: '2',
+        name: 'Edward King 2',
+        age: 32,
+        address: 'London, Park Lane no. 2',
+      },
     ]);
-    const count = computed(() => dataSource.value.length + 1);
+    let count = dataSource.value.length;
     const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
 
     const edit = (key: string) => {
@@ -114,11 +119,12 @@ export default defineComponent({
     };
     const handleAdd = () => {
       const newData = {
-        key: `${count.value}`,
-        name: `Edward King ${count.value}`,
+        key: `${count}`,
+        name: `Edward King ${count}`,
         age: 32,
-        address: `London, Park Lane no. ${count.value}`,
+        address: `London, Park Lane no. ${count}`,
       };
+      count++;
       dataSource.value.push(newData);
       dataSource.value = [].concat(dataSource.value);
     };

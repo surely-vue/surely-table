@@ -1,5 +1,5 @@
-import MarkdownIt from 'markdown-it';
-import { MarkdownParsedData } from '../markdown';
+import type MarkdownIt from 'markdown-it';
+import type { MarkdownParsedData } from '../markdown';
 import { deeplyParseHeader } from '../../utils/parseHeader';
 import { slugify } from './slugify';
 
@@ -7,10 +7,10 @@ export const extractHeaderPlugin = (md: MarkdownIt, include = ['h2', 'h3']) => {
   md.renderer.rules.heading_open = (tokens, i, options, env, self) => {
     const token = tokens[i];
     if (include.includes(token.tag)) {
-      const title = tokens[i + 1].content;
+      const title = tokens[i + 1]?.content || '';
       const idAttr = token.attrs!.find(([name]) => name === 'id');
       const slug = idAttr && idAttr[1];
-      const content = tokens[i + 4].content;
+      const content = tokens[i + 4]?.content || '';
       const data = (md as any).__data as MarkdownParsedData;
       const headers = data.headers || (data.headers = []);
       headers.push({

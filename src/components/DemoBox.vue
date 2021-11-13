@@ -71,12 +71,11 @@
 </template>
 
 <script lang="ts">
-import type { GlobalConfig } from '../App.vue';
-import { GLOBAL_CONFIG } from '../SymbolKey';
 import { computed, defineComponent, inject, ref } from 'vue';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 import { Tooltip } from 'ant-design-vue';
 import { useI18n } from 'vue-i18n';
+import { useInjectGlobalConfig } from '../context';
 export default defineComponent({
   name: 'DemoBox',
   components: {
@@ -93,7 +92,7 @@ export default defineComponent({
     const copyTooltipVisible = ref(false);
     const copied = ref(false);
     const { t } = useI18n();
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG)!;
+    const globalConfig = useInjectGlobalConfig();
     const title = computed(
       () =>
         props.jsfiddle &&

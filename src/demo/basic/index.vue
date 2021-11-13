@@ -5,10 +5,12 @@
     <FixedHeader />
     <FixedHeaderColumns />
     <Sticky />
+    <heightVue />
     <GroupingColumns />
     <Bordered />
     <Stripe />
     <Summary />
+    <ajax />
   </div>
 </template>
 <script lang="ts">
@@ -22,6 +24,8 @@ import GroupingColumns from './grouping-columns.vue';
 import Bordered from './bordered.vue';
 import Stripe from './stripe.vue';
 import Summary from './summary.vue';
+import heightVue from './height.vue';
+import ajax from './ajax.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -53,6 +57,11 @@ export default defineComponent({
       enTitle: 'Fixed header and scroll bar with the page',
     },
     {
+      id: 'height',
+      title: '固定高度',
+      enTitle: 'Table Height',
+    },
+    {
       id: 'grouping-columns',
       title: '表头分组',
       enTitle: 'Grouping table head',
@@ -72,6 +81,11 @@ export default defineComponent({
       title: '总结栏',
       enTitle: 'Summary',
     },
+    {
+      id: 'ajax',
+      title: '服务端获取',
+      enTitle: 'Ajax',
+    },
   ],
   components: {
     Sticky,
@@ -83,6 +97,8 @@ export default defineComponent({
     Bordered,
     Stripe,
     Summary,
+    heightVue,
+    ajax,
   },
   setup() {
     return {};

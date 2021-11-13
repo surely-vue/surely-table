@@ -14,6 +14,14 @@ const routes = [
         component: () => import('./views/basic.vue'),
       },
       {
+        path: 'doc/api',
+        component: () => import('./views/api.vue'),
+      },
+      {
+        path: 'doc/pricing',
+        component: () => import('./views/pricing.vue'),
+      },
+      {
         path: 'doc/antdv',
         component: () => import('./demo/antdv/index.vue'),
       },

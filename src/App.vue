@@ -5,11 +5,10 @@
 </template>
 
 <script lang="ts">
-import type { Ref } from 'vue';
 import { computed, defineComponent, provide, watch, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
-import { GLOBAL_CONFIG } from './SymbolKey';
+import { useProvideGlobalConfig } from './context';
 import enUS from 'ant-design-vue/es/locale/en_US';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import dayjs from 'dayjs';
@@ -17,14 +16,6 @@ import 'dayjs/locale/zh-cn';
 // function isZhCN(name: string) {
 //   return /-cn\/?$/.test(name);
 // }
-export interface GlobalConfig {
-  isMobile: Ref<boolean>;
-  lang: Ref<'zh-CN' | 'en-US'>;
-  isZhCN: Ref<boolean>;
-  responsive: Ref<null | 'narrow' | 'crowded'>;
-  blocked: Ref<boolean>;
-  changeLocale: (zh: boolean) => void;
-}
 export default defineComponent({
   setup() {
     const i18n = useI18n();
@@ -40,7 +31,7 @@ export default defineComponent({
       return null;
     });
     const isZhCN = ref(!!localStorage.getItem('zh-CN'));
-    const globalConfig: GlobalConfig = {
+    const globalConfig = {
       isMobile,
       responsive,
       lang: computed(() => i18n.locale.value as any),
@@ -59,7 +50,7 @@ export default defineComponent({
       theme,
       changeTheme,
     });
-    provide(GLOBAL_CONFIG, globalConfig);
+    useProvideGlobalConfig(globalConfig);
     // watch(
     //   () => route.path,
     //   val => {

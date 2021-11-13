@@ -40,6 +40,9 @@
               </router-link>
             </a-menu-item>
           </a-sub-menu>
+          <a-menu-item :key="`/doc/api`">
+            <router-link :to="`/doc/api`">API</router-link>
+          </a-menu-item>
           <template v-for="demo in demos" :key="'/doc/' + demo.type">
             <a-sub-menu
               v-if="true"
@@ -129,10 +132,10 @@
             margin: '40px auto',
             minHeight: '280px',
             maxWidth: '1200px',
+            width: '100%',
             background: '#fff',
           }"
         >
-          <div v-if="!showLeftNav" style="padding: 20px; font-size: 30px">即将上线，敬请期待</div>
           <router-view />
         </a-layout-content>
         <FooterVue />
@@ -143,10 +146,9 @@
 <script lang="ts">
 import HeaderVue from './header.vue';
 import FooterVue from './footer.vue';
-import { ref, defineComponent, inject, toRef, computed } from 'vue';
+import { ref, defineComponent, toRef, computed } from 'vue';
 import demos from '../demo/demos';
-import { GLOBAL_CONFIG } from '../SymbolKey';
-import type { GlobalConfig } from '../App.vue';
+import { useInjectGlobalConfig } from '../context';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
@@ -155,7 +157,7 @@ export default defineComponent({
     FooterVue,
   },
   setup() {
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG)!;
+    const globalConfig = useInjectGlobalConfig();
     const route = useRoute();
     return {
       demos,
@@ -163,7 +165,9 @@ export default defineComponent({
       selectedKey: toRef(route, 'fullPath'),
       collapsed: ref<boolean>(false),
       openKeys: ref<string[]>([...new Set(['/doc/guide', route.path])]),
-      showLeftNav: computed(() => route.path.indexOf('home') === -1),
+      showLeftNav: computed(
+        () => route.path.indexOf('home') === -1 && route.path.indexOf('pricing') === -1,
+      ),
     };
   },
 });

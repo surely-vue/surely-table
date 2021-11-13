@@ -18,7 +18,7 @@
 | expandIconColumnIndex | Customize expand icon column index. Not render when `-1` | 0 |  |
 | footer | Table footer renderer | Function(currentPageData)\| v-slot:footer="currentPageData" |  |
 | indentSize | Indent size in pixels of tree data | number | 15 |  |
-| loading | Loading status of table | boolean\|[object](/components/spin) | `false` |
+| loading | Loading status of table | boolean\|[object](#loading) | `false` |
 | locale | i18n text including filter, sort, empty text, etc | object | filterConfirm: 'Ok' <br /> filterReset: 'Reset' <br /> emptyText: 'No Data' |  |
 | pagination | Config of pagination. You can ref table pagination [config](#pagination), hide it by setting it to `false` | object |  |  |
 | rowClassName | Row's className | Function(record, index):string | - |  |
@@ -27,11 +27,10 @@
 | scroll | Whether the table can be scrollable, [config](#scroll) | object | - |  |
 | showHeader | Whether to show table header | boolean | `true` |  |
 | sortDirections | Supported sort way, could be `ascend`, `descend` | Array | \[`ascend`, `descend`] |  |
-| showSorterTooltip | The header show next sorter direction tooltip. It will be set as the property of Tooltip if its type is object | boolean \| [Tooltip props](/components/tooltip/#API) | true |  |
+| showSorterTooltip | The header show next sorter direction tooltip. It will be set as the property of Tooltip if its type is object | boolean \| [Tooltip props](#tooltip) | true |  |
 | size | Size of table | `default` \| `middle` \| `small` \| `large` | `default` |
 | sticky | Set sticky header and scroll bar | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}` | - |  |
 | title | Table title renderer | Function(currentPageData)\| v-slot:title="currentPageData" |  |  |
-| customHeaderRow | Set props on per header row | Function(column, index) | - |  |
 | customRow | Set props on per row | Function(record, index) | - |  |
 | getPopupContainer | the render container of dropdowns in table | (triggerNode) => HTMLElement | `() => TableHtmlElement` |  |
 | headerCell | custom head cell by slot | v-slot:headerCell="{title, column}" | - |  |
@@ -40,7 +39,6 @@
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
-| transformCellText | The data can be changed again before rendering, generally used for the default configuration of empty data. You can configured globally through [ConfigProvider](/components/config-provider-cn/) | Function({ text, column, record, index }) => any, The `text` here is the data processed by other defined cell api, and it may be of type VNode \| string \| number | - |  |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -57,7 +55,7 @@
 
 #### customRow usage
 
-Same as `customRow` `customHeaderRow` `customCell` `customHeaderCell`. Follow [Vue jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx) syntax。
+Same as `customRow` `customCell` `customHeaderCell`. Follow [Vue jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx) syntax。
 
 ```jsx
 <Table
@@ -69,11 +67,6 @@ Same as `customRow` `customHeaderRow` `customCell` `customHeaderCell`. Follow [V
       onContextmenu: (event) => {}  // right button click row
       onMouseenter: (event) => {}   // mouse enter row
       onMouseleave: (event) => {}   // mouse leave row
-    };
-  }}
-  customHeaderRow={(column) => {
-    return {
-      onClick: () => {},        // click header row
     };
   }}
 />
@@ -130,15 +123,62 @@ type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 | -------- | ------------------------- | ------------ | ------- |
 | title    | Title of the column group | string\|slot | -       |
 
+### loading
+
+| Property | Description | Type | Default Value |
+| --- | --- | --- | --- |
+| delay | specifies a delay in milliseconds for loading state (prevent flush) | number (milliseconds) | - |
+| indicator | vue node of the spinning indicator | vNode \|slot | - |
+| size | size of Spin, options: `small`, `default` and `large` | string | `default` |
+| spinning | whether Spin is spinning | boolean | true |
+| tip | customize description content when Spin has children | string | - |
+| wrapperClassName | className of wrapper when Spin has children | string | - |
+
+### tooltip
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| arrowPointAtCenter | Whether the arrow is pointed at the center of target | boolean | `false` |
+| autoAdjustOverflow | Whether to adjust popup placement automatically when popup is off screen | boolean | `true` |
+| color | The background color | string | - |
+| defaultVisible | Whether the floating tooltip card is visible by default | boolean | `false` |
+| getPopupContainer | The DOM container of the tip, the default behavior is to create a `div` element in `body`. | Function(triggerNode) | () => document.body |
+| mouseEnterDelay | Delay in seconds, before tooltip is shown on mouse enter | number | 0.1 |
+| mouseLeaveDelay | Delay in seconds, before tooltip is hidden on mouse leave | number | 0.1 |
+| overlayClassName | Class name of the tooltip card | string | - |
+| overlayStyle | Style of the tooltip card | object | - |
+| placement | The position of the tooltip relative to the target, which can be one of `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string | `top` |
+| trigger | Tooltip trigger mode | `hover` \| `focus` \| `click` \| `contextmenu` | `hover` |
+| visible | Whether the floating tooltip card is visible or not | boolean | `false` |
+| destroyTooltipOnHide | Whether to destroy tooltip on hide | boolean | false |
+| align | this value will be merged into placement's config, please refer to the settings [dom-align](https://github.com/yiminghe/dom-align) | Object | - |
+| onVisibleChange | Callback executed when visibility of the tooltip card is changed | (visible) => void | - |
+
 ### pagination
 
 Properties for pagination.
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
 | position | Specify the position of `Pagination`, could be`topLeft` \| `topCenter` \| `topRight` \|`bottomLeft` \| `bottomCenter` \| `bottomRight` | Array | \[`bottomRight`] |
-
-More about pagination, please check [`Pagination`](/components/pagination/).
+| current | current page number | number | - |  |
+| pageSize | number of data items per page | number | - |  |
+| defaultCurrent | default initial page number | number | 1 |  |
+| defaultPageSize | default number of data items per page | number | 10 |  |
+| disabled | Disable pagination | boolean | - |  |
+| hideOnSinglePage | Whether to hide pager on single page | boolean | false |  |
+| itemRender | to customize item innerHTML | (page, type: 'page' \| 'prev' \| 'next', originalElement) => vNode \| v-slot | - |  |
+| pageSizeOptions | specify the sizeChanger options | string\[] | \['10', '20', '30', '40'] |  |
+| showLessItems | Show less page items | boolean | false |  |
+| showQuickJumper | determine whether you can jump to pages directly | boolean | false |  |
+| showSizeChanger | determine whether `pageSize` can be changed | boolean | false |  |
+| showTitle | Show page item's title | boolean | true |  |
+| showTotal | to display the total number and range | Function(total, range) | - |  |
+| simple | whether to use simple mode | boolean | - |  |
+| size | specify the size of `Pagination`, can be set to `small` | string | "" |  |
+| total | total number of data items | number | 0 |  |
+| onChange | a callback function, executed when the page number is changed, and it takes the resulting page number and pageSize as its arguments | Function(page, pageSize) | noop |  |
+| onShowSizeChange | a callback function, executed when `pageSize` is changed | Function(current, size) | noop |  |
 
 ### rowSelection
 
