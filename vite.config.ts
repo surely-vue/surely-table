@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import md from './plugin/md';
 import docs from './plugin/docs';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import WindiCSS from 'vite-plugin-windicss';
 // import { getThemeVariables } from 'ant-design-vue/dist/theme';
 import { additionalData } from './themeConfig';
 
@@ -38,6 +39,7 @@ export default {
     host: true,
   },
   plugins: [
+    WindiCSS(),
     vueJsx({
       // options are passed on to @vue/babel-plugin-jsx
     }),

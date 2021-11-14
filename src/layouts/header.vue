@@ -1,7 +1,7 @@
 <template>
   <a-layout-header class="header" style="padding: 0">
     <div class="logo">
-      <img src="https://alicdn.antdv.com/logo.png" height="40" />
+      <img src="https://alicdn.antdv.com/logo.png" class="h-40px inline-block" height="40" />
       &nbsp;&nbsp;Surely Vue
     </div>
     <!-- <div class="center">

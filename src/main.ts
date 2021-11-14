@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import 'virtual:windi.css';
 import 'ant-design-vue/dist/antd.less';
 import '@surely-vue/table/style';
 import './index.less';
