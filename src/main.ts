@@ -27,6 +27,8 @@ app.use(
     scrollBehavior: to => {
       if (to.hash) {
         return { el: to.hash, top: 200, behavior: 'auto' };
+      } else {
+        return { top: 0, behavior: 'auto' };
       }
     },
   }),
