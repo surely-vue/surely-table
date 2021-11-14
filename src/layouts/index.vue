@@ -49,6 +49,11 @@
               :key="'/doc/' + demo.type"
               :title="demo[isZhCN ? 'title' : 'enTitle']"
             >
+              <a-menu-item v-if="true" :key="'/doc/' + demo.type">
+                <router-link :to="`/doc/${demo.type}`">
+                  {{ isZhCN ? '概述' : 'Overview' }}
+                </router-link>
+              </a-menu-item>
               <template v-for="item in demo.children || []" :key="item.id">
                 <a-menu-item
                   v-if="true"

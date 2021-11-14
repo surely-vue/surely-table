@@ -26,7 +26,7 @@ app.use(
     routes,
     scrollBehavior: to => {
       if (to.hash) {
-        return { el: to.hash, top: 80, behavior: 'auto' };
+        return { el: to.hash, top: 200, behavior: 'auto' };
       }
     },
   }),
