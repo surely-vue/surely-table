@@ -1,6 +1,6 @@
 <template>
-  <a-layout id="components-layout-demo-top-side-2">
-    <HeaderVue style="position: fixed; width: 100%; z-index: 999" />
+  <a-layout class="layout">
+    <HeaderVue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
     <a-layout style="padding-top: 64px">
       <a-layout-sider
         v-if="showLeftNav"
@@ -131,18 +131,18 @@
           </a-sub-menu> -->
         </a-menu>
       </a-layout-sider>
-      <a-layout :style="showLeftNav ? 'padding: 0 24px 24px 284px' : 'padding: 0 24px'">
-        <a-layout-content
-          :style="{
-            padding: '30px',
-            margin: '40px auto',
-            minHeight: '280px',
-            maxWidth: '1200px',
-            width: '100%',
-            background: '#fff',
-          }"
-        >
-          <router-view />
+      <a-layout :style="showLeftNav ? 'padding: 0 24px 24px 284px' : 'padding: 0'">
+        <a-layout-content :style="{ marginTop: '0px', width: '100%', background: '#fff' }">
+          <div
+            :style="{
+              padding: '10px 50px',
+              margin: '0px auto',
+              minHeight: '280px',
+              maxWidth: '1400px',
+            }"
+          >
+            <router-view />
+          </div>
         </a-layout-content>
         <FooterVue />
       </a-layout>
@@ -171,14 +171,15 @@ export default defineComponent({
       selectedKey: toRef(route, 'fullPath'),
       collapsed: ref<boolean>(false),
       openKeys: ref<string[]>([...new Set(['/doc/guide', route.path])]),
-      showLeftNav: computed(
-        () => route.path.indexOf('home') === -1 && route.path.indexOf('pricing') === -1,
-      ),
+      showLeftNav: computed(() => route.path.indexOf('doc') !== -1),
     };
   },
 });
 </script>
 <style lang="less" scoped>
+.layout {
+  min-height: 100%;
+}
 .nav :deep(.ant-menu-item) {
   margin: 0;
 }

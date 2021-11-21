@@ -1,6 +1,6 @@
 <template>
-  <template v-if="isZhCN">
-    <h2 class="text-2xl">Surely Vue Licensing & Pricing</h2>
+  <template v-if="true">
+    <h2 class="text-2xl mt-5">Surely Vue Licensing & Pricing</h2>
     <div class="leading-loose py-5">
       <p class="pt-5">
         Surely Vue
@@ -110,7 +110,6 @@
     </p>
     <faq />
   </template>
-  <template v-else>ing</template>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';

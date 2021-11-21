@@ -6,7 +6,7 @@ const routes = [
     component: Layout,
     children: [
       {
-        path: '/home',
+        path: '/',
         component: () => import('./views/home.vue'),
       },
       {
@@ -18,7 +18,7 @@ const routes = [
         component: () => import('./views/api.vue'),
       },
       {
-        path: 'doc/pricing',
+        path: 'pricing',
         component: () => import('./views/pricing.vue'),
       },
       {
@@ -33,7 +33,7 @@ const routes = [
       { path: '/test', component: () => import('./views/test.vue') },
     ],
   },
-  { path: '/:lang(.*)', redirect: '/home' },
+  { path: '/:lang(.*)', redirect: '/' },
 ];
 
 export default routes as any;
