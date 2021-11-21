@@ -131,8 +131,13 @@
           </a-sub-menu> -->
         </a-menu>
       </a-layout-sider>
-      <a-layout :style="showLeftNav ? 'padding: 0 24px 24px 284px' : 'padding: 0'">
-        <a-layout-content :style="{ marginTop: '0px', width: '100%', background: '#fff' }">
+      <a-layout
+        :style="showLeftNav ? 'padding: 0 24px 24px 284px' : 'padding: 0; background: #fff'"
+      >
+        <a-layout-content
+          v-if="showLeftNav"
+          :style="{ marginTop: '0px', width: '100%', background: '#fff' }"
+        >
           <div
             :style="{
               padding: '10px 50px',
@@ -144,6 +149,9 @@
             <router-view />
           </div>
         </a-layout-content>
+        <template v-else>
+          <router-view />
+        </template>
         <FooterVue />
       </a-layout>
     </a-layout>
@@ -179,6 +187,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .layout {
   min-height: 100%;
+  background: #fff;
 }
 .nav :deep(.ant-menu-item) {
   margin: 0;
