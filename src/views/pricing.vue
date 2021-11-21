@@ -19,10 +19,10 @@
       <a-col :span="8">
         <div class="p-5 flex flex-col border border-gray-300 rounded bg">
           <span class="p-2 text-2xl">
-            子域名
+            标准版
             <a-tooltip>
               <template #title>
-                例如：
+                子域名授权，例如：
                 <br />
                 www.baidu.com、v3.vuejs.org
                 <br />
@@ -37,7 +37,7 @@
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
           <span class="primary-color">限时早鸟折扣价（8折）</span>
-          <span class="p-2 text-gray-500">永久使用权、一年更新权</span>
+          <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
           <a-button>获取授权</a-button>
         </div>
       </a-col>
@@ -45,10 +45,10 @@
         <a-badge-ribbon text="推荐">
           <div class="p-5 flex flex-col border rounded border-green-500 bg">
             <span class="p-2 text-2xl">
-              通配符域名
+              专业版
               <a-tooltip>
                 <template #title>
-                  例如：*.vuejs.org
+                  通配符域名授权，例如：*.vuejs.org
                   <br />
                   授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
                   下的域名中使用
@@ -62,7 +62,7 @@
               <i class="text-sm not-italic">RMB/CNY</i>
             </span>
             <span class="primary-color">限时早鸟折扣价（7折）</span>
-            <span class="p-2 text-gray-500">永久使用权、一年更新权</span>
+            <span class="p-2 text-gray-500">通配符域名授权、永久使用权、一年更新权</span>
             <a-button class="" type="primary">获取授权</a-button>
           </div>
         </a-badge-ribbon>
@@ -70,10 +70,10 @@
       <a-col :span="8">
         <div class="p-5 flex flex-col border rounded border-yellow-500 bg">
           <span class="p-2 text-2xl">
-            通配符域名
+            旗舰版
             <a-tooltip>
               <template #title>
-                例如：*.vuejs.org
+                通配符域名授权，例如：*.vuejs.org
                 <br />
                 授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
                 下的域名中使用。
@@ -89,7 +89,7 @@
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
           <span class="primary-color">限时早鸟折扣价（7折）</span>
-          <span class="p-2 text-gray-500">永久使用权、永久更新权</span>
+          <span class="p-2 text-gray-500">通配符域名授权、永久使用权、永久更新权</span>
           <a-button>获取授权</a-button>
         </div>
       </a-col>
