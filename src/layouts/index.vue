@@ -5,6 +5,7 @@
       <a-layout-sider
         v-if="showLeftNav"
         width="260"
+        theme="light"
         :style="{
           overflowY: 'auto',
           overflowX: 'hidden',

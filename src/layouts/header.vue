@@ -1,21 +1,16 @@
 <template>
   <a-layout-header class="header" style="padding: 0">
-    <div class="logo">
-      <img src="https://alicdn.antdv.com/logo.png" class="h-40px inline-block" height="40" />
+    <router-link class="logo" to="/">
+      <img :src="logo" class="h-40px inline-block" height="40" />
       &nbsp;&nbsp;Surely Vue
-    </div>
+    </router-link>
     <!-- <div class="center">
       <a-select value="table" style="width: 100px">
         <a-select-option key="table" value="table">table</a-select-option>
       </a-select>
     </div> -->
     <div class="nav" style="min-width: 500px">
-      <a-menu
-        theme="dark"
-        mode="horizontal"
-        :selected-keys="[]"
-        :style="{ lineHeight: '64px', width: '100%' }"
-      >
+      <a-menu mode="horizontal" :selected-keys="[]" :style="{ lineHeight: '64px', width: '100%' }">
         <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
         <a-menu-item key="api"><router-link to="/doc/api">API</router-link></a-menu-item>
         <a-menu-item key="Pricing">
@@ -34,6 +29,7 @@
 <script lang="ts">
 import { useInjectGlobalConfig } from '../context';
 import { defineComponent } from 'vue';
+import logo from '../assets/surely-vue-logo.svg';
 export default defineComponent({
   name: '',
   setup() {
@@ -41,15 +37,24 @@ export default defineComponent({
     return {
       isZhCN: globalConfig.isZhCN,
       globalConfig,
+      logo,
     };
   },
 });
 </script>
 <style lang="less" scoped>
+.header {
+  background-color: #fff;
+  box-shadow: inset 0px -1px 1px #eaeef3;
+  backdrop-filter: blur(20px);
+  .ant-menu-horizontal {
+    border-bottom: none;
+  }
+}
 .logo {
-  color: #fff;
+  color: #2c3d50;
   float: left;
-  font-size: 18px;
+  font-size: 28px;
   padding-left: 35px;
   width: 260px;
 }
