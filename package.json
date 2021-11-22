@@ -4,7 +4,7 @@
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
-    "site": "yarn predev && vite build",
+    "site": "yarn predev && vite build --base=https://surely.cool/",
     "pub:site": "npm run site && node scripts/pushToOSS.js",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
     "tsc": "tsc --noEmit"
