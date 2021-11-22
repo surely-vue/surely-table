@@ -1,34 +1,40 @@
 <template>
-  <div class="lay flex" style="padding-bottom: 30px">
-    <div class="border rounded-md p-8">
+  <div class="lay flex" style="padding: 50px">
+    <div class="rounded-lg p-8">
       <div class="title">
         <span class="icon"></span>
+        <span class="highlight">F</span>
+        <span>aster</span>
         更快
       </div>
       <div class="info">
-        超快虚拟滚动
+        流畅渲染10W行10W列
         <br />
-        流畅渲染10W行10万列
+        超快虚拟滚动
         <br />
         最省心的优化
       </div>
     </div>
-    <div class="border rounded-md p-8">
+    <div class="rounded-md p-8">
       <div class="title">
         <span class="icon"></span>
+        <span class="highlight">S</span>
+        <span>tronger</span>
         更强
       </div>
       <div class="info">
-        响应式、暗黑主题、SSR
-        <br />
         集成拖拽、图表、CRUD
+        <br />
+        暗黑主题、导入导出
         <br />
         快速构建应用
       </div>
     </div>
-    <div class="border rounded-md p-8">
+    <div class="rounded-md p-8">
       <div class="title">
         <span class="icon"></span>
+        <span class="highlight">E</span>
+        <span>asier</span>
         更易用
       </div>
       <div class="info">
@@ -36,20 +42,20 @@
         <br />
         丰富的在线示例
         <br />
-        开发从未如此 Easy
+        So Easy
       </div>
     </div>
   </div>
   <div class="rec">
     <div class="rec-inner lay flex">
       <div class="left">
-        <div class="rec-word">大厂技术专家联袂推荐 & Ant Design Vue 团队出品</div>
+        <div class="rec-word mt-5">Ant Design Vue 团队出品 & 大厂技术专家联袂推荐</div>
         <div>
           <br />
           <a-button
             v-clipboard:copy="'npm i --save @surely-vue/table'"
             v-clipboard:success="handleCopy"
-            class="copy"
+            class="copy mt-5"
             size="large"
           >
             <span class="tag">$ &nbsp;</span>
@@ -63,7 +69,7 @@
           <br />
           <br />
           <router-link to="/doc/guide">
-            <a-button type="primary" class="btn" size="large">
+            <a-button type="primary" class="btn mt-5" size="large">
               <span class="btn-icon"></span>
               开始使用
             </a-button>
@@ -71,7 +77,7 @@
         </div>
       </div>
       <div class="right">
-        <a-carousel arrows style="width: 500px">
+        <a-carousel arrows style="width: 560px">
           <template #prevArrow>
             <div class="custom-slick-arrow" style="left: -50px; z-index: 1">
               <left-circle-outlined />
@@ -83,20 +89,74 @@
             </div>
           </template>
           <div class="card">
-            Ant Design Vue的新作品 Surely Vue 真的很 Cool，这是迄今为止我见过滚动最流畅的表格组件，
-            有幸拜读过源码，真的开眼界，可以说把 Vue 的性能压榨到了极致。 不管怎么说，期待 Surely
-            Vue 带来更多的功能。
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Ant Design Vue 加快了我们交付产品的速度和质量，给我们节省了每年约 300
+                  万的人力投入， 而且我们可以比竞争对手更快地为客户提供产品，它带来的价值更加可观。
+                  大数据表格一直是一个痛点，分页已经无法满足日渐“挑剔”的用户，Surely Vue
+                  很好地解决了这个问题，非常感谢 Ant Design Vue 团队不断地付出和维护。
+                </div>
+              </template>
+              <a-card-meta title="胡淼" description="校宝在线 副总裁（VP）">
+                <template #avatar>
+                  <a-avatar :src="humiao" />
+                </template>
+              </a-card-meta>
+            </a-card>
           </div>
           <div class="card">
-            Ant Design Vue的新作品 Surely Vue 真的很 Cool，这是迄今为止我见过滚动最流畅的表格组件，
-            有幸拜读过源码，真的开眼界，可以说把 Vue 的性能压榨到了极致。 不管怎么说，期待 Surely
-            Vue 带来更多的功能。
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Surely Vue 不管是 UI 还是交互，都保持了 Ant Design
+                  的设计体系，同时还添加了更多动画，进一步提升了用户体验，持续的投入会带来更专业的方案。
+                  国内的开源商业化发展非常缓慢，而前端更是在起步阶段，很欣慰看到 Ant Design Vue
+                  团队正在摸索新的商业模式，也帮各位前端人探明了一个更好的职业金矿，继续加油，非常期待。
+                </div>
+              </template>
+              <a-card-meta title="Scott" description="早早聊 CEO">
+                <template #avatar>
+                  <a-avatar :src="scott" />
+                </template>
+              </a-card-meta>
+            </a-card>
           </div>
           <div class="card">
-            这次 Ant Design Vue 团队出品的商业组件，不管是 UI 还是交互，都保持了 Ant Design
-            的设计体系，同时还添加了更多动画，进一步提升了用户体验，持续的投入会带来更专业的方案。
-            国内的开源商业化发展非常缓慢，而前端更是在起步阶段，很欣慰看到 Ant Design Vue
-            团队正在摸索这种新的商业模式，也帮各位前端人探明了一个更好的职业金矿，继续加油，非常期待。
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Ant Design Vue 的新作品 Surely Vue 真的很
+                  Cool，这是迄今为止我见过滚动最流畅的复杂表格组件，
+                  有幸拜读过源码，真的很开眼界，可以说把 Vue 的性能“压榨”到了极致。
+                  <br />
+                  不管怎么说，期待 Surely Vue 带来更多的功能。
+                </div>
+              </template>
+              <a-card-meta title="大圣" description="前百度前端架构师 & 自由职业者">
+                <template #avatar>
+                  <a-avatar :src="dasheng" />
+                </template>
+              </a-card-meta>
+            </a-card>
+          </div>
+
+          <div class="card">
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  你应该试试它，安装后，使用 s-table 替换
+                  a-table，几乎零成本的替换，你会发现网站速度快了很多不是嘛。
+                  <br />
+                  或许你更应该告诉你的老板，我们可以给客户提供更好的用户体验，然后我们会有更多的客户。
+                </div>
+              </template>
+              <a-card-meta title="梁宵" description="快手资深技术专家">
+                <template #avatar>
+                  <a-avatar :src="liangxiao" />
+                </template>
+              </a-card-meta>
+            </a-card>
           </div>
         </a-carousel>
       </div>
@@ -111,6 +171,10 @@ import {
   SnippetsOutlined,
 } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
+import scott from '../../assets/scott.jpeg';
+import liangxiao from '../../assets/liangxiao.jpeg';
+import dasheng from '../../assets/dasheng.png';
+import humiao from '../../assets/humiao.png';
 
 export default defineComponent({
   components: {
@@ -122,7 +186,11 @@ export default defineComponent({
   setup() {
     const copied = ref(false);
     return {
+      scott,
+      liangxiao,
+      dasheng,
       copied,
+      humiao,
       handleCopy: () => {
         copied.value = true;
         setTimeout(() => {
@@ -135,13 +203,20 @@ export default defineComponent({
 </script>
 <style scoped lang="less">
 .flex {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .title {
   font-size: 30px;
+  padding: 0 0 10px;
+}
+.highlight {
+  color: #1890ff;
 }
 .info {
   font-size: 16px;
+  color: #2c3e50;
+  line-height: 26px;
+  text-align: center;
 }
 .rec {
   background: #f3f6f9;
@@ -156,7 +231,14 @@ export default defineComponent({
 .left {
 }
 .card {
-  width: 500px;
+  text-align: left;
+  padding: 30px;
+}
+.desc {
+  line-height: 26px;
+}
+.tag {
+  color: #ccc;
 }
 .btn-icon {
   position: relative;
@@ -188,10 +270,12 @@ export default defineComponent({
 }
 </style>
 <style lang="less">
+.ant-carousel {
+  box-shadow: 0 2px 8px #f0f1f2;
+}
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 160px;
-  line-height: 160px;
+  height: 260px;
   background: #fff;
   overflow: hidden;
 }
@@ -234,5 +318,8 @@ export default defineComponent({
   width: 6px;
   height: 6px;
   border-radius: 3px;
+}
+.card .ant-card-body {
+  padding: 24px 0 0;
 }
 </style>

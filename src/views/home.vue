@@ -29,11 +29,11 @@
         </div>
       </div>
     </div>
-
     <basicDemoVue style="margin-top: 30px"></basicDemoVue>
     <div>
       <featureVue />
     </div>
+    <liveDemoVue />
   </div>
 </template>
 <script lang="ts">
@@ -42,12 +42,14 @@ import basicDemoVue from '../components/home/basic-demo.vue';
 import logo from '../assets/surely-vue-logo.svg';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 import featureVue from '../components/home/feature.vue';
+import liveDemoVue from '../components/home/live-demo.vue';
 export default defineComponent({
   components: {
     basicDemoVue,
     CheckOutlined,
     SnippetsOutlined,
     featureVue,
+    liveDemoVue,
   },
   setup() {
     const copied = ref(false);

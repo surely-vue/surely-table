@@ -46,7 +46,7 @@
             </span>
             <span class="primary-color">限时早鸟折扣价（8折）</span>
             <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
-            <a-button>获取授权</a-button>
+            <a-button @click="handleClick('basic')">获取授权</a-button>
           </div>
         </a-col>
         <a-col :span="8">
@@ -71,7 +71,7 @@
               </span>
               <span class="primary-color">限时早鸟折扣价（7折）</span>
               <span class="p-2 text-gray-500">通配符域名授权、永久使用权、一年更新权</span>
-              <a-button class="" type="primary">获取授权</a-button>
+              <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
             </div>
           </a-badge-ribbon>
         </a-col>
@@ -98,7 +98,7 @@
             </span>
             <span class="primary-color">限时早鸟折扣价（7折）</span>
             <span class="p-2 text-gray-500">通配符域名授权、永久使用权、永久更新权</span>
-            <a-button>获取授权</a-button>
+            <a-button @click="handleClick('flag')">获取授权</a-button>
           </div>
         </a-col>
       </a-row>
@@ -138,6 +138,10 @@ export default defineComponent({
     return {
       isZhCN: globalConfig.isZhCN,
       Wechat,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      handleClick: (_type: string) => {
+        window.open('https://item.taobao.com/item.htm?id=661053273272');
+      },
     };
   },
 });
