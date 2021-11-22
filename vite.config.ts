@@ -13,7 +13,6 @@ import { additionalData } from './themeConfig';
 export default {
   build: {
     outDir: 'dist',
-    assetsDir: 'src/assets',
     cssCodeSplit: false,
     chunkSizeWarningLimit: 2048,
     rollupOptions: {

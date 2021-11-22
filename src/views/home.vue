@@ -33,7 +33,7 @@
     <div>
       <featureVue />
     </div>
-    <liveDemoVue />
+    <!-- <liveDemoVue /> -->
   </div>
 </template>
 <script lang="ts">

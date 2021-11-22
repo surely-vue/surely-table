@@ -30,7 +30,7 @@ export default defineComponent({
       }
       return null;
     });
-    const isZhCN = ref(!!localStorage.getItem('zh-CN'));
+    const isZhCN = ref(!localStorage.getItem('en-US'));
     const globalConfig = {
       isMobile,
       responsive,
@@ -39,7 +39,7 @@ export default defineComponent({
       blocked: ref(false),
       changeLocale: zh => {
         isZhCN.value = zh;
-        localStorage.setItem('zh-CN', zh ? 'true' : '');
+        localStorage.setItem('en-US', !zh ? 'true' : '');
       },
     };
     const changeTheme = (t: string) => {

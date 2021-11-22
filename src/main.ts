@@ -14,7 +14,7 @@ import DemoBox from './components/DemoBox.vue';
 import clipboard from './directives/clipboard';
 
 setLicenseKey(
-  '02bdd0a4a7ca1f45446b6ae0005316fbT1JERVI6MDAwMDAxLEVYUElSWT0zMzE5MzQ5NzYwMDAwMCxET01BSU49c3VyZWx5LXZ1ZS5naXRodWIuaW8sS0VZVkVSU0lPTj0x',
+  'bd8e9bae80c43b524960987020b1f47dT1JERVI6MDAwMDEsRVhQSVJZPTMzMjI3NzEyMDAwMDAwLERPTUFJTj1zdXJlbHkuY29vbCxLRVlWRVJTSU9OPTE=',
 );
 const app = createApp(App);
 app.use(i18n);
