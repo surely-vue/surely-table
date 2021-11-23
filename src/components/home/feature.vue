@@ -8,9 +8,9 @@
         更快
       </div>
       <div class="info">
-        流畅渲染10W行10W列
+        流畅渲染百万级别数据
         <br />
-        超快虚拟滚动
+        横向纵向虚拟滚动
         <br />
         最省心的优化
       </div>
@@ -77,14 +77,14 @@
         </div>
       </div>
       <div class="right">
-        <a-carousel autoplay arrows style="width: 560px">
+        <a-carousel autoplay arrows :dots="!isMobile" :style="carouselStyle">
           <template #prevArrow>
-            <div class="custom-slick-arrow" style="left: -50px; z-index: 1">
+            <div class="custom-slick-arrow" :style="`left: ${isMobile ? 5 : -50}px; z-index: 1`">
               <left-circle-outlined />
             </div>
           </template>
           <template #nextArrow>
-            <div class="custom-slick-arrow" style="right: -50px">
+            <div class="custom-slick-arrow" :style="`right: ${isMobile ? 5 : -50}px`">
               <right-circle-outlined />
             </div>
           </template>
@@ -140,7 +140,6 @@
               </a-card-meta>
             </a-card>
           </div>
-
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
@@ -151,9 +150,30 @@
                   或许你更应该告诉你的老板，我们可以给客户提供更好的用户体验，然后我们会有更多的客户。
                 </div>
               </template>
-              <a-card-meta title="梁宵" description="快手资深技术专家">
+              <a-card-meta title="梁宵" description="快手 资深技术专家">
                 <template #avatar>
                   <a-avatar :src="liangxiao" />
+                </template>
+              </a-card-meta>
+            </a-card>
+          </div>
+          <div class="card">
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Surely Vue
+                  真是一个难产的项目，很早就被邀请内测，从最初的卡顿、略卡、微卡、到如今的流畅滚动，算是见证了它的成长，
+                  而且结果看起来非常的棒。
+                  <br />
+                  作为内测者，感受到团队投入了非常大的精力，不断地调整方案，不断的优化性能，这大概就是专业吧。与其说信任
+                  Surely Vue，我更加信任背后的人。
+                  <br />
+                  据说后续还有 Vue 2、React 支持，期待一下吧。
+                </div>
+              </template>
+              <a-card-meta title="郭美青" description="腾讯 资深技术专家">
+                <template #avatar>
+                  <a-avatar :src="guomeiqing" />
                 </template>
               </a-card-meta>
             </a-card>
@@ -170,11 +190,13 @@ import {
   CheckOutlined,
   SnippetsOutlined,
 } from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import scott from '../../assets/scott.jpeg';
 import liangxiao from '../../assets/liangxiao.jpeg';
 import dasheng from '../../assets/dasheng.png';
 import humiao from '../../assets/humiao.png';
+import guomeiqing from '../../assets/guomeiqing.png';
+import { useInjectGlobalConfig } from '../../context';
 
 export default defineComponent({
   components: {
@@ -185,12 +207,19 @@ export default defineComponent({
   },
   setup() {
     const copied = ref(false);
+    const { isMobile } = useInjectGlobalConfig();
+    const carouselStyle = computed(() => {
+      return isMobile.value ? { width: '100vw' } : { width: '560px' };
+    });
     return {
       scott,
       liangxiao,
       dasheng,
       copied,
       humiao,
+      guomeiqing,
+      isMobile,
+      carouselStyle,
       handleCopy: () => {
         copied.value = true;
         setTimeout(() => {
@@ -233,6 +262,7 @@ export default defineComponent({
 .card {
   text-align: left;
   padding: 30px;
+  height: 260px;
 }
 .desc {
   line-height: 26px;
@@ -268,6 +298,19 @@ export default defineComponent({
     bottom: 0;
   }
 }
+@media only screen and (max-width: 767.99px) {
+  .rec {
+    .rec-inner {
+      padding: 20px;
+    }
+    .right {
+      margin-top: 30px;
+    }
+  }
+  .card {
+    height: 300px;
+  }
+}
 </style>
 <style lang="less">
 .ant-carousel {
@@ -275,7 +318,6 @@ export default defineComponent({
 }
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 260px;
   background: #fff;
   overflow: hidden;
 }

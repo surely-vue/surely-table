@@ -23,35 +23,33 @@
           咨询更多的问题。
         </p>
       </div>
-      <a-row :gutter="40" class="text-center pt-10">
-        <a-col :span="8">
-          <div class="p-5 flex flex-col border border-gray-300 rounded bg">
-            <span class="p-2 text-2xl">
-              标准版
-              <a-tooltip>
-                <template #title>
-                  子域名授权，例如：
-                  <br />
-                  www.baidu.com、v3.vuejs.org
-                  <br />
-                  这类明确子域名的网站，它可以满足大部分的网站应用，并且支持三个月内的补差价升级通配符域名。
-                </template>
-                <QuestionCircleTwoTone class="text-base" />
-              </a-tooltip>
-            </span>
-            <span class="p-2 text-xl">
-              <i class="text-gray-500 text-base line-through not-italic">3980</i>
-              <i class="not-italic px-2">3,184</i>
-              <i class="text-sm not-italic">RMB/CNY</i>
-            </span>
-            <span class="primary-color">限时早鸟折扣价（8折）</span>
-            <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
-            <a-button @click="handleClick('basic')">获取授权</a-button>
-          </div>
-        </a-col>
-        <a-col :span="8">
+      <div class="text-center flex card-out">
+        <div class="mt-10 p-5 flex flex-col border border-gray-300 rounded bg">
+          <span class="p-2 text-2xl">
+            标准版
+            <a-tooltip>
+              <template #title>
+                子域名授权，例如：
+                <br />
+                www.baidu.com、v3.vuejs.org
+                <br />
+                这类明确子域名的网站，它可以满足大部分的网站应用，并且支持三个月内的补差价升级通配符域名。
+              </template>
+              <QuestionCircleTwoTone class="text-base" />
+            </a-tooltip>
+          </span>
+          <span class="p-2 text-xl">
+            <i class="text-gray-500 text-base line-through not-italic">3980</i>
+            <i class="not-italic px-2">3,184</i>
+            <i class="text-sm not-italic">RMB/CNY</i>
+          </span>
+          <span class="primary-color">限时早鸟折扣价（8折）</span>
+          <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
+          <a-button @click="handleClick('basic')">获取授权</a-button>
+        </div>
+        <div class="mt-10 p-5 flex flex-col border rounded border-green-500 bg">
           <a-badge-ribbon text="推荐">
-            <div class="p-5 flex flex-col border rounded border-green-500 bg">
+            <div class="flex flex-col">
               <span class="p-2 text-2xl">
                 专业版
                 <a-tooltip>
@@ -74,34 +72,32 @@
               <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
             </div>
           </a-badge-ribbon>
-        </a-col>
-        <a-col :span="8">
-          <div class="p-5 flex flex-col border rounded border-yellow-500 bg">
-            <span class="p-2 text-2xl">
-              旗舰版
-              <a-tooltip>
-                <template #title>
-                  通配符域名授权，例如：*.vuejs.org
-                  <br />
-                  授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
-                  下的域名中使用。
-                  <br />
-                  该版本在永久使用权的基础上，额外拥有永久更新权。
-                </template>
-                <QuestionCircleTwoTone class="text-base" />
-              </a-tooltip>
-            </span>
-            <span class="p-2 text-xl">
-              <i class="text-gray-500 text-base line-through not-italic">19,880</i>
-              <i class="not-italic px-2">13,916</i>
-              <i class="text-sm not-italic">RMB/CNY</i>
-            </span>
-            <span class="primary-color">限时早鸟折扣价（7折）</span>
-            <span class="p-2 text-gray-500">通配符域名授权、永久使用权、永久更新权</span>
-            <a-button @click="handleClick('flag')">获取授权</a-button>
-          </div>
-        </a-col>
-      </a-row>
+        </div>
+        <div class="mt-10 p-5 flex flex-col border rounded border-yellow-500 bg">
+          <span class="p-2 text-2xl">
+            旗舰版
+            <a-tooltip>
+              <template #title>
+                通配符域名授权，例如：*.vuejs.org
+                <br />
+                授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
+                下的域名中使用。
+                <br />
+                该版本在永久使用权的基础上，额外拥有永久更新权。
+              </template>
+              <QuestionCircleTwoTone class="text-base" />
+            </a-tooltip>
+          </span>
+          <span class="p-2 text-xl">
+            <i class="text-gray-500 text-base line-through not-italic">19,880</i>
+            <i class="not-italic px-2">13,916</i>
+            <i class="text-sm not-italic">RMB/CNY</i>
+          </span>
+          <span class="primary-color">限时早鸟折扣价（7折）</span>
+          <span class="p-2 text-gray-500">通配符域名授权、永久使用权、永久更新权</span>
+          <a-button @click="handleClick('flag')">获取授权</a-button>
+        </div>
+      </div>
       <p class="p-5">
         购买越多、折扣越多，详情可咨询
         <a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a>
@@ -152,5 +148,12 @@ export default defineComponent({
 }
 .primary-color {
   color: #1890ff;
+}
+.card-out {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > div {
+    min-width: 30%;
+  }
 }
 </style>

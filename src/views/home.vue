@@ -74,6 +74,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   padding: 50px 0;
+  flex-wrap: wrap;
 }
 .right {
   padding-left: 50px;
@@ -124,6 +125,20 @@ export default defineComponent({
     margin-left: 20px;
     .tag {
       color: #ccc;
+    }
+  }
+}
+@media only screen and (max-width: 767.99px) {
+  .right {
+    padding: 0 30px;
+    text-align: center;
+  }
+  .actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    .copy {
+      margin-top: 20px;
+      margin-left: 0;
     }
   }
 }

@@ -17,7 +17,28 @@
         <a-select-option key="table" value="table">table</a-select-option>
       </a-select>
     </div> -->
-      <div class="nav" style="min-width: 500px">
+      <a-popover
+        v-if="isMobile"
+        overlay-class-name="popover-menu"
+        placement="bottomRight"
+        trigger="click"
+        arrow-point-at-center
+      >
+        <UnorderedListOutlined class="nav-phone-icon" />
+        <template #content>
+          <a-menu mode="vertical" :selected-keys="[]" class="nav-menu" disabled-overflow>
+            <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
+            <a-menu-item key="api"><router-link to="/doc/api">API</router-link></a-menu-item>
+            <a-menu-item key="Pricing">
+              <router-link to="/pricing">{{ isZhCN ? '授权' : 'Pricing' }}</router-link>
+            </a-menu-item>
+            <a-menu-item key="Github">
+              <a href="https://github.com/surely-vue/table" target="_blank">Github</a>
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-popover>
+      <div v-else class="nav">
         <a-menu mode="horizontal" :selected-keys="[]" class="nav-menu" disabled-overflow>
           <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
           <a-menu-item key="api"><router-link to="/doc/api">API</router-link></a-menu-item>
@@ -29,7 +50,7 @@
           </a-menu-item>
         </a-menu>
       </div>
-      <a-button size="small" @click="globalConfig.changeLocale(!isZhCN)">
+      <a-button size="small" class="mr-5" @click="globalConfig.changeLocale(!isZhCN)">
         {{ isZhCN ? 'English' : '中文' }}
       </a-button>
     </div>
@@ -39,13 +60,18 @@
 import { useInjectGlobalConfig } from '../context';
 import { defineComponent } from 'vue';
 import logo from '../assets/surely-vue-logo.svg';
+import { UnorderedListOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
   name: 'Header',
+  components: {
+    UnorderedListOutlined,
+  },
   props: ['showLeftNav'],
   setup() {
     const globalConfig = useInjectGlobalConfig();
     return {
       isZhCN: globalConfig.isZhCN,
+      isMobile: globalConfig.isMobile,
       globalConfig,
       logo,
     };
@@ -64,11 +90,11 @@ export default defineComponent({
   display: flex;
   align-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 .logo {
   color: #2c3d50;
   font-size: 28px;
-  width: 260px;
 }
 .center {
   float: left;
@@ -83,6 +109,7 @@ export default defineComponent({
   }
 }
 .nav-menu {
+  border-right: none;
   line-height: 64px;
 }
 </style>
