@@ -1,5 +1,5 @@
 {
-  "name": "@surely-vue/table",
+  "name": "surely-vue",
   "version": "2.0.0",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
