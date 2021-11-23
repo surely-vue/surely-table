@@ -3,7 +3,7 @@
     <div
       class="header-wrap"
       :style="
-        showLeftNav
+        showLeftNav || isMobile
           ? { padding: '0px 40px' }
           : { padding: '0px 50px', margin: '0px auto', maxWidth: '1400px' }
       "
