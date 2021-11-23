@@ -47,9 +47,9 @@
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('basic')">获取授权</a-button>
         </div>
-        <div class="mt-10 p-5 flex flex-col border rounded border-green-500 bg">
+        <div class="mt-10 flex flex-col border rounded border-green-500 bg">
           <a-badge-ribbon text="推荐">
-            <div class="flex flex-col">
+            <div class="flex flex-col p-5">
               <span class="p-2 text-2xl">
                 专业版
                 <a-tooltip>

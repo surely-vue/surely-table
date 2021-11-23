@@ -167,8 +167,6 @@
                   <br />
                   作为内测者，感受到团队投入了非常大的精力，不断地调整方案，不断的优化性能，这大概就是专业吧。与其说信任
                   Surely Vue，我更加信任背后的人。
-                  <br />
-                  据说后续还有 Vue 2、React 支持，期待一下吧。
                 </div>
               </template>
               <a-card-meta title="郭美青" description="腾讯 资深技术专家">
@@ -256,8 +254,6 @@ export default defineComponent({
     font-size: 24px;
     color: #1890ff;
   }
-}
-.left {
 }
 .card {
   text-align: left;
