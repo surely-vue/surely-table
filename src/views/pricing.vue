@@ -56,7 +56,7 @@
                   <template #title>
                     通配符域名授权，例如：*.vuejs.org
                     <br />
-                    授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
+                    授权后，你可以在 v1.vuejs.org、v2.vuejs.org、v3.vuejs.org 等所有 vuejs.org
                     下的域名中使用
                   </template>
                   <QuestionCircleTwoTone class="text-base" />
@@ -80,7 +80,7 @@
               <template #title>
                 通配符域名授权，例如：*.vuejs.org
                 <br />
-                授权后，你可以在 v1.vuejs.org、v1.vuejs.org、v1.vuejs.org 等所有 vuejs.org
+                授权后，你可以在 v1.vuejs.org、v2.vuejs.org、v3.vuejs.org 等所有 vuejs.org
                 下的域名中使用。
                 <br />
                 该版本在永久使用权的基础上，额外拥有永久更新权。
@@ -98,7 +98,11 @@
           <a-button @click="handleClick('flag')">获取授权</a-button>
         </div>
       </div>
-      <p class="p-5">
+      <p class="pt-5">
+        <span style="color: #1890ff">早鸟特权：</span>
+        抢先体验、限时折扣、加送 3 个月更新权、并有机会影响产品走向和功能优先级
+      </p>
+      <p class="pt-5">
         购买越多、折扣越多，详情可咨询
         <a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a>
         或者
