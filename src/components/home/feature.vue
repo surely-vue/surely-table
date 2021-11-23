@@ -77,7 +77,7 @@
         </div>
       </div>
       <div class="right">
-        <a-carousel arrows style="width: 560px">
+        <a-carousel autoplay arrows style="width: 560px">
           <template #prevArrow>
             <div class="custom-slick-arrow" style="left: -50px; z-index: 1">
               <left-circle-outlined />

@@ -12,7 +12,10 @@
       :custom-row="customRow"
       @resizeColumn="handleResize"
     >
-      <template #title>本表格数据非真实数据，仅做表格示例展示使用</template>
+      <template #footer>
+        本表格数据非真实数据，仅做表格示例展示使用；姓名、年龄列宽可以拖动调整哦，然后快速拖动到最右侧，体验一下快速输入编辑吧，更多功能点击右上角
+        Doc 查看文档！！！
+      </template>
       <template #expandedRowRender="{ record }">
         <p style="margin: 0">
           {{ record.description }}
@@ -173,7 +176,6 @@ const columns = [
     key: 'info',
     width: 300,
     resizable: true,
-    fixed: 'right',
   },
   {
     title: '操作',
@@ -277,8 +279,8 @@ export default defineComponent({
     const editableState = reactive<Record<string, boolean>>({});
     const rowSelection = reactive({
       type: 'checkbox',
-      getCheckboxProps: (record: any, index: number) => {
-        if (index === 3) {
+      getCheckboxProps: (record: any) => {
+        if (record.key === 3) {
           return { disabled: true };
         }
         return { disabled: false };
