@@ -18,6 +18,10 @@ const routes = [
         component: () => import('./views/api.vue'),
       },
       {
+        path: 'doc/changelog',
+        component: () => import('./views/changelog.vue'),
+      },
+      {
         path: 'pricing',
         component: () => import('./views/pricing.vue'),
       },

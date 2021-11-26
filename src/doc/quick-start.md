@@ -48,3 +48,23 @@ app.use(STable);
 import { setLicenseKey } from '@surely-vue/table';
 setLicenseKey('fdafefdaffklfjajuiefhrdbfdnsafjkasyegwfpqfldfd45f48ew468fr5ds');
 ```
+
+### 模板库
+
+我们创建了模板仓库供参考，或者可以直接使用该模板进行业务开发：
+
+基于 Vue Cli：https://github.com/surely-vue/surely-vue-starter
+
+基于 Vite：https://github.com/surely-vue/surely-vue-vite-starter
+
+### CDN 引入
+
+```html
+//css
+<link href="https://unpkg.com/@surely-vue/table/dist/index.min.css" rel="stylesheet" />
+
+// js
+<script src="https://unpkg.com/@surely-vue/table"></script>
+```
+
+对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏。

@@ -8,6 +8,7 @@ import { defineComponent } from 'vue';
 import introduction from '../doc/introduction.md';
 import quick from '../doc/quick-start.md';
 import faq from '../doc/faq.md';
+// import changelog from '../doc/CHANGELOG.zh-CN.md';
 
 export default defineComponent({
   name: '',
@@ -15,6 +16,7 @@ export default defineComponent({
     introduction,
     quick,
     faq,
+    // changelog,
   },
   setup() {
     return {};

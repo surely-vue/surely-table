@@ -27,6 +27,9 @@
     <a-menu-item :key="`/doc/api`">
       <router-link :to="`/doc/api`">API</router-link>
     </a-menu-item>
+    <a-menu-item :key="`/doc/changelog`">
+      <router-link :to="`/doc/changelog`">{{ isZhCN ? '更新日志' : 'Change Log' }}</router-link>
+    </a-menu-item>
     <template v-for="demo in demos" :key="'/doc/' + demo.type">
       <a-sub-menu
         v-if="true"

@@ -49,7 +49,7 @@
   <div class="rec">
     <div class="rec-inner lay flex">
       <div class="left">
-        <div class="rec-word mt-5">Ant Design Vue 团队出品 & 大厂技术专家联袂推荐</div>
+        <div class="rec-word mt-5">CXO & 大厂技术专家联袂推荐</div>
         <div>
           <br />
           <a-button

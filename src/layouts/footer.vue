@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer class="footer" style="text-align: center">
-    Surely Vue ©2021 Created by Ant Design Vue Team
+    Surely Vue ©2021 Created by 上海偲诺软件科技中心
     <div style="padding: 10px 0">
       备案号：
       <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备19034671号-2</a>
