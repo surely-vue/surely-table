@@ -2,6 +2,10 @@ import Layout from './layouts/index.vue';
 import demo from './demo/index.vue';
 const routes = [
   {
+    path: '/for-ant-demo',
+    component: () => import('./views/for-ant-demo.vue'),
+  },
+  {
     path: '/',
     component: Layout,
     children: [
