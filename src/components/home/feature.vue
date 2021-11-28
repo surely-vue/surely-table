@@ -235,13 +235,14 @@ export default defineComponent({
 .title {
   font-size: 30px;
   padding: 0 0 10px;
+  color: rgba(0, 0, 0, 0.85);
 }
 .highlight {
   color: #1890ff;
 }
 .info {
   font-size: 16px;
-  color: #2c3e50;
+  color: rgba(0, 0, 0, 0.65);
   line-height: 26px;
   text-align: center;
 }
@@ -259,6 +260,7 @@ export default defineComponent({
   text-align: left;
   padding: 30px;
   height: 260px;
+  color: rgba(0, 0, 0, 0.85);
 }
 .desc {
   line-height: 26px;

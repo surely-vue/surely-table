@@ -13,8 +13,10 @@
       @resizeColumn="handleResize"
     >
       <template #footer>
-        本表格数据非真实数据，仅做表格示例展示使用；姓名、年龄列宽可以拖动调整哦，然后快速拖动到最右侧，体验一下快速输入编辑吧，更多功能点击右上角
-        Doc 查看文档！！！
+        <div class="table-footer">
+          本表格数据非真实数据，仅做表格示例展示使用；姓名、年龄列宽可以拖动调整哦，然后快速拖动到最右侧，体验一下快速输入编辑吧，更多功能点击右上角
+          Doc 查看文档！！！
+        </div>
       </template>
       <template #expandedRowRender="{ record }">
         <p style="margin: 0">
@@ -398,6 +400,9 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
+.table-footer {
+  color: rgba(0, 0, 0, 0.65);
+}
 .editable-cell {
   position: relative;
 }

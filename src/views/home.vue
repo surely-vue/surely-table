@@ -3,8 +3,11 @@
     <div class="flex lay">
       <img :src="logo" alt="" class="logo" />
       <div class="right">
-        <div class="tagline">高性能组件 Surely Vue</div>
-        <div class="sub-title">更快的构建网站 & 构建更快的网站</div>
+        <div class="tagline">
+          <span>高性能组件&nbsp;</span>
+          <span>Surely Vue</span>
+        </div>
+        <div class="sub-title">构建更快的网站 & 更快的构建网站</div>
         <div class="actions">
           <router-link to="/doc/guide">
             <a-button type="primary" class="btn" size="large">
@@ -73,22 +76,23 @@ export default defineComponent({
 .flex {
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
+  padding: 80px 0;
   flex-wrap: wrap;
 }
 .right {
   padding-left: 50px;
 }
 .tagline {
-  font-size: 3.2rem;
+  font-size: 40px;
   padding: 0;
   margin: 0;
   border-bottom: 0;
-  font-weight: 300;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.85);
 }
 .sub-title {
   font-size: 20px;
-  color: #46505a;
+  color: rgba(0, 0, 0, 0.55);
 }
 .actions {
   display: flex;
