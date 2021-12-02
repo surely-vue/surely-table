@@ -1,4 +1,10 @@
 <template>
+  <transition name="slide-fade" appear>
+    <div v-if="show" class="discount">
+      早早鸟 + 双十二，5 折特惠，仅此一次，
+      <a href="javascript:;" @click="handleClick">即刻上车</a>
+    </div>
+  </transition>
   <a-layout class="layout">
     <HeaderVue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
     <a-layout style="padding-top: 64px">
@@ -71,7 +77,7 @@ import FooterVue from './footer.vue';
 import { ref, defineComponent, toRef, computed } from 'vue';
 import demos from '../demo/demos';
 import { useInjectGlobalConfig } from '../context';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import navVue from './nav.vue';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons-vue';
 
@@ -86,11 +92,20 @@ export default defineComponent({
   setup() {
     const globalConfig = useInjectGlobalConfig();
     const route = useRoute();
+    const router = useRouter();
     const visible = ref(false);
     const handleClickShowButton = () => {
       visible.value = !visible.value;
     };
+    const show = ref(false);
+    const willShow = !localStorage.getItem('12-12');
+    if (willShow) {
+      setTimeout(() => {
+        show.value = true;
+      }, 1000);
+    }
     return {
+      show,
       demos,
       visible,
       isMobile: globalConfig.isMobile,
@@ -104,6 +119,11 @@ export default defineComponent({
         fontSize: '20px',
       },
       handleClickShowButton,
+      handleClick: () => {
+        localStorage.setItem('12-12', true);
+        router.push('/pricing');
+        show.value = false;
+      },
     };
   },
 });
@@ -115,5 +135,34 @@ export default defineComponent({
 }
 .nav :deep(.ant-menu-item) {
   margin: 0;
+}
+
+.discount {
+  text-align: center;
+  background: #35485e;
+  color: #fff;
+  font-size: 18px;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
 }
 </style>

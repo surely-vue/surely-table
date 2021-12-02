@@ -40,10 +40,10 @@
           </span>
           <span class="p-2 text-xl">
             <i class="text-gray-500 text-base line-through not-italic">3980</i>
-            <i class="not-italic px-2">3,184</i>
+            <i class="not-italic px-2 text-2xl">1,990</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">限时早鸟折扣价（8折）</span>
+          <span class="primary-color">早鸟、双十二折扣价（5折）</span>
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('basic')">获取授权</a-button>
         </div>
@@ -64,10 +64,10 @@
               </span>
               <span class="p-2 text-xl">
                 <i class="text-gray-500 text-base line-through not-italic">8,980</i>
-                <i class="not-italic px-2">6,286</i>
+                <i class="not-italic px-2 text-2xl">4,490</i>
                 <i class="text-sm not-italic">RMB/CNY</i>
               </span>
-              <span class="primary-color">限时早鸟折扣价（7折）</span>
+              <span class="primary-color">早鸟、双十二折扣价（5折）</span>
               <span class="p-2 text-gray-500">通配符域名授权、永久使用权、一年更新权</span>
               <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
             </div>
@@ -77,33 +77,38 @@
           <span class="p-2 text-2xl">
             旗舰版
             <a-tooltip>
-              <template #title>
-                通配符域名授权，例如：*.vuejs.org
-                <br />
-                授权后，你可以在 v1.vuejs.org、v2.vuejs.org、v3.vuejs.org 等所有 vuejs.org
-                下的域名中使用。
-                <br />
-                该版本在永久使用权的基础上，额外拥有永久更新权。
-              </template>
+              <template #title>不限制域名，适合 Electron、IP 内网、SAAS 等项目。</template>
               <QuestionCircleTwoTone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
             <i class="text-gray-500 text-base line-through not-italic">19,880</i>
-            <i class="not-italic px-2">13,916</i>
+            <i class="not-italic px-2 text-2xl">9,940</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">限时早鸟折扣价（7折）</span>
-          <span class="p-2 text-gray-500">通配符域名授权、永久使用权、永久更新权</span>
+          <span class="primary-color">早鸟、双十二折扣价（5折）</span>
+          <span class="p-2 text-gray-500">不限制域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('flag')">获取授权</a-button>
         </div>
       </div>
       <p class="pt-5">
         <span style="color: #1890ff">早鸟特权：</span>
-        抢先体验、限时折扣、加送 3 个月更新权、并有机会影响产品走向和功能优先级
+        抢先体验、限时折扣、加送 3 个月更新权、并有机会影响产品走向和功能优先级。
       </p>
       <p class="pt-5">
-        购买越多、折扣越多，详情可咨询
+        <span style="color: #1890ff">活动时间：</span>
+        2021年12月01日 ~ 2021年12月31日
+      </p>
+      <p class="pt-5">
+        <span style="color: #1890ff">免费使用：</span>
+        仅限 github.io、gitee.io 两类域名，请通过邮箱附上您的开源项目和域名进行申请。
+      </p>
+      <p class="pt-5">
+        <span style="color: #1890ff">教育优惠：</span>
+        5折特惠，不和其它活动同享，仅限 .edu 域名或发票信息为学校、研究机构、科研院所等教育机构。
+      </p>
+      <p class="pt-5">
+        如果您还有问题，可咨询
         <a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a>
         或者
         <a-popover title="咨询">

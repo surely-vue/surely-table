@@ -50,7 +50,7 @@
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | expandedRowsChange | 展开的行变化时触发 | Function(expandedRows) |
-| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { currentDataSource }) |
+| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |
 | expand | 点击展开图标时触发 | Function(expanded, record) |
 | resizeColumn | 拖动列时触发 | Function(width, column) |
 
