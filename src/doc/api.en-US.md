@@ -52,6 +52,7 @@
 | expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |
 | resizeColumn | Triggered when the column is dragged | Function(width, column) |
+| resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void |
 
 #### customRow usage
 

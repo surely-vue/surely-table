@@ -52,7 +52,7 @@
 | expandedRowsChange | 展开的行变化时触发 | Function(expandedRows) |
 | change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |
 | expand | 点击展开图标时触发 | Function(expanded, record) |
-| resizeColumn | 拖动列时触发 | Function(width, column) |
+| resizeColumn | 拖动列时触发, 如果不需要内部自动更改宽度，可以返回 `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void |
 
 #### customRow 用法
 
