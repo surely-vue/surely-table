@@ -46,13 +46,18 @@
 
 ### Events
 
-| Events Name | Description | Arguments |
+| Events Name | Description | Arguments | Version |
+| --- | --- | --- | --- | --- |
+| change | Callback executed when pagination, filters or sorter is changed | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |  |  |
+| expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |  |
+| expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |  |
+| resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
+
+### Method
+
+| Event name | Description | Parameters | Version |
 | --- | --- | --- | --- |
-| change | Callback executed when pagination, filters or sorter is changed | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |  |
-| expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |
-| expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |
-| resizeColumn | Triggered when the column is dragged | Function(width, column) |
-| resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void |
+| scrollTo | Scroll to the specified position, priority: left > columnIndex > columnKey | Function(pos: {left?: number; top?: number; columnIndex?: number; columnKey?: Key; rowKey?: Key; }, behavior ?:'auto' \| 'smooth') | 2.0.3 |
 
 #### customRow usage
 

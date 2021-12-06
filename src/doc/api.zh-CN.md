@@ -47,12 +47,18 @@
 
 ### 事件
 
-| 事件名称 | 说明 | 回调参数 |
-| --- | --- | --- |
-| expandedRowsChange | 展开的行变化时触发 | Function(expandedRows) |
-| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |
-| expand | 点击展开图标时触发 | Function(expanded, record) |
-| resizeColumn | 拖动列时触发, 如果不需要内部自动更改宽度，可以返回 `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void |
+| 事件名称 | 说明 | 回调参数 | 版本 |
+| --- | --- | --- | --- |
+| expandedRowsChange | 展开的行变化时触发 | Function(expandedRows) |  |
+| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |  |
+| expand | 点击展开图标时触发 | Function(expanded, record) |  |
+| resizeColumn | 拖动列时触发, 如果不需要内部自动更改宽度，可以返回 `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
+
+### 方法
+
+| 事件名称 | 说明 | 参数 | 版本 |
+| --- | --- | --- | --- |
+| scrollTo | 滚动到指定位置, 优先级：left > columnIndex > columnKey | Function(pos: {left?: number; top?: number; columnIndex?: number; columnKey?: Key; rowKey?: Key; }, behavior?: 'auto' \| 'smooth') | 2.0.3 |
 
 #### customRow 用法
 

@@ -11,6 +11,7 @@
     <Stripe />
     <Summary />
     <ajax />
+    <scroll />
   </div>
 </template>
 <script lang="ts">
@@ -26,6 +27,7 @@ import Stripe from './stripe.vue';
 import Summary from './summary.vue';
 import heightVue from './height.vue';
 import ajax from './ajax.vue';
+import scroll from './scroll.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -86,6 +88,11 @@ export default defineComponent({
       title: '服务端获取',
       enTitle: 'Ajax',
     },
+    {
+      id: 'scroll',
+      title: '滚动指定位置',
+      enTitle: 'scrollTo',
+    },
   ],
   components: {
     Sticky,
@@ -99,6 +106,7 @@ export default defineComponent({
     Summary,
     heightVue,
     ajax,
+    scroll,
   },
   setup() {
     return {};
