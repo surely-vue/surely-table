@@ -11,7 +11,7 @@
 | defaultExpandAllRows | 初始时，是否展开所有行 | boolean | false |  |
 | defaultExpandedRowKeys | 默认展开的行 | string\[] | - |  |
 | expandedRowKeys | 展开的行，控制属性 | string\[] | - |  |
-| expandedRowRender | 额外的展开行 | Function(record, index, indent, expanded):VNode \| v-slot:expandedRowRender="{record, index, indent, expanded}" | - |  |
+| expandedRowRender | 额外的展开行 | Function({record, index, indent, expanded}):VNode \| v-slot:expandedRowRender="{record, index, indent, expanded}" | - |  |
 | expandFixed | 控制展开图标是否固定，可选 true `left` `right` | boolean \| string | false |  |
 | expandIcon | 自定义展开图标 | Function(props):VNode \| v-slot:expandIcon="props" | - |  |
 | expandRowByClick | 通过点击行来展开子行 | boolean | `false` |  |
