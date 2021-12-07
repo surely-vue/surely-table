@@ -378,7 +378,9 @@ export default defineComponent({
       customRow: record => {
         if (record.name === 'tang 3') {
           return {
-            class: 'custom-row-class',
+            style: {
+              background: '#fef3ee',
+            },
           };
         }
         return {};
