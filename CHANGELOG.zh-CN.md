@@ -10,6 +10,15 @@
 
 ---
 
+## 2.0.4
+
+`2021-12-12`
+
+- 🌟 隐藏 Mac 下总结栏滚动条
+- 🌟 expandRender 支持函数属性
+- 🌟 table body 背景色从 cell 调整到 row 上，方便使用 customRow 定义背景色
+- 🐞 修复 resizeColumn 受控改变 width 时，宽度不改变问题
+
 ## 2.0.3
 
 `2021-12-06`
