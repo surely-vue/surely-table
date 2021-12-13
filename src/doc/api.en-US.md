@@ -32,6 +32,7 @@
 | sticky | Set sticky header and scroll bar | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}` | - |  |
 | title | Table title renderer | Function(currentPageData)\| v-slot:title="currentPageData" |  |  |
 | customRow | Set props on per row | Function(record, index) | - |  |
+| customCell | Set props on per cell, column.customCell will override this | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | getPopupContainer | the render container of dropdowns in table | (triggerNode) => HTMLElement | `() => TableHtmlElement` |  |
 | headerCell | custom head cell by slot | v-slot:headerCell="{title, column}" | - |  |
 | bodyCell | custom body cell by slot | v-slot:bodyCell="{text, record, index, column}" | - |  |
@@ -39,6 +40,7 @@
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
+| summaryFixed | fixed summmary content | boolean | - |  |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed

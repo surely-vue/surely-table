@@ -36,10 +36,12 @@
 | customRow | 设置行属性 | Function(record, index) | - |  |
 | headerCell | 个性化头部单元格 | v-slot:headerCell="{title, column}" | - |  |
 | bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column}" | - |  |
+| customCell | 设置单元格属性, column 如配置了 `customCell`, 优先使用 column.customCell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#FilterDropdownProps)" | - |  |
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | 自定义空数据时的显示内容 | v-slot:emptyText | - |  |
 | summary | 总结栏 | v-slot:summary | - |  |
+| summaryFixed | 固定总结栏 | boolean | - |  |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
