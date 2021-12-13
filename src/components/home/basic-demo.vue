@@ -6,7 +6,6 @@
       :data-source="dataSource"
       :pagination="false"
       :scroll="{ y: 400 }"
-      style="pointer-events: none"
       :row-height="54"
       :row-selection="rowSelection"
       :custom-row="customRow"
