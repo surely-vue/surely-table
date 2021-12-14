@@ -25,7 +25,6 @@ Custom `Header` `Body` `Summary` `Row` `Cell` background color
     :custom-row="customRow"
     :custom-cell="customCell"
     :custom-header-cell="customHeaderCell"
-    :custom-summary-cell="customSummaryCell"
     summary-fixed
   >
     <template #bodyCell="{ column }">
@@ -130,17 +129,12 @@ export default defineComponent({
     const customHeaderCell = column => {
       return column.fixed ? { style: { background: '#b7eb8f' } } : {};
     };
-    // 2.0.5+
-    const customSummaryCell = () => {
-      return {};
-    };
     return {
       dataSource: ref(data),
       columns: ref(columns),
       customRow,
       customCell,
       customHeaderCell,
-      customSummaryCell,
     };
   },
 });
