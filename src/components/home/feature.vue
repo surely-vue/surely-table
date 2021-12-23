@@ -176,6 +176,25 @@
               </a-card-meta>
             </a-card>
           </div>
+          <div class="card">
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Surely Vue
+                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
+                  <br />
+                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
+                  Surely Vue
+                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
+                </div>
+              </template>
+              <a-card-meta title="张驰" description="前纷享销客前端技术负责人">
+                <template #avatar>
+                  <a-avatar :src="zhangchi" />
+                </template>
+              </a-card-meta>
+            </a-card>
+          </div>
         </a-carousel>
       </div>
     </div>
@@ -194,6 +213,7 @@ import liangxiao from '../../assets/liangxiao.jpeg';
 import dasheng from '../../assets/dasheng.png';
 import humiao from '../../assets/humiao.png';
 import guomeiqing from '../../assets/guomeiqing.png';
+import zhangchi from '../../assets/zhangchi.jpeg';
 import { useInjectGlobalConfig } from '../../context';
 
 export default defineComponent({
@@ -216,6 +236,7 @@ export default defineComponent({
       copied,
       humiao,
       guomeiqing,
+      zhangchi,
       isMobile,
       carouselStyle,
       handleCopy: () => {
