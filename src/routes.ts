@@ -39,6 +39,7 @@ const routes = [
         component: demo,
       },
       { path: '/test', component: () => import('./views/test.vue') },
+      { path: '/test1', component: () => import('./views/test1.vue') },
     ],
   },
   { path: '/:lang(.*)', redirect: '/' },
