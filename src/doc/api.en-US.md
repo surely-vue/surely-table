@@ -88,12 +88,12 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | --- | --- | --- | --- | --- |
 | align | specify how content is aligned | 'left' \| 'right' \| 'center' | 'left' |  |
 | autoHeight | Whether to enable automatic row height | boolean | false |  |
-| ellipsis | ellipsize cell content, not working with sorter and filters for now.<br />tableLayout would be `fixed` when `ellipsis` is true. | boolean | false |  |
+| ellipsis | ellipsize cell content. | boolean | false |  |
 | colSpan | Span of this column's title | number |  |  |
 | dataIndex | Display field of the data record, support nest path by string array | string \| string\[] | - |  |
 | defaultFilteredValue | Default filtered values | string\[] | - |  |
 | defaultSortOrder | Default order of sorted values: `'ascend'` `'descend'` `null` | string | - |  |
-| ellipsis | The ellipsis cell content, not working with sorter and filters for now.<br />tableLayout would be `fixed` when `ellipsis` is `true` or `{ showTitle?: boolean }` | boolean \| {showTitle?: boolean } | false |  |
+| ellipsis | The ellipsis cell content | boolean \| {showTitle?: boolean } | false |  |
 | filterDropdown | Customized filter overlay | VNode | - |  |
 | customFilterDropdown | use v-slot:customFilterDropdown，Priority is lower than filterDropdown | boolean | false |  |
 | filterDropdownVisible | Whether `filterDropdown` is visible | boolean | - |  |
