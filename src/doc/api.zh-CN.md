@@ -94,6 +94,7 @@
 | defaultFilteredValue | 默认筛选值 | string\[] | - |  |
 | defaultSortOrder | 默认排序顺序 | `ascend` \| `descend` | - |  |
 | ellipsis | 超过宽度将自动省略。设置为 `true` 时，showTitle 默认为 true | boolean \| { showTitle?: boolean } | false |  |
+| tooltip | 单元格是否显示 tooltip，它和 ellipsis.showTitle 是独立不相关的功能，tooltip 内容需要额外通过 `tooltip.titile` 或 `cellTooltip` 插槽传递。设置为 `true` 时，使用 `cellTooltip` 内容。 | boolean \| [CellTooltip](#celltooltip) | false |  |
 | filterDropdown | 可以自定义筛选菜单，此函数只负责渲染图层，需要自行编写各种交互 | VNode | - |  |
 | customFilterDropdown | 启用 v-slot:customFilterDropdown，优先级低于 filterDropdown | boolean | false |  |
 | filterDropdownVisible | 用于控制自定义筛选菜单是否可见 | boolean | - |  |
@@ -123,7 +124,33 @@
 #### Breakpoint
 
 ```ts
-type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+```
+
+### CellTooltip
+
+```ts
+export interface CellTooltip {
+  placement?:
+    | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'leftTop'
+    | 'leftBottom'
+    | 'rightTop'
+    | 'rightBottom';
+  color?: String;
+  overlayStyle?: CSSProperties;
+  overlayClassName?: String;
+  openClassName?: String;
+  title?: (args: CellRenderArgs) => any;
+  align?: TooltipAlignConfig;
+}
 ```
 
 ### ColumnGroup

@@ -89,6 +89,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | align | specify how content is aligned | 'left' \| 'right' \| 'center' | 'left' |  |
 | autoHeight | Whether to enable automatic row height | boolean | false |  |
 | ellipsis | ellipsize cell content. | boolean | false |  |
+| tooltip | Whether the cell displays the tooltip, it is independent and unrelated to ellipsis.showTitle. The content of the tooltip needs to be passed through the `tooltip.titile` or `cellTooltip` slot. When set to `true`, the content of `cellTooltip` is used. | boolean \| [CellTooltip](#celltooltip) | false |  |
 | colSpan | Span of this column's title | number |  |  |
 | dataIndex | Display field of the data record, support nest path by string array | string \| string\[] | - |  |
 | defaultFilteredValue | Default filtered values | string\[] | - |  |
@@ -122,7 +123,33 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 #### Breakpoint
 
 ```ts
-type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+```
+
+### CellTooltip
+
+```ts
+export interface CellTooltip {
+  placement?:
+    | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'leftTop'
+    | 'leftBottom'
+    | 'rightTop'
+    | 'rightBottom';
+  color?: String;
+  overlayStyle?: CSSProperties;
+  overlayClassName?: String;
+  openClassName?: String;
+  title?: (args: CellRenderArgs) => any;
+  align?: TooltipAlignConfig;
+}
 ```
 
 ### ColumnGroup

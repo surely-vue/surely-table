@@ -12,6 +12,7 @@
     <Summary />
     <ajax />
     <scroll />
+    <tooltip />
   </div>
 </template>
 <script lang="ts">
@@ -28,6 +29,7 @@ import Summary from './summary.vue';
 import heightVue from './height.vue';
 import ajax from './ajax.vue';
 import scroll from './scroll.vue';
+import tooltip from './tooltip.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -93,6 +95,11 @@ export default defineComponent({
       title: '滚动指定位置',
       enTitle: 'scrollTo',
     },
+    {
+      id: 'tooltip',
+      title: 'Tooltip 自定义提示',
+      enTitle: 'Tooltip',
+    },
   ],
   components: {
     Sticky,
@@ -107,6 +114,7 @@ export default defineComponent({
     heightVue,
     ajax,
     scroll,
+    tooltip,
   },
   setup() {
     return {};
