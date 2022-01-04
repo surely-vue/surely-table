@@ -101,7 +101,7 @@ export default defineComponent({
     const willShow = !localStorage.getItem('12-12');
     if (willShow) {
       setTimeout(() => {
-        show.value = true;
+        // show.value = true;
       }, 1000);
     }
     return {
@@ -120,7 +120,7 @@ export default defineComponent({
       },
       handleClickShowButton,
       handleClick: () => {
-        localStorage.setItem('12-12', true);
+        localStorage.setItem('12-12', 'true');
         router.push('/pricing');
         show.value = false;
       },

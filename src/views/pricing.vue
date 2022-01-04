@@ -43,7 +43,7 @@
             <i class="not-italic px-2 text-2xl">1,990</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">早鸟、双十二折扣价（5折）</span>
+          <span class="primary-color">早鸟折扣价（5折）</span>
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('basic')">获取授权</a-button>
         </div>
@@ -67,7 +67,7 @@
                 <i class="not-italic px-2 text-2xl">4,490</i>
                 <i class="text-sm not-italic">RMB/CNY</i>
               </span>
-              <span class="primary-color">早鸟、双十二折扣价（5折）</span>
+              <span class="primary-color">早鸟折扣价（5折）</span>
               <span class="p-2 text-gray-500">通配符域名授权、永久使用权、一年更新权</span>
               <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
             </div>
@@ -86,18 +86,14 @@
             <i class="not-italic px-2 text-2xl">9,940</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">早鸟、双十二折扣价（5折）</span>
+          <span class="primary-color">早鸟折扣价（5折）</span>
           <span class="p-2 text-gray-500">不限制域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('flag')">获取授权</a-button>
         </div>
       </div>
       <p class="pt-5">
         <span style="color: #1890ff">早鸟特权：</span>
-        抢先体验、限时折扣、加送 3 个月更新权、并有机会影响产品走向和功能优先级。
-      </p>
-      <p class="pt-5">
-        <span style="color: #1890ff">活动时间：</span>
-        2021年12月01日 ~ 2021年12月31日
+        抢先体验、限时折扣、并有机会影响产品走向和功能优先级。
       </p>
       <p class="pt-5">
         <span style="color: #1890ff">免费使用：</span>
@@ -108,7 +104,11 @@
         5折特惠，不和其它活动同享，仅限 .edu 域名或发票信息为学校、研究机构、科研院所等教育机构。
       </p>
       <p class="pt-5">
-        如果您还有问题，可咨询
+        <span style="color: #1890ff">永久更新版：</span>
+        每月限量发售永久更新版，详询客服。
+      </p>
+      <p class="pt-5">
+        如果您还有其它问题，可咨询
         <a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a>
         或者
         <a-popover title="咨询">
