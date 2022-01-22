@@ -1,6 +1,7 @@
 <template>
   <div>
     <rowSelectionVue />
+    <rowSelectionRadioVue />
     <rowSelectionAndOperationVue />
     <rowSelectionCustomVue />
   </div>
@@ -10,12 +11,14 @@ import { defineComponent } from 'vue';
 import rowSelectionVue from './row-selection.vue';
 import rowSelectionAndOperationVue from './row-selection-and-operation.vue';
 import rowSelectionCustomVue from './row-selection-custom.vue';
+import rowSelectionRadioVue from './row-selection-radio.vue';
 
 export default defineComponent({
   components: {
     rowSelectionVue,
     rowSelectionAndOperationVue,
     rowSelectionCustomVue,
+    rowSelectionRadioVue,
   },
   title: '可选择',
   enTitle: 'Selection',
@@ -25,6 +28,11 @@ export default defineComponent({
       id: 'row-selection',
       title: '可选择',
       enTitle: 'selection',
+    },
+    {
+      id: 'row-selection-radio',
+      title: '单选',
+      enTitle: 'radio selection',
     },
     {
       id: 'row-selection-and-operation',

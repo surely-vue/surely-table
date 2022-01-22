@@ -2,7 +2,6 @@
 node_modules
 # production
 dist
-/core
 /.vscode
 dist
 build

@@ -27,4 +27,3 @@ components/style/color/*.less
 .png
 .npmrc.template
 .huskyrc
-/core
