@@ -7,10 +7,16 @@ title:
 ---
 
 ## zh-CN
-只能选择一行
+只能选择一行。
+
+根据 HTML 标准规范， Radio 选择后是不可以置空的，但的确有置空这类业务需求，我们提供了 `allowCancelRadio` 可以配置是否允许取消选择 Radio。
+
+`allowCancelRadio` 最低支持 2.0.11。
 
 ## en-US
 Only one row can be selected.
+
+You can set `allowCancelRadio = true` to allow cancel radio selection.
 
 </docs>
 
@@ -87,6 +93,7 @@ export default defineComponent({
         name: record.name,
       }),
       type: 'radio',
+      // allowCancelRadio: true,
     };
 
     return {
