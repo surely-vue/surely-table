@@ -24,7 +24,7 @@
         </p>
       </div>
       <div class="text-center flex card-out">
-        <div class="mt-10 p-5 flex flex-col border border-gray-300 rounded bg">
+        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border border-gray-300 rounded bg">
           <span class="p-2 text-2xl">
             标准版
             <a-tooltip>
@@ -43,11 +43,11 @@
             <i class="not-italic px-2 text-2xl">1,990</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">早鸟折扣价（5折）</span>
+          <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
           <a-button @click="handleClick('basic')">获取授权</a-button>
         </div>
-        <div class="mt-10 flex flex-col border rounded border-green-500 bg">
+        <div class="mt-10 m-2 flex flex-1 flex-col border rounded border-green-500 bg">
           <a-badge-ribbon text="推荐">
             <div class="flex flex-col p-5">
               <span class="p-2 text-2xl">
@@ -67,13 +67,13 @@
                 <i class="not-italic px-2 text-2xl">4,490</i>
                 <i class="text-sm not-italic">RMB/CNY</i>
               </span>
-              <span class="primary-color">早鸟折扣价（5折）</span>
-              <span class="p-2 text-gray-500">通配符域名授权、永久使用权、一年更新权</span>
+              <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
+              <span class="p-2 text-gray-500">通配符域名、永久使用权、一年更新权</span>
               <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
             </div>
           </a-badge-ribbon>
         </div>
-        <div class="mt-10 p-5 flex flex-col border rounded border-yellow-500 bg">
+        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-500 bg">
           <span class="p-2 text-2xl">
             旗舰版
             <a-tooltip>
@@ -86,9 +86,34 @@
             <i class="not-italic px-2 text-2xl">9,940</i>
             <i class="text-sm not-italic">RMB/CNY</i>
           </span>
-          <span class="primary-color">早鸟折扣价（5折）</span>
-          <span class="p-2 text-gray-500">不限制域名授权、永久使用权、一年更新权</span>
+          <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
+          <span class="p-2 text-gray-500">不限制域名、永久使用权、一年更新权</span>
           <a-button @click="handleClick('flag')">获取授权</a-button>
+        </div>
+        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-400 bg">
+          <span class="p-2 text-2xl">
+            旗舰版 Plus
+            <a-tooltip>
+              <template #title>不限制域名，永久更新权。</template>
+              <QuestionCircleTwoTone class="text-base" />
+            </a-tooltip>
+          </span>
+          <span class="p-2 text-xl">
+            <i class="not-italic px-2 text-2xl">详询客服</i>
+          </span>
+          <span class="p-2 text-gray-500">不限制域名、永久使用权、永久更新权</span>
+          <a-popover title="咨询">
+            <template #content>
+              <div style="width: 270px">
+                <p>如有任何问题，请扫码添加客服微信咨询。</p>
+                <img width="270" height="271" :src="Wechat" />
+              </div>
+            </template>
+            <span>
+              每月限量发售
+              <a type="link">在线咨询</a>
+            </span>
+          </a-popover>
         </div>
       </div>
       <p class="pt-5">
@@ -102,10 +127,6 @@
       <p class="pt-5">
         <span style="color: #1890ff">教育优惠：</span>
         5折特惠，不和其它活动同享，仅限 .edu 域名或发票信息为学校、研究机构、科研院所等教育机构。
-      </p>
-      <p class="pt-5">
-        <span style="color: #1890ff">永久更新版：</span>
-        每月限量发售永久更新版，详询客服。
       </p>
       <p class="pt-5">
         如果您还有其它问题，可咨询
@@ -162,7 +183,8 @@ export default defineComponent({
   flex-wrap: wrap;
   justify-content: space-between;
   > div {
-    min-width: 30%;
+    min-width: 300px;
+    max-width: 25%;
   }
 }
 </style>
