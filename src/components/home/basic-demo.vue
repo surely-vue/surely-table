@@ -118,13 +118,15 @@ export default defineComponent({
     const columns = [
       {
         title: '姓名',
-        width: 100,
+        width: 150,
+        minWidth: 80,
         dataIndex: 'name',
         key: 'name',
         fixed: !isMobile.value,
         // maxWidth: 300,
         resizable: true,
         ellipsis: true,
+        rowDrag: true,
       },
       {
         title: '年龄',

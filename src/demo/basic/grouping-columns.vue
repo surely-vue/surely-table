@@ -29,69 +29,6 @@ Group table head with `columns[n].children`.
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    width: 100,
-    fixed: 'left',
-  },
-  {
-    title: 'Other',
-    children: [
-      {
-        title: 'Age',
-        dataIndex: 'age',
-        width: 150,
-      },
-      {
-        title: 'Address',
-        children: [
-          {
-            title: 'Street',
-            dataIndex: 'street',
-            width: 150,
-          },
-          {
-            title: 'Block',
-            children: [
-              {
-                title: 'Building',
-                dataIndex: 'building',
-                width: 100,
-              },
-              {
-                title: 'Door No.',
-                dataIndex: 'number',
-                width: 100,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Company',
-    children: [
-      {
-        title: 'Company Address',
-        dataIndex: 'companyAddress',
-      },
-      {
-        title: 'Company Name',
-        dataIndex: 'companyName',
-      },
-    ],
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-    width: 100,
-    fixed: 'right',
-  },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -106,6 +43,68 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        width: 100,
+        fixed: 'left',
+      },
+      {
+        title: 'Other',
+        children: [
+          {
+            title: 'Age',
+            dataIndex: 'age',
+            width: 150,
+          },
+          {
+            title: 'Address',
+            children: [
+              {
+                title: 'Street',
+                dataIndex: 'street',
+                width: 150,
+              },
+              {
+                title: 'Block',
+                children: [
+                  {
+                    title: 'Building',
+                    dataIndex: 'building',
+                    width: 100,
+                  },
+                  {
+                    title: 'Door No.',
+                    dataIndex: 'number',
+                    width: 100,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Company',
+        children: [
+          {
+            title: 'Company Address',
+            dataIndex: 'companyAddress',
+          },
+          {
+            title: 'Company Name',
+            dataIndex: 'companyName',
+          },
+        ],
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        width: 100,
+        fixed: 'right',
+      },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 100; i++) {
       data.push({

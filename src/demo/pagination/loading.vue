@@ -39,20 +39,6 @@ This example shows how to fetch and present data from a remote server。
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from 'vue';
 import type { STablePaginationConfig } from '@surely-vue/table';
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-  },
-];
 
 interface DataItem {
   name: string;
@@ -70,6 +56,20 @@ const getRandomuserParams = (params: STablePaginationConfig) => ({
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+      },
+    ];
     const dataSource = ref<DataItem[]>([]);
     const pagination = ref<STablePaginationConfig>({
       current: 1,

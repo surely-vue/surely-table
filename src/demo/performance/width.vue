@@ -30,40 +30,6 @@ Specify the width of the number type for the column to improve performance
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    width: 100,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    width: 100,
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-    width: 100,
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-    width: 100,
-  },
-  { title: 'Column 5', dataIndex: 'address', width: 100 },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -73,6 +39,39 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        width: 100,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 100,
+      },
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+        width: 100,
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+        width: 100,
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+        width: 100,
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+        width: 100,
+      },
+      { title: 'Column 5', dataIndex: 'address', width: 100 },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({

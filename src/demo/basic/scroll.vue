@@ -79,54 +79,6 @@ If you need to scroll to a specified row, it may not scroll to the expected posi
 <script lang="ts">
 import type { ScrollPosition } from '@surely-vue/table';
 import { defineComponent, ref } from 'vue';
-const incomes = new Array(200).fill(1).map((_, index) => ({
-  title: `other ${index + 1}`,
-  dataIndex: 'address',
-  key: `other_${index + 1}`,
-  width: 200,
-}));
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    fixed: 'left',
-    width: 150,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    fixed: 'left',
-    width: 100,
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-    width: 200,
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-    width: 200,
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-    key: 'Column 3',
-    width: 200,
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-    width: 200,
-  },
-  { title: 'Column 5', children: incomes },
-  {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
-    width: 100,
-  },
-];
 
 interface DataItem {
   key: number;
@@ -137,6 +89,54 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const incomes = new Array(200).fill(1).map((_, index) => ({
+      title: `other ${index + 1}`,
+      dataIndex: 'address',
+      key: `other_${index + 1}`,
+      width: 200,
+    }));
+    const columns = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        fixed: 'left',
+        width: 150,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        fixed: 'left',
+        width: 100,
+      },
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+        width: 200,
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+        width: 200,
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+        key: 'Column 3',
+        width: 200,
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+        width: 200,
+      },
+      { title: 'Column 5', children: incomes },
+      {
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
+      },
+    ];
     const tableRef = ref();
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {

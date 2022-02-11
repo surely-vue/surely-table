@@ -47,44 +47,6 @@ Set `sticky` to `true` or specify the distance with `{offsetHeader: number}`.
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    fixed: 'left',
-    width: 150,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    fixed: 'left',
-    width: 100,
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-  },
-  { title: 'Column 5', dataIndex: 'address' },
-  {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
-    width: 100,
-  },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -94,6 +56,43 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        fixed: 'left',
+        width: 150,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        fixed: 'left',
+        width: 100,
+      },
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+      },
+      { title: 'Column 5', dataIndex: 'address' },
+      {
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
+      },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({

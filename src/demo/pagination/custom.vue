@@ -72,33 +72,6 @@ But you can completely turn off the pagination function that comes with Table, b
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-  },
-  {
-    title: 'Action',
-    key: 'action',
-  },
-];
-
 interface DataItem {
   key: string;
   name: string;
@@ -109,6 +82,32 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+      },
+      {
+        title: 'Action',
+        key: 'action',
+      },
+    ];
     const originData: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       originData.push({

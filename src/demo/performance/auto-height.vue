@@ -35,31 +35,6 @@ For most scenes, there are generally only a few columns that have automatic row 
 import type { STableColumnsType } from '@surely-vue/table';
 import { defineComponent, ref } from 'vue';
 
-const columns: STableColumnsType = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    width: 100,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    width: 100,
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-    width: 100,
-  },
-  {
-    title: 'Phone',
-    dataIndex: 'phone',
-    width: 200,
-  },
-  { title: 'Address1', dataIndex: 'address', autoHeight: true, resizable: true },
-  { title: 'Address2', dataIndex: 'address', autoHeight: true, resizable: true },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -71,6 +46,30 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns: STableColumnsType = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        width: 100,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 100,
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        width: 100,
+      },
+      {
+        title: 'Phone',
+        dataIndex: 'phone',
+        width: 200,
+      },
+      { title: 'Address1', dataIndex: 'address', autoHeight: true, resizable: true },
+      { title: 'Address2', dataIndex: 'address', autoHeight: true, resizable: true },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({

@@ -61,49 +61,49 @@ Table with editable cells.
 import { cloneDeep } from 'lodash-es';
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'name',
-    dataIndex: 'name',
-    // width: '25%',
-    width: 100,
-  },
-  {
-    title: 'age',
-    dataIndex: 'age',
-    // width: '15%',
-    width: 100,
-  },
-  {
-    title: 'address',
-    dataIndex: 'address',
-    // width: '40%',
-    width: 100,
-  },
-  {
-    title: 'operation',
-    dataIndex: 'operation',
-    width: 300,
-  },
-];
 interface DataItem {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-const data: DataItem[] = [];
-for (let i = 0; i < 1000; i++) {
-  data.push({
-    key: i.toString(),
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
-  });
-}
-
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'name',
+        dataIndex: 'name',
+        // width: '25%',
+        width: 100,
+      },
+      {
+        title: 'age',
+        dataIndex: 'age',
+        // width: '15%',
+        width: 100,
+      },
+      {
+        title: 'address',
+        dataIndex: 'address',
+        // width: '40%',
+        width: 100,
+      },
+      {
+        title: 'operation',
+        dataIndex: 'operation',
+        width: 300,
+      },
+    ];
+
+    const data: DataItem[] = [];
+    for (let i = 0; i < 1000; i++) {
+      data.push({
+        key: i.toString(),
+        name: `Edrward ${i}`,
+        age: 32,
+        address: `London Park no. ${i}`,
+      });
+    }
     const dataSource = ref(data);
 
     const visible = ref(false);

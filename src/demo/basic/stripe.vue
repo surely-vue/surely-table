@@ -23,22 +23,6 @@ The stripe pattern makes it easier to distinguish the data in different rows
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Cash Assets',
-    dataIndex: 'money',
-    align: 'right',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-];
-
 interface DataItem {
   key: string;
   name: string;
@@ -48,6 +32,21 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Cash Assets',
+        dataIndex: 'money',
+        align: 'right',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+      },
+    ];
     const data: DataItem[] = [
       {
         key: '1',

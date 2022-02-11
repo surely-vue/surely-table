@@ -38,27 +38,6 @@ This example shows how to fetch and present data from a remote server, and how t
 import { usePagination } from 'vue-request';
 import { computed, defineComponent } from 'vue';
 import axios from 'axios';
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    sorter: true,
-    // width: '20%',
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-    filters: [
-      { text: 'Male', value: 'male' },
-      { text: 'Female', value: 'female' },
-    ],
-    // width: '20%',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-  },
-];
 
 type APIParams = {
   results: number;
@@ -81,6 +60,27 @@ const queryData = (params: APIParams) => {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        sorter: true,
+        // width: '20%',
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        filters: [
+          { text: 'Male', value: 'male' },
+          { text: 'Female', value: 'female' },
+        ],
+        // width: '20%',
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+      },
+    ];
     const {
       data: dataSource,
       run,

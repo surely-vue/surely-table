@@ -48,50 +48,6 @@ import type { SurelyTableProps } from '@surely-vue/table';
 import { defineComponent, ref } from 'vue';
 import { HomeTwoTone } from '@ant-design/icons-vue';
 
-const columns: SurelyTableProps['columns'] = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    fixed: 'left',
-    width: 150,
-    tooltip: { title: ({ value }) => value, color: '#f50', placement: 'topLeft' },
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    fixed: 'left',
-    width: 100,
-  },
-
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-    // set `showTitle: false` close dom title
-    ellipsis: { showTitle: false },
-    // we can set object not have title prop, then use `tooltipTitle` slot
-    tooltip: { placement: 'topLeft' },
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-  },
-  { title: 'Column 5', dataIndex: 'address' },
-  {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
-    width: 100,
-  },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -102,6 +58,49 @@ interface DataItem {
 export default defineComponent({
   components: { HomeTwoTone },
   setup() {
+    const columns: SurelyTableProps['columns'] = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        fixed: 'left',
+        width: 150,
+        tooltip: { title: ({ value }) => value, color: '#f50', placement: 'topLeft' },
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        fixed: 'left',
+        width: 100,
+      },
+
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+        // set `showTitle: false` close dom title
+        ellipsis: { showTitle: false },
+        // we can set object not have title prop, then use `tooltipTitle` slot
+        tooltip: { placement: 'topLeft' },
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+      },
+      { title: 'Column 5', dataIndex: 'address' },
+      {
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
+      },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 5000; i++) {
       data.push({

@@ -36,34 +36,6 @@ Specifying the row height can have better performance
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-  },
-  { title: 'Column 5', dataIndex: 'address' },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -73,6 +45,33 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+      },
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+      },
+      { title: 'Column 5', dataIndex: 'address' },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({

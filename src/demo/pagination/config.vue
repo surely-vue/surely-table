@@ -54,33 +54,6 @@ If these configurations still can’t satisfy you, please continue reading the d
 import type { STablePaginationConfig } from '@surely-vue/table';
 import { defineComponent, ref } from 'vue';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-  },
-  {
-    title: 'Action',
-    key: 'action',
-  },
-];
-
 interface DataItem {
   key: string;
   name: string;
@@ -91,6 +64,32 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+      },
+      {
+        title: 'Action',
+        key: 'action',
+      },
+    ];
     const data: DataItem[] = [
       {
         key: '1',

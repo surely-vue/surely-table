@@ -41,104 +41,105 @@ type TableDataType = {
   companyName: string;
   gender: string;
 };
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    width: 100,
-    fixed: 'left',
-    autoHeight: true,
-    filters: [
+
+export default defineComponent({
+  setup() {
+    const columns = [
       {
-        text: 'Joe',
-        value: 'Joe',
-      },
-      {
-        text: 'John',
-        value: 'John',
-      },
-    ],
-    onFilter: (value: string, record: TableDataType) => record.name.indexOf(value) === 0,
-  },
-  {
-    title: 'Other',
-    children: [
-      {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
-        width: 200,
-        sorter: (a: TableDataType, b: TableDataType) => a.age - b.age,
-      },
-      {
-        title: 'Address',
-        children: [
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        width: 100,
+        fixed: 'left',
+        autoHeight: true,
+        filters: [
           {
-            title: 'Street',
-            dataIndex: 'street',
-            key: 'street',
-            width: 200,
+            text: 'Joe',
+            value: 'Joe',
           },
           {
-            title: 'Block',
+            text: 'John',
+            value: 'John',
+          },
+        ],
+        onFilter: (value: string, record: TableDataType) => record.name.indexOf(value) === 0,
+      },
+      {
+        title: 'Other',
+        children: [
+          {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+            width: 200,
+            sorter: (a: TableDataType, b: TableDataType) => a.age - b.age,
+          },
+          {
+            title: 'Address',
             children: [
               {
-                title: 'Building',
-                dataIndex: 'building',
-                key: 'building',
-                width: 100,
+                title: 'Street',
+                dataIndex: 'street',
+                key: 'street',
+                width: 200,
               },
               {
-                title: 'Door No.',
-                dataIndex: 'number',
-                key: 'number',
-                width: 100,
+                title: 'Block',
+                children: [
+                  {
+                    title: 'Building',
+                    dataIndex: 'building',
+                    key: 'building',
+                    width: 100,
+                  },
+                  {
+                    title: 'Door No.',
+                    dataIndex: 'number',
+                    key: 'number',
+                    width: 100,
+                  },
+                ],
               },
             ],
           },
         ],
       },
-    ],
-  },
-  {
-    title: 'Company',
-    children: [
       {
-        title: 'Company Address',
-        dataIndex: 'companyAddress',
-        key: 'companyAddress',
-        width: 200,
+        title: 'Company',
+        children: [
+          {
+            title: 'Company Address',
+            dataIndex: 'companyAddress',
+            key: 'companyAddress',
+            width: 200,
+          },
+          {
+            title: 'Company Name',
+            dataIndex: 'companyName',
+            key: 'companyName',
+            width: 200,
+          },
+        ],
       },
       {
-        title: 'Company Name',
-        dataIndex: 'companyName',
-        key: 'companyName',
-        width: 200,
+        title: 'Gender',
+        dataIndex: 'gender',
+        key: 'gender',
+        width: 80,
+        fixed: 'right',
       },
-    ],
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-    key: 'gender',
-    width: 80,
-    fixed: 'right',
-  },
-];
-const data = [...Array(10000)].map((_, i) => ({
-  key: i,
-  name: `John ${i + 1}`,
-  age: i + 1,
-  street: 'Lake Park',
-  building: 'C',
-  number: 2035,
-  companyAddress: 'Lake Street 42',
-  companyName: 'SoftLake Co',
-  gender: 'M',
-}));
-export default defineComponent({
-  setup() {
+    ];
+    const data = [...Array(10000)].map((_, i) => ({
+      key: i,
+      name: `John ${i + 1}`,
+      age: i + 1,
+      street: 'Lake Park',
+      building: 'C',
+      number: 2035,
+      companyAddress: 'Lake Street 42',
+      companyName: 'SoftLake Co',
+      gender: 'M',
+    }));
     return {
       data,
       columns,

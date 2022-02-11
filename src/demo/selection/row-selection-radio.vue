@@ -11,7 +11,7 @@ title:
 
 根据 HTML 标准规范， Radio 选择后是不可以置空的，但的确有置空这类业务需求，我们提供了 `allowCancelRadio` 可以配置是否允许取消选择 Radio。
 
-`allowCancelRadio` 最低支持 2.0.11。
+`allowCancelRadio` 最低支持 2.1.0。
 
 ## en-US
 Only one row can be selected.
@@ -41,49 +41,48 @@ interface DataType {
   address: string;
 }
 
-const columns: STableColumnType<DataType>[] = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-];
-const data: DataType[] = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-];
-
 export default defineComponent({
   setup() {
+    const columns: STableColumnType<DataType>[] = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+      },
+    ];
+    const data: DataType[] = [
+      {
+        key: '1',
+        name: 'John Brown',
+        age: 32,
+        address: 'New York No. 1 Lake Park',
+      },
+      {
+        key: '2',
+        name: 'Jim Green',
+        age: 42,
+        address: 'London No. 1 Lake Park',
+      },
+      {
+        key: '3',
+        name: 'Joe Black',
+        age: 32,
+        address: 'Sidney No. 1 Lake Park',
+      },
+      {
+        key: '4',
+        name: 'Disabled User',
+        age: 99,
+        address: 'Sidney No. 1 Lake Park',
+      },
+    ];
     const rowSelection: STableProps['rowSelection'] = {
       onChange: (selectedRowKeys: string[], selectedRows: DataType[]) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);

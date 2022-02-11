@@ -63,47 +63,6 @@ import { defineComponent, ref } from 'vue';
 
 type Options = { label: string; value: string }[];
 
-const topOptions: Options = [
-  { label: 'topLeft', value: 'topLeft' },
-  { label: 'topCenter', value: 'topCenter' },
-  { label: 'topRight', value: 'topRight' },
-  { label: 'none', value: 'none' },
-];
-
-const bottomOptions: Options = [
-  { label: 'bottomLeft', value: 'bottomLeft' },
-  { label: 'bottomCenter', value: 'bottomCenter' },
-  { label: 'bottomRight', value: 'bottomRight' },
-  { label: 'none', value: 'none' },
-];
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-  },
-  {
-    title: 'Action',
-    key: 'action',
-  },
-];
-
 interface DataItem {
   key: string;
   name: string;
@@ -114,6 +73,46 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const topOptions: Options = [
+      { label: 'topLeft', value: 'topLeft' },
+      { label: 'topCenter', value: 'topCenter' },
+      { label: 'topRight', value: 'topRight' },
+      { label: 'none', value: 'none' },
+    ];
+
+    const bottomOptions: Options = [
+      { label: 'bottomLeft', value: 'bottomLeft' },
+      { label: 'bottomCenter', value: 'bottomCenter' },
+      { label: 'bottomRight', value: 'bottomRight' },
+      { label: 'none', value: 'none' },
+    ];
+
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+      },
+      {
+        title: 'Action',
+        key: 'action',
+      },
+    ];
     const data: DataItem[] = [
       {
         key: '1',

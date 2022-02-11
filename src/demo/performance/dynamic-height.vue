@@ -37,36 +37,6 @@ You can set different heights for each column, including expanded rows and sub-t
 import type { RowHeight } from '@surely-vue/table';
 import { defineComponent } from 'vue';
 
-const columns = [
-  {
-    title: 'Full Name',
-    dataIndex: 'name',
-    width: 200,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    width: 100,
-  },
-  {
-    title: 'Column 1',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 2',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-  },
-  { title: 'Column 5', dataIndex: 'address' },
-];
-
 interface DataItem {
   key: number;
   name: string;
@@ -76,6 +46,35 @@ interface DataItem {
 
 export default defineComponent({
   setup() {
+    const columns = [
+      {
+        title: 'Full Name',
+        dataIndex: 'name',
+        width: 200,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 100,
+      },
+      {
+        title: 'Column 1',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 2',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 3',
+        dataIndex: 'address',
+      },
+      {
+        title: 'Column 4',
+        dataIndex: 'address',
+      },
+      { title: 'Column 5', dataIndex: 'address' },
+    ];
     const data: DataItem[] = [];
     for (let i = 0; i < 1000; i++) {
       data.push({
