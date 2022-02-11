@@ -42,6 +42,7 @@
 | emptyText | 自定义空数据时的显示内容 | v-slot:emptyText | - |  |
 | summary | 总结栏 | v-slot:summary | - |  |
 | summaryFixed | 固定总结栏 | boolean | - |  |
+| rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -55,6 +56,7 @@
 | change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action: 'paginate' \| 'sort' \| 'filter' }) |  |
 | expand | 点击展开图标时触发 | Function(expanded, record) |  |
 | resizeColumn | 拖动列时触发, 如果不需要内部自动更改宽度，可以返回 `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
+| dragEndRow | 拖拽行结束时触发 | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
 
 ### 方法
 
@@ -120,6 +122,7 @@
 | customHeaderCell | 设置头部单元格属性 | Function(column) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数, 使用 template 或 jsx 时作为`filter`事件使用 | Function | - |  |
 | onFilterDropdownVisibleChange | 自定义筛选菜单可见变化时调用，使用 template 或 jsx 时作为`filterDropdownVisibleChange`事件使用 | function(visible) {} | - |  |
+| rowDrag | 是否允许拖拽, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 
 #### Breakpoint
 
@@ -150,6 +153,49 @@ export interface CellTooltip {
   openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
+}
+```
+
+### RowDragGhostArg
+
+```ts
+interface DragRowsHandleInfo {
+  y: number;
+  top: number;
+  height: number;
+  rowKey: Key;
+  centerY: number;
+  record: DefaultRecordType;
+  indexs: number[]; // 这是一个索引数组，用以支持树形结构
+}
+
+export interface RowDragGhostArg<RecordT, ColumnT> {
+  record: RecordT;
+  column: ColumnT;
+  icon: VNode;
+  allowed: boolean;
+  dragging: boolean;
+  event: MouseEvent | Touch;
+  preTargetInfo: DragRowsHandleInfo | null;
+  nextTargetInfo: DragRowsHandleInfo | null;
+}
+```
+
+### DragRowEventInfo
+
+```ts
+export interface DragRowEventInfo {
+  top: number;
+  height: number;
+  record: DefaultRecordType;
+  dir: typeof DOWN | typeof UP;
+  rowKey: Key;
+  event: MouseEvent | Touch;
+  column: ColumnType;
+  preTargetInfo: DragRowsHandleInfo | null;
+  nextTargetInfo: DragRowsHandleInfo | null;
+  fromIndexs: number[]; // 这是一个索引数组，用以支持树形结构
+  insertToRowKey: Key;
 }
 ```
 
@@ -224,6 +270,7 @@ export interface CellTooltip {
 | columnWidth | 自定义列表选择框宽度 | string\|number | - |  |
 | columnTitle | 自定义列表选择框标题 | string\|VNode | - |  |
 | fixed | 把选择框列固定在左边 | boolean | - |  |
+| allowCancelRadio | 是否允许取消单选 | boolean | - | 2.1.0 |
 | getCheckboxProps | 选择框的默认属性配置 | Function(record) | - |  |
 | hideSelectAll | 隐藏全选勾选框与自定义选择项 | boolean | false |  |
 | preserveSelectedRowKeys | 当数据被删除时仍然保留选项的 `key` | boolean | - |  |

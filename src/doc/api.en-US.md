@@ -41,6 +41,7 @@
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
 | summaryFixed | fixed summmary content | boolean | - |  |
+| rowDragGhost | Customize the prompt content when dragging a row | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -54,6 +55,7 @@
 | expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |  |
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |  |
 | resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
+| dragEndRow | Triggered when the dragged row ends | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
 
 ### Method
 
@@ -119,6 +121,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | customHeaderCell | Set props on per header cell | Function(column) | - |  |
 | onFilter | Callback executed when the confirm filter button is clicked, Use as a `filter` event when using template or jsx | Function | - |  |
 | onFilterDropdownVisibleChange | Callback executed when `filterDropdownVisible` is changed, Use as a `filterDropdownVisible` event when using template or jsx | function(visible) {} | - |  |
+| rowDrag | 是否允许拖拽, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 
 #### Breakpoint
 
@@ -149,6 +152,49 @@ export interface CellTooltip {
   openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
+}
+```
+
+### RowDragGhostArg
+
+```ts
+interface DragRowsHandleInfo {
+  y: number;
+  top: number;
+  height: number;
+  rowKey: Key;
+  centerY: number;
+  record: DefaultRecordType;
+  indexs: number[]; // This is an indexed array to support the tree structure
+}
+
+export interface RowDragGhostArg<RecordT, ColumnT> {
+  record: RecordT;
+  column: ColumnT;
+  icon: VNode;
+  allowed: boolean;
+  dragging: boolean;
+  event: MouseEvent | Touch;
+  preTargetInfo: DragRowsHandleInfo | null;
+  nextTargetInfo: DragRowsHandleInfo | null;
+}
+```
+
+### DragRowEventInfo
+
+```ts
+export interface DragRowEventInfo {
+  top: number;
+  height: number;
+  record: DefaultRecordType;
+  dir: typeof DOWN | typeof UP;
+  rowKey: Key;
+  event: MouseEvent | Touch;
+  column: ColumnType;
+  preTargetInfo: DragRowsHandleInfo | null;
+  nextTargetInfo: DragRowsHandleInfo | null;
+  fromIndexs: number[]; // This is an indexed array to support the tree structure
+  insertToRowKey: Key;
 }
 ```
 
@@ -225,6 +271,7 @@ Properties for row selection.
 | columnWidth | Set the width of the selection column | string\|number | - |  |
 | columnTitle | Set the title of the selection column | string\|VNode | - |  |
 | fixed | Fixed selection column on the left | boolean | - |  |
+| allowCancelRadio | Whether to allow cancellation of radio selection | boolean | - | 2.1.0 |
 | getCheckboxProps | Get Checkbox or Radio props | Function(record) | - |  |
 | hideSelectAll | Hide the selectAll checkbox and custom selection | boolean | false |  |
 | preserveSelectedRowKeys | Keep selection `key` even when it removed from `dataSource` | boolean | - |  |
