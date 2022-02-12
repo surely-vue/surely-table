@@ -86,6 +86,20 @@ export default defineComponent({
           filters: [
             { text: 'Joe', value: 'Joe' },
             { text: 'Jim', value: 'Jim' },
+            {
+              text: 'Submenu',
+              value: 'Submenu',
+              children: [
+                {
+                  text: 'Green',
+                  value: 'Green',
+                },
+                {
+                  text: 'Black',
+                  value: 'Black',
+                },
+              ],
+            },
           ],
           filteredValue: filtered.name || null,
           onFilter: (value: string, record: DataItem) => record.name.includes(value),
@@ -108,6 +122,7 @@ export default defineComponent({
             { text: 'London', value: 'London' },
             { text: 'New York', value: 'New York' },
           ],
+          filterMultiple: false,
           filteredValue: filtered.address || null,
           onFilter: (value: string, record: DataItem) => record.address.includes(value),
           sorter: (a: DataItem, b: DataItem) => a.address.length - b.address.length,
