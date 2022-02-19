@@ -19,8 +19,10 @@ yarn add @surely-vue/table
 导入样式：
 
 ```css
-import '@surely-vue/table/dist/index.css'
+import '@surely-vue/table/dist/index.less'
 ```
+
+目前该组件底层有部分依赖 Ant Design Vue 组件库(当然这并不影响你使用其它组件库)，css 文件是构建后产物，为了避免引用版本不一致导致各种奇怪问题，我们推荐使用 less 来导入原始文件，这样可以避免样式和逻辑依赖版本不一致问题。
 
 我们建议直接在入口处导入进行全局注册，组件内部会自动注册子组件（`STableColumn`、 `STableColumnGroup`、 `STableSummary`、 `STableSummaryRow`、 `STableSummaryCell`）：
 
