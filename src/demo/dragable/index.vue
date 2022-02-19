@@ -7,6 +7,7 @@
       <ul>
         <li>列宽拖拽：设置 minWidth 和 maxWidth 是一个不错的建议</li>
         <li>行拖拽：注意合并行的处理，或者通过使用函数形式的 rowDrag 属性，禁止该行的拖拽功能</li>
+        <li>列拖拽：固定列和非固定列之间不可以互相拖拽；分组表头暂时只支持第一级拖拽。</li>
         <li>树结构：父节点无法一次拖拽直接成为子节点的子节点，当然你可以自定义处理逻辑;</li>
         <li>
           树结构：叶子节点不可以成为父节点，当然你可以将叶子节点改成非叶子节点(加个 children: [])
@@ -23,6 +24,7 @@
     <dragPromiseVue />
     <dragCustomGhostVue />
     <dragRowTreeVue />
+    <dragColumnVue />
   </div>
 </template>
 <script lang="ts">
@@ -32,6 +34,7 @@ import dragRowVue from './drag-row.vue';
 import dragPromiseVue from './drag-promise.vue';
 import dragCustomGhostVue from './drag-custom-ghost.vue';
 import dragRowTreeVue from './drag-row-tree.vue';
+import dragColumnVue from './drag-column.vue';
 
 export default defineComponent({
   components: {
@@ -40,6 +43,7 @@ export default defineComponent({
     dragPromiseVue,
     dragCustomGhostVue,
     dragRowTreeVue,
+    dragColumnVue,
   },
   title: '拖拽',
   enTitle: 'Dragable',
@@ -69,6 +73,11 @@ export default defineComponent({
       id: 'drag-row-tree',
       title: '树形拖拽',
       enTitle: 'Drag Tree Table',
+    },
+    {
+      id: 'drag-column',
+      title: '列拖拽',
+      enTitle: 'column drag',
     },
     {
       id: 'multipe-sort',

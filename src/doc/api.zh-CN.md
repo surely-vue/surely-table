@@ -5,7 +5,7 @@
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
-| columns | 表格列的配置描述，具体项见[下表](#Column) | array | - |  |
+| columns | 表格列的配置描述，具体项见[下表](#column) | array | - |  |
 | childrenColumnName | 指定树形结构的列名 | string | `children` |  |
 | dataSource | 数据数组 | object\[] |  |  |
 | defaultExpandAllRows | 初始时，是否展开所有行 | boolean | false |  |
@@ -23,7 +23,7 @@
 | pagination | 分页器，参考[配置项](#pagination)，设为 false 时不展示和进行分页 | object |  |  |
 | rowClassName | 表格行的类名 | Function(record, index):string | - |  |
 | rowKey | 表格行 key 的取值，可以是字符串或一个函数 | string\|Function(record):string | 'key' |  |
-| rowSelection | 列表项是否可选择，[配置项](#rowSelection) | object | null |  |
+| rowSelection | 列表项是否可选择，[配置项](#rowselection) | object | null |  |
 | scroll | 表格是否可滚动，也可以指定滚动区域的宽、高，[配置项](#scroll) | object | - |  |
 | showHeader | 是否显示表头 | boolean | true |  |
 | showSorterTooltip | 表头是否显示下一次排序的 tooltip 提示。当参数类型为对象时，将被设置为 Tooltip 的属性 | boolean \| [Tooltip props](#tooltip) | true |  |
@@ -37,12 +37,14 @@
 | headerCell | 个性化头部单元格 | v-slot:headerCell="{title, column}" | - |  |
 | bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column}" | - |  |
 | customCell | 设置单元格属性, column 如配置了 `customCell`, 优先使用 column.customCell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
-| customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#FilterDropdownProps)" | - |  |
+| customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | 自定义空数据时的显示内容 | v-slot:emptyText | - |  |
 | summary | 总结栏 | v-slot:summary | - |  |
 | summaryFixed | 固定总结栏 | boolean | - |  |
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
+| columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
+| columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -57,6 +59,7 @@
 | expand | 点击展开图标时触发 | Function(expanded, record) |  |
 | resizeColumn | 拖动列时触发, 如果不需要内部自动更改宽度，可以返回 `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
 | dragEndRow | 拖拽行结束时触发 | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
+| dragEndColumn | 拖拽列结束时触发 | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 
 ### 方法
 
@@ -108,7 +111,7 @@
 | fixed | 列是否固定，可选 `true`(等效于 left) `'left'` `'right'` | boolean\|string | false |  |
 | key | Vue 需要的 key，如果已经设置了唯一的 `dataIndex`，可以忽略这个属性 | string | - |  |
 | customRender | 生成复杂数据的渲染函数，参数分别为当前行的值，当前行数据，行索引，@return 里面可以设置表格行/列合并,可参考 demo 表格行/列合并 | Function({text, record, index, column}) {} | - |  |
-| responsive | 响应式 breakpoint 配置列表。未设置则始终可见。 | [Breakpoint](#Breakpoint)\[] | - |  |
+| responsive | 响应式 breakpoint 配置列表。未设置则始终可见。 | [Breakpoint](#breakpoint)\[] | - |  |
 | showSorterTooltip | 表头显示下一次排序的 tooltip 提示, 覆盖 table 中 `showSorterTooltip` | boolean \| [Tooltip props](#tooltip) | true |  |
 | sorter | 排序函数，本地排序使用一个函数(参考 [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 的 compareFunction)，需要服务端排序可设为 true | Function\|boolean | - |  |
 | sortOrder | 排序的受控属性，外界可用此控制列的排序，可设置为 `'ascend'` `'descend'` `false` | boolean\|string | - |  |
@@ -122,7 +125,8 @@
 | customHeaderCell | 设置头部单元格属性 | Function(column) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数, 使用 template 或 jsx 时作为`filter`事件使用 | Function | - |  |
 | onFilterDropdownVisibleChange | 自定义筛选菜单可见变化时调用，使用 template 或 jsx 时作为`filterDropdownVisibleChange`事件使用 | function(visible) {} | - |  |
-| rowDrag | 是否允许拖拽, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
+| rowDrag | 当前列添加拖拽手柄, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
+| drag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
 
 #### Breakpoint
 
@@ -188,7 +192,7 @@ export interface DragRowEventInfo {
   top: number;
   height: number;
   record: DefaultRecordType;
-  dir: typeof DOWN | typeof UP;
+  dir: 'down' | 'up';
   rowKey: Key;
   event: MouseEvent | Touch;
   column: ColumnType;
@@ -196,6 +200,30 @@ export interface DragRowEventInfo {
   nextTargetInfo: DragRowsHandleInfo | null;
   fromIndexs: number[]; // 这是一个索引数组，用以支持树形结构
   insertToRowKey: Key;
+}
+```
+
+### DragColumnEventInfo
+
+```ts
+export interface DragColumnEventInfo {
+  event: MouseEvent | Touch;
+  column: ColumnType;
+  targetColumn: ColumnType;
+  dir: 'left' | 'right';
+}
+```
+
+### ColumnDragGhostArg
+
+```ts
+export interface ColumnDragGhostArg<ColumnT> {
+  column: ColumnT;
+  icon: VNode;
+  allowed: boolean;
+  dragging: boolean;
+  event: MouseEvent | Touch;
+  targetColumn: ColumnT;
 }
 ```
 

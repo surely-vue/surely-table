@@ -6,7 +6,7 @@
 | --- | --- | --- | --- | --- |
 | bordered | Whether to show all table borders | boolean | `false` |  |
 | childrenColumnName | The column contains children to display | string | `children` |  |
-| columns | Columns of table [config](#Column) | array | - |  |
+| columns | Columns of table [config](#column) | array | - |  |
 | dataSource | Data record array to be displayed | any\[] | - |  |
 | defaultExpandAllRows | Expand all rows initially | boolean | `false` |  |
 | defaultExpandedRowKeys | Initial expanded row keys | string\[] | - |  |
@@ -23,7 +23,7 @@
 | pagination | Config of pagination. You can ref table pagination [config](#pagination), hide it by setting it to `false` | object |  |  |
 | rowClassName | Row's className | Function(record, index):string | - |  |
 | rowKey | Row's unique key, could be a string or function that returns a string | string\|Function(record, index):string | `key` |  |
-| rowSelection | Row selection [config](#rowSelection) | object | null |  |
+| rowSelection | Row selection [config](#rowselection) | object | null |  |
 | scroll | Whether the table can be scrollable, [config](#scroll) | object | - |  |
 | showHeader | Whether to show table header | boolean | `true` |  |
 | sortDirections | Supported sort way, could be `ascend`, `descend` | Array | \[`ascend`, `descend`] |  |
@@ -36,12 +36,14 @@
 | getPopupContainer | the render container of dropdowns in table | (triggerNode) => HTMLElement | `() => TableHtmlElement` |  |
 | headerCell | custom head cell by slot | v-slot:headerCell="{title, column}" | - |  |
 | bodyCell | custom body cell by slot | v-slot:bodyCell="{text, record, index, column}" | - |  |
-| customFilterDropdown | Customized filter overlay，need set `column.customFilterDropdown` | v-slot:customFilterDropdown="[FilterDropdownProps](#FilterDropdownProps)" | - |  |
+| customFilterDropdown | Customized filter overlay，need set `column.customFilterDropdown` | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
 | summaryFixed | fixed summmary content | boolean | - |  |
-| rowDragGhost | Customize the prompt content when dragging a row | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
+| rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
+| columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
+| columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -56,6 +58,7 @@
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |  |
 | resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
 | dragEndRow | Triggered when the dragged row ends | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
+| dragEndColumn | Triggered when the drag column ends | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 
 ### Method
 
@@ -108,7 +111,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | fixed | Set column to be fixed: `true`(same as left) `'left'` `'right'` | boolean\|string | `false` |  |
 | key | Unique key of this column, you can ignore this prop if you've set a unique `dataIndex` | string | - |  |
 | customRender | Renderer of the table cell. The return value should be a VNode, or an object for colSpan/rowSpan config | Function({text, record, index}) {} | - |  |
-| responsive | The list of breakpoints at which to display this column. Always visible if not set. | [Breakpoint](#Breakpoint)\[] | - |  |
+| responsive | The list of breakpoints at which to display this column. Always visible if not set. | [Breakpoint](#breakpoint)\[] | - |  |
 | sorter | Sort function for local sort, see [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)'s compareFunction. If you need sort buttons only, set to `true` | Function\|boolean | - |  |
 | sortOrder | Order of sorted values: `'ascend'` `'descend'` `false` | boolean\|string | - |  |
 | sortDirections | supported sort way, could be `'ascend'`, `'descend'` | Array | `['ascend', 'descend']` |  |
@@ -121,7 +124,8 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | customHeaderCell | Set props on per header cell | Function(column) | - |  |
 | onFilter | Callback executed when the confirm filter button is clicked, Use as a `filter` event when using template or jsx | Function | - |  |
 | onFilterDropdownVisibleChange | Callback executed when `filterDropdownVisible` is changed, Use as a `filterDropdownVisible` event when using template or jsx | function(visible) {} | - |  |
-| rowDrag | 是否允许拖拽, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
+| rowDrag | Add a drag handle to the current column, [more](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
+| drag | Whether the list header is allowed to drag, [more](/doc/dragable) | boolean | - | 2.1.1 |
 
 #### Breakpoint
 
@@ -187,7 +191,7 @@ export interface DragRowEventInfo {
   top: number;
   height: number;
   record: DefaultRecordType;
-  dir: typeof DOWN | typeof UP;
+  dir: 'down' | 'up';
   rowKey: Key;
   event: MouseEvent | Touch;
   column: ColumnType;
@@ -195,6 +199,30 @@ export interface DragRowEventInfo {
   nextTargetInfo: DragRowsHandleInfo | null;
   fromIndexs: number[]; // This is an indexed array to support the tree structure
   insertToRowKey: Key;
+}
+```
+
+### DragColumnEventInfo
+
+```ts
+export interface DragColumnEventInfo {
+  event: MouseEvent | Touch;
+  column: ColumnType;
+  targetColumn: ColumnType;
+  dir: 'left' | 'right';
+}
+```
+
+### ColumnDragGhostArg
+
+```ts
+export interface ColumnDragGhostArg<ColumnT> {
+  column: ColumnT;
+  icon: VNode;
+  allowed: boolean;
+  dragging: boolean;
+  event: MouseEvent | Touch;
+  targetColumn: ColumnT;
 }
 ```
 
@@ -277,7 +305,7 @@ Properties for row selection.
 | preserveSelectedRowKeys | Keep selection `key` even when it removed from `dataSource` | boolean | - |  |
 | hideDefaultSelections | Remove the default `Select All` and `Select Invert` selections | boolean | `false` |  |
 | selectedRowKeys | Controlled selected row keys | string\[] | \[] |  |
-| selections | Custom selection [config](#rowSelection), only displays default selections when set to `true` | object\[] \| boolean | - |  |
+| selections | Custom selection [config](#rowselection), only displays default selections when set to `true` | object\[] \| boolean | - |  |
 | type | `checkbox` or `radio` | `checkbox` \| `radio` | `checkbox` |  |
 | onChange | Callback executed when selected rows change | Function(selectedRowKeys, selectedRows) | - |  |
 | onSelect | Callback executed when select/deselect one row | Function(record, selected, selectedRows, nativeEvent) | - |  |
