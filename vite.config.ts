@@ -6,6 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import WindiCSS from 'vite-plugin-windicss';
 // import { getThemeVariables } from 'ant-design-vue/dist/theme';
 import { additionalData } from './themeConfig';
+import legacy from '@vitejs/plugin-legacy';
 
 /**
  * @type {import('vite').UserConfig}
@@ -38,6 +39,9 @@ export default {
     host: true,
   },
   plugins: [
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
     WindiCSS(),
     vueJsx({
       // options are passed on to @vue/babel-plugin-jsx
