@@ -27,7 +27,6 @@ Table with editable cells.
     :pagination="false"
     bordered
     :scroll="{ y: 200 }"
-    style="pointer-events: none"
   >
     <template #bodyCell="{ column, record }">
       <template v-if="column.dataIndex === 'operation'">

@@ -22,7 +22,6 @@ Table with editable rows.
     :pagination="false"
     bordered
     :scroll="{ y: 200 }"
-    style="pointer-events: none"
   >
     <template #bodyCell="{ column, text, record }">
       <template v-if="['name', 'age', 'address'].includes(column.dataIndex)">
