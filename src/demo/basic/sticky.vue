@@ -2,17 +2,17 @@
 ---
 order: 0
 title:
-  en-US: Fixed header and scroll bar with the page
-  zh-CN: 随页面滚动的固定表头和滚动条
+  en-US: Fixed header with the page
+  zh-CN: 随页面滚动的固定表头
 ---
 
 ## zh-CN
 
-对于长表格，需要滚动才能查看表头和滚动条，那么现在可以设置跟随页面固定表头和滚动条。
-
-表头吸顶和固定表头并不是一件事情，而且他们可以同时存在。
+对于长表格，需要滚动才能查看表头，那么现在可以设置跟随页面固定表头。
 
 设置 `sticky` 为 `true` 或通过 `{offsetHeader: number}` 指定距离。
+
+>  虚拟滚动需要一个容器高度来决定渲染条数，我们可以传递一个略大于屏幕高度的数值来达到跟随页面滚动的效果。
 
 >  注意：吸顶是使用的 `position: sticky` 实现，如果发现吸顶没有生效，请排查 table 父元素是否有元素设置了 `overflow`，具体原因请查看[规范](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
 
@@ -33,7 +33,7 @@ Set `sticky` to `true` or specify the distance with `{offsetHeader: number}`.
     :columns="columns"
     :data-source="dataSource"
     :sticky="{ offsetHeader: 64 }"
-    :scroll="{ y: 400 }"
+    :scroll="{ y: clientHeight }"
     :pagination="false"
   >
     <template #bodyCell="{ column }">
@@ -105,6 +105,7 @@ export default defineComponent({
     return {
       dataSource: ref(data),
       columns: ref(columns),
+      clientHeight: document.body.clientHeight,
     };
   },
 });
