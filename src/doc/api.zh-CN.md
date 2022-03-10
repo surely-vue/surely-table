@@ -4,6 +4,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
+| animateRows | 是否开启动画 | boolean | true |  |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
 | columns | 表格列的配置描述，具体项见[下表](#column) | array | - |  |
 | childrenColumnName | 指定树形结构的列名 | string | `children` |  |

@@ -91,6 +91,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
+| animateRows | use animate for row | boolean | true |  |
 | align | specify how content is aligned | 'left' \| 'right' \| 'center' | 'left' |  |
 | autoHeight | Whether to enable automatic row height | boolean | false |  |
 | ellipsis | ellipsize cell content. | boolean | false |  |
