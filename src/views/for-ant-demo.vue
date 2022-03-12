@@ -5,6 +5,7 @@
     :scroll="{ x: 1500, y: 400 }"
     :height="400"
     :pagination="false"
+    column-drag
   >
     <template #bodyCell="{ column }">
       <template v-if="column.key === 'operation'">
@@ -17,7 +18,7 @@
 import { defineComponent } from 'vue';
 
 const columns = [
-  { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
+  { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left', rowDrag: true },
   { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
   { title: 'Column 1', dataIndex: 'address', key: '1', width: 150 },
   { title: 'Column 2', dataIndex: 'address', key: '2', width: 150 },
