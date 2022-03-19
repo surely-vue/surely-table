@@ -10,6 +10,16 @@
 
 ---
 
+## 2.2.0
+
+`2022-03-19`
+
+- 🌟 优化表格初始化性能
+- 🌟 兼容 antdv 3.1 css var
+  - 主题色使用 `@surely-primary-color` 继承 `@primary-color`，避免和 antdv 冲突，更改 `@primary-color` 后，`@surely-primary-color` 默认同步更改，除非再次自定义了 `@surely-primary-color`
+  - `@surely-primary-color` 是一个 css var，可以方便自定义颜色
+- 🌟 新增 `rowHoverDelay` 用于优化表格行 hover 性能 [#17](https://github.com/surely-vue/table/issues/17)
+
 ## 2.1.1
 
 `2022-02-19`

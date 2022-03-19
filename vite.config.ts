@@ -4,8 +4,6 @@ import md from './plugin/md';
 import docs from './plugin/docs';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import WindiCSS from 'vite-plugin-windicss';
-// import { getThemeVariables } from 'ant-design-vue/dist/theme';
-import { additionalData } from './themeConfig';
 import legacy from '@vitejs/plugin-legacy';
 
 /**
@@ -58,10 +56,11 @@ export default {
   css: {
     preprocessorOptions: {
       less: {
-        modifyVars: {},
+        modifyVars: {
+          'root-entry-name': 'variable',
+        },
         javascriptEnabled: true,
         // includePaths: ["node_modules/"],
-        additionalData,
       },
     },
   },

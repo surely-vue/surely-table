@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -89,6 +89,7 @@
     "gulp-cssmin": "^0.2.0",
     "husky": "^4.3.8",
     "less": "^4.1.0",
+    "less-loader": "^10.2.0",
     "less-plugin-npm-import": "^2.1.0",
     "lint-staged": "^10.5.3",
     "lru-cache": "^6.0.0",
