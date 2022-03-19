@@ -44,6 +44,7 @@
 | rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |
+| rowHoverDelay | Table row hover delay for performance optimization | number | 50 | 2.2.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed

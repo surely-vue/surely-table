@@ -46,6 +46,7 @@
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
+| rowHoverDelay | 表格行 hover 延时，用于性能优化 | number | 50 | 2.2.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
