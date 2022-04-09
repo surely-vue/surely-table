@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
