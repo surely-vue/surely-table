@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -33,7 +33,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
     "@vitejs/plugin-legacy": "^1.7.1",
-    "ant-design-vue": "^3.1.0-0",
+    "ant-design-vue": "^3.2.0",
     "dayjs": "^1.10.7",
     "lodash-es": "^4.17.21",
     "resize-observer-polyfill": "^1.5.1",
@@ -116,7 +116,7 @@
     "tslib": "^2.2.0",
     "typescript": "~4.3.5",
     "umi-request": "^1.3.5",
-    "vite": "^2.0.0",
+    "vite": "^2.9.1",
     "vite-plugin-windicss": "^1.5.1",
     "vue-i18n": "^9.2.0-0",
     "vue-request": "^1.0.0-beta.7",
