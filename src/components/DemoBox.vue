@@ -9,7 +9,7 @@
       </div>
       <div class="code-box-description" v-html="docHtml"></div>
       <div class="code-box-actions">
-        <a-tooltip>
+        <a-tooltip :title="type === 'TS' ? 'Switch to JavaScript' : 'Switch to TypeScript'">
           <span
             class="code-expand-icon code-box-code-action"
             style="width: auto"
@@ -21,6 +21,7 @@
         <a-tooltip
           v-if="!blocked"
           :visible="copyTooltipVisible"
+          :title="t('app.demo.copy')"
           @visibleChange="onCopyTooltipVisibleChange"
         >
           <component
@@ -34,7 +35,7 @@
         <a-tooltip v-else :title="t('app.demo.copy')">
           <SnippetsOutlined class="code-box-code-copy code-box-code-action" />
         </a-tooltip>
-        <a-tooltip>
+        <a-tooltip :title="codeExpand ? 'Hide code' : 'Show code'">
           <span class="code-expand-icon code-box-code-action">
             <img
               alt="expand code"
