@@ -4,6 +4,7 @@
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
+| autoHeaderHeight | Whether the height of the header is automatic, after it is turned on, the header part will be loaded in full, and there is a certain performance loss | boolean | false | 2.3 |
 | bordered | Whether to show all table borders | boolean | `false` |  |
 | childrenColumnName | The column contains children to display | string | `children` |  |
 | columns | Columns of table [config](#column) | array | - |  |
@@ -120,7 +121,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | title | Title of this column | string | - |  |
 | minWidth | Drag the minimum width of the column, it will be affected by the automatic adjustment and distribution of the table width | number | 50 |  |
 | maxWidth | Drag the maximum width of the column, it will be affected by the automatic adjustment and distribution of the table width | number | - |  |
-| resizable | Whether the width can be adjusted by dragging, at this time width must be number type | boolean | - |  |
+| resizable | Whether the width can be adjusted by dragging, at this time width must be number type. Only support leaf node | boolean | - |  |
 | width | Width of this column | string\|number | - |  |
 | customCell | Set props on per cell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customHeaderCell | Set props on per header cell | Function(column) | - |  |

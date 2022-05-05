@@ -13,6 +13,7 @@
     <ajax />
     <scroll />
     <tooltip />
+    <autoHeaderHeightVue />
   </div>
 </template>
 <script lang="ts">
@@ -30,6 +31,7 @@ import heightVue from './height.vue';
 import ajax from './ajax.vue';
 import scroll from './scroll.vue';
 import tooltip from './tooltip.vue';
+import autoHeaderHeightVue from './auto-header-height.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -100,6 +102,11 @@ export default defineComponent({
       title: 'Tooltip 自定义提示',
       enTitle: 'Tooltip',
     },
+    {
+      id: 'auto-header-height',
+      title: '自动表头高度',
+      enTitle: 'Auto Header Height',
+    },
   ],
   components: {
     Sticky,
@@ -115,6 +122,7 @@ export default defineComponent({
     ajax,
     scroll,
     tooltip,
+    autoHeaderHeightVue,
   },
   setup() {
     return {};
