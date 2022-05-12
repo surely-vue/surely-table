@@ -5,6 +5,7 @@
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | animateRows | 是否开启动画 | boolean | true |  |
+| autoHeaderHeight | 是否自动表头高度，开启后会全量加载表头部分，有一定的性能损耗 | boolean | false | 2.3 |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
 | columns | 表格列的配置描述，具体项见[下表](#column) | array | - |  |
 | childrenColumnName | 指定树形结构的列名 | string | `children` |  |
@@ -122,7 +123,7 @@
 | width | 列宽度 | string\|number | - |  |
 | minWidth | 拖动列最小宽度，会受到表格自动调整分配宽度影响 | number | 50 |  |
 | maxWidth | 拖动列最大宽度，会受到表格自动调整分配宽度影响 | number | - |  |
-| resizable | 是否可拖动调整宽度，此时 width 必须是 number 类型 | boolean | - |  |
+| resizable | 是否可拖动调整宽度，此时 width 必须是 number 类型, 仅支持叶子结点 | boolean | - |  |
 | customCell | 设置单元格属性 | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customHeaderCell | 设置头部单元格属性 | Function(column) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数, 使用 template 或 jsx 时作为`filter`事件使用 | Function | - |  |
