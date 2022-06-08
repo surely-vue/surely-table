@@ -24,7 +24,12 @@ If these configurations still can’t satisfy you, please continue reading the d
 </docs>
 
 <template>
-  <s-table :columns="columns" :data-source="dataSource" :pagination="pagination" :height="400">
+  <s-table
+    v-model:pagination="pagination"
+    :columns="columns"
+    :data-source="dataSource"
+    :height="400"
+  >
     <template #bodyCell="{ column, text, record }">
       <template v-if="column.key === 'action'">
         <a-space size="middle">
