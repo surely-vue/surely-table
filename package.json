@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -37,7 +37,7 @@
     "dayjs": "^1.10.7",
     "lodash-es": "^4.17.21",
     "resize-observer-polyfill": "^1.5.1",
-    "vue": "^3.2.20"
+    "vue": "^3.2.34"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -61,7 +61,7 @@
     "@typescript-eslint/parser": "^4.13.0",
     "@vitejs/plugin-vue": "^1.0.5",
     "@vitejs/plugin-vue-jsx": "^1.1.5",
-    "@vue/compiler-sfc": "^3.2.20",
+    "@vue/compiler-sfc": "^3.2.34",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "ali-oss": "^6.13.2",
