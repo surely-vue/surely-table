@@ -2,17 +2,17 @@
 ---
 order: 0
 title:
-  zh-CN: 简单表格
-  en-US: Basic Table
+  zh-CN: 关闭动画
+  en-US: Close animate
 ---
 
 ## zh-CN
 
-最简单的用法。你只需要配置 `columns` `dataSource` 即可展示表格。组件默认开启了分页
+关闭动画可以到来更好的性能
 
 ## en-US
 
-The simplest usage.
+Turn off animations for better performance
 
 </docs>
 
@@ -22,6 +22,7 @@ The simplest usage.
     :scroll="{ y: 400 }"
     :pagination="false"
     :data-source="dataSource"
+    :animate-rows="false"
   ></s-table>
 </template>
 
