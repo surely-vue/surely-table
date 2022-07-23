@@ -60,8 +60,8 @@
 | expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |  |
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |  |
 | resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
-| dragEndRow | Triggered when the dragged row ends | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
-| dragEndColumn | Triggered when the drag column ends | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
+| rowDragEnd | Triggered when the dragged row ends | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
+| columnDragEnd | Triggered when the drag column ends | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 
 ### Method
 
