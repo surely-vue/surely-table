@@ -47,6 +47,7 @@
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |
 | rowHoverDelay | Table row hover delay for performance optimization | number | 50 | 2.2.0 |
 | xVirtual | Whether to scroll horizontally | boolean | - | 2.4.1 |
+| ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.3 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed

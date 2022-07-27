@@ -37,7 +37,7 @@
 | rowExpandable | 设置是否允许行展开 | (record) => boolean | - |  |
 | customRow | 设置行属性 | Function(record, index) | - |  |
 | headerCell | 个性化头部单元格 | v-slot:headerCell="{title, column}" | - |  |
-| bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column}" | - |  |
+| bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column, key}" | - |  |
 | customCell | 设置单元格属性, column 如配置了 `customCell`, 优先使用 column.customCell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
@@ -49,6 +49,7 @@
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
 | rowHoverDelay | 表格行 hover 延时，用于性能优化 | number | 50 | 2.2.0 |
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
+| ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.3 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
