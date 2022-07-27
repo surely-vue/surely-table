@@ -3,7 +3,7 @@
 ### Table
 
 | Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | autoHeaderHeight | Whether the height of the header is automatic, after it is turned on, the header part will be loaded in full, and there is a certain performance loss | boolean | false | 2.3 |
 | bordered | Whether to show all table borders | boolean | `false` |  |
 | childrenColumnName | The column contains children to display | string | `children` |  |
@@ -49,6 +49,7 @@
 | xVirtual | Whether to scroll horizontally | boolean | - | 2.4.1 |
 | ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.4 |
 | showHeaderScrollbar | show header scrollbar | boolean | false | 2.4.4 |
+| rowHeight | Configure the row height. By default, the component will automatically adjust the height according to size. If you need to customize the height, you can use this property | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |  |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed

@@ -3,7 +3,7 @@
 ### Table
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | animateRows | 是否开启动画 | boolean | true |  |
 | autoHeaderHeight | 是否自动表头高度，开启后会全量加载表头部分，有一定的性能损耗 | boolean | false | 2.3 |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
@@ -51,6 +51,7 @@
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
 | showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
+| rowHeight | 配置行高，组件内部默认会根据 size 自动调整高度，如果需要自定义高度可使用该属性 | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |  |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
