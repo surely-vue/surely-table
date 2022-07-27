@@ -49,7 +49,8 @@
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
 | rowHoverDelay | 表格行 hover 延时，用于性能优化 | number | 50 | 2.2.0 |
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
-| ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.3 |
+| ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
+| showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定

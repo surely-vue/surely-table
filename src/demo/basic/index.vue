@@ -14,6 +14,7 @@
     <scroll />
     <tooltip />
     <autoHeaderHeightVue />
+    <headerScrollbarVue />
   </div>
 </template>
 <script lang="ts">
@@ -32,6 +33,7 @@ import ajax from './ajax.vue';
 import scroll from './scroll.vue';
 import tooltip from './tooltip.vue';
 import autoHeaderHeightVue from './auto-header-height.vue';
+import headerScrollbarVue from './header-scrollbar.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -107,6 +109,11 @@ export default defineComponent({
       title: '自动表头高度',
       enTitle: 'Auto Header Height',
     },
+    {
+      id: 'header-scrollbar',
+      title: '顶部滚动条',
+      enTitle: 'Show Header Scrollbar',
+    },
   ],
   components: {
     Sticky,
@@ -123,6 +130,7 @@ export default defineComponent({
     scroll,
     tooltip,
     autoHeaderHeightVue,
+    headerScrollbarVue,
   },
   setup() {
     return {};
