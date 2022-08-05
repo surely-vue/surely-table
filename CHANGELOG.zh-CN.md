@@ -10,6 +10,16 @@
 
 ---
 
+## 2.4.6
+
+`2022-08-05`
+
+- 🌟 `summaryFixed` 支持顶部吸顶
+- 🌟 `rowSelection` columnTitle 支持函数
+- 🌟 `selection` text 支持函数
+- 🐞 修复滚动宽度自适应问题 [#67](https://github.com/surely-vue/table/issues/67)
+- 🐞 修复 `rowSelection` columnTitle 不生效问题 [#64](https://github.com/surely-vue/table/issues/64)
+
 ## 2.4.5
 
 `2022-07-27`
