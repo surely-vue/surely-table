@@ -41,7 +41,7 @@
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
-| summaryFixed | fixed summmary content | boolean | - |  |
+| summaryFixed | fixed summmary content | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |

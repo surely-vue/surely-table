@@ -43,7 +43,7 @@
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | 自定义空数据时的显示内容 | v-slot:emptyText | - |  |
 | summary | 总结栏 | v-slot:summary | - |  |
-| summaryFixed | 固定总结栏 | boolean | - |  |
+| summaryFixed | 固定总结栏 | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
