@@ -303,7 +303,7 @@ export interface ColumnDragGhostArg<ColumnT> {
 | --- | --- | --- | --- | --- |
 | checkStrictly | checkable 状态下节点选择完全受控（父子数据选中状态不再关联） | boolean | true |  |
 | columnWidth | 自定义列表选择框宽度 | string\|number | - |  |
-| columnTitle | 自定义列表选择框标题 | string\|VNode | - |  |
+| columnTitle | 自定义列表选择框标题 | string\|VNode\| () => VNode | - | 2.4.6 |
 | fixed | 把选择框列固定在左边 | boolean | - |  |
 | allowCancelRadio | 是否允许取消单选 | boolean | - | 2.1.0 |
 | getCheckboxProps | 选择框的默认属性配置 | Function(record) | - |  |

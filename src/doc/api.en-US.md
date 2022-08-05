@@ -304,7 +304,7 @@ Properties for row selection.
 | --- | --- | --- | --- | --- |
 | checkStrictly | Check table row precisely; parent row and children rows are not associated | boolean | true |  |
 | columnWidth | Set the width of the selection column | string\|number | - |  |
-| columnTitle | Set the title of the selection column | string\|VNode | - |  |
+| columnTitle | Set the title of the selection column | string\|VNode\| () => VNode | - | 2.4.6 |
 | fixed | Fixed selection column on the left | boolean | - |  |
 | allowCancelRadio | Whether to allow cancellation of radio selection | boolean | - | 2.1.0 |
 | getCheckboxProps | Get Checkbox or Radio props | Function(record) | - |  |
