@@ -332,11 +332,11 @@ Properties for row selection.
 
 Custom selection config
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| key | Unique key of this selection | string | - |
-| text | Display text of this selection | string\|VNode | - |
-| onSelect | Callback executed when this selection is clicked | Function(changeableRowKeys) | - |
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| key | Unique key of this selection | string | - |  |
+| text | Display text of this selection | string\|VNode \| ()=> VNode | - |  |
+| onSelect | Callback executed when this selection is clicked | Function(changeableRowKeys) | - |  |
 
 ### FilterDropdownProps
 

@@ -331,11 +331,11 @@ export interface ColumnDragGhostArg<ColumnT> {
 
 自定义选择配置项
 
-| 参数     | 说明                     | 类型                        | 默认值 |
-| -------- | ------------------------ | --------------------------- | ------ |
-| key      | Vue 需要的 key，建议设置 | string                      | -      |
-| text     | 选择项显示的文字         | string\|VNode               | -      |
-| onSelect | 选择项点击回调           | Function(changeableRowKeys) | -      |
+| 参数     | 说明                     | 类型                                 | 默认值 | 版本 |
+| -------- | ------------------------ | ------------------------------------ | ------ | ---- |
+| key      | Vue 需要的 key，建议设置 | string                               | -      |      |
+| text     | 选择项显示的文字         | string\|VNode \| ()=> VNode (2.4.6+) | -      |      |
+| onSelect | 选择项点击回调           | Function(changeableRowKeys)          | -      |      |
 
 ### FilterDropdownProps
 
