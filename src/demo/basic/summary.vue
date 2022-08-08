@@ -14,6 +14,8 @@ title:
 
 你可以通过在 `s-table-summary-cell` 上设置 `index` 和 `colSpan`，来表示展示位置和合并列数。
 
+注意 index 指的是所在列的位置，当有展开列或选择列时，会影响 index 的数据。
+
 你可以通过插槽 default 获取组件内部自动计算的和，当然你也可以设置任意内容。
 
 ## en-US
