@@ -30,7 +30,7 @@
 | sortDirections | Supported sort way, could be `ascend`, `descend` | Array | \[`ascend`, `descend`] |  |
 | showSorterTooltip | The header show next sorter direction tooltip. It will be set as the property of Tooltip if its type is object | boolean \| [Tooltip props](#tooltip) | true |  |
 | size | Size of table | `default` \| `middle` \| `small` \| `large` | `default` |
-| sticky | Set sticky header and scroll bar | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}` | - |  |
+| sticky | Set sticky header and scroll bar | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement, topSummary?: boolean}` | - | topSummary 2.4.7 |
 | title | Table title renderer | Function(currentPageData)\| v-slot:title="currentPageData" |  |  |
 | customRow | Set props on per row | Function(record, index) | - |  |
 | customCell | Set props on per cell, column.customCell will override this | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |

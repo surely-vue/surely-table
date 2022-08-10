@@ -31,7 +31,7 @@
 | showSorterTooltip | 表头是否显示下一次排序的 tooltip 提示。当参数类型为对象时，将被设置为 Tooltip 的属性 | boolean \| [Tooltip props](#tooltip) | true |  |
 | size | 表格大小 | default \| middle \| small | default |  |
 | sortDirections | 支持的排序方式，取值为 `ascend` `descend` | Array | \[`ascend`, `descend`] |  |
-| sticky | 设置粘性头部和滚动条 | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}` | - |  |
+| sticky | 设置粘性头部和滚动条 | boolean \| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement, topSummary?: boolean }` | - | topSummary 2.4.7 |
 | title | 表格标题 | Function(currentPageData)\|v-slot:title="currentPageData" |  |  |
 | indentSize | 展示树形数据时，每层缩进的宽度，以 px 为单位 | number | 15 |  |
 | rowExpandable | 设置是否允许行展开 | (record) => boolean | - |  |
