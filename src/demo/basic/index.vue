@@ -114,6 +114,11 @@ export default defineComponent({
       title: '顶部滚动条',
       enTitle: 'Show Header Scrollbar',
     },
+    {
+      id: 'contextmenu',
+      title: '右键菜单',
+      enTitle: 'Contextmenu',
+    },
   ],
   components: {
     Sticky,
