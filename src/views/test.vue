@@ -1,141 +1,155 @@
 <template>
-  <s-table :columns="columns" :data-source="data" :pagination="false" bordered>
-    <template #summary>
-      <s-table-summary-row>
-        <s-table-summary-cell :index="0">Total</s-table-summary-cell>
-        <s-table-summary-cell :index="1">
-          <a-typography-text type="danger">{{ totals.totalBorrow }}</a-typography-text>
-        </s-table-summary-cell>
-        <s-table-summary-cell :index="2">
-          <a-typography-text>{{ totals.totalRepayment }}</a-typography-text>
-        </s-table-summary-cell>
-      </s-table-summary-row>
-      <s-table-summary-row>
-        <s-table-summary-cell :index="0">Balance</s-table-summary-cell>
-        <s-table-summary-cell :index="1" :col-span="2">
-          <a-typography-text type="danger">
-            {{ totals.totalBorrow - totals.totalRepayment }}
-          </a-typography-text>
-        </s-table-summary-cell>
-      </s-table-summary-row>
-    </template>
-  </s-table>
-  <br />
-  <!-- <s-table
-    :columns="fixedColumns"
-    :data-source="fixedData"
-    :pagination="false"
-    :scroll="{ x: 2000, y: 500 }"
-    bordered
-    summary-fixed
-  >
-    <template #summary>
-      <s-table-summary-row>
-        <s-table-summary-cell :index="0">Summary</s-table-summary-cell>
-        <s-table-summary-cell :index="1">This is a summary content</s-table-summary-cell>
-      </s-table-summary-row>
-    </template>
-  </s-table> -->
+  <div style="padding: 50px">
+    <s-table :columns="columns" :data-source="dataSource" :scroll="{ x: 2000 }" :pagination="false">
+      <template #bodyCell="{ column }">
+        <template v-if="column.key === 'operation'">
+          <a>Action</a>
+        </template>
+      </template>
+      <template #tooltipTitle="{ value }">
+        <HomeTwoTone />
+        {{ value }}
+      </template>
+      <template #contextmenuPopup="args">
+        <ul class="popup">
+          <li
+            class="popup-item"
+            :class="args.column.key === 'operation' && 'disabled'"
+            @click="args.column.key === 'operation' && copyClick(args, 'cell')"
+          >
+            <CopyOutlined />
+            复制
+          </li>
+          <li class="popup-item" @click="copyClick(args, 'record')">
+            <CopyOutlined />
+            复制整行
+          </li>
+          <li
+            class="popup-item"
+            :class="args.column.key === 'operation' && 'disabled'"
+            @click="args.column.key === 'operation' && copyClick(args, 'column')"
+          >
+            <CopyOutlined />
+            复制整列
+          </li>
+        </ul>
+      </template>
+    </s-table>
+  </div>
 </template>
-
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import type { STableProps, ContextmenuPopupArg } from '@surely-vue/table';
+import { defineComponent, ref } from 'vue';
+import { HomeTwoTone, CopyOutlined } from '@ant-design/icons-vue';
+import { message } from 'ant-design-vue';
+
+interface DataItem {
+  key: number;
+  name: string;
+  age: number;
+  address: string;
+}
 
 export default defineComponent({
+  components: { HomeTwoTone, CopyOutlined },
   setup() {
-    const columns = ref([
+    const columns: STableProps['columns'] = [
       {
-        title: 'Name',
+        title: 'Full Name',
         dataIndex: 'name',
+        fixed: 'left',
+        width: 150,
       },
       {
-        title: 'Borrow',
-        dataIndex: 'borrow',
+        title: 'Age',
+        dataIndex: 'age',
+        fixed: 'left',
+        width: 100,
       },
-      {
-        title: 'Repayment',
-        dataIndex: 'repayment',
-      },
-    ]);
 
-    const data = ref([
       {
-        key: '1',
-        name: 'John Brown',
-        borrow: 10,
-        repayment: 33,
+        title: 'Column 1',
+        dataIndex: 'address',
+        ellipsis: { showTitle: false },
       },
       {
-        key: '2',
-        name: 'Jim Green',
-        borrow: 100,
-        repayment: 0,
+        title: 'Column 2',
+        dataIndex: 'address',
       },
       {
-        key: '3',
-        name: 'Joe Black',
-        borrow: 10,
-        repayment: 10,
+        title: 'Column 3',
+        dataIndex: 'address',
       },
       {
-        key: '4',
-        name: 'Jim Red',
-        borrow: 75,
-        repayment: 45,
+        title: 'Column 4',
+        dataIndex: 'address',
       },
-    ]);
-
-    const fixedColumns = ref([
+      { title: 'Column 5', dataIndex: 'address' },
       {
-        title: 'Name',
-        dataIndex: 'name',
-        fixed: true,
-        width: 500,
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
       },
-      {
-        title: 'Description',
-        dataIndex: 'description',
-        width: 1000,
-      },
-    ]);
-
-    const fixedData = ref<{ key: number; name: string; description: string }[]>([]);
-    for (let i = 0; i < 20; i += 1) {
-      fixedData.value.push({
+    ];
+    const data: DataItem[] = [];
+    for (let i = 0; i < 10; i++) {
+      data.push({
         key: i,
-        name: ['Light', 'Bamboo', 'Little'][i % 3],
-        description: 'Everything that has a beginning, has an end.',
+        name: `Edrward ${i}`,
+        age: i + 1,
+        address: `London Park no. ${i}`,
       });
     }
-
-    const totals = computed(() => {
-      let totalBorrow = 0;
-      let totalRepayment = 0;
-
-      data.value.forEach(({ borrow, repayment }) => {
-        totalBorrow += borrow;
-        totalRepayment += repayment;
-      });
-      return { totalBorrow, totalRepayment };
-    });
+    const copyValue = val => {
+      console.log('copyValue', val);
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      input.setAttribute('value', val);
+      document.body.appendChild(input);
+      input.select();
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        message.info('复制成功');
+      }
+      document.body.removeChild(input);
+    };
+    const copyClick = (args: ContextmenuPopupArg<any, any>, type: 'cell' | 'column' | 'record') => {
+      if (type === 'cell') {
+        copyValue(args.text);
+      } else if (type === 'column') {
+        const { dataIndex } = args.column;
+        copyValue(data.map(d => d[dataIndex]).join('\r\n'));
+      } else {
+        const record = args.record;
+        copyValue(
+          columns
+            .map((c: any) => (c.dataIndex ? record[c.dataIndex] : ''))
+            .filter(c => !!c)
+            .join(' '),
+        );
+      }
+    };
     return {
-      data,
-      columns,
-      totals,
-      fixedColumns,
-      fixedData,
+      dataSource: ref(data),
+      columns: ref(columns),
+      copyClick,
     };
   },
 });
 </script>
-
-<style>
-#components-table-demo-summary tfoot th,
-#components-table-demo-summary tfoot td {
-  background: #fafafa;
-}
-[data-theme='dark'] #components-table-demo-summary tfoot th,
-[data-theme='dark'] #components-table-demo-summary tfoot td {
-  background: #1d1d1d;
+<style lang="less" scope>
+.popup {
+  .popup-item {
+    cursor: pointer;
+    padding: 8px;
+    &:hover {
+      background-color: #fafafa;
+    }
+    &.disabled {
+      color: #00000040;
+      cursor: not-allowed;
+    }
+  }
 }
 </style>

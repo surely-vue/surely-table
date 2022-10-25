@@ -10,13 +10,13 @@
   
   设置 contextmenuPopup 插槽，启用右键菜单功能，我们提供了足够多的参数供你自定义各种右键菜单项。
   
-  版本：2.4.12+
+  版本：2.5.0+
 
   ## en-US
   
   Set the contextmenuPopup slot, enable the right-click menu function, we provide enough parameters for you to customize various right-click menu items.
   
-  Version：2.4.12+
+  Version：2.5.0+
   </docs>
 <template>
   <div style="padding: 50px">

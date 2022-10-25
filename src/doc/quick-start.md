@@ -71,7 +71,7 @@ setLicenseKey('fdafefdaffklfjajuiefhrdbfdnsafjkasyegwfpqfldfd45f48ew468fr5ds');
 
 对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏。
 
-### 暗黑模式（2.4.12+）
+### 暗黑模式（2.5.0+）
 
 我们提供了内置的暗黑模式 less 文件，未来我们会完全升级成 css variable 方案。
 

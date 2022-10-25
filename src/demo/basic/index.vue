@@ -15,6 +15,7 @@
     <tooltip />
     <autoHeaderHeightVue />
     <headerScrollbarVue />
+    <ContextmenuVue />
   </div>
 </template>
 <script lang="ts">
@@ -34,6 +35,7 @@ import scroll from './scroll.vue';
 import tooltip from './tooltip.vue';
 import autoHeaderHeightVue from './auto-header-height.vue';
 import headerScrollbarVue from './header-scrollbar.vue';
+import ContextmenuVue from './contextmenu.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -136,6 +138,7 @@ export default defineComponent({
     tooltip,
     autoHeaderHeightVue,
     headerScrollbarVue,
+    ContextmenuVue,
   },
   setup() {
     return {};
