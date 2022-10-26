@@ -17,6 +17,8 @@
           <br />
           本表格数据非真实数据，仅做表格示例展示使用；
           <br />
+          右键可以快速复制行列，或自定义其它功能；
+          <br />
           姓名、年龄列宽可以拖动调整哦，点击年龄排序，体验动画效果，然后快速拖动到最右侧，快速输入编辑吧；
           <br />
           更多功能点击右上角 Doc 查看文档！！！
@@ -61,10 +63,34 @@
         <template v-else-if="column.dataIndex === 'id'">
           <span class="custom-cell-id">
             {{ record.id }}
-            <CopyOutlined @click="copyClick(record.id)" />
+            <CopyOutlined @click="copyValue(record.id)" />
           </span>
         </template>
         <template v-else-if="column.dataIndex.indexOf('other') >= 0">--</template>
+      </template>
+      <template #contextmenuPopup="args">
+        <ul class="popup">
+          <li
+            class="popup-item"
+            :class="!args.column.dataIndex && 'disabled'"
+            @click="copyClick(args, 'cell')"
+          >
+            <CopyOutlined />
+            复制
+          </li>
+          <li class="popup-item" @click="copyClick(args, 'record')">
+            <CopyOutlined />
+            复制整行
+          </li>
+          <li
+            class="popup-item"
+            :class="!args.column.dataIndex && 'disabled'"
+            @click="copyClick(args, 'column')"
+          >
+            <CopyOutlined />
+            复制整列
+          </li>
+        </ul>
       </template>
     </s-table>
     <a-modal v-model:visible="visible" title="你可以展示更多详情" @ok="visible = false">
@@ -82,6 +108,7 @@ import { CopyOutlined } from '@ant-design/icons-vue';
 import { random } from 'lodash-es';
 import { message } from 'ant-design-vue';
 import { useInjectGlobalConfig } from '../../context';
+import type { ContextmenuPopupArg } from '@surely-vue/table';
 
 export default defineComponent({
   name: 'App',
@@ -352,6 +379,38 @@ export default defineComponent({
     const handleResize = (w, col) => {
       col.width = w;
     };
+
+    const copyValue = val => {
+      console.log('copyValue', val);
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      input.setAttribute('value', val);
+      document.body.appendChild(input);
+      input.select();
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        message.info('复制成功');
+      }
+      document.body.removeChild(input);
+    };
+    const copyClick = (args: ContextmenuPopupArg<any, any>, type: 'cell' | 'column' | 'record') => {
+      if (type === 'cell') {
+        if (args.column.key === 'operation') return;
+        copyValue(args.text);
+      } else if (type === 'column') {
+        if (args.column.key === 'operation') return;
+        const { dataIndex } = args.column;
+        copyValue(data.map(d => d[dataIndex]).join('\r\n'));
+      } else {
+        const record = args.record;
+        copyValue(
+          columns
+            .map((c: any) => (c.dataIndex ? record[c.dataIndex] : ''))
+            .filter(c => !!c)
+            .join(' '),
+        );
+      }
+    };
     return {
       handleResize,
       visible,
@@ -391,18 +450,8 @@ export default defineComponent({
         }
         return {};
       },
-      copyClick: val => {
-        const input = document.createElement('input');
-        input.setAttribute('readonly', 'readonly');
-        input.setAttribute('value', val);
-        document.body.appendChild(input);
-        input.select();
-        if (document.execCommand('copy')) {
-          document.execCommand('copy');
-          message.info('复制成功');
-        }
-        document.body.removeChild(input);
-      },
+      copyValue,
+      copyClick,
     };
   },
 });
@@ -434,6 +483,20 @@ export default defineComponent({
 .custom-cell-id {
   .anticon {
     color: #1890ff;
+  }
+}
+.popup {
+  width: 120px;
+  .popup-item {
+    cursor: pointer;
+    padding: 8px;
+    &:hover {
+      background-color: #fafafa;
+    }
+    &.disabled {
+      color: #00000040;
+      cursor: not-allowed;
+    }
   }
 }
 </style>
