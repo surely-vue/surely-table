@@ -35,7 +35,7 @@ Version：2.5.0+
           <li
             class="popup-item"
             :class="args.column.key === 'operation' && 'disabled'"
-            @click="args.column.key === 'operation' && copyClick(args, 'cell')"
+            @click="copyClick(args, 'cell')"
           >
             <CopyOutlined />
             复制
@@ -47,7 +47,7 @@ Version：2.5.0+
           <li
             class="popup-item"
             :class="args.column.key === 'operation' && 'disabled'"
-            @click="args.column.key === 'operation' && copyClick(args, 'column')"
+            @click="copyClick(args, 'column')"
           >
             <CopyOutlined />
             复制整列
@@ -136,8 +136,10 @@ export default defineComponent({
     };
     const copyClick = (args: ContextmenuPopupArg<any, any>, type: 'cell' | 'column' | 'record') => {
       if (type === 'cell') {
+        if (args.column.key === 'operation') return;
         copyValue(args.text);
       } else if (type === 'column') {
+        if (args.column.key === 'operation') return;
         const { dataIndex } = args.column;
         copyValue(data.map(d => d[dataIndex]).join('\r\n'));
       } else {
@@ -160,6 +162,7 @@ export default defineComponent({
 </script>
 <style lang="less" scope>
 .popup {
+  width: 120px;
   .popup-item {
     cursor: pointer;
     padding: 8px;
