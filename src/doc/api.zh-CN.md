@@ -3,7 +3,7 @@
 ### Table
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | animateRows | 是否开启动画 | boolean | true |  |
 | autoHeaderHeight | 是否自动表头高度，开启后会全量加载表头部分，有一定的性能损耗 | boolean | false | 2.3 |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
@@ -45,13 +45,13 @@
 | summary | 总结栏 | v-slot:summary | - |  |
 | summaryFixed | 固定总结栏 | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
-| columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
+| columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
 | rowHoverDelay | 表格行 hover 延时，用于性能优化 | number | 50 | 2.2.0 |
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
 | showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
-| rowHeight | 配置行高，组件内部默认会根据 size 自动调整高度，如果需要自定义高度可使用该属性 | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |  |
+| rowHeight | 配置行高，组件内部默认会根据 size 自动调整高度，如果需要自定义高度可使用该属性 | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -132,8 +132,8 @@
 | customHeaderCell | 设置头部单元格属性 | Function(column) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数, 使用 template 或 jsx 时作为`filter`事件使用 | Function | - |  |
 | onFilterDropdownVisibleChange | 自定义筛选菜单可见变化时调用，使用 template 或 jsx 时作为`filterDropdownVisibleChange`事件使用 | function(visible) {} | - |  |
-| rowDrag | 当前列添加拖拽手柄, [详见](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
-| drag | 列表头是否允许拖拽, [详见](/doc/dragable) | boolean | - | 2.1.1 |
+| rowDrag | 当前列添加拖拽手柄, [详见](/doc/dragable/) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
+| drag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
 
 #### Breakpoint
 
