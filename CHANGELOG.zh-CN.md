@@ -10,6 +10,10 @@
 
 ---
 
+## 2.5.2
+
+- 🐞 修复 `rowExpandable` 无法禁用问题 [#99](https://github.com/surely-vue/table/issues/99)
+
 ## 2.5.1
 
 - 🐞 修复 `vue@3.2.45` 下，控制台 warning 问题 [#95](https://github.com/surely-vue/table/issues/95)
