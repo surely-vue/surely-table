@@ -1,155 +1,61 @@
 <template>
-  <div style="padding: 50px">
-    <s-table :columns="columns" :data-source="dataSource" :scroll="{ x: 2000 }" :pagination="false">
-      <template #bodyCell="{ column }">
-        <template v-if="column.key === 'operation'">
-          <a>Action</a>
-        </template>
-      </template>
-      <template #tooltipTitle="{ value }">
-        <HomeTwoTone />
-        {{ value }}
-      </template>
-      <template #contextmenuPopup="args">
-        <ul class="popup">
-          <li
-            class="popup-item"
-            :class="args.column.key === 'operation' && 'disabled'"
-            @click="args.column.key === 'operation' && copyClick(args, 'cell')"
-          >
-            <CopyOutlined />
-            复制
-          </li>
-          <li class="popup-item" @click="copyClick(args, 'record')">
-            <CopyOutlined />
-            复制整行
-          </li>
-          <li
-            class="popup-item"
-            :class="args.column.key === 'operation' && 'disabled'"
-            @click="args.column.key === 'operation' && copyClick(args, 'column')"
-          >
-            <CopyOutlined />
-            复制整列
-          </li>
-        </ul>
+  <div>
+    <s-table
+      :columns="columns"
+      :data-source="data"
+      :row-selection="{ selectedRowKeys, fixed: 'right' }"
+    >
+      <template #expandedRowRender>
+        <em>111</em>
       </template>
     </s-table>
   </div>
 </template>
-<script lang="ts">
-import type { STableProps, ContextmenuPopupArg } from '@surely-vue/table';
+<script>
 import { defineComponent, ref } from 'vue';
-import { HomeTwoTone, CopyOutlined } from '@ant-design/icons-vue';
-import { message } from 'ant-design-vue';
-
-interface DataItem {
-  key: number;
-  name: string;
-  age: number;
-  address: string;
-}
 
 export default defineComponent({
-  components: { HomeTwoTone, CopyOutlined },
   setup() {
-    const columns: STableProps['columns'] = [
+    const selectedRowKeys = ref([]);
+    const columns = [
       {
-        title: 'Full Name',
+        title: 'Name',
         dataIndex: 'name',
-        fixed: 'left',
-        width: 150,
+        key: 'name',
       },
       {
         title: 'Age',
         dataIndex: 'age',
-        fixed: 'left',
-        width: 100,
+        key: 'age',
+        width: '12%',
       },
-
       {
-        title: 'Column 1',
+        title: 'Address',
         dataIndex: 'address',
-        ellipsis: { showTitle: false },
-      },
-      {
-        title: 'Column 2',
-        dataIndex: 'address',
-      },
-      {
-        title: 'Column 3',
-        dataIndex: 'address',
-      },
-      {
-        title: 'Column 4',
-        dataIndex: 'address',
-      },
-      { title: 'Column 5', dataIndex: 'address' },
-      {
-        title: 'Action',
-        key: 'operation',
-        fixed: 'right',
-        width: 100,
+        width: '30%',
+        key: 'address',
       },
     ];
-    const data: DataItem[] = [];
-    for (let i = 0; i < 10; i++) {
-      data.push({
-        key: i,
-        name: `Edrward ${i}`,
-        age: i + 1,
-        address: `London Park no. ${i}`,
-      });
-    }
-    const copyValue = val => {
-      console.log('copyValue', val);
-      const input = document.createElement('input');
-      input.setAttribute('readonly', 'readonly');
-      input.setAttribute('value', val);
-      document.body.appendChild(input);
-      input.select();
-      if (document.execCommand('copy')) {
-        document.execCommand('copy');
-        message.info('复制成功');
-      }
-      document.body.removeChild(input);
-    };
-    const copyClick = (args: ContextmenuPopupArg<any, any>, type: 'cell' | 'column' | 'record') => {
-      if (type === 'cell') {
-        copyValue(args.text);
-      } else if (type === 'column') {
-        const { dataIndex } = args.column;
-        copyValue(data.map(d => d[dataIndex]).join('\r\n'));
-      } else {
-        const record = args.record;
-        copyValue(
-          columns
-            .map((c: any) => (c.dataIndex ? record[c.dataIndex] : ''))
-            .filter(c => !!c)
-            .join(' '),
-        );
-      }
-    };
+    const originData = [
+      {
+        key: 'a',
+        name: 'John Brown sr.',
+        age: 60,
+        address: 'New York No. 1 Lake Park',
+      },
+      {
+        key: 'b',
+        name: 'Joe Black',
+        age: 32,
+        address: 'Sidney No. 1 Lake Park',
+      },
+    ];
+    const data = ref(originData);
     return {
-      dataSource: ref(data),
-      columns: ref(columns),
-      copyClick,
+      data,
+      columns,
+      selectedRowKeys,
     };
   },
 });
 </script>
-<style lang="less" scope>
-.popup {
-  .popup-item {
-    cursor: pointer;
-    padding: 8px;
-    &:hover {
-      background-color: #fafafa;
-    }
-    &.disabled {
-      color: #00000040;
-      cursor: not-allowed;
-    }
-  }
-}
-</style>
