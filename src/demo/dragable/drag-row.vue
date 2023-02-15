@@ -54,6 +54,7 @@ export default defineComponent({
         width: 150,
         resizable: true,
         rowDrag: true,
+        key: 'name',
       },
       {
         title: 'Age',
@@ -61,6 +62,7 @@ export default defineComponent({
         fixed: 'left',
         width: 100,
         resizable: true,
+        key: 'age',
       },
       {
         title: 'Column 1（minWidth： 100， maxWidth： 500）',

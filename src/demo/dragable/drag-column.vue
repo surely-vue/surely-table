@@ -56,11 +56,13 @@ export default defineComponent({
         title: 'Full Name',
         dataIndex: 'name',
         width: 150,
+        key: 'name',
       },
       {
         title: 'Age',
         dataIndex: 'age',
         width: 100,
+        key: 'age',
       },
       {
         title: 'Column 1',
