@@ -410,6 +410,7 @@ export default defineComponent({
             .join(' '),
         );
       }
+      args.hidePopup();
     };
     return {
       handleResize,
