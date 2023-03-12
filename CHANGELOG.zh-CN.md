@@ -10,6 +10,11 @@
 
 ---
 
+## 3.0.1
+
+- 🌟 右键菜单新增 主动隐藏方法 `hidePopup` [#116](https://github.com/surely-vue/table/issues/116)
+- 🐞 修复浏览器缩放时，滚动条异常问题 [#113](https://github.com/surely-vue/table/issues/113)
+
 ## 3.0.0
 
 - 🌟 性能优化，避免 hover 时触发组件 render

@@ -151,6 +151,8 @@ export default defineComponent({
             .join(' '),
         );
       }
+      // 3.0.1 新增
+      args.hidePopup();
     };
     return {
       dataSource: ref(data),
