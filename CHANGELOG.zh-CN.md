@@ -10,6 +10,15 @@
 
 ---
 
+## 3.0.3
+
+- 🌟 hover 时添加类名 [#124](https://github.com/surely-vue/table/issues/124)
+- 🐞 修复 expandIcon 插槽失效问题[#123](https://github.com/surely-vue/table/issues/123)
+
+## 3.0.2
+
+- 🐞 修复 expand、expandedRowsChange 事件不触发问题 [#113](https://github.com/surely-vue/table/issues/120)
+
 ## 3.0.1
 
 - 🌟 右键菜单新增 主动隐藏方法 `hidePopup` [#116](https://github.com/surely-vue/table/issues/116)
