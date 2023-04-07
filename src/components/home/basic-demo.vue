@@ -93,7 +93,7 @@
         </ul>
       </template>
     </s-table>
-    <a-modal v-model:visible="visible" title="你可以展示更多详情" @ok="visible = false">
+    <a-modal v-model:open="visible" title="你可以展示更多详情" @ok="visible = false">
       <p>弹窗似乎小了点</p>
       <p>但没关系，</p>
       <p>你可以自定义调整到任何你想要的大小</p>

@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import 'virtual:windi.css';
-import 'ant-design-vue/dist/antd.less';
-import '@surely-vue/table/style';
+// import '@surely-vue/table/style';
 import './index.less';
 import { createApp, version } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -38,5 +37,3 @@ app.use(
 );
 app.use(SurelyTable).mount('#app');
 app.component('DemoBox', DemoBox);
-
-app.config.globalProperties.$i18n = i18n;

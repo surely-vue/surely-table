@@ -36,7 +36,7 @@ Table with editable cells.
       </template>
     </template>
   </s-table>
-  <a-modal v-model:visible="visible" title="Edit" @ok="onSubmit">
+  <a-modal v-model:open="visible" title="Edit" @ok="onSubmit">
     <a-form
       :key="formState.key"
       ref="formRef"
