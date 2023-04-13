@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import 'virtual:windi.css';
-// import '@surely-vue/table/style';
+import '@surely-vue/table/style';
 import './index.less';
 import { createApp, version } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
