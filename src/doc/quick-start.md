@@ -44,6 +44,24 @@ app.use(STable);
 <s-table :columns="columns" :data-source="dataSource"></s-table>
 ```
 
+### TS 类型提示
+
+如使用全局注册组件，可在`shims-vue.d.ts`中添加如下类型声明：
+
+```ts
+declare module 'vue' {
+  export interface GlobalComponents {
+    STable: typeof import('@surely-vue/table')['STable'];
+    STableColumn: typeof import('@surely-vue/table')['STableColumn'];
+    STableColumnGroup: typeof import('@surely-vue/table')['STableColumnGroup'];
+    STableSummary: typeof import('@surely-vue/table')['STableSummary'];
+    STableSummaryRow: typeof import('@surely-vue/table')['STableSummaryRow'];
+    STableSummaryCell: typeof import('@surely-vue/table')['STableSummaryCell'];
+  }
+}
+export {};
+```
+
 ### 去除水印
 
 购买后，你将获得一个授权码，你只需要在使用组件前设置正确的授权码即可：
