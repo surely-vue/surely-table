@@ -77,7 +77,7 @@
         </div>
       </div>
       <div class="right">
-        <a-carousel autoplay arrows :dots="!isMobile" :style="carouselStyle">
+        <a-carousel arrows :dots="!isMobile" :style="carouselStyle">
           <template #prevArrow>
             <div class="custom-slick-arrow" :style="`left: ${isMobile ? 5 : -50}px; z-index: 1`">
               <left-circle-outlined />
@@ -89,7 +89,7 @@
             </div>
           </template>
           <div class="card">
-            <a-card :bordered="false">
+            <a-card :bordered="false" class="!shadow-none">
               <template #cover>
                 <div class="desc">
                   Ant Design Vue 加快了我们交付产品的速度和质量，给我们节省了每年约 300

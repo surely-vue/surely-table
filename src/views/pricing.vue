@@ -24,7 +24,9 @@
         </p>
       </div>
       <div class="text-center flex card-out">
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border border-gray-300 rounded bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border border-gray-300 border-style-solid rounded bg"
+        >
           <span class="p-2 text-2xl">
             标准版
             <a-tooltip>
@@ -45,9 +47,11 @@
           </span>
           <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
-          <a-button @click="handleClick('basic')">获取授权</a-button>
+          <a-button class="mt-8px" @click="handleClick('basic')">获取授权</a-button>
         </div>
-        <div class="mt-10 m-2 flex flex-1 flex-col border rounded border-green-500 bg">
+        <div
+          class="mt-10 m-2 flex flex-1 flex-col border rounded border-green-500 bg border-style-solid"
+        >
           <a-badge-ribbon text="推荐">
             <div class="flex flex-col p-5">
               <span class="p-2 text-2xl">
@@ -69,11 +73,15 @@
               </span>
               <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
               <span class="p-2 text-gray-500">通配符域名、永久使用权、一年更新权</span>
-              <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
+              <a-button class="mt-8px" type="primary" @click="handleClick('pro')">
+                获取授权
+              </a-button>
             </div>
           </a-badge-ribbon>
         </div>
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-500 bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-500 bg border-style-solid"
+        >
           <span class="p-2 text-2xl">
             旗舰版
             <a-tooltip>
@@ -88,9 +96,11 @@
           </span>
           <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
           <span class="p-2 text-gray-500">不限制域名、永久使用权、一年更新权</span>
-          <a-button @click="handleClick('flag')">获取授权</a-button>
+          <a-button class="mt-8px" @click="handleClick('flag')">获取授权</a-button>
         </div>
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-400 bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-400 bg border-style-solid"
+        >
           <span class="p-2 text-2xl">
             旗舰版 Plus
             <a-tooltip>

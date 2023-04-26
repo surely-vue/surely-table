@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue';
 import md from './plugin/md';
 import docs from './plugin/docs';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import WindiCSS from 'vite-plugin-windicss';
 import legacy from '@vitejs/plugin-legacy';
+// eslint-disable-next-line import/no-unresolved
+import Unocss from 'unocss/vite';
 
 /**
  * @type {import('vite').UserConfig}
@@ -39,7 +40,7 @@ export default {
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
-    WindiCSS(),
+    Unocss(),
     vueJsx({
       // options are passed on to @vue/babel-plugin-jsx
     }),

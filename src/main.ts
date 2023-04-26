@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import 'virtual:windi.css';
+import 'uno.css';
 import '@surely-vue/table/style';
 import './index.less';
 import { createApp, version } from 'vue';
@@ -35,5 +35,5 @@ app.use(
     },
   }),
 );
-app.use(SurelyTable).mount('#app');
+app.use(SurelyTable as any).mount('#app');
 app.component('DemoBox', DemoBox);

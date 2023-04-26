@@ -95,6 +95,8 @@ export default defineComponent({
 .logo {
   color: #2c3d50;
   font-size: 28px;
+  display: flex;
+  align-items: center;
 }
 .center {
   float: left;
