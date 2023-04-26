@@ -117,15 +117,15 @@
         </div>
       </div>
       <p class="pt-5">
-        <span style="color: #1890ff">早鸟特权：</span>
+        <span style="color: #1677ff">早鸟特权：</span>
         抢先体验、限时折扣、并有机会影响产品走向和功能优先级。
       </p>
       <p class="pt-5">
-        <span style="color: #1890ff">免费使用：</span>
+        <span style="color: #1677ff">免费使用：</span>
         仅限 github.io、gitee.io 两类域名，请通过邮箱附上您的开源项目和域名进行申请。
       </p>
       <p class="pt-5">
-        <span style="color: #1890ff">教育优惠：</span>
+        <span style="color: #1677ff">教育优惠：</span>
         5折特惠，不和其它活动同享，仅限 .edu 域名或发票信息为学校、研究机构、科研院所等教育机构。
       </p>
       <p class="pt-5">
@@ -177,7 +177,7 @@ export default defineComponent({
   background-color: #fdfdfd;
 }
 .primary-color {
-  color: #1890ff;
+  color: #1677ff;
 }
 .card-out {
   flex-wrap: wrap;

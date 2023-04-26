@@ -259,7 +259,7 @@ export default defineComponent({
   color: rgba(0, 0, 0, 0.85);
 }
 .highlight {
-  color: #1890ff;
+  color: #1677ff;
 }
 .info {
   font-size: 16px;
@@ -274,7 +274,7 @@ export default defineComponent({
   }
   .rec-word {
     font-size: 24px;
-    color: #1890ff;
+    color: #1677ff;
   }
 }
 .card {

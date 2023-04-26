@@ -20,9 +20,9 @@
         </a-tooltip>
         <a-tooltip
           v-if="!blocked"
-          :visible="copyTooltipVisible"
+          :open="copyTooltipVisible"
           :title="t('app.demo.copy')"
-          @visibleChange="onCopyTooltipVisibleChange"
+          @openChange="onCopyTooltipVisibleChange"
         >
           <component
             :is="copied && copyTooltipVisible ? 'CheckOutlined' : 'SnippetsOutlined'"

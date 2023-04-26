@@ -27,9 +27,9 @@ Using template style API.
 <template>
   <s-table :data-source="data">
     <s-table-column-group>
-      <template #title><span style="color: #1890ff">Name</span></template>
+      <template #title><span style="color: #1677ff">Name</span></template>
       <s-table-column key="firstName" data-index="firstName">
-        <template #title><span style="color: #1890ff">First Name</span></template>
+        <template #title><span style="color: #1677ff">First Name</span></template>
       </s-table-column>
       <s-table-column key="lastName" title="Last Name" data-index="lastName" />
     </s-table-column-group>

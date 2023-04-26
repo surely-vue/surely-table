@@ -91,10 +91,12 @@ export default defineComponent({
           {
             title: 'Company Address',
             dataIndex: 'companyAddress',
+            minWidth: 160,
           },
           {
             title: 'Company Name',
             dataIndex: 'companyName',
+            minWidth: 160,
           },
         ],
       },

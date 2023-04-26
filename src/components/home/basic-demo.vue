@@ -483,7 +483,7 @@ export default defineComponent({
 }
 .custom-cell-id {
   .anticon {
-    color: #1890ff;
+    color: #1677ff;
   }
 }
 .popup {

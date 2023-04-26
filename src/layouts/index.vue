@@ -14,7 +14,7 @@
           :closable="false"
           placement="left"
           class="drawer drawer-left"
-          :visible="visible"
+          :open="visible"
           wrapper-class-name="drawer-wrapper"
           width="50%"
         >

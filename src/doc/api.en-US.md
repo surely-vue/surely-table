@@ -109,7 +109,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | ellipsis | The ellipsis cell content | boolean \| {showTitle?: boolean } | false |  |
 | filterDropdown | Customized filter overlay | VNode | - |  |
 | customFilterDropdown | use v-slot:customFilterDropdown，Priority is lower than filterDropdown | boolean | false |  |
-| filterDropdownVisible | Whether `filterDropdown` is visible | boolean | - |  |
+| filterDropdownOpen | Whether `filterDropdown` is open | boolean | - | 4.0 |
 | filtered | Whether the `dataSource` is filtered | boolean | `false` |  |
 | filteredValue | Controlled filtered value, filter icon will highlight | string\[] | - |  |
 | filterIcon | Customized filter icon | ({filtered: boolean, column: Column}) | `false` |  |
@@ -130,7 +130,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | customCell | Set props on per cell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customHeaderCell | Set props on per header cell | Function(column) | - |  |
 | onFilter | Callback executed when the confirm filter button is clicked, Use as a `filter` event when using template or jsx | Function | - |  |
-| onFilterDropdownVisibleChange | Callback executed when `filterDropdownVisible` is changed, Use as a `filterDropdownVisible` event when using template or jsx | function(visible) {} | - |  |
+| onFilterDropdownOpenChange | Callback executed when `filterDropdownOpen` is changed, Use as a `filterDropdownOpen` event when using template or jsx | function(visible) {} | - | 4.0 |
 | rowDrag | Add a drag handle to the current column, [more](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 | drag | Whether the list header is allowed to drag, [more](/doc/dragable) | boolean | - | 2.1.1 |
 

@@ -33,6 +33,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
     "@vitejs/plugin-legacy": "^1.7.1",
+    "@vueuse/core": "^10.1.0",
     "ant-design-vue": "^4.0.0",
     "dayjs": "^1.10.7",
     "lodash-es": "^4.17.21",

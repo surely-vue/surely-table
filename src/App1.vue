@@ -37,7 +37,7 @@
       @change="handleChange"
     >
       <template #filterIcon="{ filtered }">
-        <SearchOutlined :style="{ color: filtered ? '#1890ff' : undefined }" />
+        <SearchOutlined :style="{ color: filtered ? '#1677ff' : undefined }" />
       </template>
       <template #cell="{ column, text, rowIndex }">
         <template v-if="column.key === 'operation'">
