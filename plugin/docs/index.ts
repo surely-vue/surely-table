@@ -1,7 +1,7 @@
-import { createVueToMarkdownRenderFn } from './vueToMarkdown';
-import type { MarkdownOptions } from '../md/markdown/markdown';
 import type { Plugin } from 'vite';
+import type { MarkdownOptions } from '../md/markdown/markdown';
 import { createMarkdownToVueRenderFn } from '../md/markdownToVue';
+import { createVueToMarkdownRenderFn } from './vueToMarkdown';
 
 interface Options {
   root?: string;
@@ -14,10 +14,15 @@ export default (options: Options = {}): Plugin => {
   const markdownToVue = createMarkdownToVueRenderFn(root, markdown);
   return {
     name: 'vueToMdToVue',
-    transform(code, id) {
+    async transform(code, id) {
       if (id.endsWith('.vue') && id.indexOf('/demo/') > -1 && id.indexOf('index.vue') === -1) {
         // transform .md files into vueSrc so plugin-vue can handle it
-        return { code: markdownToVue(vueToMarkdown(code, id).vueSrc, id).vueSrc, map: null };
+        const res = vueToMarkdown(code, id);
+        // transform .md files into vueSrc so plugin-vue can handle it
+        return {
+          code: res.ignore ? res.vueSrc : (await markdownToVue(res.vueSrc, id)).vueSrc,
+          map: null,
+        };
       }
     },
   };

@@ -1,21 +1,21 @@
 <template>
   <div>
-    <Basic />
-    <Fixed />
-    <FixedHeader />
-    <FixedHeaderColumns />
-    <Sticky />
-    <heightVue />
-    <GroupingColumns />
-    <Bordered />
-    <Stripe />
-    <Summary />
+    <basic />
+    <fixed />
+    <fixed-header />
+    <fixed-header-columns />
+    <sticky />
+    <height-vue />
+    <grouping-columns />
+    <bordered />
+    <stripe />
+    <custom-summary />
     <ajax />
     <scroll />
     <tooltip />
-    <autoHeaderHeightVue />
-    <headerScrollbarVue />
-    <ContextmenuVue />
+    <auto-header-height-vue />
+    <header-scrollbar-vue />
+    <contextmenu-vue />
   </div>
 </template>
 <script lang="ts">
@@ -131,7 +131,7 @@ export default defineComponent({
     GroupingColumns,
     Bordered,
     Stripe,
-    Summary,
+    CustomSummary: Summary,
     heightVue,
     ajax,
     scroll,

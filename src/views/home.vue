@@ -32,15 +32,15 @@
         </div>
       </div>
     </div>
-    <basicDemoVue style="margin-top: 30px"></basicDemoVue>
+    <basic-demo-vue style="margin-top: 30px"></basic-demo-vue>
     <div>
-      <featureVue />
+      <feature-vue />
     </div>
     <!-- <liveDemoVue /> -->
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from '@vue/runtime-core';
+import { defineComponent, ref } from 'vue';
 import basicDemoVue from '../components/home/basic-demo.vue';
 import logo from '../assets/surely-vue-logo.svg';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';

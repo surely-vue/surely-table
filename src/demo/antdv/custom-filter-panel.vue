@@ -42,7 +42,7 @@ Implement a customized column search example via `customFilterDropdown`.
           style="width: 90px; margin-right: 8px"
           @click="handleSearch(selectedKeys, confirm, column.dataIndex)"
         >
-          <template #icon><SearchOutlined /></template>
+          <template #icon><search-outlined /></template>
           Search
         </a-button>
         <a-button size="small" style="width: 90px" @click="handleReset(clearFilters)">

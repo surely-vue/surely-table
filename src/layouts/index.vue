@@ -6,7 +6,7 @@
     </div>
   </transition>
   <a-layout class="layout">
-    <HeaderVue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
+    <header-vue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
     <a-layout style="padding-top: 64px">
       <template v-if="isMobile">
         <a-drawer
@@ -18,11 +18,11 @@
           wrapper-class-name="drawer-wrapper"
           width="50%"
         >
-          <navVue />
+          <nav-vue />
           <template #handle>
             <div class="drawer-handle" @click="handleClickShowButton">
               <close-outlined v-if="visible" :style="iconStyle" />
-              <MenuOutlined v-else :style="iconStyle" />
+              <menu-outlined v-else :style="iconStyle" />
             </div>
           </template>
         </a-drawer>
@@ -41,7 +41,7 @@
           top: '64px',
         }"
       >
-        <navVue />
+        <nav-vue />
       </a-layout-sider>
       <a-layout
         :style="
@@ -66,7 +66,7 @@
         <template v-else>
           <router-view />
         </template>
-        <FooterVue />
+        <footer-vue />
       </a-layout>
     </a-layout>
   </a-layout>

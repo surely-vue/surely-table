@@ -24,7 +24,7 @@
         trigger="click"
         arrow-point-at-center
       >
-        <UnorderedListOutlined class="nav-phone-icon" />
+        <unordered-list-outlined class="nav-phone-icon" />
         <template #content>
           <a-menu mode="vertical" :selected-keys="[]" class="nav-menu" disabled-overflow>
             <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
@@ -62,11 +62,11 @@ import { defineComponent } from 'vue';
 import logo from '../assets/surely-vue-logo.svg';
 import { UnorderedListOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
-  name: 'Header',
+  name: 'CustomHeader',
   components: {
     UnorderedListOutlined,
   },
-  props: ['showLeftNav'],
+  props: { showLeftNav: Boolean },
   setup() {
     const globalConfig = useInjectGlobalConfig();
     return {

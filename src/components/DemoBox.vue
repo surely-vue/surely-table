@@ -33,7 +33,7 @@
           />
         </a-tooltip>
         <a-tooltip v-else :title="t('app.demo.copy')">
-          <SnippetsOutlined class="code-box-code-copy code-box-code-action" />
+          <snippets-outlined class="code-box-code-copy code-box-code-action" />
         </a-tooltip>
         <a-tooltip :title="codeExpand ? 'Hide code' : 'Show code'">
           <span class="code-expand-icon code-box-code-action">

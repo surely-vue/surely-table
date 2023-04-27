@@ -37,7 +37,7 @@
                 <br />
                 这类明确子域名的网站，它可以满足大部分的网站应用，并且支持三个月内的补差价升级通配符域名。
               </template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
@@ -63,7 +63,7 @@
                     授权后，你可以在 v1.vuejs.org、v2.vuejs.org、v3.vuejs.org 等所有 vuejs.org
                     下的域名中使用
                   </template>
-                  <QuestionCircleTwoTone class="text-base" />
+                  <question-circle-two-tone class="text-base" />
                 </a-tooltip>
               </span>
               <span class="p-2 text-xl">
@@ -86,7 +86,7 @@
             旗舰版
             <a-tooltip>
               <template #title>不限制域名，适合 Electron、IP 内网、SAAS 等项目。</template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
@@ -105,7 +105,7 @@
             旗舰版 Plus
             <a-tooltip>
               <template #title>不限制域名，永久更新权。</template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">

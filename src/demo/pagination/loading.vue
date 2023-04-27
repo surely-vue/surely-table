@@ -80,7 +80,7 @@ export default defineComponent({
     const fetch = (params: STablePaginationConfig = {}) => {
       loading.value = true;
 
-      let u = new URLSearchParams(getRandomuserParams(params) as any).toString();
+      const u = new URLSearchParams(getRandomuserParams(params) as any).toString();
 
       window
         .fetch(`https://randomuser.me/api?${u}`, {

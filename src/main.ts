@@ -1,22 +1,20 @@
-// eslint-disable-next-line import/no-unresolved
-import 'uno.css';
+import SurelyTable, { setLicenseKey } from '@surely-vue/table';
 import '@surely-vue/table/style';
-import './index.less';
+import Antd from 'ant-design-vue';
+import 'uno.css';
 import { createApp, version } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import SurelyTable, { setLicenseKey } from '@surely-vue/table';
 import App from './App.vue';
-import routes from './routes';
-import i18n from './i18n';
-import Antd from 'ant-design-vue/es';
 import DemoBox from './components/DemoBox.vue';
 import clipboard from './directives/clipboard';
+import i18n from './i18n';
+import './index.less';
+import routes from './routes';
 
 setLicenseKey(
   'bd8e9bae80c43b524960987020b1f47dT1JERVI6MDAwMDEsRVhQSVJZPTMzMjI3NzEyMDAwMDAwLERPTUFJTj1zdXJlbHkuY29vbCxLRVlWRVJTSU9OPTE=',
 );
 console.log('vue version', version);
-// eslint-disable-next-line import/no-named-as-default-member
 console.log('ant-design-vue version', Antd.version);
 const app = createApp(App);
 app.use(i18n);
@@ -35,5 +33,5 @@ app.use(
     },
   }),
 );
-app.use(SurelyTable as any).mount('#app');
+app.use(SurelyTable).mount('#app');
 app.component('DemoBox', DemoBox);

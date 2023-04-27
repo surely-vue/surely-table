@@ -37,7 +37,7 @@
       @change="handleChange"
     >
       <template #filterIcon="{ filtered }">
-        <SearchOutlined :style="{ color: filtered ? '#1677ff' : undefined }" />
+        <search-outlined :style="{ color: filtered ? '#1677ff' : undefined }" />
       </template>
       <template #cell="{ column, text, rowIndex }">
         <template v-if="column.key === 'operation'">
@@ -51,7 +51,7 @@
           >
             {{ text }}
           </div>
-          <Input
+          <a-input
             v-else
             ref="inputRef"
             v-model:value="dataSource[rowIndex][column.dataIndex]"
@@ -217,7 +217,7 @@ for (let i = 0; i < 100; i++) {
 export default defineComponent({
   name: 'App',
   components: {
-    Input,
+    AInput: Input,
     SearchOutlined,
     STable,
   },

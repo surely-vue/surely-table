@@ -1,9 +1,9 @@
 <template>
   <div>
-    <EditCell />
-    <EditRow />
-    <editCellPerfVue />
-    <editModalVue />
+    <edit-cell />
+    <edit-row />
+    <edit-cell-perf-vue />
+    <edit-modal-vue />
   </div>
 </template>
 <script lang="ts">

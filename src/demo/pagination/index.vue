@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Basic id="basic" />
-    <Config id="config" />
-    <Loading id="loading" />
-    <Custom id="custom" />
+    <basic id="basic" />
+    <config id="config" />
+    <loading id="loading" />
+    <custom id="custom" />
   </div>
 </template>
 <script lang="ts">

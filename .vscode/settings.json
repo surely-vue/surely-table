@@ -1,12 +1,12 @@
 {
   "files.exclude": {
-    "**/node_modules": true
+    "**/node_modules": false
   },
   "search.exclude": {
     "**/dist": true,
     "**/yarn.lock": true,
     "**/package-lock.json": true,
-    "**/*.svg":true
+    "**/*.svg": true
   },
   "eslint.workingDirectories": [
     {
@@ -48,7 +48,7 @@
     },
     "editor.codeActionsOnSave": {
       "source.organizeImports": false
-    },
+    }
   },
   "volar.completion.preferredTagNameCase": "kebab"
 }

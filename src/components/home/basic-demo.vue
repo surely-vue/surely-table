@@ -63,7 +63,7 @@
         <template v-else-if="column.dataIndex === 'id'">
           <span class="custom-cell-id">
             {{ record.id }}
-            <CopyOutlined @click="copyValue(record.id)" />
+            <copy-outlined @click="copyValue(record.id)" />
           </span>
         </template>
         <template v-else-if="column.dataIndex.indexOf('other') >= 0">--</template>
@@ -75,11 +75,11 @@
             :class="!args.column.dataIndex && 'disabled'"
             @click="copyClick(args, 'cell')"
           >
-            <CopyOutlined />
+            <copy-outlined />
             复制
           </li>
           <li class="popup-item" @click="copyClick(args, 'record')">
-            <CopyOutlined />
+            <copy-outlined />
             复制整行
           </li>
           <li
@@ -87,7 +87,7 @@
             :class="!args.column.dataIndex && 'disabled'"
             @click="copyClick(args, 'column')"
           >
-            <CopyOutlined />
+            <copy-outlined />
             复制整列
           </li>
         </ul>

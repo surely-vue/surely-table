@@ -9,8 +9,8 @@ import { computed, defineComponent, provide, watch, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
 import { useProvideGlobalConfig } from './context';
-import enUS from 'ant-design-vue/es/locale/en_US';
-import zhCN from 'ant-design-vue/es/locale/zh_CN';
+import enUS from 'ant-design-vue/locale/en_US';
+import zhCN from 'ant-design-vue/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 // function isZhCN(name: string) {

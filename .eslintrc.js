@@ -1,51 +1,60 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true,
+  parserOptions: {
+    ecmaVersion: 2021,
   },
   extends: [
-    'plugin:vue/vue3-recommended',
     'eslint:recommended',
+    'plugin:vue/vue3-recommended',
     '@vue/typescript/recommended',
     '@vue/prettier',
-    '@vue/prettier/@typescript-eslint',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
   ],
-  parserOptions: {
-    ecmaVersion: 2020,
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es2021: true,
   },
-  plugins: ['markdown', 'import'],
+  globals: {
+    defineProps: 'readonly',
+  },
   overrides: [
     {
-      files: ['*.md', '*.markdown'],
-      processor: 'markdown/markdown',
+      files: ['*.ts', '*.tsx'],
       rules: {
-        'no-console': 'off',
+        'vue/one-component-per-file': 'off',
       },
     },
   ],
   rules: {
-    // 要求使用分号代替 ASI (semi)
-    semi: ['error', 'always'],
-    quotes: [
-      2,
-      'single',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
       {
-        avoidEscape: true,
-        allowTemplateLiterals: true,
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_',
       },
     ],
-    'vue/require-prop-types': 0,
-    'vue/no-v-html': 0,
-    'import/no-unresolved': [2, { ignore: ['^@surely-vue/table'] }],
+    'vue/component-name-in-template-casing': [
+      'warn',
+      'kebab-case',
+      {
+        registeredComponentsOnly: false,
+      },
+    ],
+    'vue/multi-word-component-names': 'off',
     'vue/require-default-prop': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/ban-types': 0,
-    '@typescript-eslint/explicit-module-boundary-types': 0,
-    '@typescript-eslint/consistent-type-imports': 'error',
+    'vue/v-on-event-hyphenation': 'off',
+    'vue/no-mutating-props': 'off',
+    'vue/no-v-html': 'off',
+    'vue/prefer-import-from-vue': 'warn',
   },
 };

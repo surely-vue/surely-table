@@ -1,8 +1,8 @@
 <template>
   <div>
-    <expandVue />
-    <expandChildrenVue />
-    <nestedTableVue />
+    <expand-vue />
+    <expand-children-vue />
+    <nested-table-vue />
   </div>
 </template>
 <script lang="ts">

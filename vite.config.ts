@@ -1,16 +1,17 @@
-import path from 'path';
-import vue from '@vitejs/plugin-vue';
-import md from './plugin/md';
-import docs from './plugin/docs';
-import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import path from 'path';
+import docs from './plugin/docs';
+import md from './plugin/md';
 // eslint-disable-next-line import/no-unresolved
 import Unocss from 'unocss/vite';
+import { defineConfig } from 'vite';
 
 /**
  * @type {import('vite').UserConfig}
  */
-export default {
+export default defineConfig({
   build: {
     outDir: 'dist',
     cssCodeSplit: false,
@@ -56,12 +57,8 @@ export default {
   css: {
     preprocessorOptions: {
       less: {
-        modifyVars: {
-          'root-entry-name': 'variable',
-        },
         javascriptEnabled: true,
-        // includePaths: ["node_modules/"],
       },
     },
   },
-};
+});

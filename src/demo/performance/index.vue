@@ -22,11 +22,11 @@
       </ul>
     </div>
     <br />
-    <heightVue />
-    <dynamicHeightVue />
-    <autoHeightVue />
+    <height-vue />
+    <dynamic-height-vue />
+    <auto-height-vue />
     <width />
-    <animateVue />
+    <animate-vue />
   </div>
 </template>
 <script lang="ts">
