@@ -109,6 +109,25 @@
             <a-card :bordered="false">
               <template #cover>
                 <div class="desc">
+                  Surely Vue
+                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
+                  <br />
+                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
+                  Surely Vue
+                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
+                </div>
+              </template>
+              <a-card-meta title="张驰" description="AFFiNE CTO & 联合创始人">
+                <template #avatar>
+                  <a-avatar :src="zhangchi" />
+                </template>
+              </a-card-meta>
+            </a-card>
+          </div>
+          <div class="card">
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
                   Surely Vue 不管是 UI 还是交互，都保持了 Ant Design
                   的设计体系，同时还添加了更多动画，进一步提升了用户体验，持续的投入会带来更专业的方案。
                   国内的开源商业化发展非常缓慢，而前端更是在起步阶段，很欣慰看到 Ant Design Vue
@@ -172,25 +191,6 @@
               <a-card-meta title="郭美青" description="腾讯 资深技术专家">
                 <template #avatar>
                   <a-avatar :src="guomeiqing" />
-                </template>
-              </a-card-meta>
-            </a-card>
-          </div>
-          <div class="card">
-            <a-card :bordered="false">
-              <template #cover>
-                <div class="desc">
-                  Surely Vue
-                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
-                  <br />
-                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
-                  Surely Vue
-                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
-                </div>
-              </template>
-              <a-card-meta title="张驰" description="前纷享销客前端技术负责人">
-                <template #avatar>
-                  <a-avatar :src="zhangchi" />
                 </template>
               </a-card-meta>
             </a-card>
