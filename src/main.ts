@@ -14,6 +14,7 @@ import routes from './routes';
 setLicenseKey(
   'bd8e9bae80c43b524960987020b1f47dT1JERVI6MDAwMDEsRVhQSVJZPTMzMjI3NzEyMDAwMDAwLERPTUFJTj1zdXJlbHkuY29vbCxLRVlWRVJTSU9OPTE=',
 );
+
 console.log('vue version', version);
 console.log('ant-design-vue version', Antd.version);
 const app = createApp(App);

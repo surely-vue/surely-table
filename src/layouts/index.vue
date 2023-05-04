@@ -34,7 +34,7 @@
         :style="{
           overflowY: 'auto',
           overflowX: 'hidden',
-          background: '#fff',
+          background: 'var(--surely-table-bg)',
           position: 'fixed',
           left: 0,
           bottom: 0,
@@ -45,16 +45,18 @@
       </a-layout-sider>
       <a-layout
         :style="
-          showLeftNav && !isMobile ? 'padding: 0 24px 24px 284px' : 'padding: 0; background: #fff'
+          showLeftNav && !isMobile
+            ? 'padding: 0 24px 24px 284px'
+            : 'padding: 0; background: var(--surely-table-bg)'
         "
       >
         <a-layout-content
           v-if="showLeftNav"
-          :style="{ marginTop: '0px', width: '100%', background: '#fff' }"
+          :style="{ marginTop: '16px', width: '100%', background: 'var(--surely-table-bg)' }"
         >
           <div
             :style="{
-              padding: '10px 50px',
+              padding: '8px 50px',
               margin: '0px auto',
               minHeight: '280px',
               maxWidth: '1400px',
@@ -131,7 +133,6 @@ export default defineComponent({
 <style lang="less" scoped>
 .layout {
   min-height: 100%;
-  background: #fff;
 }
 .nav :deep(.ant-menu-item) {
   margin: 0;

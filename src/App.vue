@@ -1,7 +1,10 @@
 <template>
-  <a-config-provider :locale="locale">
-    <router-view />
-  </a-config-provider>
+  <a-style-provider :hash-priority="hashPriority">
+    <a-config-provider :locale="locale" :theme="themeConfig">
+      <router-view />
+      <s-table v-show="false" />
+    </a-config-provider>
+  </a-style-provider>
 </template>
 
 <script lang="ts">
@@ -13,15 +16,32 @@ import enUS from 'ant-design-vue/locale/en_US';
 import zhCN from 'ant-design-vue/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
+import { theme as antdTheme } from 'ant-design-vue';
+import { setConfig } from '@surely-vue/table';
 // function isZhCN(name: string) {
 //   return /-cn\/?$/.test(name);
 // }
+export type ThemeName = '' | 'light' | 'dark' | 'compact';
+const getAlgorithm = (themes: ThemeName[] = []) =>
+  themes
+    .filter(theme => !!theme)
+    .map(theme => {
+      if (theme === 'dark') {
+        return antdTheme.darkAlgorithm;
+      }
+      if (theme === 'compact') {
+        return antdTheme.compactAlgorithm;
+      }
+      return antdTheme.defaultAlgorithm;
+    });
+
 export default defineComponent({
   setup() {
     const i18n = useI18n();
     const colSize = useMediaQuery();
     const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs');
-    const theme = ref(localStorage.getItem('theme') || 'default');
+    const theme = ref<ThemeName>((localStorage.getItem('theme') as ThemeName) || 'light');
+    const compactTheme = ref<ThemeName>((localStorage.getItem('compactTheme') as ThemeName) || '');
     const responsive = computed(() => {
       if (colSize.value === 'xs') {
         return 'crowded';
@@ -29,6 +49,13 @@ export default defineComponent({
         return 'narrow';
       }
       return null;
+    });
+    const themeConfig = computed(() => {
+      return { algorithm: getAlgorithm([...new Set([theme.value, compactTheme.value])]) };
+    });
+    const hashPriority = ref('low' as const);
+    watch(hashPriority, () => {
+      location.reload();
     });
     const isZhCN = ref(!localStorage.getItem('en-US'));
     const globalConfig = {
@@ -42,7 +69,7 @@ export default defineComponent({
         localStorage.setItem('en-US', !zh ? 'true' : '');
       },
     };
-    const changeTheme = (t: string) => {
+    const changeTheme = (t: ThemeName) => {
       theme.value = t;
       localStorage.setItem('theme', t);
     };
@@ -50,6 +77,15 @@ export default defineComponent({
       theme,
       changeTheme,
     });
+    watch(
+      theme,
+      () => {
+        setConfig({
+          theme: theme.value as any,
+        });
+      },
+      { immediate: true },
+    );
     useProvideGlobalConfig(globalConfig);
     // watch(
     //   () => route.path,
@@ -91,7 +127,7 @@ export default defineComponent({
       },
       { immediate: true },
     );
-    return { globalConfig, locale };
+    return { globalConfig, locale, themeConfig, hashPriority };
   },
 });
 </script>

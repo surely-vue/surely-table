@@ -256,19 +256,19 @@ export default defineComponent({
 .title {
   font-size: 30px;
   padding: 0 0 10px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--surely-table-text-color);
 }
 .highlight {
   color: #1677ff;
 }
 .info {
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--surely-table-text-color-secondary);
   line-height: 26px;
   text-align: center;
 }
 .rec {
-  background: #f3f6f9;
+  background: var(--surely-table-primary-color-1);
   .rec-inner {
     padding: 100px;
   }
@@ -333,11 +333,11 @@ export default defineComponent({
 </style>
 <style lang="less">
 .ant-carousel {
-  box-shadow: 0 2px 8px #f0f1f2;
+  box-shadow: var(--surely-table-box-shadow-base);
 }
 .ant-carousel .slick-slide {
   text-align: center;
-  background: #fff;
+  background: var(--surely-table-bg);
   overflow: hidden;
 }
 
@@ -382,5 +382,8 @@ export default defineComponent({
 }
 .card .ant-card-body {
   padding: 24px 0 0;
+}
+.card .ant-card {
+  box-shadow: none;
 }
 </style>

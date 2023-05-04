@@ -3,14 +3,15 @@ html {
     direction: rtl;
   }
 }
+[data-doc-theme='dark'] {
+  color-scheme: dark;
+}
 
 body {
   overflow-x: hidden;
   color: @site-text-color;
   font-size: @table-font-size;
   font-family: @site-font-family;
-  background-color: @body-background;
-  transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 a {

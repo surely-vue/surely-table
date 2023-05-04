@@ -8,19 +8,17 @@
       :scroll="{ y: 400 }"
       :row-height="54"
       :row-selection="rowSelection"
-      :custom-row="customRow"
       @resizeColumn="handleResize"
     >
       <template #footer>
         <div class="table-footer">
-          复杂表格依旧流畅如初；
-          <br />
           本表格数据非真实数据，仅做表格示例展示使用；
           <br />
+          <!-- <br />
           右键可以快速复制行列，或自定义其它功能；
           <br />
           姓名、年龄列宽可以拖动调整哦，点击年龄排序，体验动画效果，然后快速拖动到最右侧，快速输入编辑吧；
-          <br />
+          <br /> -->
           更多功能点击右上角 Doc 查看文档！！！
         </div>
       </template>
@@ -56,17 +54,16 @@
             <a @click="handleDelete(recordIndexs[0])">删除</a>
           </span>
         </template>
-        <template v-else-if="column.dataIndex === 'job'">
+        <!-- <template v-else-if="column.dataIndex === 'job'">
           <img v-if="record.jobImg" :src="record.jobImg" alt="" width="15" height="15" />
           {{ record.job }}
-        </template>
+        </template> -->
         <template v-else-if="column.dataIndex === 'id'">
           <span class="custom-cell-id">
             {{ record.id }}
             <copy-outlined @click="copyValue(record.id)" />
           </span>
         </template>
-        <template v-else-if="column.dataIndex.indexOf('other') >= 0">--</template>
       </template>
       <template #contextmenuPopup="args">
         <ul class="popup">
@@ -136,12 +133,12 @@ export default defineComponent({
       key: `income_${index + 1}`,
       width: 100,
     }));
-    const others = new Array(100).fill(1).map((_, index) => ({
-      title: `其它_${index}`,
-      dataIndex: `other_${index}`,
-      key: `other_${index}`,
-      width: 100,
-    }));
+    // const others = new Array(100).fill(1).map((_, index) => ({
+    //   title: `其它_${index}`,
+    //   dataIndex: `other_${index}`,
+    //   key: `other_${index}`,
+    //   width: 100,
+    // }));
     const columns = [
       {
         title: '姓名',
@@ -220,18 +217,18 @@ export default defineComponent({
         children: incomes,
         align: 'left',
       },
-      {
-        title: '其它',
-        key: 'other',
-        children: others,
-      },
-      {
-        title: '备注',
-        dataIndex: 'info',
-        key: 'info',
-        width: 300,
-        resizable: true,
-      },
+      // {
+      //   title: '其它',
+      //   key: 'other',
+      //   children: others,
+      // },
+      // {
+      //   title: '备注',
+      //   dataIndex: 'info',
+      //   key: 'info',
+      //   width: 300,
+      //   resizable: true,
+      // },
       {
         title: '操作',
         key: 'action',
@@ -266,10 +263,10 @@ export default defineComponent({
         name: `tang ${i}`,
         age,
         address: `Hangzhou xihu no. ${i}`,
-        gender: i === 3 ? '男' : gender[random(0, 1)],
-        job: i === 3 ? '魂师' : age > 35 ? job2[random(1)] : job1[random(1)],
-        company: i === 3 ? '唐门' : 'xxx 大厂',
-        school: i === 3 ? '史莱克学院' : `杭州第 ${i} 大学`,
+        gender: gender[random(0, 1)],
+        job: age > 35 ? job2[random(1)] : job1[random(1)],
+        company: 'xxx 大厂',
+        school: `杭州第 ${i} 大学`,
         phone: '0571-88888888',
         telephone: `1851088xxx${random(0, 9)}`,
         qq: '123456xxx',
@@ -316,12 +313,6 @@ export default defineComponent({
     }
     const rowSelection = reactive({
       type: 'checkbox',
-      getCheckboxProps: (record: any) => {
-        if (record.key === 3) {
-          return { disabled: true };
-        }
-        return { disabled: false };
-      },
     });
     watch(rowSelection, () => {
       console.log(rowSelection);
@@ -441,16 +432,6 @@ export default defineComponent({
       inputRef,
       handleChange,
       handleDelete,
-      customRow: record => {
-        if (record.name === 'tang 3') {
-          return {
-            style: {
-              background: '#fef3ee',
-            },
-          };
-        }
-        return {};
-      },
       copyValue,
       copyClick,
     };
@@ -458,9 +439,6 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
-.table-footer {
-  color: rgba(0, 0, 0, 0.65);
-}
 .editable-cell {
   position: relative;
 }
@@ -492,10 +470,10 @@ export default defineComponent({
     cursor: pointer;
     padding: 8px;
     &:hover {
-      background-color: #fafafa;
+      background-color: var(--surely-table-row-hover-bg);
     }
     &.disabled {
-      color: #00000040;
+      color: var(--surely-table-disabled-color);
       cursor: not-allowed;
     }
   }

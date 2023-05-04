@@ -134,7 +134,7 @@ export default defineComponent({
   }
 
   .editable-cell-icon-check {
-    line-height: 28px;
+    margin-top: 8px;
   }
 
   .editable-cell-icon:hover,

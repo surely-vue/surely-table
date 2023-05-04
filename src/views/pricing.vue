@@ -186,9 +186,13 @@ export default defineComponent({
 .bg {
   background-color: #fdfdfd;
 }
-.primary-color {
-  color: #1677ff;
+
+[data-doc-theme='dark'] {
+  .bg {
+    background-color: #141414;
+  }
 }
+
 .card-out {
   flex-wrap: wrap;
   justify-content: space-between;

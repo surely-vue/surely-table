@@ -169,10 +169,10 @@ export default defineComponent({
     cursor: pointer;
     padding: 8px;
     &:hover {
-      background-color: #fafafa;
+      background-color: var(--surely-table-row-hover-bg);
     }
     &.disabled {
-      color: #00000040;
+      color: var(--surely-table-disabled-color);
       cursor: not-allowed;
     }
   }

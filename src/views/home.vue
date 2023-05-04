@@ -88,11 +88,11 @@ export default defineComponent({
   margin: 0;
   border-bottom: 0;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--surely-table-text-color);
 }
 .sub-title {
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--surely-table-text-color-secondary);
 }
 .actions {
   display: flex;

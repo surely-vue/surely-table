@@ -1,5 +1,28 @@
 ## API
 
+### 全局配置
+
+如下配置需要在应用入口处配置，并且只需配置一次即可。
+
+#### 正版授权
+
+```js
+import { setLicenseKey } from '@surely-vue/table';
+setLicenseKey('联系客服获取授权');
+```
+
+#### setConfig （4.0+）
+
+```js
+import { setConfig } from '@surely-vue/table';
+setConfig(config: {
+  animateRows?: boolean; // 是否开启动画
+  theme?: 'light' | 'dark'; // 暗黑主题
+  primaryColor?: string; // 主题色
+  prefixCls?: string; // className 前缀，注意需要同步更改 less 变量：@surely-table-prefix-cls
+});
+```
+
 ### Table
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
