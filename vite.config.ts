@@ -2,11 +2,10 @@ import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
-import docs from './plugin/docs';
-import md from './plugin/md';
-// eslint-disable-next-line import/no-unresolved
 import Unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
+import docs from './plugin/docs';
+import md from './plugin/md';
 
 /**
  * @type {import('vite').UserConfig}
