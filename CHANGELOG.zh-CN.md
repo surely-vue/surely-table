@@ -10,6 +10,18 @@
 
 ---
 
+## 3.0.6
+
+- 🌟 新增 typings 全局声明文件方便业务使用
+
+## 3.0.5
+
+- 🐞 修复 Tooltip 失效问题 [#138](https://github.com/surely-vue/table/issues/138)
+
+## 3.0.4
+
+- 🌟 暴露 `scrollLeft` `srollTop` 值
+
 ## 3.0.3
 
 - 🌟 hover 时添加类名 [#124](https://github.com/surely-vue/table/issues/124)
