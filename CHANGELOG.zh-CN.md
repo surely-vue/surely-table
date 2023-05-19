@@ -15,6 +15,13 @@
 - 🌟 全新设计
 - 🌟 支持 Ant Design Vue 4.x 版本
 - 🌟 新增全局配置 setConfig，更加方便切换主题和动画
+## 3.0.8
+
+- 🌟 支持插槽类型提示，需 vue 3.3 及以上版本
+
+## 3.0.7
+
+- 🐞 修复树级表格选择问题 [#137](https://github.com/surely-vue/table/issues/138)
 
 ## 3.0.6
 

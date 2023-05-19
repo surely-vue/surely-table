@@ -7,7 +7,8 @@
     "site": "yarn predev && vite build --base=https://www.surely.cool/",
     "pub:site": "npm run site && node scripts/pushToOSS.js",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "vue-tsc": "vue-tsc --noEmit"
   },
   "title": "@surely-vue/table",
   "description": "An enterprise-class table based Vue",

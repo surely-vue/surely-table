@@ -50,5 +50,6 @@
       "source.organizeImports": false
     }
   },
-  "volar.completion.preferredTagNameCase": "kebab"
+  "volar.completion.preferredTagNameCase": "kebab",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

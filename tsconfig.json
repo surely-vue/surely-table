@@ -19,7 +19,8 @@
     "paths": {
       "@surely-vue/table": ["core/src/index.ts"]
     },
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictNullChecks": false
   },
   "include": ["src", "typings", "shims-app.d.ts"]
 }

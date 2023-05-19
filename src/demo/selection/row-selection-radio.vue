@@ -23,7 +23,7 @@ You can set `allowCancelRadio = true` to allow cancel radio selection.
 <template>
   <s-table :row-selection="rowSelection" :columns="columns" :data-source="data">
     <template #bodyCell="{ column, text }">
-      <template v-if="column.dataIndex === 'name'">
+      <template v-if="'dataIndex' in column && column.dataIndex === 'name'">
         <a>{{ text }}</a>
       </template>
       <template v-else>{{ text }}</template>
