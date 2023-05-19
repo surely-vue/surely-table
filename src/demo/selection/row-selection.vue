@@ -19,7 +19,7 @@ selection happens when clicking checkbox defaultly. You can see https://codesand
 <template>
   <s-table :row-selection="rowSelection" :columns="columns" :data-source="data">
     <template #bodyCell="{ column, text }">
-      <template v-if="column.dataIndex === 'name'">
+      <template v-if="'dataIndex' in column && column.dataIndex === 'name'">
         <a>{{ text }}</a>
       </template>
       <template v-else>{{ text }}</template>
