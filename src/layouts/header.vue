@@ -136,6 +136,7 @@ export default defineComponent({
   box-shadow: 0 2px 8px #f0f1f2;
   .ant-menu-horizontal {
     border-bottom: none;
+    display: inline-flex;
   }
 }
 .header-wrap {

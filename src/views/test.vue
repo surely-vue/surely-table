@@ -1,60 +1,79 @@
 <template>
-  <div>
+  <div style="display: flex">
+    width
+    <a-input-number v-model:value="width" />
+
+    height
+    <a-input-number v-model:value="height" />
+    y
+    <a-input-number v-model:value="y" />
+  </div>
+  <br />
+  <div :style="{ display: 'flex', overflow: 'auto', width: `${width}px`, height: `${height}px` }">
     <s-table
+      v-if="dataSource?.length > 0"
       :columns="columns"
-      :data-source="data"
-      :row-selection="{ selectedRowKeys, fixed: 'right' }"
-    >
-      <template #expandedRowRender>
-        <em>111</em>
-      </template>
-    </s-table>
+      :pagination="false"
+      :row-height="60"
+      :x-virtual="false"
+      :animate-rows="false"
+      :default-expand-all-rows="true"
+      :data-source="dataSource"
+      :scroll="{ y: y }"
+    ></s-table>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
+
+interface DataItem {
+  key: number;
+  name: string;
+  age: number;
+  address: string;
+}
 
 export default defineComponent({
   setup() {
-    const selectedRowKeys = ref([]);
     const columns = [
       {
-        title: 'Name',
+        title: 'Full Name',
         dataIndex: 'name',
-        key: 'name',
+        fixed: 'left',
+        width: 400,
       },
       {
         title: 'Age',
         dataIndex: 'age',
-        key: 'age',
-        width: '12%',
+        fixed: 'left',
+        width: 500,
       },
       {
-        title: 'Address',
+        title: 'Column 1',
         dataIndex: 'address',
-        width: '30%',
-        key: 'address',
-      },
-    ];
-    const originData = [
-      {
-        key: 'a',
-        name: 'John Brown sr.',
-        age: 60,
-        address: 'New York No. 1 Lake Park',
+        width: 100,
       },
       {
-        key: 'b',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
+        title: 'Column 2',
+        dataIndex: 'address',
+        width: 100,
       },
     ];
-    const data = ref(originData);
+    const data: DataItem[] = [];
+    for (let i = 0; i < 1; i++) {
+      data.push({
+        key: i,
+        name: `Edrward ${i}`,
+        age: i + 1,
+        address: `London Park no. ${i}`,
+      });
+    }
     return {
-      data,
-      columns,
-      selectedRowKeys,
+      dataSource: ref(data),
+      columns: ref(columns),
+      width: ref(1114),
+      height: ref(400),
+      y: ref(75),
     };
   },
 });

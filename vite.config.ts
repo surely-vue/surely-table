@@ -38,7 +38,8 @@ export default defineConfig({
   },
   plugins: [
     legacy({
-      targets: ['defaults', 'not IE 11'],
+      targets: ['defaults', 'not IE 11', 'Chrome 63'],
+      modernPolyfills: true,
     }),
     Unocss(),
     vueJsx({
