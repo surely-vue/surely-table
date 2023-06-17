@@ -2,8 +2,8 @@
 ---
 order: 6
 title:
-  en-US: Native Editable Cells
-  zh-CN: 自带可编辑单元格
+  en-US: Native Editable Cells(4.0+)
+  zh-CN: 自带可编辑单元格（4.0+）
 ---
 
 ## zh-CN
