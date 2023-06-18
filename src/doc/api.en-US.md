@@ -50,6 +50,8 @@
 | ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.4 |
 | showHeaderScrollbar | show header scrollbar | boolean | false | 2.4.4 |
 | rowHeight | Configure the row height. By default, the component will automatically adjust the height according to size. If you need to customize the height, you can use this property | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |  |
+| menuIcon | custom header menu icon | v-slot:menuIcon="{column}" | - | 4.0 |
+| menuPopup | custom menu popup content | v-slot:menuPopup="{column}" | - | 4.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -138,6 +140,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | valueGetter | Convert the value in the data source to a string value, for example: convert an integer `1000` to a string `1,000`, [example](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
 | valueSetter | By default, we directly assign the edited value to the responsive data source, but sometimes when a valid dataIndex cannot be provided, you need to customize the assignment logic, you can use `valueSetter`, when the valueSetter returns true, the component considers the edit successful And exit edit mode, [example](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
 | valueChange | Triggered when the cell value changes, you can use `valueChange` to implement custom value change logic, [example](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType >) => void`](#EditableType) | - | 4.0 |
+| showMenu | Whether to show the column menu, [example](/doc/basic#header-menu) | boolean \| 'hover' | - | 4.0 |
 
 #### EditableType
 

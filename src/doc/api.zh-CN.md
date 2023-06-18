@@ -75,6 +75,8 @@ setConfig(config: {
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
 | showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
 | rowHeight | 配置行高，组件内部默认会根据 size 自动调整高度，如果需要自定义高度可使用该属性 | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |
+| menuIcon | 自定义筛选菜单图标 | v-slot:menuIcon="{column}" | - | 4.0 |
+| menuPopup | 自定义筛选菜单弹出内容 | v-slot:menuPopup="{column}" | - | 4.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -162,6 +164,7 @@ setConfig(config: {
 | valueGetter | 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`, [示例](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
 | valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
 | valueChange | 当单元格值发生变化时触发，你可以通过 `valueChange` 来实现自定义的值变化逻辑, [示例](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType>) => void`](#EditableType) | - | 4.0 |
+| showMenu | 是否显示列头菜单 | boolean \| 'hover'（hover 时显示） | true | 4.0 |
 
 #### EditableType
 
