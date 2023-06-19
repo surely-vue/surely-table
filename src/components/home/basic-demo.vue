@@ -327,7 +327,7 @@ export default defineComponent({
         ellipsis: true,
         rowDrag: true,
         editable: true,
-        showMenu: 'hover',
+        showMenu: true,
       },
       {
         title: '年龄',
@@ -452,7 +452,7 @@ export default defineComponent({
     const income1 = [12000, 8900, 18000, 13000, 6800];
     const income2 = [32000, 38900, 28000, 43000, 60800];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10000; i++) {
       const age = random(18, 40);
       const item = {
         // key: i,
