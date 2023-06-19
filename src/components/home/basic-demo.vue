@@ -2,7 +2,7 @@
   <div class="lay">
     <s-table
       ref="tableRef"
-      :columns="columns"
+      :columns="mergedColumns"
       :data-source="dataSource"
       :pagination="false"
       :scroll="{ y: 400 }"
@@ -65,6 +65,137 @@
           </span>
         </template>
       </template>
+      <template
+        #cellEditor="{ column, modelValue, save, closeEditor, editorRef, getPopupContainer }"
+      >
+        <template v-if="column.dataIndex === 'gender'">
+          <a-select
+            :ref="editorRef"
+            :bordered="false"
+            :value="modelValue.value"
+            style="width: 120px"
+            :get-popup-container="getPopupContainer"
+            :options="[
+              {
+                value: '男',
+                label: '男',
+              },
+              {
+                value: '女',
+                label: '女',
+              },
+              {
+                value: '其他',
+                label: '其他',
+              },
+            ]"
+            open
+            @update:value="
+              v => {
+                modelValue.value = v;
+                save();
+              }
+            "
+            @blur="closeEditor"
+            @keydown.esc="closeEditor"
+            @click.stop="closeEditor"
+          ></a-select>
+        </template>
+      </template>
+      <template
+        #menuPopup="{ column, filter: { setSelectedKeys, selectedKeysRef, confirm, clearFilters } }"
+      >
+        <div>
+          <a-tabs>
+            <a-tab-pane key="1">
+              <template #tab>
+                <span style="padding: 0 16px">
+                  <filter-outlined />
+                  过滤
+                </span>
+              </template>
+              <template v-if="column.dataIndex === 'gender'">
+                <ul class="popup" style="width: 100%">
+                  <li class="popup-item">
+                    <a-checkbox
+                      :checked="male"
+                      style="width: 100%"
+                      @update:checked="handleGenderFilter(setSelectedKeys, confirm, 'male', $event)"
+                    >
+                      男
+                    </a-checkbox>
+                  </li>
+                  <li class="popup-item">
+                    <a-checkbox
+                      :checked="female"
+                      style="width: 100%"
+                      @update:checked="
+                        handleGenderFilter(setSelectedKeys, confirm, 'female', $event)
+                      "
+                    >
+                      女
+                    </a-checkbox>
+                  </li>
+                </ul>
+              </template>
+              <template v-else>
+                <div style="padding: 0 8px 16px">
+                  <a-input
+                    ref="searchInput"
+                    :value="selectedKeysRef.value[0]"
+                    :placeholder="`Search ${column.dataIndex}`"
+                    style="width: 188px; margin-bottom: 8px; display: block"
+                    @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
+                    @pressEnter="handleSearch(selectedKeysRef.value, confirm, column.dataIndex)"
+                  />
+                  <a-button
+                    type="primary"
+                    size="small"
+                    style="width: 90px; margin-right: 8px"
+                    @click="handleSearch(selectedKeysRef.value, confirm, column.dataIndex)"
+                  >
+                    <template #icon><search-outlined /></template>
+                    搜索
+                  </a-button>
+                  <a-button size="small" style="width: 90px" @click="handleReset(clearFilters)">
+                    重置
+                  </a-button>
+                </div>
+              </template>
+            </a-tab-pane>
+            <a-tab-pane key="2">
+              <template #tab>
+                <span style="padding: 0 16px">
+                  <bars-outlined />
+                  列
+                </span>
+              </template>
+              <div class="menu-popup-container">
+                <ul class="menu-popup" style="width: 100%">
+                  <li class="menu-popup-item" style="border-bottom: 1px solid #f0f0f0">
+                    <a-checkbox v-model:checked="checkedAll" :indeterminate="indeterminate">
+                      全选 / 取消选择
+                    </a-checkbox>
+                  </li>
+                  <template v-for="c in columns" :key="c.dataIndex ?? c.key">
+                    <li class="menu-popup-item" style="width: 100%">
+                      <a-checkbox
+                        :checked="configColumns[c.dataIndex ?? c.key as any] !== false"
+                        @update:checked="handleHideColumns(c.dataIndex ?? c.key, $event)"
+                      >
+                        {{ c.title }}
+                      </a-checkbox>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </a-tab-pane>
+          </a-tabs>
+        </div>
+      </template>
+      <template #menuIcon="{ filtered }">
+        <menu-outlined :class="filtered && 'filter-active'" />
+      </template>
       <template #contextmenuPopup="args">
         <ul class="popup">
           <li
@@ -101,18 +232,28 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, watch, nextTick } from 'vue';
-import { CopyOutlined } from '@ant-design/icons-vue';
+import {
+  CopyOutlined,
+  FilterOutlined,
+  BarsOutlined,
+  SearchOutlined,
+  MenuOutlined,
+} from '@ant-design/icons-vue';
 import { random } from 'lodash-es';
 import { message } from 'ant-design-vue';
 import { useInjectGlobalConfig } from '../../context';
 import type { ContextmenuPopupArg } from '@surely-vue/table';
+import { computed } from 'vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    // SearchOutlined,
+    SearchOutlined,
     // DownOutlined,
+    MenuOutlined,
     CopyOutlined,
+    FilterOutlined,
+    BarsOutlined,
   },
   setup() {
     const { isMobile } = useInjectGlobalConfig();
@@ -126,19 +267,53 @@ export default defineComponent({
     const expandedRowKeys = ref([]);
     const inputRef = ref();
     const editableState = reactive<Record<string, boolean>>({});
+    const state = reactive({
+      searchText: '',
+      searchedColumn: '',
+    });
+    const searchInput = ref();
+    const handleSearch = (selectedKeys, confirm, dataIndex) => {
+      confirm();
+      state.searchText = selectedKeys[0];
+      state.searchedColumn = dataIndex;
+    };
 
-    const incomes = new Array(12).fill(1).map((_, index) => ({
-      title: `${index + 1} 月`,
-      dataIndex: `income_${index + 1}`,
-      key: `income_${index + 1}`,
-      width: 100,
-    }));
+    const handleReset = clearFilters => {
+      clearFilters();
+      state.searchText = '';
+    };
+    const male = ref(true);
+    const female = ref(true);
+    const handleGenderFilter = (setSelectedKeys, confirm, gender, checked) => {
+      const keys = [];
+      if (gender === 'male') {
+        male.value = checked;
+      } else {
+        female.value = checked;
+      }
+      if (male.value) {
+        keys.push('男');
+      }
+      if (female.value) {
+        keys.push('女');
+      }
+      setSelectedKeys(keys);
+      confirm();
+    };
+    // const incomes = new Array(12).fill(1).map((_, index) => ({
+    //   title: `${index + 1} 月`,
+    //   dataIndex: `income_${index + 1}`,
+    //   key: `income_${index + 1}`,
+    //   width: 100,
+    //   showMenu: true,
+    // }));
     // const others = new Array(100).fill(1).map((_, index) => ({
     //   title: `其它_${index}`,
     //   dataIndex: `other_${index}`,
     //   key: `other_${index}`,
     //   width: 100,
     // }));
+    const configColumns = reactive({});
     const columns = [
       {
         title: '姓名',
@@ -152,10 +327,11 @@ export default defineComponent({
         ellipsis: true,
         rowDrag: true,
         editable: true,
+        showMenu: 'hover',
       },
       {
         title: '年龄',
-        width: 80,
+        width: 120,
         dataIndex: 'age',
         key: 'age',
         // maxWidth: 300,
@@ -163,6 +339,7 @@ export default defineComponent({
         align: 'center',
         sorter: (a: any, b: any) => a.age - b.age,
         editable: true,
+        showMenu: 'hover',
       },
       {
         title: '身份证号',
@@ -171,79 +348,92 @@ export default defineComponent({
         align: 'center',
         width: 210,
         editable: true,
+        showMenu: 'hover',
       },
-      // {
-      //   title: '健康指数',
-      //   dataIndex: 'health',
-      //   key: 'health',
-      //   align: 'center',
-      //   width: 170,
-      // },
-      // {
-      //   title: '出生日期',
-      //   width: 100,
-      // },
       {
         title: '性别',
         dataIndex: 'gender',
         align: 'center',
-        width: 70,
-        editable: true,
+        width: 100,
+        editable: 'cellEditorSlot',
+        showMenu: 'hover',
+        filterMultiple: true,
+        onFilter: (value, record) => {
+          return value === record.gender;
+        },
       },
       {
         title: '职业',
         dataIndex: 'job',
         width: 150,
         editable: true,
+        showMenu: 'hover',
       },
       {
         title: '公司',
         dataIndex: 'company',
         width: 100,
         editable: true,
+        showMenu: 'hover',
       },
       {
         title: '毕业学校',
         dataIndex: 'school',
         width: 150,
         editable: true,
+        showMenu: 'hover',
         // autoHeight: true,
       },
-      { title: '电话', dataIndex: 'phone', width: 150, editable: true },
-      { title: '手机', dataIndex: 'telephone', width: 150, editable: true },
-      { title: 'QQ', dataIndex: 'qq', width: 150, editable: true },
-      { title: '微信', dataIndex: 'wechat', width: 150, editable: true },
-      { title: '钉钉', dataIndex: 'dingTalk', width: 150, editable: true },
-      { title: '国籍', dataIndex: 'country', width: 150, editable: true },
-      { title: '民族', dataIndex: 'nationality', width: 100, editable: true },
-      { title: '婚姻', dataIndex: 'marital', width: 150, editable: true },
-      { title: '地址', dataIndex: 'address', width: 200, editable: true },
+      { title: '电话', dataIndex: 'phone', width: 150, editable: true, showMenu: 'hover' },
+      { title: '手机', dataIndex: 'telephone', width: 150, editable: true, showMenu: 'hover' },
+      { title: 'QQ', dataIndex: 'qq', width: 150, editable: true, showMenu: 'hover' },
+      { title: '微信', dataIndex: 'wechat', width: 150, editable: true, showMenu: 'hover' },
+      { title: '钉钉', dataIndex: 'dingTalk', width: 150, editable: true, showMenu: 'hover' },
+      { title: '国籍', dataIndex: 'country', width: 150, editable: true, showMenu: 'hover' },
+      { title: '民族', dataIndex: 'nationality', width: 100, editable: true, showMenu: 'hover' },
+      { title: '婚姻', dataIndex: 'marital', width: 150, editable: true, showMenu: 'hover' },
+      { title: '地址', dataIndex: 'address', width: 200, editable: true, showMenu: 'hover' },
       {
         title: '收入',
-        key: 'income',
-        children: incomes,
+        dataIndex: 'income',
+        // children: incomes,
         align: 'left',
+        width: 120,
         editable: true,
+        showMenu: 'hover',
       },
-      // {
-      //   title: '其它',
-      //   key: 'other',
-      //   children: others,
-      // },
-      // {
-      //   title: '备注',
-      //   dataIndex: 'info',
-      //   key: 'info',
-      //   width: 300,
-      //   resizable: true,
-      // },
       {
         title: '操作',
         key: 'action',
         width: 120,
         fixed: !isMobile.value ? 'right' : false,
       },
-    ];
+    ].map(item => {
+      return {
+        onFilter: (value, record) =>
+          record[item.dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+        ...item,
+      };
+    });
+    const checkedAll = computed({
+      get() {
+        return columns.every(item => configColumns[item.dataIndex ?? item.key] !== false);
+      },
+      set(val) {
+        columns.forEach(item => {
+          configColumns[item.dataIndex ?? item.key] = val;
+        });
+      },
+    });
+    const indeterminate = computed(() => {
+      return !checkedAll.value && columns.some(item => configColumns[item.dataIndex] === true);
+    });
+    const mergedColumns = computed({
+      get() {
+        return columns.filter(item => configColumns[item.dataIndex ?? item.key] !== false);
+      },
+      set(val) {},
+    });
 
     interface DataItem {
       key: number;
@@ -262,7 +452,7 @@ export default defineComponent({
     const income1 = [12000, 8900, 18000, 13000, 6800];
     const income2 = [32000, 38900, 28000, 43000, 60800];
 
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 100; i++) {
       const age = random(18, 40);
       const item = {
         // key: i,
@@ -287,6 +477,7 @@ export default defineComponent({
         info: '大家自己编辑吧，造数据也挺难的',
         jobImg: '',
         description: '你可以展示更多数据，甚至是子表格也没有任何问题',
+        income: age > 35 ? income2[random(0, 4)] : income1[random(0, 4)],
       };
       switch (item.job) {
         case 'IT_前端':
@@ -321,6 +512,7 @@ export default defineComponent({
     }
     const rowSelection = reactive({
       type: 'checkbox',
+      columnWidth: 50,
     });
     watch(rowSelection, () => {
       console.log(rowSelection);
@@ -442,11 +634,29 @@ export default defineComponent({
       handleDelete,
       copyValue,
       copyClick,
+      handleSearch,
+      handleReset,
+      searchInput,
+      state,
+      male,
+      female,
+      configColumns,
+      handleGenderFilter,
+      handleHideColumns: (key: any, checked) => {
+        configColumns[key] = checked;
+      },
+      checkedAll,
+      indeterminate,
+      mergedColumns,
     };
   },
 });
 </script>
 <style lang="less">
+.filter-active {
+  color: var(--surely-table-primary-color) !important;
+  opacity: 1 !important;
+}
 .editable-cell {
   position: relative;
 }

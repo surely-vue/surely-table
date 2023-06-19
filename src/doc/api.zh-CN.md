@@ -60,7 +60,7 @@ setConfig(config: {
 | rowExpandable | 设置是否允许行展开 | (record) => boolean | - |  |
 | customRow | 设置行属性 | Function(record, index) | - |  |
 | headerCell | 个性化头部单元格 | v-slot:headerCell="{title, column}" | - |  |
-| bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column, key}" | - |  |
+| bodyCell | 个性化单元格 | v-slot:bodyCell="{text, record, index, column, key, openEditor(4.0.3), closeEditor(4.0.3)}" | - |  |
 | customCell | 设置单元格属性, column 如配置了 `customCell`, 优先使用 column.customCell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
@@ -75,8 +75,9 @@ setConfig(config: {
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
 | showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
 | rowHeight | 配置行高，组件内部默认会根据 size 自动调整高度，如果需要自定义高度可使用该属性 | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |
-| menuIcon | 自定义筛选菜单图标 | v-slot:menuIcon="{column}" | - | 4.0 |
-| menuPopup | 自定义筛选菜单弹出内容 | v-slot:menuPopup="{column}" | - | 4.0 |
+| menuIcon | 自定义筛选菜单图标 | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
+| menuPopup | 自定义筛选菜单弹出内容 | v-slot:menuPopup="[MenuPopupArg](#MenuPopupArg)" | - | 4.0 |
+| cellEditor | 自定义单元格编辑器，结合 column.editable 使用 | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -123,7 +124,7 @@ setConfig(config: {
 列描述数据对象，是 columns 中的一项，Column 使用相同的 API。
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | align | 设置列的对齐方式 | `left` \| `right` \| `center` | `left` |  |
 | autoHeight | 是否启用自动行高 | boolean | false |  |
 | colSpan | 表头列合并,设置为 0 时，不渲染 | number |  |  |
@@ -159,7 +160,7 @@ setConfig(config: {
 | onFilterDropdownOpenChange | 自定义筛选菜单可见变化时调用，使用 template 或 jsx 时作为`filterDropdownVisibleChange`事件使用 | function(visible) {} | - | 4.0 |
 | rowDrag | 当前列添加拖拽手柄, [详见](/doc/dragable/) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 | drag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
-| editable | 单元格是否可编辑，可选参数为 `boolean` 或者 `(params) => boolean`，返回 `true` 时可编辑 [示例](/doc/edit/) | boolean \| [`((params: EditableValueParams<RecordType>) => boolean)`](#EditableType) | - | 4.0 |
+| editable | 单元格是否可编辑 [示例](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#EditableType) | - | 4.0 |
 | valueParser | 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`, [示例](/doc/edit/) | [`ValueParserFunc`](#EditableType) | - | 4.0 |
 | valueGetter | 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`, [示例](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
 | valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
@@ -187,6 +188,34 @@ export interface ValueParserFunc<T = any, TValue = any> {
 }
 export interface ValueGetterFunc<T = any, TValue = any> {
   (params: EditableValueParams<T, TValue>): string | null | undefined;
+}
+export interface CellEditorArgs {
+  modelValue: Ref<any>;
+  save: () => void;
+  onInput: (event: Event, value: any) => void;
+  closeEditor: () => void;
+  column: ColumnType;
+  editorRef: Ref<any>;
+  getPopupContainer: () => HTMLElement;
+}
+```
+
+#### MenuPopupArg
+
+```ts
+export type MenuFilterProps = {
+  prefixCls: string;
+  setSelectedKeys: (selectedKeys: Key[]) => void;
+  selectedKeysRef: Ref<Key[]>;
+  confirm: () => void;
+  clearFilters: () => void;
+  filters: ColumnFilterItem[];
+};
+export interface MenuPopupArg<ColumnT> {
+  column: ColumnT;
+  event: MouseEvent;
+  hidePopup: () => void;
+  filter: MenuFilterProps;
 }
 ```
 

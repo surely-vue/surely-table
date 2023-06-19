@@ -1,6 +1,7 @@
 <template>
   <div>
     <edit-cell-native />
+    <edit-cell-custom />
     <edit-cell />
     <edit-row />
     <edit-cell-perf-vue />
@@ -14,9 +15,11 @@ import EditRow from './edit-row.vue';
 import editCellPerfVue from './edit-cell-perf.vue';
 import editModalVue from './edit-modal.vue';
 import EditCellNative from './edit-cell-native.vue';
+import editCellCustom from './edit-cell-custom.vue';
 
 export default defineComponent({
   components: {
+    editCellCustom,
     EditCell,
     EditRow,
     editCellPerfVue,
@@ -31,6 +34,11 @@ export default defineComponent({
       id: 'edit-cell-native',
       title: '高性能编辑单元格(推荐)',
       enTitle: 'Edit Cell Native',
+    },
+    {
+      id: 'edit-cell-custom',
+      title: '自定义编辑单元格',
+      enTitle: 'Custom Edit Cell',
     },
     {
       id: 'edit-cell',

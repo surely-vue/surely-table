@@ -12,7 +12,7 @@ title:
 双击单元格触发编辑模式。
 #### 相关 API：
 #### editable
-单元格是否可编辑，可选参数为 `boolean` 或者 `(params) => boolean`，返回 `true` 时可编辑。
+单元格是否可编辑，可选参数为 `boolean` | `cellEditorSlot` `(params) => boolean | 'cellEditorSlot'`，返回 `true` 时可编辑, 返回 cellEditorSlot 时，使用 v-slot:cellEditor 自定义渲染编辑。
 #### valueParser
 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`。
 #### valueGetter
@@ -30,7 +30,7 @@ Table with editable cells. Use the `editable` property of the component to quick
 Double-click the cell to trigger the edit mode.
 #### Related API：
 #### editable
-Whether the cell is editable, the optional parameter is `boolean` or `(params) => boolean`, return `true` when editable.
+Whether the cell is editable, the optional parameter is `boolean` | `cellEditorSlot` | `(params) => boolean | 'cellEditorSlot'`, return `true` when editable.
 #### valueParser
 Convert the edited string value to the value in the data source, for example: convert the string `1,000` to the integer `1000`.
 #### valueGetter
