@@ -10,6 +10,10 @@
 
 ---
 
+## 4.0.7
+
+- 🐞 修复在低版本浏览器中滚动条不稳定问题 [#140](https://github.com/surely-vue/table/issues/140)
+
 ## 4.0.5
 
 - 🐞 修复树结构拖拽时，drag ghost 内容错位问题 [#147](https://github.com/surely-vue/table/issues/147)
