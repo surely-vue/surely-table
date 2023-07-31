@@ -16,13 +16,28 @@ yarn add @surely-vue/table
 
 ### 在项目中使用
 
-导入样式：
+#### 导入样式：
 
 ```css
-import '@surely-vue/table/dist/index.less'
+import '@surely-vue/table/dist/index.less';
 ```
 
+#### 4.0 及以上版本
+
+该版本组件底层默认依赖 Ant Design Vue 4.x 版本组件库(当然这并不影响你使用其它组件库)，如果你需要使用 Ant Design Vue 3.x 版本组件库，需要额外导入依赖样式：
+
+```css
+import '@surely-vue/table/src/style/antdv.less';
+```
+
+#### 4.0 以下版本
+
+该版本组件底层依赖 Ant Design Vue （3.x）组件库(当然这并不影响你使用其它组件库)，css 文件是构建后产物，为了避免引用版本不一致导致各种奇怪问题，我们推荐使用 less 来导入原始文件，这样可以避免样式和逻辑依赖版本不一致问题。
+
+
 > 如使用 less 文件，需要安装 less-loader，并开启 `javascriptEnabled`，可查看下方模板库的配置。
+
+#### 注册组件：
 
 目前该组件底层有部分依赖 Ant Design Vue 组件库(当然这并不影响你使用其它组件库)，css 文件是构建后产物，为了避免引用版本不一致导致各种奇怪问题，我们推荐使用 less 来导入原始文件，这样可以避免样式和逻辑依赖版本不一致问题。
 
@@ -91,12 +106,25 @@ setLicenseKey('fdafefdaffklfjajuiefhrdbfdnsafjkasyegwfpqfldfd45f48ew468fr5ds');
 
 对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏。
 
-### 暗黑模式（2.5.0+）
+### 暗黑模式
+
+#### 4.0.0+
+
+```js
+import { setConfig } from '@surely-vue/table';
+setConfig({
+  theme: 'dark',
+});
+```
+
+> 注意：SurelyTable 依赖的 Ant Design Vue 组件的暗黑由 Ant Design Vue 控制
+
+#### 2.5.0+
 
 我们提供了内置的暗黑模式 less 文件，未来我们会完全升级成 css variable 方案。
 
 ```css
-import '@surely-vue/table/dist/dark.less'
+import '@surely-vue/table/dist/dark.less';
 ```
 
-现阶段你也可以使用 [`@umijs/ssr-darkreader`](https://github.com/chenshuai2144/darkreader) 插件，全局应用暗黑主题。
+你也可以使用 [`@umijs/ssr-darkreader`](https://github.com/chenshuai2144/darkreader) 插件，全局应用暗黑主题。

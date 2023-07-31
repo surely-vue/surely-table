@@ -77,7 +77,7 @@
         </div>
       </div>
       <div class="right">
-        <a-carousel autoplay arrows :dots="!isMobile" :style="carouselStyle">
+        <a-carousel arrows :dots="!isMobile" :style="carouselStyle">
           <template #prevArrow>
             <div class="custom-slick-arrow" :style="`left: ${isMobile ? 5 : -50}px; z-index: 1`">
               <left-circle-outlined />
@@ -89,7 +89,7 @@
             </div>
           </template>
           <div class="card">
-            <a-card :bordered="false">
+            <a-card :bordered="false" class="!shadow-none">
               <template #cover>
                 <div class="desc">
                   Ant Design Vue 加快了我们交付产品的速度和质量，给我们节省了每年约 300
@@ -101,6 +101,25 @@
               <a-card-meta title="胡淼" description="校宝在线 副总裁（VP）">
                 <template #avatar>
                   <a-avatar :src="humiao" />
+                </template>
+              </a-card-meta>
+            </a-card>
+          </div>
+          <div class="card">
+            <a-card :bordered="false">
+              <template #cover>
+                <div class="desc">
+                  Surely Vue
+                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
+                  <br />
+                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
+                  Surely Vue
+                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
+                </div>
+              </template>
+              <a-card-meta title="张驰" description="AFFiNE CTO & 联合创始人">
+                <template #avatar>
+                  <a-avatar :src="zhangchi" />
                 </template>
               </a-card-meta>
             </a-card>
@@ -176,25 +195,6 @@
               </a-card-meta>
             </a-card>
           </div>
-          <div class="card">
-            <a-card :bordered="false">
-              <template #cover>
-                <div class="desc">
-                  Surely Vue
-                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
-                  <br />
-                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
-                  Surely Vue
-                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
-                </div>
-              </template>
-              <a-card-meta title="张驰" description="前纷享销客前端技术负责人">
-                <template #avatar>
-                  <a-avatar :src="zhangchi" />
-                </template>
-              </a-card-meta>
-            </a-card>
-          </div>
         </a-carousel>
       </div>
     </div>
@@ -256,25 +256,25 @@ export default defineComponent({
 .title {
   font-size: 30px;
   padding: 0 0 10px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--surely-table-text-color);
 }
 .highlight {
-  color: #1890ff;
+  color: #1677ff;
 }
 .info {
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--surely-table-text-color-secondary);
   line-height: 26px;
   text-align: center;
 }
 .rec {
-  background: #f3f6f9;
+  background: var(--surely-table-primary-color-1);
   .rec-inner {
     padding: 100px;
   }
   .rec-word {
     font-size: 24px;
-    color: #1890ff;
+    color: #1677ff;
   }
 }
 .card {
@@ -333,11 +333,11 @@ export default defineComponent({
 </style>
 <style lang="less">
 .ant-carousel {
-  box-shadow: 0 2px 8px #f0f1f2;
+  box-shadow: var(--surely-table-box-shadow-base);
 }
 .ant-carousel .slick-slide {
   text-align: center;
-  background: #fff;
+  background: var(--surely-table-bg);
   overflow: hidden;
 }
 
@@ -382,5 +382,8 @@ export default defineComponent({
 }
 .card .ant-card-body {
   padding: 24px 0 0;
+}
+.card .ant-card {
+  box-shadow: none;
 }
 </style>

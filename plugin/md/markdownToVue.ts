@@ -1,14 +1,14 @@
+import escapeHtml from 'escape-html';
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import LRUCache from 'lru-cache';
+import path from 'path';
+import slash from 'slash';
 import type { MarkdownOptions, MarkdownParsedData, MarkdownRenderer } from './markdown/markdown';
 import { createMarkdownRenderer } from './markdown/markdown';
-import { deeplyParseHeader } from './utils/parseHeader';
-import type { PageData, HeadConfig } from './shared';
-import slash from 'slash';
-import escapeHtml from 'escape-html';
+import type { HeadConfig, PageData } from './shared';
 import fetchCode from './utils/fetchCode';
+import { deeplyParseHeader } from './utils/parseHeader';
 import tsToJs from './utils/tsToJs';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -23,10 +23,10 @@ interface MarkdownCompileResult {
 export function createMarkdownToVueRenderFn(
   root: string = process.cwd(),
   options: MarkdownOptions = {},
-): any {
+) {
   const md = createMarkdownRenderer(options);
 
-  return (src: string, file: string): MarkdownCompileResult => {
+  return async (src: string, file: string): Promise<MarkdownCompileResult> => {
     const relativePath = slash(path.relative(root, file));
 
     const cached = cache.get(src);
@@ -57,7 +57,7 @@ export function createMarkdownToVueRenderFn(
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
     const newContent = data.vueCode
-      ? genComponentCode(md, data, pageData)
+      ? await genComponentCode(md, data, pageData)
       : `
 <template><article class="markdown">${html}</article></template>
 
@@ -69,7 +69,7 @@ ${fetchCode(content, 'style')}
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
     const result = {
-      vueSrc: newContent.trim(),
+      vueSrc: newContent?.trim(),
       pageData,
     };
     cache.set(src, result);
@@ -77,12 +77,12 @@ ${fetchCode(content, 'style')}
   };
 }
 
-function genComponentCode(md: MarkdownRenderer, data: PageData, pageData: PageData) {
-  const { vueCode, headers = [] } = data as MarkdownParsedData;
+async function genComponentCode(md: MarkdownRenderer, data: PageData, pageData: PageData) {
+  const { vueCode = '', headers = [] } = data as MarkdownParsedData;
   const cn = headers.find(h => h.title === 'zh-CN')?.content;
   const us = headers.find(h => h.title === 'en-US')?.content;
   let { html } = md.render(`\`\`\`vue
-${vueCode.trim()}
+${vueCode?.trim()}
 \`\`\``);
   html = html
     .replace(/import\.meta/g, 'import.<wbr/>meta')
@@ -91,7 +91,7 @@ ${vueCode.trim()}
   const script = fetchCode(vueCode, 'script');
   const style = fetchCode(vueCode, 'style');
   const scriptContent = fetchCode(vueCode, 'scriptContent');
-  let jsCode = tsToJs(scriptContent).trim();
+  let jsCode = (await tsToJs(scriptContent))?.trim();
   jsCode = jsCode
     ? `<script>
 ${jsCode}
@@ -146,7 +146,7 @@ const inferTitle = (frontmatter: any, content: string) => {
   }
   const match = content.match(/^\s*#+\s+(.*)/m);
   if (match) {
-    return deeplyParseHeader(match[1].trim());
+    return deeplyParseHeader(match[1]?.trim());
   }
   return '';
 };

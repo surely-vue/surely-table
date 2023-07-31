@@ -107,7 +107,7 @@ export default defineComponent({
       sorter: any,
     ) => {
       run({
-        results: pag.pageSize!,
+        results: pag.pageSize,
         page: pag?.current,
         sortField: sorter.field,
         sortOrder: sorter.order,

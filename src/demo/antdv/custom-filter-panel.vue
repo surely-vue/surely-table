@@ -20,7 +20,7 @@ Implement a customized column search example via `customFilterDropdown`.
   <s-table :data-source="data" :columns="columns">
     <template #headerCell="{ column }">
       <template v-if="column.key === 'name'">
-        <span style="color: #1890ff">Name</span>
+        <span style="color: #1677ff">Name</span>
       </template>
       <template v-else>{{ column.title }}</template>
     </template>
@@ -42,7 +42,7 @@ Implement a customized column search example via `customFilterDropdown`.
           style="width: 90px; margin-right: 8px"
           @click="handleSearch(selectedKeys, confirm, column.dataIndex)"
         >
-          <template #icon><SearchOutlined /></template>
+          <template #icon><search-outlined /></template>
           Search
         </a-button>
         <a-button size="small" style="width: 90px" @click="handleReset(clearFilters)">
@@ -127,8 +127,8 @@ export default defineComponent({
         customFilterDropdown: true,
         onFilter: (value, record) =>
           record.name.toString().toLowerCase().includes(value.toLowerCase()),
-        onFilterDropdownVisibleChange: visible => {
-          if (visible) {
+        onFilterDropdownOpenChange: open => {
+          if (open) {
             setTimeout(() => {
               searchInput.value.focus();
             }, 100);
@@ -147,8 +147,8 @@ export default defineComponent({
         customFilterDropdown: true,
         onFilter: (value, record) =>
           record.address.toString().toLowerCase().includes(value.toLowerCase()),
-        onFilterDropdownVisibleChange: visible => {
-          if (visible) {
+        onFilterDropdownOpenChange: open => {
+          if (open) {
             setTimeout(() => {
               searchInput.value.focus();
             }, 100);

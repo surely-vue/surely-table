@@ -24,7 +24,9 @@
         </p>
       </div>
       <div class="text-center flex card-out">
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border border-gray-300 rounded bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border border-gray-300 border-style-solid rounded bg"
+        >
           <span class="p-2 text-2xl">
             标准版
             <a-tooltip>
@@ -35,7 +37,7 @@
                 <br />
                 这类明确子域名的网站，它可以满足大部分的网站应用，并且支持三个月内的补差价升级通配符域名。
               </template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
@@ -45,9 +47,11 @@
           </span>
           <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
           <span class="p-2 text-gray-500">子域名授权、永久使用权、一年更新权</span>
-          <a-button @click="handleClick('basic')">获取授权</a-button>
+          <a-button class="mt-8px" @click="handleClick('basic')">获取授权</a-button>
         </div>
-        <div class="mt-10 m-2 flex flex-1 flex-col border rounded border-green-500 bg">
+        <div
+          class="mt-10 m-2 flex flex-1 flex-col border rounded border-green-500 bg border-style-solid"
+        >
           <a-badge-ribbon text="推荐">
             <div class="flex flex-col p-5">
               <span class="p-2 text-2xl">
@@ -59,7 +63,7 @@
                     授权后，你可以在 v1.vuejs.org、v2.vuejs.org、v3.vuejs.org 等所有 vuejs.org
                     下的域名中使用
                   </template>
-                  <QuestionCircleTwoTone class="text-base" />
+                  <question-circle-two-tone class="text-base" />
                 </a-tooltip>
               </span>
               <span class="p-2 text-xl">
@@ -69,16 +73,20 @@
               </span>
               <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
               <span class="p-2 text-gray-500">通配符域名、永久使用权、一年更新权</span>
-              <a-button type="primary" @click="handleClick('pro')">获取授权</a-button>
+              <a-button class="mt-8px" type="primary" @click="handleClick('pro')">
+                获取授权
+              </a-button>
             </div>
           </a-badge-ribbon>
         </div>
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-500 bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-500 bg border-style-solid"
+        >
           <span class="p-2 text-2xl">
             旗舰版
             <a-tooltip>
               <template #title>不限制域名，适合 Electron、IP 内网、SAAS 等项目。</template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
@@ -88,14 +96,16 @@
           </span>
           <!-- <span class="primary-color">早鸟折扣价（5折）</span> -->
           <span class="p-2 text-gray-500">不限制域名、永久使用权、一年更新权</span>
-          <a-button @click="handleClick('flag')">获取授权</a-button>
+          <a-button class="mt-8px" @click="handleClick('flag')">获取授权</a-button>
         </div>
-        <div class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-400 bg">
+        <div
+          class="mt-10 m-2 p-5 flex flex-1 flex-col border rounded border-yellow-400 bg border-style-solid"
+        >
           <span class="p-2 text-2xl">
             旗舰版 Plus
             <a-tooltip>
               <template #title>不限制域名，永久更新权。</template>
-              <QuestionCircleTwoTone class="text-base" />
+              <question-circle-two-tone class="text-base" />
             </a-tooltip>
           </span>
           <span class="p-2 text-xl">
@@ -117,15 +127,15 @@
         </div>
       </div>
       <p class="pt-5">
-        <span style="color: #1890ff">早鸟特权：</span>
+        <span style="color: #1677ff">早鸟特权：</span>
         抢先体验、限时折扣、并有机会影响产品走向和功能优先级。
       </p>
       <p class="pt-5">
-        <span style="color: #1890ff">免费使用：</span>
+        <span style="color: #1677ff">免费使用：</span>
         仅限 github.io、gitee.io 两类域名，请通过邮箱附上您的开源项目和域名进行申请。
       </p>
       <p class="pt-5">
-        <span style="color: #1890ff">教育优惠：</span>
+        <span style="color: #1677ff">教育优惠：</span>
         5折特惠，不和其它活动同享，仅限 .edu 域名或发票信息为学校、研究机构、科研院所等教育机构。
       </p>
       <p class="pt-5">
@@ -176,9 +186,13 @@ export default defineComponent({
 .bg {
   background-color: #fdfdfd;
 }
-.primary-color {
-  color: #1890ff;
+
+[data-doc-theme='dark'] {
+  .bg {
+    background-color: #141414;
+  }
 }
+
 .card-out {
   flex-wrap: wrap;
   justify-content: space-between;

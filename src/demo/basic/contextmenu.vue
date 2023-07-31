@@ -27,7 +27,7 @@ Version：2.5.0+
         </template>
       </template>
       <template #tooltipTitle="{ value }">
-        <HomeTwoTone />
+        <home-two-tone />
         {{ value }}
       </template>
       <template #contextmenuPopup="args">
@@ -37,11 +37,11 @@ Version：2.5.0+
             :class="args.column.key === 'operation' && 'disabled'"
             @click="copyClick(args, 'cell')"
           >
-            <CopyOutlined />
+            <copy-outlined />
             复制
           </li>
           <li class="popup-item" @click="copyClick(args, 'record')">
-            <CopyOutlined />
+            <copy-outlined />
             复制整行
           </li>
           <li
@@ -49,7 +49,7 @@ Version：2.5.0+
             :class="args.column.key === 'operation' && 'disabled'"
             @click="copyClick(args, 'column')"
           >
-            <CopyOutlined />
+            <copy-outlined />
             复制整列
           </li>
         </ul>
@@ -169,10 +169,10 @@ export default defineComponent({
     cursor: pointer;
     padding: 8px;
     &:hover {
-      background-color: #fafafa;
+      background-color: var(--surely-table-row-hover-bg);
     }
     &.disabled {
-      color: #00000040;
+      color: var(--surely-table-disabled-color);
       cursor: not-allowed;
     }
   }

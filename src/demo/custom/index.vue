@@ -1,6 +1,6 @@
 <template>
   <div>
-    <animateVue />
+    <animate-vue />
   </div>
 </template>
 <script lang="ts">

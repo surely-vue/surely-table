@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Colspan />
-    <Rowspan />
-    <Header />
-    <ColspanRowspan />
-    <GroupingColumns />
+    <colspan />
+    <rowspan />
+    <custom-header />
+    <colspan-rowspan />
+    <grouping-columns />
   </div>
 </template>
 <script lang="ts">
@@ -19,7 +19,7 @@ export default defineComponent({
   components: {
     Colspan,
     Rowspan,
-    Header,
+    CustomHeader: Header,
     ColspanRowspan,
     GroupingColumns,
   },

@@ -18,12 +18,7 @@
     &,
     a {
       color: @site-text-color;
-      background: @component-background;
     }
-  }
-  &,
-  .code-box-demo {
-    background-color: @component-background;
   }
   .markdown {
     pre {
@@ -32,11 +27,11 @@
     }
     pre code {
       margin: 0;
-      background: #f5f5f5;
+      background: @site-markdown-code-bg;
     }
   }
   &:target {
-    border: 1px solid @primary-color;
+    border: 1px solid #1677ff;
   }
 
   &-expand-trigger {
@@ -64,7 +59,6 @@
     margin-left: 16px;
     padding: 1px 8px;
     color: #777;
-    background: @body-background;
     border-radius: @border-radius-base @border-radius-base 0 0;
     transition: background-color 0.4s;
 
@@ -78,7 +72,7 @@
     a:hover {
       color: @site-text-color;
       font-weight: 500;
-      font-size: @font-size-base;
+      font-size: @table-font-size;
     }
   }
 
@@ -128,7 +122,7 @@
     &.markdown {
       position: relative;
       width: 100%;
-      font-size: @font-size-base;
+      font-size: @table-font-size;
       border-radius: 0 0 @border-radius-base @border-radius-base;
       transition: background-color 0.4s;
     }
@@ -220,7 +214,6 @@
     pre {
       margin: 0;
       padding: 0;
-      background: @component-background;
     }
     &:not(:first-child) {
       border-top: 1px dashed @site-border-color-split;
@@ -274,7 +267,6 @@
     height: 14px;
     font-size: 14px;
     text-align: center;
-    background: @component-background;
     cursor: pointer;
     transition: transform 0.24s;
 
@@ -325,17 +317,9 @@
     width: auto;
     margin: 0;
     code {
-      background: @component-background;
+      background: @site-markdown-code-bg;
       border: none;
     }
-  }
-
-  &-debug {
-    border-color: @purple-3;
-  }
-
-  &-debug &-title a {
-    color: @purple-6;
   }
 }
 
@@ -344,15 +328,5 @@
 
   .ant-row-rtl & {
     float: left;
-  }
-}
-
-.ant-row-rtl {
-  #components-tooltip-demo-placement,
-  #components-popover-demo-placement,
-  #components-popconfirm-demo-placement {
-    .code-box-demo {
-      direction: ltr;
-    }
   }
 }

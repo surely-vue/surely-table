@@ -46,6 +46,7 @@ Set `sticky` to `true` or specify the distance with `{offsetHeader: number}`.
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useWindowSize } from '@vueuse/core';
 
 interface DataItem {
   key: number;
@@ -102,10 +103,11 @@ export default defineComponent({
         address: `London Park no. ${i}`,
       });
     }
+    const { height } = useWindowSize();
     return {
       dataSource: ref(data),
       columns: ref(columns),
-      clientHeight: document.body.clientHeight,
+      clientHeight: height,
     };
   },
 });

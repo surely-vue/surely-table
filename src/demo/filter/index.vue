@@ -1,8 +1,8 @@
 <template>
   <div>
-    <MultipleSorter />
-    <ResetFilter />
-    <CustomFilterPanel />
+    <multiple-sorter />
+    <reset-filter />
+    <custom-filter-panel />
   </div>
 </template>
 <script lang="ts">

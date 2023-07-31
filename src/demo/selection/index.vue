@@ -1,9 +1,9 @@
 <template>
   <div>
-    <rowSelectionVue />
-    <rowSelectionRadioVue />
-    <rowSelectionAndOperationVue />
-    <rowSelectionCustomVue />
+    <row-selection-vue />
+    <row-selection-radio-vue />
+    <row-selection-and-operation-vue />
+    <row-selection-custom-vue />
   </div>
 </template>
 <script lang="ts">

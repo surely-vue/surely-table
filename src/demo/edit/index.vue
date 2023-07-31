@@ -1,9 +1,11 @@
 <template>
   <div>
-    <EditCell />
-    <EditRow />
-    <editCellPerfVue />
-    <editModalVue />
+    <edit-cell-native />
+    <edit-cell-custom />
+    <edit-cell />
+    <edit-row />
+    <edit-cell-perf-vue />
+    <edit-modal-vue />
   </div>
 </template>
 <script lang="ts">
@@ -12,18 +14,32 @@ import EditCell from './edit-cell.vue';
 import EditRow from './edit-row.vue';
 import editCellPerfVue from './edit-cell-perf.vue';
 import editModalVue from './edit-modal.vue';
+import EditCellNative from './edit-cell-native.vue';
+import editCellCustom from './edit-cell-custom.vue';
 
 export default defineComponent({
   components: {
+    editCellCustom,
     EditCell,
     EditRow,
     editCellPerfVue,
     editModalVue,
+    EditCellNative,
   },
-  title: '增删改',
+  title: '编辑',
   enTitle: 'Add、Delete、Edit',
   type: 'edit',
   children: [
+    {
+      id: 'edit-cell-native',
+      title: '高性能编辑单元格(推荐)',
+      enTitle: 'Edit Cell Native',
+    },
+    {
+      id: 'edit-cell-custom',
+      title: '自定义编辑单元格',
+      enTitle: 'Custom Edit Cell',
+    },
     {
       id: 'edit-cell',
       title: '编辑单元格',

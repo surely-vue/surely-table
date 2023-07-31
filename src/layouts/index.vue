@@ -6,7 +6,7 @@
     </div>
   </transition>
   <a-layout class="layout">
-    <HeaderVue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
+    <header-vue :show-left-nav="showLeftNav" style="position: fixed; width: 100%; z-index: 999" />
     <a-layout style="padding-top: 64px">
       <template v-if="isMobile">
         <a-drawer
@@ -14,15 +14,15 @@
           :closable="false"
           placement="left"
           class="drawer drawer-left"
-          :visible="visible"
+          :open="visible"
           wrapper-class-name="drawer-wrapper"
           width="50%"
         >
-          <navVue />
+          <nav-vue />
           <template #handle>
             <div class="drawer-handle" @click="handleClickShowButton">
               <close-outlined v-if="visible" :style="iconStyle" />
-              <MenuOutlined v-else :style="iconStyle" />
+              <menu-outlined v-else :style="iconStyle" />
             </div>
           </template>
         </a-drawer>
@@ -34,27 +34,29 @@
         :style="{
           overflowY: 'auto',
           overflowX: 'hidden',
-          background: '#fff',
+          background: 'var(--surely-table-bg)',
           position: 'fixed',
           left: 0,
           bottom: 0,
           top: '64px',
         }"
       >
-        <navVue />
+        <nav-vue />
       </a-layout-sider>
       <a-layout
         :style="
-          showLeftNav && !isMobile ? 'padding: 0 24px 24px 284px' : 'padding: 0; background: #fff'
+          showLeftNav && !isMobile
+            ? 'padding: 0 24px 24px 284px'
+            : 'padding: 0; background: var(--surely-table-bg)'
         "
       >
         <a-layout-content
           v-if="showLeftNav"
-          :style="{ marginTop: '0px', width: '100%', background: '#fff' }"
+          :style="{ marginTop: '16px', width: '100%', background: 'var(--surely-table-bg)' }"
         >
           <div
             :style="{
-              padding: '10px 50px',
+              padding: '8px 50px',
               margin: '0px auto',
               minHeight: '280px',
               maxWidth: '1400px',
@@ -66,7 +68,7 @@
         <template v-else>
           <router-view />
         </template>
-        <FooterVue />
+        <footer-vue />
       </a-layout>
     </a-layout>
   </a-layout>
@@ -131,7 +133,6 @@ export default defineComponent({
 <style lang="less" scoped>
 .layout {
   min-height: 100%;
-  background: #fff;
 }
 .nav :deep(.ant-menu-item) {
   margin: 0;

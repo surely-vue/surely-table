@@ -1,21 +1,22 @@
 <template>
   <div>
-    <Basic />
-    <Fixed />
-    <FixedHeader />
-    <FixedHeaderColumns />
-    <Sticky />
-    <heightVue />
-    <GroupingColumns />
-    <Bordered />
-    <Stripe />
-    <Summary />
+    <basic />
+    <fixed />
+    <fixed-header />
+    <fixed-header-columns />
+    <sticky />
+    <height-vue />
+    <grouping-columns />
+    <bordered />
+    <stripe />
+    <custom-summary />
     <ajax />
     <scroll />
     <tooltip />
-    <autoHeaderHeightVue />
-    <headerScrollbarVue />
-    <ContextmenuVue />
+    <auto-header-height-vue />
+    <header-scrollbar-vue />
+    <contextmenu-vue />
+    <header-menu />
   </div>
 </template>
 <script lang="ts">
@@ -36,6 +37,7 @@ import tooltip from './tooltip.vue';
 import autoHeaderHeightVue from './auto-header-height.vue';
 import headerScrollbarVue from './header-scrollbar.vue';
 import ContextmenuVue from './contextmenu.vue';
+import headerMenu from './header-menu.vue';
 export default defineComponent({
   title: '基本用法',
   enTitle: 'Basic',
@@ -121,6 +123,11 @@ export default defineComponent({
       title: '右键菜单',
       enTitle: 'Contextmenu',
     },
+    {
+      id: 'header-menu',
+      title: '表头单元格菜单',
+      enTitle: 'Header Cell Menu',
+    },
   ],
   components: {
     Sticky,
@@ -131,7 +138,7 @@ export default defineComponent({
     GroupingColumns,
     Bordered,
     Stripe,
-    Summary,
+    CustomSummary: Summary,
     heightVue,
     ajax,
     scroll,
@@ -139,6 +146,7 @@ export default defineComponent({
     autoHeaderHeightVue,
     headerScrollbarVue,
     ContextmenuVue,
+    headerMenu,
   },
   setup() {
     return {};

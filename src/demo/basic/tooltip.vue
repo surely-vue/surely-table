@@ -37,7 +37,7 @@ In this example, the tooltip is turned on in the `Full Name` and `Column 1` colu
       </template>
     </template>
     <template #tooltipTitle="{ value }">
-      <HomeTwoTone />
+      <home-two-tone />
       {{ value }}
     </template>
   </s-table>

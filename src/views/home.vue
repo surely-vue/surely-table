@@ -32,15 +32,15 @@
         </div>
       </div>
     </div>
-    <basicDemoVue style="margin-top: 30px"></basicDemoVue>
+    <basic-demo-vue style="margin-top: 30px"></basic-demo-vue>
     <div>
-      <featureVue />
+      <feature-vue />
     </div>
     <!-- <liveDemoVue /> -->
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from '@vue/runtime-core';
+import { defineComponent, ref } from 'vue';
 import basicDemoVue from '../components/home/basic-demo.vue';
 import logo from '../assets/surely-vue-logo.svg';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
@@ -88,11 +88,11 @@ export default defineComponent({
   margin: 0;
   border-bottom: 0;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--surely-table-text-color);
 }
 .sub-title {
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--surely-table-text-color-secondary);
 }
 .actions {
   display: flex;

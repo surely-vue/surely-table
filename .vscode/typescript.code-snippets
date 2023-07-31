@@ -1,0 +1,15 @@
+{
+  "dao": {
+    "scope": "typescript",
+    "prefix": "dao",
+    "description": "Create Data Access Object",
+    "body": [
+      "import { Column, Entity  } from 'typeorm';",
+      "",
+      "@Entity()",
+      "export class $1 {",
+      "  $2",
+      "}"
+    ],
+  }
+}

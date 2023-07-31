@@ -37,7 +37,7 @@ Custom `Header` `Body` `Summary` `Row` `Cell` background color
         <s-table-summary-cell style="background-color: #d3adf7" :index="0">
           Summary
         </s-table-summary-cell>
-        <s-table-summary-cell style="background-color: #ffadd2; color: #1890ff" :index="1">
+        <s-table-summary-cell style="background-color: #ffadd2; color: #1677ff" :index="1">
           <template #default="{ total }">{{ total }}</template>
         </s-table-summary-cell>
         <s-table-summary-cell :index="2" :col-span="Infinity" style="background-color: #ffadd2">

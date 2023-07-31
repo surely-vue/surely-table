@@ -25,12 +25,12 @@
       </ul>
     </div>
     <br />
-    <Columns />
-    <dragRowVue />
-    <dragPromiseVue />
-    <dragCustomGhostVue />
-    <dragRowTreeVue />
-    <dragColumnVue />
+    <columns />
+    <drag-row-vue />
+    <drag-promise-vue />
+    <drag-custom-ghost-vue />
+    <drag-row-tree-vue />
+    <drag-column-vue />
   </div>
 </template>
 <script lang="ts">

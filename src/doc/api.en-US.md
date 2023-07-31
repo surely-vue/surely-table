@@ -36,7 +36,7 @@
 | customCell | Set props on per cell, column.customCell will override this | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | getPopupContainer | the render container of dropdowns in table | (triggerNode) => HTMLElement | `() => TableHtmlElement` |  |
 | headerCell | custom head cell by slot | v-slot:headerCell="{title, column}" | - |  |
-| bodyCell | custom body cell by slot | v-slot:bodyCell="{text, record, index, column}" | - |  |
+| bodyCell | custom body cell by slot | v-slot:bodyCell="{text, record, index, column, openEditor(4.0.3), closeEditor(4.0.3)}" | - |  |
 | customFilterDropdown | Customized filter overlay，need set `column.customFilterDropdown` | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
@@ -50,6 +50,9 @@
 | ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.4 |
 | showHeaderScrollbar | show header scrollbar | boolean | false | 2.4.4 |
 | rowHeight | Configure the row height. By default, the component will automatically adjust the height according to size. If you need to customize the height, you can use this property | number \| ((p: Record<any, any>, isExpandRow: boolean, baseHeight: number) => number | undefined | - |  |
+| menuIcon | custom header menu icon | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
+| menuPopup | custom menu popup content | v-slot:menuPopup="[MenuPopupArg][#MenuPopupArg]" | - | 4.0 |
+| cellEditor | custom editor cell，need column.editable | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -96,7 +99,7 @@ Same as `customRow` `customCell` `customHeaderCell`. Follow [Vue jsx](https://gi
 One of the Table `columns` prop for describing the table's columns, Column has the same API.
 
 | Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | animateRows | use animate for row | boolean | true |  |
 | align | specify how content is aligned | 'left' \| 'right' \| 'center' | 'left' |  |
 | autoHeight | Whether to enable automatic row height | boolean | false |  |
@@ -109,7 +112,7 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | ellipsis | The ellipsis cell content | boolean \| {showTitle?: boolean } | false |  |
 | filterDropdown | Customized filter overlay | VNode | - |  |
 | customFilterDropdown | use v-slot:customFilterDropdown，Priority is lower than filterDropdown | boolean | false |  |
-| filterDropdownVisible | Whether `filterDropdown` is visible | boolean | - |  |
+| filterDropdownOpen | Whether `filterDropdown` is open | boolean | - | 4.0 |
 | filtered | Whether the `dataSource` is filtered | boolean | `false` |  |
 | filteredValue | Controlled filtered value, filter icon will highlight | string\[] | - |  |
 | filterIcon | Customized filter icon | ({filtered: boolean, column: Column}) | `false` |  |
@@ -130,9 +133,67 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | customCell | Set props on per cell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customHeaderCell | Set props on per header cell | Function(column) | - |  |
 | onFilter | Callback executed when the confirm filter button is clicked, Use as a `filter` event when using template or jsx | Function | - |  |
-| onFilterDropdownVisibleChange | Callback executed when `filterDropdownVisible` is changed, Use as a `filterDropdownVisible` event when using template or jsx | function(visible) {} | - |  |
+| onFilterDropdownOpenChange | Callback executed when `filterDropdownOpen` is changed, Use as a `filterDropdownOpen` event when using template or jsx | function(visible) {} | - | 4.0 |
 | rowDrag | Add a drag handle to the current column, [more](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 | drag | Whether the list header is allowed to drag, [more](/doc/dragable) | boolean | - | 2.1.1 |
+| editable | Whether the cell can be edited [example](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#EditableType) | - | 4.0 |
+| valueParser | Convert the edited string value to the value in the data source, for example: convert the string `1,000` to the integer `1000`, [example](/doc/edit/) | [`ValueParserFunc`](#EditableType) | - | 4.0 |
+| valueGetter | Convert the value in the data source to a string value, for example: convert an integer `1000` to a string `1,000`, [example](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
+| valueSetter | By default, we directly assign the edited value to the responsive data source, but sometimes when a valid dataIndex cannot be provided, you need to customize the assignment logic, you can use `valueSetter`, when the valueSetter returns true, the component considers the edit successful And exit edit mode, [example](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
+| valueChange | Triggered when the cell value changes, you can use `valueChange` to implement custom value change logic, [example](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType >) => void`](#EditableType) | - | 4.0 |
+| showMenu | Whether to show the column menu, [example](/doc/basic#header-menu) | boolean \| 'hover' | - | 4.0 |
+
+#### EditableType
+
+```ts
+export interface EditableValueParams<RecordType = DefaultRecordType, TValue = any> {
+  value: TValue;
+  record: RecordType;
+  recordIndexs: number[];
+  column: ColumnType<RecordType>;
+}
+export interface ValueParserParams<RecordType = DefaultRecordType, TValue = any> {
+  newValue: TValue;
+  oldValue: TValue;
+  record: RecordType;
+  recordIndexs: number[];
+  column: ColumnType<RecordType>;
+}
+export interface ValueParserFunc<T = any, TValue = any> {
+  (params: ValueParserParams<T, TValue>): TValue | null | undefined;
+}
+export interface ValueGetterFunc<T = any, TValue = any> {
+  (params: EditableValueParams<T, TValue>): string | null | undefined;
+}
+export interface CellEditorArgs {
+  modelValue: Ref<any>;
+  save: () => void;
+  onInput: (event: Event, value: any) => void;
+  closeEditor: () => void;
+  column: ColumnType;
+  editorRef: Ref<any>;
+  getPopupContainer: () => HTMLElement;
+}
+```
+
+#### MenuPopupArg
+
+```ts
+export type MenuFilterProps = {
+  prefixCls: string;
+  setSelectedKeys: (selectedKeys: Key[]) => void;
+  selectedKeysRef: Ref<Key[]>;
+  confirm: () => void;
+  clearFilters: () => void;
+  filters: ColumnFilterItem[];
+};
+export interface MenuPopupArg<ColumnT> {
+  column: ColumnT;
+  event: MouseEvent;
+  hidePopup: () => void;
+  filter: MenuFilterProps;
+}
+```
 
 #### Breakpoint
 

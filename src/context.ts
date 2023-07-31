@@ -1,6 +1,6 @@
-import type { Ref } from '@vue/reactivity';
-import type { InjectionKey } from '@vue/runtime-core';
-import { inject, provide } from '@vue/runtime-core';
+import type { Ref } from 'vue';
+import type { InjectionKey } from 'vue';
+import { inject, provide } from 'vue';
 
 export interface GlobalConfig {
   isMobile: Ref<boolean>;

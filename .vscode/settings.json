@@ -1,3 +1,55 @@
 {
+  "files.exclude": {
+    "**/node_modules": false
+  },
+  "search.exclude": {
+    "**/dist": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+    "**/*.svg": true
+  },
+  "eslint.workingDirectories": [
+    {
+      "directory": "client",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "server",
+      "changeProcessCWD": true
+    }
+  ],
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "json.format.enable": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "files.associations": {
+    ".env*": "ini"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "unocss.root": "client",
+  "[vue]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": false
+    }
+  },
+  "volar.completion.preferredTagNameCase": "kebab",
   "typescript.tsdk": "node_modules/typescript/lib"
 }
