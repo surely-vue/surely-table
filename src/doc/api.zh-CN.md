@@ -78,6 +78,7 @@ setConfig(config: {
 | menuIcon | 自定义筛选菜单图标 | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
 | menuPopup | 自定义筛选菜单弹出内容 | v-slot:menuPopup="[MenuPopupArg](#MenuPopupArg)" | - | 4.0 |
 | cellEditor | 自定义单元格编辑器，结合 column.editable 使用 | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
+| rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -99,6 +100,36 @@ setConfig(config: {
 | 事件名称 | 说明 | 参数 | 版本 |
 | --- | --- | --- | --- |
 | scrollTo | 滚动到指定位置, 优先级：left > columnIndex > columnKey | Function(pos: {left?: number; top?: number; columnIndex?: number; columnKey?: Key; rowKey?: Key; }, behavior?: 'auto' \| 'smooth') | 2.0.3 |
+| scrollLeft | 当前横向滚动位置 | ComputedRef\<number\> |  |
+| scrollTop | 当前纵向滚动位置 | ComputedRef\<number\> |  |
+| copySelectedRange | 复制当前选中的单元格 | () => void | 4.1.0 |
+| getSelectedRange | 获取当前选中的单元格 | () => [SelectedRangeItem](#selectedrangeitem)[] | 4.1.0 |
+| clearAllSelectedRange | 清空当前选中的单元格 | () => void | 4.1.0 |
+| appendCellToSelectedRange | 添加单元格到选中区域 | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
+
+### SelectedRangeItem
+
+```ts
+export interface SelectedRangeItem {
+  startColumn: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
+  startRow: { rowIndex: number; recordIndexs: number[] };
+  endRow: { rowIndex: number; recordIndexs: number[] };
+  columns: (ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>)[];
+  flattenData: DefaultRecordType[]; // 当前页面被扁平化处理后的数据，谨慎使用，可能会有变动
+}
+```
+
+### AppendCellRange
+
+```ts
+export interface AppendCellRange {
+  columnsKey?: Key[];
+  columnStartKey?: Key;
+  columnEndKey?: Key;
+  rowStartIndex: number;
+  rowEndIndex: number;
+}
+```
 
 #### customRow 用法
 

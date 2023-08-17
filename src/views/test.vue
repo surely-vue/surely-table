@@ -1,79 +1,117 @@
 <template>
-  <div style="display: flex">
-    width
-    <a-input-number v-model:value="width" />
-
-    height
-    <a-input-number v-model:value="height" />
-    y
-    <a-input-number v-model:value="y" />
-  </div>
-  <br />
-  <div :style="{ display: 'flex', overflow: 'auto', width: `${width}px`, height: `${height}px` }">
-    <s-table
-      v-if="dataSource?.length > 0"
-      :columns="columns"
-      :pagination="false"
-      :row-height="60"
-      :x-virtual="false"
-      :animate-rows="false"
-      :default-expand-all-rows="true"
-      :data-source="dataSource"
-      :scroll="{ y: y }"
-    ></s-table>
-  </div>
+  <s-table :columns="columns" :data-source="data" class="components-table-demo-nested">
+    <template #bodyCell="{ column, text }">
+      <template v-if="column.key === 'operation'">
+        <a>Publish</a>
+      </template>
+      <template v-else>{{ text }}</template>
+    </template>
+    <template #expandedRowRender>
+      <s-table :columns="innerColumns" :data-source="innerData" :pagination="false">
+        <template #bodyCell="{ column, text }">
+          <template v-if="column.key === 'state'">
+            <span>
+              <a-badge status="success" />
+              Finished
+            </span>
+          </template>
+          <template v-else-if="column.key === 'operation'">
+            <span class="table-operation">
+              <a>Pause</a>
+              <a>Stop</a>
+              <a-dropdown>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item>Action 1</a-menu-item>
+                    <a-menu-item>Action 2</a-menu-item>
+                  </a-menu>
+                </template>
+                <a>
+                  More
+                  <down-outlined />
+                </a>
+              </a-dropdown>
+            </span>
+          </template>
+          <template v-else>{{ text }}</template>
+        </template>
+      </s-table>
+    </template>
+  </s-table>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { DownOutlined } from '@ant-design/icons-vue';
+import { defineComponent } from 'vue';
 
 interface DataItem {
   key: number;
   name: string;
-  age: number;
-  address: string;
+  platform: string;
+  version: string;
+  upgradeNum: number;
+  creator: string;
+  createdAt: string;
 }
-
+interface innerDataItem {
+  key: number;
+  date: string;
+  name: string;
+  upgradeNum: string;
+}
 export default defineComponent({
+  components: {
+    DownOutlined,
+  },
   setup() {
     const columns = [
-      {
-        title: 'Full Name',
-        dataIndex: 'name',
-        fixed: 'left',
-        width: 400,
-      },
-      {
-        title: 'Age',
-        dataIndex: 'age',
-        fixed: 'left',
-        width: 500,
-      },
-      {
-        title: 'Column 1',
-        dataIndex: 'address',
-        width: 100,
-      },
-      {
-        title: 'Column 2',
-        dataIndex: 'address',
-        width: 100,
-      },
+      { title: 'Name', dataIndex: 'name', key: 'name' },
+      { title: 'Platform', dataIndex: 'platform', key: 'platform' },
+      { title: 'Version', dataIndex: 'version', key: 'version' },
+      { title: 'Upgraded', dataIndex: 'upgradeNum', key: 'upgradeNum' },
+      { title: 'Creator', dataIndex: 'creator', key: 'creator' },
+      { title: 'Date', dataIndex: 'createdAt', key: 'createdAt' },
+      { title: 'Action', key: 'operation' },
     ];
+
     const data: DataItem[] = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 3; ++i) {
       data.push({
         key: i,
-        name: `Edrward ${i}`,
-        age: i + 1,
-        address: `London Park no. ${i}`,
+        name: `Screem ${i + 1}`,
+        platform: 'iOS',
+        version: '10.3.4.5654',
+        upgradeNum: 500,
+        creator: 'Jack',
+        createdAt: '2014-12-24 23:12:00',
+      });
+    }
+
+    const innerColumns = [
+      { title: 'Date', dataIndex: 'date', key: 'date' },
+      { title: 'Name', dataIndex: 'name', key: 'name' },
+      { title: 'Status', key: 'state' },
+      { title: 'Upgrade Status', dataIndex: 'upgradeNum', key: 'upgradeNum' },
+      {
+        title: 'Action',
+        dataIndex: 'operation',
+        key: 'operation',
+      },
+    ];
+
+    const innerData: innerDataItem[] = [];
+    for (let i = 0; i < 3; ++i) {
+      innerData.push({
+        key: i,
+        date: '2014-12-24 23:12:00',
+        name: `This is production name ${i + 1}`,
+        upgradeNum: 'Upgraded: 56',
       });
     }
     return {
-      dataSource: ref(data),
-      columns: ref(columns),
-      width: ref(1114),
-      height: ref(400),
-      y: ref(75),
+      data,
+      columns,
+      innerColumns,
+      innerData,
     };
   },
 });

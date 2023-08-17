@@ -1,5 +1,6 @@
 <template>
   <div>
+    <cell-range-selection />
     <row-selection-vue />
     <row-selection-radio-vue />
     <row-selection-and-operation-vue />
@@ -12,6 +13,7 @@ import rowSelectionVue from './row-selection.vue';
 import rowSelectionAndOperationVue from './row-selection-and-operation.vue';
 import rowSelectionCustomVue from './row-selection-custom.vue';
 import rowSelectionRadioVue from './row-selection-radio.vue';
+import cellRangeSelection from './cell-range-selection.vue';
 
 export default defineComponent({
   components: {
@@ -19,11 +21,17 @@ export default defineComponent({
     rowSelectionAndOperationVue,
     rowSelectionCustomVue,
     rowSelectionRadioVue,
+    cellRangeSelection,
   },
   title: '可选择',
   enTitle: 'Selection',
   type: 'selection',
   children: [
+    {
+      id: 'cell-range-selection',
+      title: '单元格范围选择',
+      enTitle: 'Cell Range Selection',
+    },
     {
       id: 'row-selection',
       title: '可选择',

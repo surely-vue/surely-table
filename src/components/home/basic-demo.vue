@@ -8,6 +8,7 @@
       :scroll="{ y: 400 }"
       :row-height="54"
       :row-selection="rowSelection"
+      :range-selection="true"
       @resizeColumn="handleResize"
     >
       <template #footer>
@@ -204,7 +205,8 @@
             @click="copyClick(args, 'cell')"
           >
             <copy-outlined />
-            复制
+            复制 &nbsp;
+            <span class="opacity-70 text-12px">Ctrl+C</span>
           </li>
           <li class="popup-item" @click="copyClick(args, 'record')">
             <copy-outlined />
@@ -586,8 +588,9 @@ export default defineComponent({
     };
     const copyClick = (args: ContextmenuPopupArg<any, any>, type: 'cell' | 'column' | 'record') => {
       if (type === 'cell') {
-        if (args.column.key === 'operation') return;
-        copyValue(args.text);
+        // if (args.column.key === 'operation') return;
+        // copyValue(args.text);
+        tableRef.value.copySelectedRange();
       } else if (type === 'column') {
         if (args.column.key === 'operation') return;
         const { dataIndex } = args.column;

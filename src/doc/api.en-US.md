@@ -53,6 +53,7 @@
 | menuIcon | custom header menu icon | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
 | menuPopup | custom menu popup content | v-slot:menuPopup="[MenuPopupArg][#MenuPopupArg]" | - | 4.0 |
 | cellEditor | custom editor cell，need column.editable | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
+| rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
@@ -74,6 +75,36 @@
 | Event name | Description | Parameters | Version |
 | --- | --- | --- | --- |
 | scrollTo | Scroll to the specified position, priority: left > columnIndex > columnKey | Function(pos: {left?: number; top?: number; columnIndex?: number; columnKey?: Key; rowKey?: Key; }, behavior ?:'auto' \| 'smooth') | 2.0.3 |
+| scrollLeft | current horizontal scroll position | ComputedRef\<number\> |  |
+| scrollTop | Current vertical scroll position | ComputedRef\<number\> |  |
+| copySelectedRange | Copy the currently selected cell | () => void | 4.1.0 |
+| getSelectedRange | Get the currently selected cell | () => [SelectedRangeItem](#selectedrangeitem)[] | 4.1.0 |
+| clearAllSelectedRange | Clear the currently selected cell | () => void | 4.1.0 |
+| appendCellToSelectedRange | Add cell to selected range | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
+
+### SelectedRangeItem
+
+```ts
+export interface SelectedRangeItem {
+  startColumn: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
+  startRow: { rowIndex: number; recordIndexs: number[] };
+  endRow: { rowIndex: number; recordIndexs: number[] };
+  columns: (ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>)[];
+  flattenData: DefaultRecordType[]; // The data after the current page has been flattened, use with caution, there may be changes
+}
+```
+
+### AppendCellRange
+
+```ts
+export interface AppendCellRange {
+  columnsKey?: Key[];
+  columnStartKey?: Key;
+  columnEndKey?: Key;
+  rowStartIndex: number;
+  rowEndIndex: number;
+}
+```
 
 #### customRow usage
 

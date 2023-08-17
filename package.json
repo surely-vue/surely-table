@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "4.0.8",
+  "version": "4.1.0-beta.1",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -109,7 +109,7 @@
     "rollup": "^2.45.2",
     "rollup-plugin-cleandir": "^1.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-typescript2": "^0.35.0",
     "rollup-plugin-vue": "^6.0.0",
     "rucksack-css": "^1.0.2",
     "slash": "^3.0.0",
