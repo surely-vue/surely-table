@@ -26,9 +26,7 @@ export const linkPlugin = (md: MarkdownIt, externalAttrs: Record<string, string>
         // mail links
         !url.startsWith('mailto:')
       ) {
-        console.log(hrefAttr);
         normalizeHref(hrefAttr);
-        console.log(hrefAttr);
       }
     }
     return self.renderToken(tokens, idx, options);
