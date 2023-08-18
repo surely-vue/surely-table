@@ -79,6 +79,7 @@ setConfig(config: {
 | menuPopup | 自定义筛选菜单弹出内容 | v-slot:menuPopup="[MenuPopupArg](#MenuPopupArg)" | - | 4.0 |
 | cellEditor | 自定义单元格编辑器，结合 column.editable 使用 | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
 | rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
+| copyDelimiter | 复制时单元格拼接分隔符 | string | `\t` | 4.1.0 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定

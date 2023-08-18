@@ -53,7 +53,8 @@
 | menuIcon | custom header menu icon | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
 | menuPopup | custom menu popup content | v-slot:menuPopup="[MenuPopupArg][#MenuPopupArg]" | - | 4.0 |
 | cellEditor | custom editor cell，need column.editable | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
-| rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
+| rangeSelection | cell selection | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
+| copyDelimiter | cell delimiter when copying | string | `\t` | 4.1.0 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
