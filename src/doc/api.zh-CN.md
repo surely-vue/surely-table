@@ -369,6 +369,8 @@ export interface ColumnDragGhostArg<ColumnT> {
 
 ### tooltip
 
+继承自 ant-design-vue 的 [Tooltip](https://www.antdv.com/components/tooltip-cn/) 组件。 最新 API 请参考 ant-design-vue 官网。
+
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | arrowPointAtCenter | 箭头是否指向目标元素中心 | boolean | `false` |
