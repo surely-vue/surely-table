@@ -192,11 +192,12 @@ export interface AppendCellRange {
 | onFilterDropdownOpenChange | 自定义筛选菜单可见变化时调用，使用 template 或 jsx 时作为`filterDropdownVisibleChange`事件使用 | function(visible) {} | - | 4.0 |
 | rowDrag | 当前列添加拖拽手柄, [详见](/doc/dragable/) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 | drag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
-| editable | 单元格是否可编辑 [示例](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#EditableType) | - | 4.0 |
-| valueParser | 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`, [示例](/doc/edit/) | [`ValueParserFunc`](#EditableType) | - | 4.0 |
-| valueGetter | 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`, [示例](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
-| valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
-| valueChange | 当单元格值发生变化时触发，你可以通过 `valueChange` 来实现自定义的值变化逻辑, [示例](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType>) => void`](#EditableType) | - | 4.0 |
+| editable | 单元格是否可编辑 [示例](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#editabletype) | - | 4.0 |
+| editableTrigger | 触发编辑状态 | [EditableTrigger](#editabletype) \| [EditableTrigger](#editabletype)[] | 'dblClick' | 4.1.8 |
+| valueParser | 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`, [示例](/doc/edit/) | [`ValueParserFunc`](#editabletype) | - | 4.0 |
+| valueGetter | 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`, [示例](/doc/edit/) | [`ValueGetterFunc`](#editabletype) | - | 4.0 |
+| valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#editabletype) | - | 4.0 |
+| valueChange | 当单元格值发生变化时触发，你可以通过 `valueChange` 来实现自定义的值变化逻辑, [示例](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType>) => void`](#editabletype) | - | 4.0 |
 | showMenu | 是否显示列头菜单 | boolean \| 'hover'（hover 时显示） | true | 4.0 |
 
 #### EditableType
@@ -230,6 +231,8 @@ export interface CellEditorArgs {
   editorRef: Ref<any>;
   getPopupContainer: () => HTMLElement;
 }
+
+export type EditableTrigger = 'click' | 'dblClick' | 'contextmenu';
 ```
 
 #### MenuPopupArg

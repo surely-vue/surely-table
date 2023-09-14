@@ -13,6 +13,8 @@ title:
 #### 相关 API：
 #### editable
 单元格是否可编辑，可选参数为 `boolean` | `cellEditorSlot` `(params) => boolean | 'cellEditorSlot'`，返回 `true` 时可编辑, 返回 cellEditorSlot 时，使用 v-slot:cellEditor 自定义渲染编辑。
+### editableTrigger（4.1.8+）
+触发编辑模式的事件，默认为 `dblclick`, 支持 `click` `dblClick` `contextmenu`，可组合多个。
 #### valueParser
 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`。
 #### valueGetter
@@ -31,6 +33,8 @@ Double-click the cell to trigger the edit mode.
 #### Related API：
 #### editable
 Whether the cell is editable, the optional parameter is `boolean` | `cellEditorSlot` | `(params) => boolean | 'cellEditorSlot'`, return `true` when editable.
+### editableTrigger（4.1.8+）
+The event that triggers the edit mode, the default is `dblclick`, supports `click` `dblClick` `contextmenu`, multiple combinations are possible.
 #### valueParser
 Convert the edited string value to the value in the data source, for example: convert the string `1,000` to the integer `1000`.
 #### valueGetter
@@ -66,6 +70,7 @@ export default defineComponent({
         width: '30%',
         autoHeight: true,
         editable: true,
+        editableTrigger: 'click',
       },
       {
         title: 'age',
@@ -86,21 +91,21 @@ export default defineComponent({
     const dataSource: Ref<DataItem[]> = ref([
       {
         key: '0',
-        name: 'Edward King 0',
+        name: 'Click me 0',
         age: 32,
-        address: 'London, Park Lane no. 0',
+        address: 'DblClick me 0',
       },
       {
         key: '1',
-        name: 'Edward King 1',
+        name: 'Click me 1',
         age: 32,
-        address: 'London, Park Lane no. 1',
+        address: 'DblClick me 1',
       },
       {
         key: '2',
-        name: 'Edward King 2',
+        name: 'Click me 2',
         age: 12,
-        address: 'London, Park Lane no. 2',
+        address: 'DblClick me 2',
       },
     ]);
     const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});

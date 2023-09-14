@@ -168,11 +168,12 @@ One of the Table `columns` prop for describing the table's columns, Column has t
 | onFilterDropdownOpenChange | Callback executed when `filterDropdownOpen` is changed, Use as a `filterDropdownOpen` event when using template or jsx | function(visible) {} | - | 4.0 |
 | rowDrag | Add a drag handle to the current column, [more](/doc/dragable) | boolean \| (arg: { record: RecordType; column: ColumnType }) => boolean | - | 2.1.0 |
 | drag | Whether the list header is allowed to drag, [more](/doc/dragable) | boolean | - | 2.1.1 |
-| editable | Whether the cell can be edited [example](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#EditableType) | - | 4.0 |
-| valueParser | Convert the edited string value to the value in the data source, for example: convert the string `1,000` to the integer `1000`, [example](/doc/edit/) | [`ValueParserFunc`](#EditableType) | - | 4.0 |
-| valueGetter | Convert the value in the data source to a string value, for example: convert an integer `1000` to a string `1,000`, [example](/doc/edit/) | [`ValueGetterFunc`](#EditableType) | - | 4.0 |
-| valueSetter | By default, we directly assign the edited value to the responsive data source, but sometimes when a valid dataIndex cannot be provided, you need to customize the assignment logic, you can use `valueSetter`, when the valueSetter returns true, the component considers the edit successful And exit edit mode, [example](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#EditableType) | - | 4.0 |
-| valueChange | Triggered when the cell value changes, you can use `valueChange` to implement custom value change logic, [example](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType >) => void`](#EditableType) | - | 4.0 |
+| editable | Whether the cell can be edited [example](/doc/edit/) | boolean \| 'cellEditorSlot' \| [`((params: EditableValueParams<RecordType>) => boolean | 'cellEditorSlot')`](#editabletype) | - | 4.0 |
+| editableTrigger | how to trigger cell to edited | [EditableTrigger](#editabletype) \| [EditableTrigger](#editabletype)[] | 'dblClick' | 4.1.8 |
+| valueParser | Convert the edited string value to the value in the data source, for example: convert the string `1,000` to the integer `1000`, [example](/doc/edit/) | [`ValueParserFunc`](#editabletype) | - | 4.0 |
+| valueGetter | Convert the value in the data source to a string value, for example: convert an integer `1000` to a string `1,000`, [example](/doc/edit/) | [`ValueGetterFunc`](#editabletype) | - | 4.0 |
+| valueSetter | By default, we directly assign the edited value to the responsive data source, but sometimes when a valid dataIndex cannot be provided, you need to customize the assignment logic, you can use `valueSetter`, when the valueSetter returns true, the component considers the edit successful And exit edit mode, [example](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#editabletype) | - | 4.0 |
+| valueChange | Triggered when the cell value changes, you can use `valueChange` to implement custom value change logic, [example](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType >) => void`](#editabletype) | - | 4.0 |
 | showMenu | Whether to show the column menu, [example](/doc/basic#header-menu) | boolean \| 'hover' | - | 4.0 |
 
 #### EditableType
@@ -206,6 +207,7 @@ export interface CellEditorArgs {
   editorRef: Ref<any>;
   getPopupContainer: () => HTMLElement;
 }
+export type EditableTrigger = 'click' | 'dblClick' | 'contextmenu';
 ```
 
 #### MenuPopupArg
