@@ -1,8 +1,10 @@
 <template>
-  <a-style-provider :hash-priority="hashPriority">
+  <a-style-provider
+    :hash-priority="hashPriority"
+    :transformers="[legacyLogicalPropertiesTransformer]"
+  >
     <a-config-provider :locale="locale" :theme="themeConfig">
       <router-view />
-      <s-table v-show="false" />
     </a-config-provider>
   </a-style-provider>
 </template>
@@ -16,7 +18,7 @@ import enUS from 'ant-design-vue/locale/en_US';
 import zhCN from 'ant-design-vue/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { theme as antdTheme } from 'ant-design-vue';
+import { legacyLogicalPropertiesTransformer, theme as antdTheme } from 'ant-design-vue';
 import { setConfig } from '@surely-vue/table';
 // function isZhCN(name: string) {
 //   return /-cn\/?$/.test(name);
@@ -53,7 +55,7 @@ export default defineComponent({
     const themeConfig = computed(() => {
       return { algorithm: getAlgorithm([...new Set([theme.value, compactTheme.value])]) };
     });
-    const hashPriority = ref('low' as const);
+    const hashPriority = ref('high' as const);
     watch(hashPriority, () => {
       location.reload();
     });
@@ -127,7 +129,7 @@ export default defineComponent({
       },
       { immediate: true },
     );
-    return { globalConfig, locale, themeConfig, hashPriority };
+    return { globalConfig, locale, themeConfig, hashPriority, legacyLogicalPropertiesTransformer };
   },
 });
 </script>

@@ -36,7 +36,6 @@
     <div>
       <feature-vue />
     </div>
-    <!-- <liveDemoVue /> -->
   </div>
 </template>
 <script lang="ts">

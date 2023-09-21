@@ -1,118 +1,71 @@
 <template>
-  <s-table :columns="columns" :data-source="data" class="components-table-demo-nested">
-    <template #bodyCell="{ column, text }">
-      <template v-if="column.key === 'operation'">
-        <a>Publish</a>
-      </template>
-      <template v-else>{{ text }}</template>
-    </template>
-    <template #expandedRowRender>
-      <s-table :columns="innerColumns" :data-source="innerData" :pagination="false">
-        <template #bodyCell="{ column, text }">
-          <template v-if="column.key === 'state'">
-            <span>
-              <a-badge status="success" />
-              Finished
-            </span>
-          </template>
-          <template v-else-if="column.key === 'operation'">
-            <span class="table-operation">
-              <a>Pause</a>
-              <a>Stop</a>
-              <a-dropdown>
-                <template #overlay>
-                  <a-menu>
-                    <a-menu-item>Action 1</a-menu-item>
-                    <a-menu-item>Action 2</a-menu-item>
-                  </a-menu>
-                </template>
-                <a>
-                  More
-                  <down-outlined />
-                </a>
-              </a-dropdown>
-            </span>
-          </template>
-          <template v-else>{{ text }}</template>
-        </template>
-      </s-table>
-    </template>
-  </s-table>
+  <a-button @click="click1">click</a-button>
+  <s-table
+    :columns="columns"
+    :scroll="{ y: 400 }"
+    :pagination="false"
+    :data-source="data"
+  ></s-table>
 </template>
-<script lang="ts">
-import { DownOutlined } from '@ant-design/icons-vue';
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { STable } from '@surely-vue/table';
+
+import { ref, triggerRef } from 'vue';
 
 interface DataItem {
   key: number;
   name: string;
-  platform: string;
-  version: string;
-  upgradeNum: number;
-  creator: string;
-  createdAt: string;
+  age: number;
+  address: string;
 }
-interface innerDataItem {
-  key: number;
-  date: string;
-  name: string;
-  upgradeNum: string;
+
+const columns = ref([
+  {
+    title: 'Full Name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+  },
+  {
+    title: 'Column 1',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 2',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 3',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Column 4',
+    dataIndex: 'address',
+  },
+  { title: 'Column 5', dataIndex: 'address' },
+]);
+const data = ref<DataItem[]>([]);
+for (let i = 0; i < 2; i++) {
+  data.value.push({
+    key: i,
+    name: `Edrward ${i}`,
+    age: i + 1,
+    address: `London Park no. ${i}`,
+  });
 }
-export default defineComponent({
-  components: {
-    DownOutlined,
-  },
-  setup() {
-    const columns = [
-      { title: 'Name', dataIndex: 'name', key: 'name' },
-      { title: 'Platform', dataIndex: 'platform', key: 'platform' },
-      { title: 'Version', dataIndex: 'version', key: 'version' },
-      { title: 'Upgraded', dataIndex: 'upgradeNum', key: 'upgradeNum' },
-      { title: 'Creator', dataIndex: 'creator', key: 'creator' },
-      { title: 'Date', dataIndex: 'createdAt', key: 'createdAt' },
-      { title: 'Action', key: 'operation' },
-    ];
 
-    const data: DataItem[] = [];
-    for (let i = 0; i < 3; ++i) {
-      data.push({
-        key: i,
-        name: `Screem ${i + 1}`,
-        platform: 'iOS',
-        version: '10.3.4.5654',
-        upgradeNum: 500,
-        creator: 'Jack',
-        createdAt: '2014-12-24 23:12:00',
-      });
-    }
-
-    const innerColumns = [
-      { title: 'Date', dataIndex: 'date', key: 'date' },
-      { title: 'Name', dataIndex: 'name', key: 'name' },
-      { title: 'Status', key: 'state' },
-      { title: 'Upgrade Status', dataIndex: 'upgradeNum', key: 'upgradeNum' },
-      {
-        title: 'Action',
-        dataIndex: 'operation',
-        key: 'operation',
-      },
-    ];
-
-    const innerData: innerDataItem[] = [];
-    for (let i = 0; i < 3; ++i) {
-      innerData.push({
-        key: i,
-        date: '2014-12-24 23:12:00',
-        name: `This is production name ${i + 1}`,
-        upgradeNum: 'Upgraded: 56',
-      });
-    }
-    return {
-      data,
-      columns,
-      innerColumns,
-      innerData,
-    };
-  },
-});
+let key = 100;
+const click1 = function () {
+  data.value.push({
+    key: key,
+    name: `Edrward ${key}`,
+    age: key + 1,
+    address: `London Park no. ${key}`,
+  });
+  key++;
+  // triggerRef(data);
+  // data.value = [...data.value]
+};
 </script>

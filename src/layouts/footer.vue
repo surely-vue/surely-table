@@ -18,7 +18,7 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .footer {
-  background-color: #000;
+  background-color: #000 !important;
   position: relative;
   z-index: 100;
   color: #fff;

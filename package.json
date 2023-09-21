@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "4.1.9",
+  "version": "4.1.10",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
     "@vueuse/core": "^10.1.0",
-    "ant-design-vue": "^4.0.0-rc.5",
+    "ant-design-vue": "^4.0.3",
     "dayjs": "^1.10.7",
     "lodash-es": "^4.17.21",
     "resize-observer-polyfill": "^1.5.1",

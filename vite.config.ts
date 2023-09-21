@@ -21,6 +21,7 @@ export default defineConfig({
           vue: ['vue', 'vuex', 'vue-router', 'vue-i18n'],
           antdv: ['ant-design-vue', '@ant-design/icons-vue'],
           dayjs: ['dayjs'],
+          surely: [path.join(__dirname, './core/src')],
         },
       },
     },
