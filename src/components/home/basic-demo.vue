@@ -9,6 +9,7 @@
       :row-height="54"
       :row-selection="rowSelection"
       :range-selection="true"
+      ignore-cell-key
       @resizeColumn="handleResize"
     >
       <template #footer>

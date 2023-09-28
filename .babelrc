@@ -1,0 +1,15 @@
+{
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    [
+      "@babel/plugin-transform-object-rest-spread",
+      {
+        "useBuiltIns": true,
+        "loose": true,
+        "assumptions": {
+          "setSpreadProperties": true
+        }
+      }
+    ]
+  ]
+}

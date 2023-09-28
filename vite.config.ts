@@ -1,3 +1,4 @@
+import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -21,9 +22,17 @@ export default defineConfig({
           vue: ['vue', 'vuex', 'vue-router', 'vue-i18n'],
           antdv: ['ant-design-vue', '@ant-design/icons-vue'],
           dayjs: ['dayjs'],
-          surely: [path.join(__dirname, './core/src')],
+          // surely: [path.join(__dirname, './core/src')],
         },
       },
+      plugins: [
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+          allowAllFormats: true,
+          plugins: [['@babel/plugin-transform-object-rest-spread', { useBuiltIns: true }]],
+          compact: false,
+        }) as any,
+      ],
     },
   },
   base: './',
