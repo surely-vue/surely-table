@@ -107,6 +107,8 @@ setConfig(config: {
 | getSelectedRange | 获取当前选中的单元格 | () => [SelectedRangeItem](#selectedrangeitem)[] | 4.1.0 |
 | clearAllSelectedRange | 清空当前选中的单元格 | () => void | 4.1.0 |
 | appendCellToSelectedRange | 添加单元格到选中区域 | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
+| closeEditor | 关闭单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
+| openEditor | 打开单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
 
 ### SelectedRangeItem
 

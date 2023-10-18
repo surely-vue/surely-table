@@ -48,7 +48,8 @@ Triggered when the cell value changes, you can use `valueChange` to implement cu
 
 </docs>
 <template>
-  <s-table bordered :data-source="dataSource" :columns="columns"></s-table>
+  <a-button class="mb-16px" @click="triggerEditor" @keydown="onKeydown">editor row 1</a-button>
+  <s-table ref="tableRef" bordered :data-source="dataSource" :columns="columns"></s-table>
 </template>
 <script lang="ts">
 import type { Ref, UnwrapRef } from 'vue';
@@ -67,6 +68,7 @@ export default defineComponent({
       {
         title: 'name',
         dataIndex: 'name',
+        key: 'name',
         width: '30%',
         autoHeight: true,
         editable: true,
@@ -75,6 +77,7 @@ export default defineComponent({
       {
         title: 'age',
         dataIndex: 'age',
+        key: 'age',
         editable: ({ record }) => {
           return record.age > 20;
         },
@@ -86,6 +89,7 @@ export default defineComponent({
         title: 'address',
         dataIndex: 'address',
         editable: true,
+        key: 'address',
       },
     ];
     const dataSource: Ref<DataItem[]> = ref([
@@ -109,11 +113,23 @@ export default defineComponent({
       },
     ]);
     const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
-
+    const tableRef = ref();
+    const triggerEditor = () => {
+      // supoort from 4.1.13
+      tableRef.value?.openEditor(columns.map(column => ({ columnKey: column.key, rowKey: '0' })));
+    };
     return {
       columns,
       dataSource,
       editableData,
+      tableRef,
+      triggerEditor,
+      onKeydown: (e: KeyboardEvent) => {
+        // esc keydown
+        if (e.which === 27) {
+          tableRef.value?.closeEditor();
+        }
+      },
     };
   },
 });
