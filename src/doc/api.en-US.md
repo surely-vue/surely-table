@@ -11,6 +11,8 @@
 | dataSource | Data record array to be displayed | any\[] | - |  |
 | defaultExpandAllRows | Expand all rows initially | boolean | `false` |  |
 | defaultExpandedRowKeys | Initial expanded row keys | string\[] | - |  |
+| deepWatchDataSource | Whether to deeply watch dataSource, when dataSource is a reactive object, you need to turn on this option | boolean | false | 4.2.0 |
+| deepWatchColumns | Whether to deeply watch columns, when columns is a reactive object, you need to turn on this option | boolean | false | 4.2.0 |
 | expandedRowKeys | Current expanded row keys | string\[] | - |  |
 | expandedRowRender | Expanded container render for each row | Function({record, index, indent, expanded}):VNode\|v-slot | - |  |
 | expandFixed | Set column to be fixed: `true`(same as left) `'left'` `'right'` | boolean \| string | false |  |
@@ -206,6 +208,8 @@ export interface CellEditorArgs {
   column: ColumnType;
   editorRef: Ref<any>;
   getPopupContainer: () => HTMLElement;
+  record: DefaultRecordType; // 4.2.0
+  recordIndexs: number[]; // 4.2.0
 }
 export type EditableTrigger = 'click' | 'dblClick' | 'contextmenu';
 ```

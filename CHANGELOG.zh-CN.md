@@ -10,6 +10,12 @@
 
 ---
 
+## 4.2.0
+
+- 🌟 cellEditor 新增 record、recordIndexs 参数
+- 🌟 回滚 4.1.10 引入的默认深度监听，新增 deepWatchDataSource、 deepWatchColumns 配置，用于深度监听数据源和列配置变化
+- 🐞 修复输入框 keyboard 无法左右移动问题
+
 ## 4.1.13
 
 - 🌟 新增多个单元格同时编辑功能

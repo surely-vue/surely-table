@@ -35,6 +35,8 @@ setConfig(config: {
 | dataSource | 数据数组 | object\[] |  |  |
 | defaultExpandAllRows | 初始时，是否展开所有行 | boolean | false |  |
 | defaultExpandedRowKeys | 默认展开的行 | string\[] | - |  |
+| deepWatchDataSource | 是否深度监听 dataSource 变化，开启后会对 dataSource 进行深度监听，有一定的性能损耗 | boolean | false | 4.2.0 |
+| deepWatchColumns | 是否深度监听 columns 变化，开启后会对 columns 进行深度监听，有一定的性能损耗 | boolean | false | 4.2.0 |
 | expandedRowKeys | 展开的行，控制属性 | string\[] | - |  |
 | expandedRowRender | 额外的展开行 | Function({record, index, indent, expanded}):VNode \| v-slot:expandedRowRender="{record, index, indent, expanded}" | - |  |
 | expandFixed | 控制展开图标是否固定，可选 true `left` `right` | boolean \| string | false |  |
@@ -232,6 +234,8 @@ export interface CellEditorArgs {
   column: ColumnType;
   editorRef: Ref<any>;
   getPopupContainer: () => HTMLElement;
+  record: DefaultRecordType; // 4.2.0
+  recordIndexs: number[]; // 4.2.0
 }
 
 export type EditableTrigger = 'click' | 'dblClick' | 'contextmenu';
