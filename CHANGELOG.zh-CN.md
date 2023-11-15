@@ -10,6 +10,12 @@
 
 ---
 
+## 4.2.1
+
+- 🌟 valueSetter 支持 promise [#184](https://github.com/surely-vue/surely-table/issues/184)
+- 🌟 新增 onCellKeydown 事件，用于监听单元格键盘事件 [#179](https://github.com/surely-vue/surely-table/issues/179)
+- 🐞 修复屏幕缩放时，宽度计算异常问题 [#176](https://github.com/surely-vue/surely-table/issues/176)
+
 ## 4.2.0
 
 - 🌟 cellEditor 新增 record、recordIndexs 参数
