@@ -200,7 +200,7 @@ export interface AppendCellRange {
 | editableTrigger | 触发编辑状态 | [EditableTrigger](#editabletype) \| [EditableTrigger](#editabletype)[] | 'dblClick' | 4.1.8 |
 | valueParser | 将编辑后的字符串值转换为数据源中的值，例如：将 字符串`1,000` 转换为整数`1000`, [示例](/doc/edit/) | [`ValueParserFunc`](#editabletype) | - | 4.0 |
 | valueGetter | 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`, [示例](/doc/edit/) | [`ValueGetterFunc`](#editabletype) | - | 4.0 |
-| valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean`](#editabletype) | - | 4.0 |
+| valueSetter | 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`, 当 valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式, [示例](/doc/edit/) | [`(params: ValueParserParams<RecordType>) => boolean | promise(4.2.1+)`](#editabletype) | - | 4.0 |
 | valueChange | 当单元格值发生变化时触发，你可以通过 `valueChange` 来实现自定义的值变化逻辑, [示例](/doc/edit/) | [`(e: InputEvent, params: ValueParserParams<RecordType>) => void`](#editabletype) | - | 4.0 |
 | showMenu | 是否显示列头菜单 | boolean \| 'hover'（hover 时显示） | true | 4.0 |
 

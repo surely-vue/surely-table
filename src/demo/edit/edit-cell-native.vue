@@ -21,7 +21,7 @@ title:
 将数据源中的值转换为字符串值，例如：将整数`1000` 转换为 字符串`1,000`。
 #### valueSetter
 默认我们将编辑后的值直接赋值给响应式数据源，但有时无法提供有效的 dataIndex 时， 你需要自定义赋值逻辑，可以使用 `valueSetter`，
-当valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式。
+当valueSetter 返回 true 时，组件认为编辑成功并退出编辑模式。 4.2.1+ 版本支持返回 Promise 方便做异步校验。
 #### valueChange
 当单元格值发生变化时触发，你可以通过 `valueChange` 来实现自定义的值变化逻辑。
 
@@ -41,7 +41,7 @@ Convert the edited string value to the value in the data source, for example: co
 Convert the value in the data source to a string value, for example: convert the integer `1000` to the string `1,000`.
 #### valueSetter
 By default, we directly assign the edited value to the reactive data source, but sometimes when an effective `dataIndex` cannot be provided, you need to customize the assignment logic, you can use `valueSetter`,
-When `valueSetter` returns true, the component thinks that the edit is successful and exits the edit mode.
+When `valueSetter` returns true, the component thinks that the edit is successful and exits the edit mode. 4.2.1+ version supports returning Promise to facilitate asynchronous verification.
 #### valueChange
 Triggered when the cell value changes, you can use `valueChange` to implement custom value change logic.
 
