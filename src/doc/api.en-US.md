@@ -72,6 +72,7 @@
 | resizeColumn | Triggered when the column is dragged. If you do not need to automatically change the width internally, you can return `false` | Function(width, column, action: 'start' \| 'move' \| 'end' ) => boolean \| void | 2.0.3 |
 | rowDragEnd | Triggered when the dragged row ends | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
 | columnDragEnd | Triggered when the drag column ends | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
+| cellKeydown | Cell keyboard event, when false is returned, internal processing of the component will be skipped, such as left and right switching, etc. | (event: KeyboardEvent, opt: [KeydownPayload](#keydownpayload)) => void | 4.2.1 |
 
 ### Method
 
@@ -106,6 +107,18 @@ export interface AppendCellRange {
   columnEndKey?: Key;
   rowStartIndex: number;
   rowEndIndex: number;
+}
+```
+
+### KeydownPayload
+
+```ts
+export interface KeydownPayload {
+  cellPosition: {
+    rowIndex: number;
+    column: Column;
+  };
+  isEditing: boolean;
 }
 ```
 
