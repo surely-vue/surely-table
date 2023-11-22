@@ -98,6 +98,9 @@ setConfig(config: {
 | rowDragEnd | 拖拽行结束时触发 | (opt: [DragRowEventInfo](#dragroweventinfo)) => boolean \| Promise \| void | 2.1.0 |
 | columnDragEnd | 拖拽列结束时触发 | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 | cellKeydown | 单元格键盘事件, 返回 false 时，将跳过组件内部处理，如左右切换等 | (event: KeyboardEvent, params: [KeydownPayload](#keydownpayload)) => void | 4.2.1 |
+| cellClick | 单元格点击事件 | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
+| beforeOpenEditor | 打开编辑器前触发，返回 false 时，将不会打开 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
+| BeforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
 
 ### 方法
 

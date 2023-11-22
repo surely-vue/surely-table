@@ -10,6 +10,13 @@
 
 ---
 
+## 4.2.2
+
+- 🌟 新增 onCellClick 事件，用于监听单元格点击事件
+- 🌟 新增 beforeOpenEditor 事件
+- 🌟 新增 beforeCloseEditor 事件
+- 🐞 修复单元格编辑模式下，自动行高失效问题
+
 ## 4.2.1
 
 - 🌟 valueSetter 支持 promise [#184](https://github.com/surely-vue/surely-table/issues/184)
