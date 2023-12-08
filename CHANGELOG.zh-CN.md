@@ -10,6 +10,11 @@
 
 ---
 
+## 4.2.3
+
+- 🐞 修复拖拽列宽时，滚动条闪烁问题 [#187](https://github.com/surely-vue/surely-table/issues/187)
+- 🐞 修复 autoHeight 时，tooltip 控制台输出 warning 问题 [#188](https://github.com/surely-vue/surely-table/issues/188)
+
 ## 4.2.2
 
 - 🌟 新增 onCellClick 事件，用于监听单元格点击事件
