@@ -278,7 +278,24 @@ export interface CellTooltip {
   openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
+  shouldOpen?: (isEllipsis: boolean, args: CellRenderArgs) => boolean; // 4.2.4
+  allowEnter?: boolean; // 4.2.4
 }
+```
+
+### CellRenderArgs
+
+```ts
+export type CellRenderArgs = {
+  record: any;
+  column: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
+  text: any;
+  value: any;
+  index: number;
+  recordIndexs: number[];
+  openEditor: () => void;
+  closeEditor: () => void;
+};
 ```
 
 ### RowDragGhostArg

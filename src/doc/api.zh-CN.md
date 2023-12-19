@@ -100,7 +100,7 @@ setConfig(config: {
 | cellKeydown | 单元格键盘事件, 返回 false 时，将跳过组件内部处理，如左右切换等 | (event: KeyboardEvent, params: [KeydownPayload](#keydownpayload)) => void | 4.2.1 |
 | cellClick | 单元格点击事件 | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
 | beforeOpenEditor | 打开编辑器前触发，返回 false 时，将不会打开 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
-| BeforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
+| beforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
 
 ### 方法
 
@@ -305,7 +305,26 @@ export interface CellTooltip {
   openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
+  // 默认鼠标移入单元格后就会显示，你可以通过该函数自定义是否显示，isEllipsis 是内部计算出的当前单元格是否触发了 ellipsis
+  shouldOpen?: (isEllipsis: boolean, args: CellRenderArgs) => boolean; // 4.2.4
+  // 是否允许进入 tooltip，默认允许
+  allowEnter?: boolean; // 4.2.4
 }
+```
+
+### CellRenderArgs
+
+```ts
+export type CellRenderArgs = {
+  record: any;
+  column: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
+  text: any;
+  value: any;
+  index: number;
+  recordIndexs: number[];
+  openEditor: () => void;
+  closeEditor: () => void;
+};
 ```
 
 ### RowDragGhostArg

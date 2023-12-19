@@ -26,8 +26,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.requireConfig": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "files.associations": {
     ".env*": "ini"
@@ -47,7 +47,7 @@
       "strings": true
     },
     "editor.codeActionsOnSave": {
-      "source.organizeImports": false
+      "source.organizeImports": "never"
     }
   },
   "volar.completion.preferredTagNameCase": "kebab",
