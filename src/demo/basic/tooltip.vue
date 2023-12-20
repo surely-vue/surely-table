@@ -12,6 +12,8 @@ title:
 
 你可以全量开启 tooltip，不用担心性能问题，我们已经帮你解决了。
 
+4.2.4 版本开始，支持了 `tooltip` 的 `shouldOpen` 属性，可以自定义是否开启 tooltip，也可以根据是否有省略号来判断是否显示。
+
 本示例，Full Name、Column 1 两列开启了 tooltip。
 
 ## en-US
