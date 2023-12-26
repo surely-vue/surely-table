@@ -10,6 +10,11 @@
 
 ---
 
+## 4.2.5
+
+- 🌟 onBeforeEditor 新增 oldValue
+- 🐞 修复 Tooltip 控制台输出 overlayStyle warning 问题
+
 ## 4.2.4
 
 - 🌟 Tooltip 新增 `shouldOpen` `allowEnter` 属性

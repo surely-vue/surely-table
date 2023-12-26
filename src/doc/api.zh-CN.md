@@ -99,8 +99,8 @@ setConfig(config: {
 | columnDragEnd | 拖拽列结束时触发 | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 | cellKeydown | 单元格键盘事件, 返回 false 时，将跳过组件内部处理，如左右切换等 | (event: KeyboardEvent, params: [KeydownPayload](#keydownpayload)) => void | 4.2.1 |
 | cellClick | 单元格点击事件 | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
-| beforeOpenEditor | 打开编辑器前触发，返回 false 时，将不会打开 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
-| beforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
+| beforeOpenEditor | 打开编辑器前触发，返回 false 时，将不会打开。注意：主动触发 openEditor 时不会执行此事件 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
+| beforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭。 注意：主动触发 closeEditor 时不会执行此事件 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
 
 ### 方法
 
@@ -320,6 +320,7 @@ export type CellRenderArgs = {
   column: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
   text: any;
   value: any;
+  oldValue?: any; // 4.2.5+ only for beforeCloseEditor，组件不会对 oldValue 进行复制，请注意引用类型的数据
   index: number;
   recordIndexs: number[];
   openEditor: () => void;

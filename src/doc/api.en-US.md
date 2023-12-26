@@ -74,8 +74,8 @@
 | columnDragEnd | Triggered when the drag column ends | (opt: [DragColumnEventInfo](#dragcolumneventinfo)) => boolean \| Promise \| void | 2.1.1 |
 | cellKeydown | Cell keyboard event, when false is returned, internal processing of the component will be skipped, such as left and right switching, etc. | (event: KeyboardEvent, opt: [KeydownPayload](#keydownpayload)) => void | 4.2.1 |
 | cellClick | cell click event | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
-| beforeOpenEditor | Triggered before the editor is opened, when false is returned, the editor will not be opened | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
-| beforeCloseEditor | Triggered before the editor is closed, when false is returned, the editor will not be closed | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
+| beforeOpenEditor | Triggered before the editor is opened, when false is returned, the editor will not be opened. Tip: not trigger when use openEditor method | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
+| beforeCloseEditor | Triggered before the editor is closed, when false is returned, the editor will not be closed. Tip: not trigger when use closeEditor method | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
 
 ### Method
 
@@ -291,6 +291,7 @@ export type CellRenderArgs = {
   column: ColumnType<DefaultRecordType> | ColumnGroupType<DefaultRecordType>;
   text: any;
   value: any;
+  oldValue?: any; // 4.2.5+ only for beforeCloseEditor
   index: number;
   recordIndexs: number[];
   openEditor: () => void;
