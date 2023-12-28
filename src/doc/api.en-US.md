@@ -76,6 +76,8 @@
 | cellClick | cell click event | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
 | beforeOpenEditor | Triggered before the editor is opened, when false is returned, the editor will not be opened. Tip: not trigger when use openEditor method | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
 | beforeCloseEditor | Triggered before the editor is closed, when false is returned, the editor will not be closed. Tip: not trigger when use closeEditor method | (params: [CellRenderArgs](#cellrenderargs)) => boolean | Promise | 4.2.2 |
+| closeEditor | Triggered the editor is opened | (params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.6 |
+| openEditor | Triggered the editor is closed | (params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.6 |
 
 ### Method
 

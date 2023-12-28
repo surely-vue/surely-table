@@ -101,6 +101,8 @@ setConfig(config: {
 | cellClick | 单元格点击事件 | (event: MouseEvent, params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.2 |
 | beforeOpenEditor | 打开编辑器前触发，返回 false 时，将不会打开。注意：主动触发 openEditor 时不会执行此事件 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
 | beforeCloseEditor | 关闭编辑器前触发，返回 false 时，将不会关闭。 注意：主动触发 closeEditor 时不会执行此事件 | (params: [CellRenderArgs](#cellrenderargs)) => boolean \| Promise | 4.2.2 |
+| closeEditor | 关闭编辑器触发。 注意： 和 如下 closeEditor 方法不是同一个 | (params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.6 |
+| openEditor | 打开编辑器触发。 注意： 和 如下 openEditor 方法不是同一个 | (params: [CellRenderArgs](#cellrenderargs)) => void | 4.2.6 |
 
 ### 方法
 

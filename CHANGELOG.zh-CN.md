@@ -10,9 +10,14 @@
 
 ---
 
+## 4.2.6
+
+- 🌟 新增 onCloseEditor、onOpenEditor 事件
+- 🌟 tab 键切换时自动 focus input
+
 ## 4.2.5
 
-- 🌟 onBeforeEditor 新增 oldValue
+- 🌟 onBeforeCloseEditor 新增 oldValue
 - 🐞 修复 Tooltip 控制台输出 overlayStyle warning 问题
 
 ## 4.2.4
