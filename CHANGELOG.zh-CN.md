@@ -10,6 +10,15 @@
 
 ---
 
+## 4.2.8
+
+- 🐞 修复空数据时样式居中和阴影问题
+- 🐞 右键菜单被遮挡问题
+
+## 4.2.7
+
+- 🐞 修复主动打开后 onBeforeCloseEditor 缺少 oldValue 问题
+
 ## 4.2.6
 
 - 🌟 新增 onCloseEditor、onOpenEditor 事件
