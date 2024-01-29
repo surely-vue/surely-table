@@ -82,6 +82,7 @@ setConfig(config: {
 | cellEditor | 自定义单元格编辑器，结合 column.editable 使用 | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
 | rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 | copyDelimiter | 复制时单元格拼接分隔符 | string | `\t` | 4.1.0 |
+| preserveRow | 行是否常驻页面，不受虚拟滚动影响，一般用于合并行，注意：常驻页面会使性能下降 | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定

@@ -57,6 +57,7 @@
 | cellEditor | custom editor cell，need column.editable | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
 | rangeSelection | cell selection | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 | copyDelimiter | cell delimiter when copying | string | `\t` | 4.1.0 |
+| preserveRow | Whether the row is permanent on the page and is not affected by virtual scrolling. It is generally used to merge rows. | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
