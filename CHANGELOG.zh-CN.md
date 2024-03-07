@@ -10,6 +10,10 @@
 
 ---
 
+## 4.2.13
+
+- 🐞 修复行拖拽排序错误问题 [#214](https://github.com/surely-vue/surely-table/issues/214)
+
 ## 4.2.12
 
 - 🐞 修复 defaultSorderOrder 失效问题
