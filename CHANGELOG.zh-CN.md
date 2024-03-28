@@ -10,6 +10,12 @@
 
 ---
 
+## 4.3.1
+
+- 🐞 修复 pagination 数据源变化后， current 没有同步问题
+- 🌟 tooltip 新增 showArrow, 用于隐藏箭头
+- 🌟 新增 tooltipDelay, 自定义延迟时间
+
 ## 4.3.0
 
 - 🐞 修复右键菜单位置错误问题

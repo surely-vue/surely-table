@@ -83,6 +83,7 @@ setConfig(config: {
 | rangeSelection | 单元格选择 | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 | copyDelimiter | 复制时单元格拼接分隔符 | string | `\t` | 4.1.0 |
 | preserveRow | 行是否常驻页面，不受虚拟滚动影响，一般用于合并行，注意：常驻页面会使性能下降 | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
+| tooltipDelay | 单元格 tooltip 延时，用于自定义延迟时间 | number | 200 | 4.3.1 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定
@@ -419,23 +420,23 @@ export interface ColumnDragGhostArg<ColumnT> {
 
 继承自 ant-design-vue 的 [Tooltip](https://www.antdv.com/components/tooltip-cn/) 组件。 最新 API 请参考 ant-design-vue 官网。
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| arrowPointAtCenter | 箭头是否指向目标元素中心 | boolean | `false` |
-| autoAdjustOverflow | 气泡被遮挡时自动调整位置 | boolean | `true` |
-| color | 背景颜色 | string | 无 |
-| defaultVisible | 默认是否显隐 | boolean | false |
-| getPopupContainer | 浮层渲染父节点，默认渲染到 body 上 | Function(triggerNode) | () => document.body |
-| mouseEnterDelay | 鼠标移入后延时多少才显示 Tooltip，单位：秒 | number | 0.1 |
-| mouseLeaveDelay | 鼠标移出后延时多少才隐藏 Tooltip，单位：秒 | number | 0.1 |
-| overlayClassName | 卡片类名 | string | 无 |
-| overlayStyle | 卡片样式 | object | 无 |
-| placement | 气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string | top |
-| trigger | 触发行为，可选 `hover/focus/click/contextmenu` | string | hover |
-| visible | 用于手动控制浮层显隐 | boolean | false |
-| destroyTooltipOnHide | 隐藏后是否销毁 tooltip | boolean | false |
-| align | 该值将合并到 placement 的配置中，设置参考 [dom-align](https://github.com/yiminghe/dom-align) | Object | 无 |
-| onVisibleChange | 显示隐藏的回调 | (visible) => void |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| arrowPointAtCenter | 箭头是否指向目标元素中心 | boolean | `false` |  |
+| autoAdjustOverflow | 气泡被遮挡时自动调整位置 | boolean | `true` |  |
+| color | 背景颜色 | string | 无 |  |
+| defaultVisible | 默认是否显隐 | boolean | false |  |
+| getPopupContainer | 浮层渲染父节点，默认渲染到 body 上 | Function(triggerNode) | () => document.body |  |
+| mouseEnterDelay | 鼠标移入后延时多少才显示 Tooltip，单位：秒 | number | 0.1 |  |
+| mouseLeaveDelay | 鼠标移出后延时多少才隐藏 Tooltip，单位：秒 | number | 0.1 |  |
+| overlayClassName | 卡片类名 | string | 无 |  |
+| overlayStyle | 卡片样式 | object | 无 |  |
+| placement | 气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string | top |  |
+| trigger | 触发行为，可选 `hover/focus/click/contextmenu` | string | hover |  |
+| visible | 用于手动控制浮层显隐 | boolean | false |  |
+| align | 该值将合并到 placement 的配置中，设置参考 [dom-align](https://github.com/yiminghe/dom-align) | Object | 无 |  |
+| onVisibleChange | 显示隐藏的回调 | (visible) => void |  |
+| showArrow | 是否显示箭头 | boolean | true | 4.3.1 |
 
 ### pagination
 
