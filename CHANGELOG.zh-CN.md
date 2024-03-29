@@ -10,13 +10,17 @@
 
 ---
 
-## 4.3.1
+## 4.3.3
+
+- 🐞 修复 rowSelection.getCheckboxProps 没有响应变化问题 [#223](https://github.com/surely-vue/surely-table/issues/223)
+
+## 4.3.2
 
 - 🐞 修复 pagination 数据源变化后， current 没有同步问题
 - 🌟 tooltip 新增 showArrow, 用于隐藏箭头
 - 🌟 新增 tooltipDelay, 自定义延迟时间
 
-## 4.3.0
+## 4.3.0/4.3.1
 
 - 🐞 修复右键菜单位置错误问题
 - 🌟 优化 tooltip，避免单元格单击速度过快时无法点击问题
