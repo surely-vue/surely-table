@@ -10,6 +10,10 @@
 
 ---
 
+## 4.3.4
+
+- 🐞 修复在新版 firefox 下滚动条不显示问题
+
 ## 4.3.3
 
 - 🐞 修复 rowSelection.getCheckboxProps 没有响应变化问题 [#223](https://github.com/surely-vue/surely-table/issues/223)
