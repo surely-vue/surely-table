@@ -40,7 +40,7 @@ export default defineConfig({
     alias: {
       // moment: 'moment/dist/moment.js',
       '@surely-vue/table': path.join(__dirname, './core/src'),
-      vue: './node_modules/vue/dist/vue.runtime.esm-bundler.js',
+      vue: './node_modules/vue/dist/vue.runtime.esm-browser.prod.js',
     },
   },
   server: {
