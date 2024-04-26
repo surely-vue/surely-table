@@ -117,7 +117,7 @@
                   能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
                 </div>
               </template>
-              <a-card-meta title="张驰" description="AFFiNE CTO & 联合创始人">
+              <a-card-meta title="张驰" description="LlamaGen.Ai 创始人 & CEO">
                 <template #avatar>
                   <a-avatar :src="zhangchi" />
                 </template>
