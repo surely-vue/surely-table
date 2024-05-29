@@ -55,7 +55,7 @@
 | menuIcon | custom header menu icon | v-slot:menuIcon="{column, filtered}" | - | 4.0 |
 | menuPopup | custom menu popup content | v-slot:menuPopup="[MenuPopupArg][#MenuPopupArg]" | - | 4.0 |
 | cellEditor | custom editor cell，need column.editable | v-slot:cellEditor="[CellEditorArgs](#CellEditorArgs)" | - | 4.0 |
-| rangeSelection | cell selection | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
+| rangeSelection | cell selection, cell canot selection text when enable | boolean \| `single`(只能选择一个区间) | `single` | 4.1.0 |
 | copyDelimiter | cell delimiter when copying | string | `\t` | 4.1.0 |
 | preserveRow | Whether the row is permanent on the page and is not affected by virtual scrolling. It is generally used to merge rows. | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
 | tooltipDelay | Cell tooltip delay, used to customize the delay time | number | 200 | 4.3.2 |
