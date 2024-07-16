@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "4.3.4",
+  "version": "4.3.5",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
