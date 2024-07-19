@@ -5,12 +5,12 @@ title:
   zh-CN: 表头单元格菜单（4.0+）
   en-US: Header Cell Menu(4.0+)
 ---
-  
+
 ## zh-CN
-  
+
 你可以通过 `column.showMenu` 配置是否显示菜单，通过插槽 `menuIcon` `menuPopup` 分别自定义菜单图标和菜单内容。
 > showMenu 支持 boolean | 'hover'，当为 'hover' 时，鼠标移入表头单元格时显示菜单，移出时隐藏。
-  
+
 ## en-US
 
 You can use `column.showMenu` to control the menu visibility, and use `menuIcon` `menuPopup` slot to customize the menu icon and menu content.
@@ -227,7 +227,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less" scope>
+<style lang="less" scoped>
 .filter-active {
   color: var(--surely-table-primary-color) !important;
   opacity: 1 !important;
