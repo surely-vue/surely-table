@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "4.3.7",
+  "version": "4.3.10",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -33,6 +33,7 @@
   ],
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
+    "@surely-vue/table": "^4.3.7",
     "@vueuse/core": "^10.1.0",
     "ant-design-vue": "^4.1.2",
     "dayjs": "^1.10.7",
