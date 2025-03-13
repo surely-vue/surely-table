@@ -700,4 +700,27 @@ export default defineComponent({
     }
   }
 }
+.filter-active {
+  color: var(--surely-table-primary-color) !important;
+  opacity: 1 !important;
+}
+.menu-popup-container {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+.menu-popup {
+  width: 100%;
+  .menu-popup-item {
+    width: 100%;
+    padding: 4px 8px;
+    &:hover {
+      background-color: var(--surely-table-row-hover-bg);
+    }
+    &.disabled {
+      color: var(--surely-table-disabled-color);
+      cursor: not-allowed;
+    }
+  }
+}
 </style>

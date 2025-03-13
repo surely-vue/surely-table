@@ -47,7 +47,6 @@
 | rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |
-| rowHoverDelay | Table row hover delay for performance optimization | number | 50 | 2.2.0 |
 | xVirtual | Whether to scroll horizontally | boolean | - | 2.4.1 |
 | ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.4 |
 | showHeaderScrollbar | show header scrollbar | boolean | false | 2.4.4 |
@@ -279,7 +278,6 @@ export interface CellTooltip {
   color?: String;
   overlayStyle?: CSSProperties;
   overlayClassName?: String;
-  openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
   shouldOpen?: (isEllipsis: boolean, args: CellRenderArgs) => boolean; // 4.2.4

@@ -72,7 +72,6 @@ setConfig(config: {
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
-| rowHoverDelay | 表格行 hover 延时，用于性能优化 | number | 50 | 2.2.0 |
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
 | showHeaderScrollbar | 显示表头滚动条 | boolean | false | 2.4.4 |
@@ -306,7 +305,6 @@ export interface CellTooltip {
   color?: String;
   overlayStyle?: CSSProperties;
   overlayClassName?: String;
-  openClassName?: String;
   title?: (args: CellRenderArgs) => any;
   align?: TooltipAlignConfig;
   // 默认鼠标移入单元格后就会显示，你可以通过该函数自定义是否显示，isEllipsis 是内部计算出的当前单元格是否触发了 ellipsis
