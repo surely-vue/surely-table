@@ -83,6 +83,8 @@ setConfig(config: {
 | copyDelimiter | 复制时单元格拼接分隔符 | string | `\t` | 4.1.0 |
 | preserveRow | 行是否常驻页面，不受虚拟滚动影响，一般用于合并行，注意：常驻页面会使性能下降 | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
 | tooltipDelay | 单元格 tooltip 延时，用于自定义延迟时间 | number | 200 | 4.3.2 |
+| xBuff | 横向缓冲区，用于自定义横向缓冲区 | number | 20 | 5.0.3 |
+| yBuff | 纵向缓冲区，用于自定义纵向缓冲区 | number | 50 | 5.0.3 |
 
 - `expandFixed`
   - 当设置为 true 或 `left` 且 `expandIconColumnIndex` 未设置或为 0 时，开启固定

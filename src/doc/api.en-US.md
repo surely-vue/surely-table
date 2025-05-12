@@ -58,6 +58,8 @@
 | copyDelimiter | cell delimiter when copying | string | `\t` | 4.1.0 |
 | preserveRow | Whether the row is permanent on the page and is not affected by virtual scrolling. It is generally used to merge rows. | ` (p: { record: any; index: number }) => boolean` | - | 4.2.9 |
 | tooltipDelay | Cell tooltip delay, used to customize the delay time | number | 200 | 4.3.2 |
+| xBuff | Customize the horizontal buffer, used to customize the horizontal buffer | number | 20 | 5.0.3 |
+| yBuff | Customize the vertical buffer, used to customize the vertical buffer | number | 50 | 5.0.3 |
 
 - `expandFixed`
   - When set to true or `left` and `expandIconColumnIndex` is not set or is 0, enable fixed
