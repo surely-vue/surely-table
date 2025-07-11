@@ -1,6 +1,3 @@
-[submodule "core"]
-	path = packages/core
-	url = git@github.com:surely-vue/core.git
 [submodule "packages/core"]
 	path = packages/core
 	url = git@github.com:surely-vue/core.git
