@@ -1,0 +1,4 @@
+{
+  "extends": "@surely-vue/typescript-config/tsconfig.node.json",
+  "include": ["vite.config.*", "plugin/**/*.ts"]
+}

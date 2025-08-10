@@ -1,0 +1,32 @@
+{
+  "name": "@surely-vue",
+  "version": "0.0.0",
+  "private": true,
+  "description": "surely-vue",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "packages-*/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "dev:apps": "turbo dev --filter=\"./apps/*\"",
+    "lint": "turbo lint"
+  },
+  "devDependencies": {
+    "@surely-vue/eslint-config": "*",
+    "@surely-vue/prettier-config": "*",
+    "@surely-vue/typescript-config": "*",
+    "@types/node": "^20.19.7",
+    "eslint": "^8.56.0",
+    "prettier": "^3.3.3",
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": ">=20"
+  }
+}

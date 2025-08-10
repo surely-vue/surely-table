@@ -1,9 +1,6 @@
-import { getBabelOutputPlugin } from '@rollup/plugin-babel';
+// import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import path from 'path';
-import Unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
 import docs from './plugin/docs';
 import md from './plugin/md';
@@ -22,24 +19,21 @@ export default defineConfig({
           vue: ['vue', 'vuex', 'vue-router', 'vue-i18n'],
           antdv: ['ant-design-vue', '@ant-design/icons-vue'],
           dayjs: ['dayjs'],
-          // surely: [path.join(__dirname, './core/src')],
         },
       },
       plugins: [
-        getBabelOutputPlugin({
-          presets: ['@babel/preset-env'],
-          allowAllFormats: true,
-          plugins: [['@babel/plugin-transform-object-rest-spread', { useBuiltIns: true }]],
-          compact: false,
-        }) as any,
+        // getBabelOutputPlugin({
+        //   presets: ['@babel/preset-env'],
+        //   allowAllFormats: true,
+        //   plugins: [['@babel/plugin-transform-object-rest-spread', { useBuiltIns: true }]],
+        //   compact: false,
+        // }) as any,
       ],
     },
   },
   base: './',
   resolve: {
     alias: {
-      // moment: 'moment/dist/moment.js',
-      '@surely-vue/table': path.join(__dirname, './core/src'),
       vue: './node_modules/vue/dist/vue.runtime.esm-browser.prod.js',
     },
   },
@@ -50,10 +44,6 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11', 'Chrome 63'],
       modernPolyfills: true,
-    }),
-    Unocss(),
-    vueJsx({
-      // options are passed on to @vue/babel-plugin-jsx
     }),
     docs(),
     md(),

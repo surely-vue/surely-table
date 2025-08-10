@@ -1,0 +1,3 @@
+{
+  "extends": "@surely-vue/typescript-config/tsconfig.node.json"
+}

@@ -1,9 +1,0 @@
-# dependencies
-node_modules
-# production
-dist
-/.vscode
-dist
-build
-.github
-scripts
