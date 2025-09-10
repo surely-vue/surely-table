@@ -4,8 +4,7 @@
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
-    "site": "yarn predev && vite build --base=/",
-    "pub:site": "npm run site && node scripts/pushToOSS.js",
+    "build": "yarn predev && vite build --base=/",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
     "tsc": "tsc --noEmit",
     "vue-tsc": "vue-tsc --noEmit"
