@@ -4,7 +4,7 @@
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
-    "build": "yarn predev && vite build --base=/",
+    "build": "NODE_ENV=production yarn predev && vite build --base=/",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
     "tsc": "tsc --noEmit",
     "vue-tsc": "vue-tsc --noEmit"
@@ -34,7 +34,7 @@
     "@ant-design/icons-vue": "^6.0.1",
     "@floating-ui/dom": "^1.6.13",
     "@floating-ui/vue": "^1.1.6",
-    "@surely-vue/table": "^4.3.7",
+    "@surely-vue/table": "^5.0.6",
     "@vueuse/core": "^10.1.0",
     "ant-design-vue": "^4.1.2",
     "dayjs": "^1.10.7",

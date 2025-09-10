@@ -38,8 +38,15 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: {
-      // moment: 'moment/dist/moment.js',
-      '@surely-vue/table': path.join(__dirname, './core/src'),
+      '@surely-vue/table/style':
+        process.env.NODE_ENV === 'production'
+          ? '@surely-vue/table/dist/index.less'
+          : path.join(__dirname, './core/src/style'),
+      '@surely-vue/table':
+        process.env.NODE_ENV === 'production'
+          ? '@surely-vue/table'
+          : path.join(__dirname, './core/src'),
+
       vue: './node_modules/vue/dist/vue.runtime.esm-browser.prod.js',
     },
   },
