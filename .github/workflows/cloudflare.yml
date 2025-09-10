@@ -12,10 +12,12 @@ jobs:
       deployments: write
     steps:
       - name: Checkout (with submodules)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: true      
           fetch-depth: 0
+          ssh-key: ${{ secrets.SUBMODULE_SSH_KEY }}
+          persist-credentials: false
 
       - name: Setup Node
         uses: actions/setup-node@v4
