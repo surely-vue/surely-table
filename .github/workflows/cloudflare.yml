@@ -1,15 +1,14 @@
-name: Deploy to Cloudflare Workers
+name: Build and Deploy to Cloudflare
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    name: Build and Deploy
+    name: Build Application
     permissions:
       contents: read
-      deployments: write
     steps:
       - name: Checkout (with submodules)
         uses: actions/checkout@v5
@@ -24,12 +23,34 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install deps & build
-        run: |
-          npm install --force
-          npm run build
+      - name: Install dependencies
+        run: npm install --force
 
-      - name: Deploy to Cloudflare Workers with Wrangler
+      - name: Build application
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: dist/
+          retention-days: 1
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare
+    needs: build
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: dist/
+
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }} 
