@@ -49,7 +49,6 @@ jobs:
         with:
           sparse-checkout: |
             wrangler.jsonc
-            package.json
           sparse-checkout-cone-mode: false
 
       - name: Download build artifacts
