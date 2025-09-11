@@ -540,7 +540,7 @@
 
 #### 文档
 
-- 🌟 新增自定义背景色示例 [查看](https://www.surely.cool/doc/custom#bg-color)
+- 🌟 新增自定义背景色示例 [查看](https://www.surelyvue.com/doc/custom#bg-color)
 
 ## 2.0.4
 

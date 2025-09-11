@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://surely.cool/">
+  <a href="https://surelyvue.com/">
     <img width="200" src="https://github.com/surely-vue/table/blob/main/src/assets/surely-vue-logo.png?raw=true">
   </a>
 </p>
 
 <h1 align="center">
-  <a href="https://surely.cool/" target="_blank">Surely Vue</a>
+  <a href="https://surelyvue.com/" target="_blank">Surely Vue</a>
 </h1>
 
 ## 简介
@@ -20,7 +20,7 @@ Surely Vue 默认使用虚拟滚动提升渲染速度，树形数据、展开内
 
 ## 官方网站
 
-[https://surely.cool/](https://surely.cool/)
+[https://surelyvue.com/](https://surelyvue.com/)
 
 ### 功能点
 

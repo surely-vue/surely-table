@@ -1,6 +1,6 @@
 import SurelyTable, { setLicenseKey } from '@surely-vue/table';
 import '@surely-vue/table/style';
-import Antd from 'ant-design-vue';
+import Antd, { Modal } from 'ant-design-vue';
 import 'uno.css';
 import { createApp, version } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -12,8 +12,21 @@ import './index.less';
 import routes from './routes';
 
 setLicenseKey(
-  'bd8e9bae80c43b524960987020b1f47dT1JERVI6MDAwMDEsRVhQSVJZPTMzMjI3NzEyMDAwMDAwLERPTUFJTj1zdXJlbHkuY29vbCxLRVlWRVJTSU9OPTE=',
+  'dcde100698486c93766cc491b53562a4T1JERVI6MTAwMDAwLEVYUElSWT00ODQwNTYwMDAwMDAwLERPTUFJTj1zdXJlbHl2dWUuY29tLFVMVElNQVRFPTAsS0VZVkVSU0lPTj0x',
 );
+
+if (process.env.NODE_ENV === 'production' && !location.hostname.includes('surelyvue.com')) {
+  Modal.confirm({
+    title: '提示',
+    content: '这个域名一点都不 cool，请使用最新 surelyvue.com 域名访问',
+    onOk: () => {
+      location.href = 'https://surelyvue.com';
+    },
+    onCancel: () => {
+      alert('我真的会下线的，请使用最新 surelyvue.com 域名访问');
+    },
+  });
+}
 
 console.log('vue version', version);
 console.log('ant-design-vue version', Antd.version);
