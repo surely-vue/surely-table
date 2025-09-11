@@ -1,6 +1,6 @@
 {
   "name": "surely-vue",
-  "version": "5.0.4",
+  "version": "5.0.7",
   "scripts": {
     "predev": "node node_modules/esbuild/install.js",
     "dev": "yarn predev && vite",
@@ -34,7 +34,7 @@
     "@ant-design/icons-vue": "^6.0.1",
     "@floating-ui/dom": "^1.6.13",
     "@floating-ui/vue": "^1.1.6",
-    "@surely-vue/table": "^5.0.6",
+    "@surely-vue/table": "^5.0.7",
     "@vueuse/core": "^10.1.0",
     "ant-design-vue": "^4.1.2",
     "dayjs": "^1.10.7",
