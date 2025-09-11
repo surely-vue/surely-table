@@ -50,10 +50,10 @@ jobs:
           name: build-files
           path: dist/
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy (Workers + Static Assets)
         uses: cloudflare/wrangler-action@v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }} 
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=surely-vue
+          command: deploy --config wrangler.jsonc
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
