@@ -5,5 +5,14 @@
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
-  "routes": ["surelvue.com/*", "www.surelyvue.com/*"]
+  "routes": [
+    {
+      "pattern": "surelyvue.com/*",
+      "zone_name": "surelyvue.com"
+    },
+    {
+      "pattern": "www.surelyvue.com/*",
+      "zone_name": "surelyvue.com"
+    }
+  ]
 }
