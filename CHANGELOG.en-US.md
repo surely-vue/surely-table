@@ -12,6 +12,11 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.0.16
+
+- 🌟 Add ensureRowVisible method to ensure new row is visible
+- 🐞 Fix emptyText slot not interactive issue when data is empty
+
 ## 5.0.15
 
 - 🐞 Fix sub-table responsiveness issue
