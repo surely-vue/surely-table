@@ -94,6 +94,70 @@
 | getSelectedRange | Get the currently selected cell | () => [SelectedRangeItem](#selectedrangeitem)[] | 4.1.0 |
 | clearAllSelectedRange | Clear the currently selected cell | () => void | 4.1.0 |
 | appendCellToSelectedRange | Add cell to selected range | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
+| exportDataAsCsv | Export CSV file | (params?: [CsvExportParams](#csvexportparams)) => string \| void | 5.1.0 |
+| exportDataAsExcel | Export Excel file | (params?: [ExcelExportParams](#excelexportparams)) => any | 5.1.0 |
+
+### CsvExportParams
+
+| Parameter | Description | Type | Default |
+| --- | --- | --- | --- |
+| fileName | Export file name (without extension) | string | 'export' |
+| exportedRows | Row scope: `'all'` for raw data, `'filteredAndSorted'` for sorted & filtered data | `'all'` \| `'filteredAndSorted'` | `'filteredAndSorted'` |
+| rowKeys | Specific row keys to export. When provided, only these rows are exported | Key[] | - |
+| columnKeys | Specific column keys to export. When provided, only these columns are exported | Key[] | - |
+| allColumns | Include hidden columns | boolean | false |
+| skipColumnHeaders | Skip column header row | boolean | false |
+| skipColumnGroupHeaders | Skip column group header rows | boolean | false |
+| columnSeparator | Column separator character | string | ',' |
+| suppressDownload | When true, returns CSV string instead of downloading | boolean | false |
+| processCellCallback | Custom cell value for export | (params: { value: any; record: RecordType; column: ColumnType }) => string | - |
+| processHeaderCallback | Custom header text for export | (params: { column: ColumnType }) => string | - |
+| shouldRowBeSkipped | Return true to skip a row | (params: { record: RecordType; index: number }) => boolean | - |
+
+### ExcelExportParams
+
+Same as CsvExportParams but without `columnSeparator`, with the following additions:
+
+| Parameter | Description | Type | Default |
+| --- | --- | --- | --- |
+| sheetName | Sheet name | string | 'Sheet1' |
+
+> Excel export requires registering an export module first: `registerExcelExportModule(module)`. See the [Excel Export example](/doc/export#export-excel).
+
+### Merged Cell Export
+
+Merged cells configured via `customCell` (`colSpan` / `rowSpan`) are automatically handled during export:
+
+- **CSV**: Merged-away cells output as empty values
+- **Excel**: Real cell merges are applied (merge info is passed to `ExcelExportModule`)
+- **Grouped headers**: Nested `children` column definitions are exported as merged header cells
+
+`ExcelExportModule.createAndDownload` receives a `merges` parameter:
+
+```ts
+interface ExportMergeCell {
+  row: number;    // Start row (0-based, includes header rows)
+  col: number;    // Start column (0-based)
+  rowSpan: number; // Number of rows to merge
+  colSpan: number; // Number of columns to merge
+}
+```
+
+See the [Export Merged Cells example](/doc/export#export-merge).
+
+### Standalone Export Functions
+
+You can also export data without a table instance:
+
+```ts
+import { exportToCsv, exportToExcel, registerExcelExportModule } from '@surely-vue/table';
+
+// CSV export (no table instance needed)
+exportToCsv({ data, columns, fileName: 'export' });
+
+// Excel export (register module first)
+exportToExcel({ data, columns, fileName: 'export', sheetName: 'Data' });
+```
 
 ### SelectedRangeItem
 

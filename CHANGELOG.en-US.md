@@ -12,6 +12,11 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.1.0
+
+- 🌟 Add exportDataAsCsv method to export CSV file
+- 🌟 Add exportDataAsExcel method to export Excel file
+
 ## 5.0.16
 
 - 🌟 Add ensureRowVisible method to ensure new row is visible

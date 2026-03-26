@@ -121,6 +121,70 @@ setConfig(config: {
 | appendCellToSelectedRange | 添加单元格到选中区域 | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
 | closeEditor | 关闭单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
 | openEditor | 打开单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
+| exportDataAsCsv | 导出 CSV 文件 | (params?: [CsvExportParams](#csvexportparams)) => string \| void | 5.1.0 |
+| exportDataAsExcel | 导出 Excel 文件 | (params?: [ExcelExportParams](#excelexportparams)) => any | 5.1.0 |
+
+### CsvExportParams
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| fileName | 导出文件名（不含扩展名） | string | 'export' |
+| exportedRows | 导出行的范围：`'all'` 原始数据，`'filteredAndSorted'` 排序筛选后数据 | `'all'` \| `'filteredAndSorted'` | `'filteredAndSorted'` |
+| rowKeys | 指定导出的行 key，传入后只导出这些行 | Key[] | - |
+| columnKeys | 指定导出的列 key，传入后只导出这些列 | Key[] | - |
+| allColumns | 是否包含隐藏列 | boolean | false |
+| skipColumnHeaders | 是否跳过表头行 | boolean | false |
+| skipColumnGroupHeaders | 是否跳过分组表头行 | boolean | false |
+| columnSeparator | 列分隔符 | string | ',' |
+| suppressDownload | 为 true 时不下载文件，而是返回 CSV 字符串 | boolean | false |
+| processCellCallback | 自定义单元格导出内容 | (params: { value: any; record: RecordType; column: ColumnType }) => string | - |
+| processHeaderCallback | 自定义表头导出文本 | (params: { column: ColumnType }) => string | - |
+| shouldRowBeSkipped | 返回 true 跳过该行 | (params: { record: RecordType; index: number }) => boolean | - |
+
+### ExcelExportParams
+
+与 CsvExportParams 相同，但不包含 `columnSeparator`，增加以下参数：
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| sheetName | 工作表名称 | string | 'Sheet1' |
+
+> 导出 Excel 需要先注册导出模块：`registerExcelExportModule(module)`，详见 [导出 Excel 示例](/doc/export#export-excel)。
+
+### 合并单元格导出
+
+通过 `customCell` 配置的合并单元格（`colSpan`、`rowSpan`）会自动在导出时处理：
+
+- **CSV**：被合并的单元格输出为空值
+- **Excel**：生成真实的单元格合并（`merges` 信息会传递给 `ExcelExportModule`）
+- **分组表头**：`children` 嵌套列定义的分组表头会自动导出为合并表头
+
+`ExcelExportModule.createAndDownload` 的 `merges` 参数格式：
+
+```ts
+interface ExportMergeCell {
+  row: number;    // 起始行（0-based，含表头）
+  col: number;    // 起始列（0-based）
+  rowSpan: number; // 合并行数
+  colSpan: number; // 合并列数
+}
+```
+
+详见 [导出合并单元格示例](/doc/export#export-merge)。
+
+### 独立导出函数
+
+除了通过表格实例方法导出，还可以直接使用独立函数导出：
+
+```ts
+import { exportToCsv, exportToExcel, registerExcelExportModule } from '@surely-vue/table';
+
+// CSV 导出（无需表格实例）
+exportToCsv({ data, columns, fileName: 'export' });
+
+// Excel 导出（需先注册模块）
+exportToExcel({ data, columns, fileName: 'export', sheetName: '数据' });
+```
 
 ### SelectedRangeItem
 

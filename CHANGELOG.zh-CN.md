@@ -10,6 +10,11 @@
 
 ---
 
+## 5.1.0
+
+- 🌟 新增 exportDataAsCsv 方法，用于导出 CSV 文件
+- 🌟 新增 exportDataAsExcel 方法，用于导出 Excel 文件
+
 ## 5.0.16
 
 - 🌟 新增 ensureRowVisible 方法，用于确保新行可见

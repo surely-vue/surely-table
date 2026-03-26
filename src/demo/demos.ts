@@ -8,6 +8,7 @@ import performance from './performance/index.vue';
 import selection from './selection/index.vue';
 import tree from './tree/index.vue';
 import custom from './custom/index.vue';
+import exportDemo from './export/index.vue';
 
 const allDemo = [
   basic,
@@ -19,6 +20,7 @@ const allDemo = [
   tree,
   group,
   custom,
+  exportDemo,
   performance,
 ].map(demo => {
   const { title, enTitle, type, children = [], ...component } = demo;
