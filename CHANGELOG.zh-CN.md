@@ -10,6 +10,13 @@
 
 ---
 
+## 5.1.1
+
+- 🌟 导出支持表头 `colSpan`/`rowSpan` 合并
+- 🌟 导出支持 `customRender` 返回 `{ props: { colSpan, rowSpan } }` 数据单元格合并
+- 🌟 导出支持 `customHeaderCell` 返回的表头合并信息
+- 🌟 `processCellCallback` 新增 `index` 和 `recordIndexs` 参数
+
 ## 5.1.0
 
 - 🌟 新增 exportDataAsCsv 方法，用于导出 CSV 文件

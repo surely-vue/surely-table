@@ -137,7 +137,7 @@ setConfig(config: {
 | skipColumnGroupHeaders | 是否跳过分组表头行 | boolean | false |
 | columnSeparator | 列分隔符 | string | ',' |
 | suppressDownload | 为 true 时不下载文件，而是返回 CSV 字符串 | boolean | false |
-| processCellCallback | 自定义单元格导出内容 | (params: { value: any; record: RecordType; column: ColumnType }) => string | - |
+| processCellCallback | 自定义单元格导出内容 | (params: { value: any; record: RecordType; index: number; recordIndexs: number[]; column: ColumnType }) => string | - |
 | processHeaderCallback | 自定义表头导出文本 | (params: { column: ColumnType }) => string | - |
 | shouldRowBeSkipped | 返回 true 跳过该行 | (params: { record: RecordType; index: number }) => boolean | - |
 
@@ -153,11 +153,15 @@ setConfig(config: {
 
 ### 合并单元格导出
 
-通过 `customCell` 配置的合并单元格（`colSpan`、`rowSpan`）会自动在导出时处理：
+以下合并配置会自动在导出时处理：
 
-- **CSV**：被合并的单元格输出为空值
+- **表头合并**：列 `colSpan` / `rowSpan` 配置、`customHeaderCell` 返回的合并信息、`children` 嵌套分组表头
+- **数据单元格合并**：`customCell` 返回的 `colSpan` / `rowSpan`、`customRender` 返回的 `{ props: { colSpan, rowSpan } }`
+
+导出行为：
+
+- **CSV**：被合并的单元格输出为空值（CSV 格式本身不支持合并）
 - **Excel**：生成真实的单元格合并（`merges` 信息会传递给 `ExcelExportModule`）
-- **分组表头**：`children` 嵌套列定义的分组表头会自动导出为合并表头
 
 `ExcelExportModule.createAndDownload` 的 `merges` 参数格式：
 

@@ -110,7 +110,7 @@
 | skipColumnGroupHeaders | Skip column group header rows | boolean | false |
 | columnSeparator | Column separator character | string | ',' |
 | suppressDownload | When true, returns CSV string instead of downloading | boolean | false |
-| processCellCallback | Custom cell value for export | (params: { value: any; record: RecordType; column: ColumnType }) => string | - |
+| processCellCallback | Custom cell value for export | (params: { value: any; record: RecordType; index: number; recordIndexs: number[]; column: ColumnType }) => string | - |
 | processHeaderCallback | Custom header text for export | (params: { column: ColumnType }) => string | - |
 | shouldRowBeSkipped | Return true to skip a row | (params: { record: RecordType; index: number }) => boolean | - |
 
@@ -126,11 +126,15 @@ Same as CsvExportParams but without `columnSeparator`, with the following additi
 
 ### Merged Cell Export
 
-Merged cells configured via `customCell` (`colSpan` / `rowSpan`) are automatically handled during export:
+The following merge configurations are automatically handled during export:
 
-- **CSV**: Merged-away cells output as empty values
+- **Header merges**: Column `colSpan` / `rowSpan` properties, `customHeaderCell` merge info, nested `children` grouped headers
+- **Data cell merges**: `customCell` returning `colSpan` / `rowSpan`, `customRender` returning `{ props: { colSpan, rowSpan } }`
+
+Export behavior:
+
+- **CSV**: Merged-away cells output as empty values (CSV format does not support merges)
 - **Excel**: Real cell merges are applied (merge info is passed to `ExcelExportModule`)
-- **Grouped headers**: Nested `children` column definitions are exported as merged header cells
 
 `ExcelExportModule.createAndDownload` receives a `merges` parameter:
 
