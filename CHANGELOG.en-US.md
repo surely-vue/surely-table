@@ -12,6 +12,10 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.1.2
+
+- 🐞 Fix Excel export skipping columns that only have `dataIndex` (without `key`) in grouped header scenarios, causing header and data misalignment
+
 ## 5.1.1
 
 - 🌟 Export supports header `colSpan`/`rowSpan` merging
