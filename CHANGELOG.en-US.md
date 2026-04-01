@@ -12,6 +12,10 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.1.3
+
+- 🌟 Export adds `serialNumber` option to prepend a serial number column to exported data
+
 ## 5.1.2
 
 - 🐞 Fix Excel export skipping columns that only have `dataIndex` (without `key`) in grouped header scenarios, causing header and data misalignment

@@ -140,6 +140,7 @@ setConfig(config: {
 | processCellCallback | 自定义单元格导出内容 | (params: { value: any; record: RecordType; index: number; recordIndexs: number[]; column: ColumnType }) => string | - |
 | processHeaderCallback | 自定义表头导出文本 | (params: { column: ColumnType }) => string | - |
 | shouldRowBeSkipped | 返回 true 跳过该行 | (params: { record: RecordType; index: number }) => boolean | - |
+| serialNumber | 在导出数据前插入序号列。`true` 使用默认表头 `#`；传字符串自定义表头；传对象 `{ title?, render }` 完全控制 | boolean \| string \| { title?: string; render: (index: number) => string \| number } | - |
 
 ### ExcelExportParams
 
@@ -175,6 +176,10 @@ interface ExportMergeCell {
 ```
 
 详见 [导出合并单元格示例](/doc/export#export-merge)。
+
+### 注意事项
+
+- 导出功能暂不支持树形数据（`childrenColumnName`）和展开行（`expandedRowRender`）的递归导出，仅导出顶层数据行。
 
 ### 独立导出函数
 

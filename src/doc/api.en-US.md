@@ -113,6 +113,7 @@
 | processCellCallback | Custom cell value for export | (params: { value: any; record: RecordType; index: number; recordIndexs: number[]; column: ColumnType }) => string | - |
 | processHeaderCallback | Custom header text for export | (params: { column: ColumnType }) => string | - |
 | shouldRowBeSkipped | Return true to skip a row | (params: { record: RecordType; index: number }) => boolean | - |
+| serialNumber | Prepend a serial number column. `true` uses default header `#`; pass a string for custom header; pass `{ title?, render }` for full control | boolean \| string \| { title?: string; render: (index: number) => string \| number } | - |
 
 ### ExcelExportParams
 
@@ -148,6 +149,10 @@ interface ExportMergeCell {
 ```
 
 See the [Export Merged Cells example](/doc/export#export-merge).
+
+### Notes
+
+- Export does not support recursive export of tree data (`childrenColumnName`) or expanded rows (`expandedRowRender`). Only top-level data rows are exported.
 
 ### Standalone Export Functions
 
