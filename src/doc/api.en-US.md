@@ -47,6 +47,7 @@
 | summaryFixed | fixed summmary content | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
+| multiRowDrag | Enable multi-row drag, requires rowSelection, [more](/doc/dragable) | boolean | false | 5.2.0 |
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |
 | xVirtual | Whether to scroll horizontally | boolean | - | 2.4.1 |
 | ignoreCellKey | The unique key of the cell is ignored, and the reuse of custom components is further improved. The key parameter is added to the bodyCell slot, which can be selected according to the situation of the component. | boolean | false | 2.4.4 |
@@ -94,6 +95,8 @@
 | getSelectedRange | Get the currently selected cell | () => [SelectedRangeItem](#selectedrangeitem)[] | 4.1.0 |
 | clearAllSelectedRange | Clear the currently selected cell | () => void | 4.1.0 |
 | appendCellToSelectedRange | Add cell to selected range | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
+| ensureRowVisible | Scroll to make the specified row visible | (rowKey: Key) => void | 5.2.0 |
+| ensureColumnVisible | Scroll to make the specified column visible | (columnKey: Key) => void | 5.2.0 |
 | exportDataAsCsv | Export CSV file | (params?: [CsvExportParams](#csvexportparams)) => string \| void | 5.1.0 |
 | exportDataAsExcel | Export Excel file | (params?: [ExcelExportParams](#excelexportparams)) => any | 5.1.0 |
 
@@ -410,6 +413,8 @@ export interface RowDragGhostArg<RecordT, ColumnT> {
   event: MouseEvent | Touch;
   preTargetInfo: DragRowsHandleInfo | null;
   nextTargetInfo: DragRowsHandleInfo | null;
+  dragCount?: number; // Number of rows being dragged, greater than 1 for multi-row drag
+  dragRecords?: RecordT[]; // All records being dragged
 }
 ```
 
@@ -428,6 +433,8 @@ export interface DragRowEventInfo {
   nextTargetInfo: DragRowsHandleInfo | null;
   fromIndexs: number[]; // This is an indexed array to support the tree structure
   insertToRowKey: Key;
+  dragRowKeys?: Key[]; // All row keys being dragged in multi-row drag
+  dragRecords?: DefaultRecordType[]; // All records being dragged in multi-row drag
 }
 ```
 

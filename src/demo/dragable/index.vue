@@ -37,6 +37,7 @@
     <drag-custom-ghost-vue />
     <drag-row-tree-vue />
     <drag-column-vue />
+    <drag-multi-row-vue />
   </div>
 </template>
 <script lang="ts">
@@ -48,6 +49,7 @@ import dragPromiseVue from './drag-promise.vue';
 import dragCustomGhostVue from './drag-custom-ghost.vue';
 import dragRowTreeVue from './drag-row-tree.vue';
 import dragColumnVue from './drag-column.vue';
+import dragMultiRowVue from './drag-multi-row.vue';
 
 export default defineComponent({
   components: {
@@ -57,6 +59,7 @@ export default defineComponent({
     dragCustomGhostVue,
     dragRowTreeVue,
     dragColumnVue,
+    dragMultiRowVue,
   },
   title: '拖拽',
   enTitle: 'Dragable',
@@ -96,7 +99,6 @@ export default defineComponent({
       id: 'multipe-sort',
       title: '多行拖拽',
       enTitle: 'Multipe drag sorting',
-      disabled: true,
     },
   ],
   setup() {

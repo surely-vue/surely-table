@@ -72,6 +72,7 @@ setConfig(config: {
 | summaryFixed | 固定总结栏 | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
 | columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
+| multiRowDrag | 是否开启多行拖拽，需配合 rowSelection 使用，[详见](/doc/dragable/) | boolean | false | 5.2.0 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
 | xVirtual | 横向是否虚拟滚动 | boolean | - | 2.4.1 |
 | ignoreCellKey | 忽略单元格唯一 key，进一步提升自定义组件复用，bodyCell 插槽新增 key 参数，可根据组件情况自行选用。 | boolean | false | 2.4.4 |
@@ -121,6 +122,8 @@ setConfig(config: {
 | appendCellToSelectedRange | 添加单元格到选中区域 | (cell: [AppendCellRange](#appendcellrange)) => void | 4.1.0 |
 | closeEditor | 关闭单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
 | openEditor | 打开单元格编辑 | (cellInfos?: {columnKey: Key; rowKey: Key}[])=> void | 4.1.13 |
+| ensureRowVisible | 滚动到指定行可见 | (rowKey: Key) => void | 5.2.0 |
+| ensureColumnVisible | 滚动到指定列可见 | (columnKey: Key) => void | 5.2.0 |
 | exportDataAsCsv | 导出 CSV 文件 | (params?: [CsvExportParams](#csvexportparams)) => string \| void | 5.1.0 |
 | exportDataAsExcel | 导出 Excel 文件 | (params?: [ExcelExportParams](#excelexportparams)) => any | 5.1.0 |
 
@@ -428,6 +431,8 @@ export interface RowDragGhostArg<RecordT, ColumnT> {
   event: MouseEvent | Touch;
   preTargetInfo: DragRowsHandleInfo | null;
   nextTargetInfo: DragRowsHandleInfo | null;
+  dragCount?: number; // 拖拽的行数，多行拖拽时大于 1
+  dragRecords?: RecordT[]; // 所有被拖拽的行数据
 }
 ```
 
@@ -446,6 +451,8 @@ export interface DragRowEventInfo {
   nextTargetInfo: DragRowsHandleInfo | null;
   fromIndexs: number[]; // 这是一个索引数组，用以支持树形结构
   insertToRowKey: Key;
+  dragRowKeys?: Key[]; // 多行拖拽时，所有被拖拽的行 key
+  dragRecords?: DefaultRecordType[]; // 多行拖拽时，所有被拖拽的行数据
 }
 ```
 

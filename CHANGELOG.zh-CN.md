@@ -10,6 +10,11 @@
 
 ---
 
+## 5.1.4
+
+- 🌟 新增 `multiRowDrag` 属性，支持多行拖拽排序，需配合 `rowSelection` 使用
+- 🌟 新增 `ensureColumnVisible` 方法，用于横向滚动到指定列可见
+
 ## 5.1.3
 
 - 🌟 导出新增 `serialNumber` 参数，支持在导出数据前插入序号列
