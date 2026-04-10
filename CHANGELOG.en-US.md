@@ -12,6 +12,11 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.1.5
+
+- 🐞 Fix `ghostImage` not removed from DOM and event listeners not cleaned up when component unmounts during drag
+- 🐞 Fix `popupContent` not cleared on contextmenu close, causing detached `contextmenu-container` nodes
+
 ## 5.1.4
 
 - 🌟 Add `multiRowDrag` prop to support multi-row drag sorting, requires `rowSelection`

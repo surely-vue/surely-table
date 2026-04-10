@@ -10,6 +10,11 @@
 
 ---
 
+## 5.1.5
+
+- 🐞 修复拖拽过程中组件卸载时，`ghostImage` 未从 DOM 移除、事件监听未清理的问题
+- 🐞 修复右键菜单关闭时未清理 `popupContent`，导致 `contextmenu-container` 游离节点的问题
+
 ## 5.1.4
 
 - 🌟 新增 `multiRowDrag` 属性，支持多行拖拽排序，需配合 `rowSelection` 使用
