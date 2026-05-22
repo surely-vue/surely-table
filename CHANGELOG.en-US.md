@@ -12,6 +12,10 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.1.6
+
+- 🌟 Whole-row drag: the top-level `rowDrag` prop now accepts the exported `WHOLE_ROW_DRAG_KEY` constant, enabling drag from anywhere on a row. Mutually exclusive with `rangeSelection`, which is silently disabled when whole-row drag is on.
+
 ## 5.1.5
 
 - 🐞 Fix `ghostImage` not removed from DOM and event listeners not cleaned up when component unmounts during drag

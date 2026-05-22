@@ -46,6 +46,7 @@
 | summary | Summary content | v-slot:summary | - |  |
 | summaryFixed | fixed summmary content | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | Customize the prompt content when dragging a row, [more](/doc/dragable) | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
+| rowDrag | Row drag switch. Pass `true` to enable column-level handles via column `rowDrag`; pass the exported `WHOLE_ROW_DRAG_KEY` constant to allow dragging from anywhere on a row. When `WHOLE_ROW_DRAG_KEY` is used, `rangeSelection` is silently disabled (the two are mutually exclusive) | boolean \| typeof WHOLE_ROW_DRAG_KEY | - | 5.1.6 |
 | columnDrag | Whether the column header can be dragged or not, [more](/doc/dragable) | boolean | - | 2.1.1 |
 | multiRowDrag | Enable multi-row drag, requires rowSelection, [more](/doc/dragable) | boolean | false | 5.2.0 |
 | columnDragGhost | Customize the prompt content when dragging a column | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndraghost)" | - | 2.1.1 |

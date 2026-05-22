@@ -33,6 +33,7 @@
     <br />
     <columns />
     <drag-row-vue />
+    <drag-row-whole-vue />
     <drag-promise-vue />
     <drag-custom-ghost-vue />
     <drag-row-tree-vue />
@@ -45,6 +46,7 @@ import { defineComponent } from 'vue';
 import { useInjectGlobalConfig } from '../../context';
 import Columns from './columns.vue';
 import dragRowVue from './drag-row.vue';
+import dragRowWholeVue from './drag-row-whole.vue';
 import dragPromiseVue from './drag-promise.vue';
 import dragCustomGhostVue from './drag-custom-ghost.vue';
 import dragRowTreeVue from './drag-row-tree.vue';
@@ -55,6 +57,7 @@ export default defineComponent({
   components: {
     Columns,
     dragRowVue,
+    dragRowWholeVue,
     dragPromiseVue,
     dragCustomGhostVue,
     dragRowTreeVue,
@@ -74,6 +77,11 @@ export default defineComponent({
       id: 'drag-row',
       title: '行拖拽',
       enTitle: 'Drag sorting',
+    },
+    {
+      id: 'drag-row-whole',
+      title: '整行拖动',
+      enTitle: 'Whole-row drag',
     },
     {
       id: 'drag-promise',

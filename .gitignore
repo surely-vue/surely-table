@@ -106,3 +106,4 @@ dist
 yarn.lock
 
 .claude
+.gstack/

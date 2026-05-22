@@ -71,6 +71,7 @@ setConfig(config: {
 | summary | 总结栏 | v-slot:summary | - |  |
 | summaryFixed | 固定总结栏 | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
 | rowDragGhost | 自定义拖拽行时的提示内容 | v-slot:rowDragGhost="arg: [RowDragGhostArg](#rowdragghost)" | - | 2.1.0 |
+| rowDrag | 行拖动开关。配合列上的 `rowDrag` 使用时传 `true`；传入导出的 `WHOLE_ROW_DRAG_KEY` 常量时整行任意位置都可发起拖动（此时框选 `rangeSelection` 会静默失效，两者二选一） | boolean \| typeof WHOLE_ROW_DRAG_KEY | - | 5.1.6 |
 | columnDrag | 列表头是否允许拖拽, [详见](/doc/dragable/) | boolean | - | 2.1.1 |
 | multiRowDrag | 是否开启多行拖拽，需配合 rowSelection 使用，[详见](/doc/dragable/) | boolean | false | 5.2.0 |
 | columnDragGhost | 自定义拖拽列时的提示内容 | v-slot:columnDragGhost="arg: [ColumnDragGhostArg](#columndragghost)" | - | 2.1.1 |
